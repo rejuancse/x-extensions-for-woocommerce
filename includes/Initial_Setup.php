@@ -52,7 +52,7 @@ if (! class_exists('Initial_Setup')) {
          * Do some task during plugin activation
          */
         public function initial_plugin_activation() {
-            if (get_option('wpneo_crowdfunding_is_used')) { // Check is plugin used before or not
+            if (get_option('wpneo_xwoo_is_used')) { // Check is plugin used before or not
                 return false;
             }
             self::update_option();
@@ -64,7 +64,7 @@ if (! class_exists('Initial_Setup')) {
          */
         public function update_option() {
             $init_setup_data = array(
-                'wpneo_crowdfunding_is_used' => XWOO_VERSION,
+                'wpneo_xwoo_is_used' => XWOO_VERSION,
                 'wpneo_cf_selected_theme' => 'basic',
                 'vendor_type' => 'woocommerce',
                 'wpneo_default_campaign_status' => 'draft',
@@ -99,10 +99,10 @@ if (! class_exists('Initial_Setup')) {
                 'XWOO_show_quantity' => 'true',
                 'XWOO_show_terms_and_conditions' => 'true',
                 'wpneo_enable_paypal_per_campaign_email' => 'true',
-                'wpneo_single_page_template' => 'in_wp_crowdfunding',
+                'wpneo_single_page_template' => 'in_wp_xwoo',
                 'wpneo_single_page_reward_design' => '1',
                 'hide_cf_campaign_from_shop_page' => 'false',
-                'wpneo_crowdfunding_add_to_cart_redirect' => 'checkout_page',
+                'wpneo_xwoo_add_to_cart_redirect' => 'checkout_page',
                 'wpneo_single_page_id' => 'true',
                 'wpneo_enable_recaptcha' => 'false',
                 'wpneo_enable_recaptcha_in_user_registration' => 'false',
@@ -166,7 +166,7 @@ if (! class_exists('Initial_Setup')) {
              */
             $dashboard_page = wp_insert_post( $dashboard );
             if ( !is_wp_error( $dashboard_page ) ) {
-                XWOO_function()->update_text( 'wpneo_crowdfunding_dashboard_page_id', $dashboard_page );
+                XWOO_function()->update_text( 'wpneo_xwoo_dashboard_page_id', $dashboard_page );
             }
             $form_page = wp_insert_post( $form );
             if( !is_wp_error( $form_page ) ){
@@ -282,7 +282,7 @@ if (! class_exists('Initial_Setup')) {
                                 __('installed and activated on this website in order to use WP Crowdfunding.','xwoo')
                             );
                         ?>
-                        <a href="https://docs.themeum.com/wp-crowdfunding/" target="_blank"><?php _e('Learn more about WP Crowdfunding', 'xwoo'); ?></a>
+                        <a href="https://docs.xwoo.com/wp-xwoo/" target="_blank"><?php _e('Learn more about WP Crowdfunding', 'xwoo'); ?></a>
                     </div>
                     <div class="XWOO-install-notice-button">
                         <a  class="button button-primary" href="<?php echo add_query_arg(array('action' => 'activate_woocommerce_free'), admin_url()); ?>"><?php _e('Activate WooCommerce', 'xwoo'); ?></a>

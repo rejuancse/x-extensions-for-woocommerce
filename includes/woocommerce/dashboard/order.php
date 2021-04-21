@@ -11,7 +11,7 @@ $args = array(
         array(
             'taxonomy' => 'product_type',
             'field'    => 'slug',
-            'terms'    => 'crowdfunding',
+            'terms'    => 'xwoo',
         ),
     ),
     'posts_per_page'    => -1
@@ -96,7 +96,7 @@ if ( $customer_orders ) :
                     $html .= _x( '#', 'hash before order number', 'xwoo' ) . $order->get_order_number();
 
                 elseif ( 'order-view' === $column_id ) :
-                    $html .= '<a class="label-info" href="'.$order->get_view_order_url().'">'.__("View","wp-crowdfunding").'</a>';
+                    $html .= '<a class="label-info" href="'.$order->get_view_order_url().'">'.__("View","wp-xwoo").'</a>';
 
                 elseif ( 'order-date' === $column_id ) :
                     $html .='<time datetime="'.date( 'Y-m-d', strtotime( $order_date['date'] ) ).'" title="'.esc_attr( strtotime( $order_date['date'] ) ).'">'.date_i18n( get_option( "date_format" ), strtotime( $order_date['date'] ) ).'</time>';
@@ -143,7 +143,7 @@ if ( $customer_orders ) :
                     }
 
                 elseif ( 'order-actions' === $column_id ) :
-                    $html .='<div class="button XWOO-order-view" data-orderid="'.$order->get_ID().'">' . __( "View","wp-crowdfunding" ) . '</div>';
+                    $html .='<div class="button XWOO-order-view" data-orderid="'.$order->get_ID().'">' . __( "View","wp-xwoo" ) . '</div>';
                 endif;
 
                 $html .='</td>';

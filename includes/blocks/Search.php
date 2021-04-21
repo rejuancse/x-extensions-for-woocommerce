@@ -11,7 +11,7 @@ class Search{
 
     public function register_search(){
         register_block_type(
-            'wp-crowdfunding/search',
+            'wp-xwoo/search',
             array(
                 'attributes' => array(
                     'formAlign' => array(
@@ -61,11 +61,11 @@ class Search{
         $html .= '<div class="XWOO-form-field '. $formSize .' '.$formAlign.'">';
             $html .= '<form role="search" method="get" action="'.esc_url(home_url('/')).'">';
                 if (isset($_GET['s'])) { $search_val = $_GET['s']; }
-                $html .= '<input type="search" class="search-field" placeholder="'.__("Search", "wp-crowdfunding").'" 
+                $html .= '<input type="search" class="search-field" placeholder="'.__("Search", "wp-xwoo").'" 
                 value="'.$search_val.'" name="s" style="font-size: '. $SearchfontSize .'px;">';
                 $html .= '<input type="hidden" name="post_type" value="product">';
                 $html .= '<input type="hidden" name="product_type" value="croudfunding">';
-                $html .= '<button type="submit" style="background: '.$bgColor.'; color: '.$titleColor.'; font-size: '. $fontSize .'px; font-weight: '.$fontWeight.'">'.__("Search", "wp-crowdfunding").'</button>';
+                $html .= '<button type="submit" style="background: '.$bgColor.'; color: '.$titleColor.'; font-size: '. $fontSize .'px; font-weight: '.$fontWeight.'">'.__("Search", "wp-xwoo").'</button>';
             $html .= '</form>';
         $html .= '</div>';
 

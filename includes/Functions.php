@@ -30,7 +30,7 @@ class Functions {
 
 
     public function is_free(){
-        if (is_plugin_active('wp-crowdfunding-pro/wp-crowdfunding-pro.php')) {
+        if (is_plugin_active('wp-xwoo-pro/wp-xwoo-pro.php')) {
             return false;
         } else {
             return true;
@@ -101,9 +101,9 @@ class Functions {
     
     public function get_screen_id(){
         $screen_ids = array(
-            'toplevel_page_wpneo-crowdfunding',
-            'crowdfunding_page_wpneo-crowdfunding-reports',
-            'crowdfunding_page_wpneo-crowdfunding-withdraw',
+            'toplevel_page_wpneo-xwoo',
+            'xwoo_page_wpneo-xwoo-reports',
+            'xwoo_page_wpneo-xwoo-withdraw',
         );
         return apply_filters('XWOO_screen_id', $screen_ids);
     }
@@ -173,7 +173,7 @@ class Functions {
                 array(
                     'taxonomy' => 'product_type',
                     'field'    => 'slug',
-                    'terms'    => 'crowdfunding',
+                    'terms'    => 'xwoo',
                 ),
             ),
             'posts_per_page'    => -1
@@ -417,7 +417,7 @@ class Functions {
 				array(
 					'taxonomy' => 'product_type',
 					'field' => 'slug',
-					'terms' => 'crowdfunding',
+					'terms' => 'xwoo',
 				),
 			),
 			'posts_per_page' => -1
@@ -479,7 +479,7 @@ class Functions {
 		if (is_product()){
 			if( function_exists('get_product') ){
 				$product = wc_get_product( $post->ID );
-				if( $product->is_type( 'crowdfunding' ) ){
+				if( $product->is_type( 'xwoo' ) ){
 					XWOO_function()->template('include/love_campaign');
 				}
 			}

@@ -11,7 +11,7 @@ class PopularCampaigns{
  
     public function register_popular_campaigns(){
         register_block_type(
-            'wp-crowdfunding/popularcampaigns',
+            'wp-xwoo/popularcampaigns',
             array(
                 'attributes' => array(
 
@@ -64,7 +64,7 @@ class PopularCampaigns{
                 array(
                     'taxonomy' => 'product_type',
                     'field'    => 'slug',
-                    'terms'    => 'crowdfunding',
+                    'terms'    => 'xwoo',
                 ),
             )
         );

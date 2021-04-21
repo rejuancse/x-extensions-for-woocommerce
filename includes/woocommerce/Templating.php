@@ -20,7 +20,7 @@ class Templating {
 
     /**
      * @var string
-     * Return theme in crowdfunding directory
+     * Return theme in xwoo directory
      */
     public $_theme_in_plugin_path;
 
@@ -85,8 +85,8 @@ class Templating {
         $this->_theme_in_plugin_path = XWOO_DIR_PATH."XWOOtemplate/{$this->_vendor}/{$this->_theme}/";
         $this->_vendor_path = XWOO_DIR_PATH."XWOOtemplate/{$this->_vendor}/";
 
-        $single_template_path = $this->_theme_in_themes_path."single-crowdfunding.php";
-        $single_plugin_path = $this->_theme_in_plugin_path."single-crowdfunding.php";
+        $single_template_path = $this->_theme_in_themes_path."single-xwoo.php";
+        $single_plugin_path = $this->_theme_in_plugin_path."single-xwoo.php";
 
         if (file_exists($single_template_path)){
             $this->_selected_theme_path = $this->_theme_in_themes_path;
@@ -113,7 +113,7 @@ class Templating {
         //Determine where single campaign will be load, is it WooCommerce or Wp Crowdfunding
         $single_page_template = get_option('wpneo_single_page_template');
 
-        if (empty($single_page_template) || ($single_page_template == 'in_wp_crowdfunding') ){
+        if (empty($single_page_template) || ($single_page_template == 'in_wp_xwoo') ){
             add_filter( 'template_include',         array( $this, 'template_chooser_callback' ), 99); //Get custom template for this
         }
 
@@ -136,7 +136,7 @@ class Templating {
             if (function_exists('wc_get_product')) {
                 $product = wc_get_product($post_id);
                 if ($post_type === 'product') {
-                    if ($product->get_type() === 'crowdfunding') {
+                    if ($product->get_type() === 'xwoo') {
                         if (file_exists($this->_selected_theme)) {
                             $template = $this->_selected_theme;
                         }
@@ -189,14 +189,14 @@ class Templating {
     }
     /**
      * Theme standard
-     * These file required for develop a wpneo crowdfunding theme
+     * These file required for develop a wpneo xwoo theme
      */
     public function theme_standard_check(){
         $theme_standard = array(
             'index.php',
             'style.css',
             'wpneo-listing.php',
-            'single-crowdfunding.php',
+            'single-xwoo.php',
             'wpneo-functions.php'
         );
 
@@ -221,7 +221,7 @@ class Templating {
 
                 if (count($missing_files) > 0){
                     $html .= '<div class="notice notice-error"><p>';
-                    $html .= __('Error crowdfunding theme: ', 'xwoo'). $theme_info['theme_name']. '<br />';
+                    $html .= __('Error xwoo theme: ', 'xwoo'). $theme_info['theme_name']. '<br />';
 
                     foreach($missing_files as $file){
                         $html .= "<strong>{$file}</strong> missing<br />";
@@ -341,7 +341,7 @@ class Templating {
         $listing_id = get_option('wpneo_listing_page_id','');
         $form_id = get_option('wpneo_form_page_id','');
         $registration_id = get_option('wpneo_registration_page_id','');
-        $dashboard_id = get_option('wpneo_crowdfunding_dashboard_page_id','');
+        $dashboard_id = get_option('wpneo_xwoo_dashboard_page_id','');
 
         if( is_page() ){
             if( ($listing_id != '') && ($listing_id != '0') ){
@@ -369,7 +369,7 @@ class Templating {
                         $var = get_option( 'wpneo_single_page_id');
                         if($var=='true'){
                             $_product = wc_get_product( get_the_ID() );
-                            if( $_product->is_type( 'crowdfunding' ) ){
+                            if( $_product->is_type( 'xwoo' ) ){
                                 remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
                             }
                         }

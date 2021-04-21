@@ -11,7 +11,7 @@ $args = array(
         array(
             'taxonomy' => 'product_type',
             'field'    => 'slug',
-            'terms'    => 'crowdfunding',
+            'terms'    => 'xwoo',
         ),
     ),
     'posts_per_page'    => $posts_per_page,
@@ -71,12 +71,12 @@ $the_query = new WP_Query( $args );
                         if ($page_id != '') {
                             $permalink_edit     = add_query_arg( array( 'action' => 'edit', 'postid' => get_the_ID() ) , get_permalink($page_id) );
                             $permalink_update   = add_query_arg( array( 'page_type' => 'update', 'postid' => get_the_ID() ) , $current_page );
-                            $operation_btn .= '<span><a href="'.$permalink_update.'">'.__("Update", "wp-crowdfunding").'</a></span>';
-                            $operation_btn .= '<span><a href="' . $permalink_edit . '" class="wp-crowd-btn wp-crowd-btn-primary">' . __("Edit", "wp-crowdfunding") . '</a></span>';
+                            $operation_btn .= '<span><a href="'.$permalink_update.'">'.__("Update", "wp-xwoo").'</a></span>';
+                            $operation_btn .= '<span><a href="' . $permalink_edit . '" class="wp-crowd-btn wp-crowd-btn-primary">' . __("Edit", "wp-xwoo") . '</a></span>';
                         }
                         
                     if (get_post_status() == 'draft'){
-	                    $operation_btn .='<span class="wp-crowd-btn wpneo-campaign-status">['.__("Draft", "wp-crowdfunding").']</span>';
+	                    $operation_btn .='<span class="wp-crowd-btn wpneo-campaign-status">['.__("Draft", "wp-xwoo").']</span>';
                     }
                     $operation_btn .= '</div>';
                     echo $operation_btn;

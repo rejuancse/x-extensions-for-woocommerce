@@ -11,7 +11,7 @@ class Single_Campaign{
 
     public function register_single_campaign(){
         register_block_type(
-            'wp-crowdfunding/singlecampaign',
+            'wp-xwoo/singlecampaign',
             array(
                 'attributes' => array(
                     'campaignID'    => array(
@@ -71,7 +71,7 @@ class Single_Campaign{
 
         while ( $single_product->have_posts() ) {
             $single_product->the_post();
-            XWOO_function()->template('single-crowdfunding-content-only');
+            XWOO_function()->template('single-xwoo-content-only');
         }
 
         // restore $previous_wp_query and reset post data.
@@ -80,7 +80,7 @@ class Single_Campaign{
 
         $html = '';
         $html .= '<style>';
-            $html .= '.wpneo-list-details .wpneo_donate_button, #wpneo-tab-reviews .submit, #neo-progressbar > div, ul.wpneo-crowdfunding-update li:hover span.round-circle, .wpneo-links li a:hover, .wpneo-links li.active a, #neo-progressbar > div {
+            $html .= '.wpneo-list-details .wpneo_donate_button, #wpneo-tab-reviews .submit, #neo-progressbar > div, ul.wpneo-xwoo-update li:hover span.round-circle, .wpneo-links li a:hover, .wpneo-links li.active a, #neo-progressbar > div {
                 background-color: '. $bgColor .';
                 color: #ffffff;
             }';
@@ -88,7 +88,7 @@ class Single_Campaign{
                 background: '. $bgColor .';
             }';
 
-            $html .= 'a.wpneo-fund-modal-btn.wpneo-link-style1, .wpneo-tabs-menu li.wpneo-current a, ul.wpneo-crowdfunding-update li .wpneo-crowdfunding-update-title {
+            $html .= 'a.wpneo-fund-modal-btn.wpneo-link-style1, .wpneo-tabs-menu li.wpneo-current a, ul.wpneo-xwoo-update li .wpneo-xwoo-update-title {
                 color: '. $textcolor .';
             }';
 

@@ -11,7 +11,7 @@ class Donate{
 
     public function register_donate(){
         register_block_type(
-            'wp-crowdfunding/donate',
+            'wp-xwoo/donate',
             array(
                 'attributes' => array(
                     'formAlign'   => array(
@@ -77,7 +77,7 @@ class Donate{
         }
  
         $campaign = wc_get_product($atts['campaign_id']);
-        if ( ! $campaign || $campaign->get_type() !== 'crowdfunding'){
+        if ( ! $campaign || $campaign->get_type() !== 'xwoo'){
             return '<p class="XWOO-donate-form-response">'.__('Invalid Campaign ID', 'xwoo').'</p>';
         }
 

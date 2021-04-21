@@ -10,7 +10,7 @@ $args = array(
         array(
             'taxonomy' => 'product_type',
             'field'    => 'slug',
-            'terms'    => 'crowdfunding',
+            'terms'    => 'xwoo',
         ),
     ),
     'posts_per_page'    => -1
@@ -130,7 +130,7 @@ if ( $customer_orders ) :
                         $html .= $rewards_amount;
                     }
                 elseif ( 'order-actions' === $column_id ) :
-                    $html .='<div class="button XWOO-order-view" data-orderid="'.$order->get_ID().'">' . __( "View","wp-crowdfunding" ) . '</div>';
+                    $html .='<div class="button XWOO-order-view" data-orderid="'.$order->get_ID().'">' . __( "View","wp-xwoo" ) . '</div>';
                 endif;
                 $html .='</td>';
             endforeach;

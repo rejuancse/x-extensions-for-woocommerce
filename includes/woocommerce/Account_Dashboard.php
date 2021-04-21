@@ -9,7 +9,7 @@ class Account_Dashboard {
         add_action( 'init',                                                 array( $this, 'endpoints') );
         add_filter( 'query_vars',                                           array( $this, 'query_vars'), 0 );
         add_filter( 'woocommerce_account_menu_items',                       array( $this, 'menu_items') );
-        add_action( 'woocommerce_account_crowdfunding-dashboard_endpoint',  array( $this, 'dashboard_callback' ) );
+        add_action( 'woocommerce_account_xwoo-dashboard_endpoint',  array( $this, 'dashboard_callback' ) );
         add_action( 'woocommerce_account_profile_endpoint',                 array( $this, 'profile_callback') );
         add_action( 'woocommerce_account_my-campaigns_endpoint',            array( $this, 'campaigns_callback') );
         add_action( 'woocommerce_account_backed-campaigns_endpoint',        array( $this, 'backed_campaigns_callback') );
@@ -20,7 +20,7 @@ class Account_Dashboard {
 
     // Rewrite Rules For Woocommerce My Account Page
     public function endpoints() {
-        add_rewrite_endpoint( 'crowdfunding-dashboard', EP_ROOT | EP_PAGES );
+        add_rewrite_endpoint( 'xwoo-dashboard', EP_ROOT | EP_PAGES );
         add_rewrite_endpoint( 'profile', EP_ROOT | EP_PAGES );
         add_rewrite_endpoint( 'my-campaigns', EP_ROOT | EP_PAGES );
         add_rewrite_endpoint( 'backed-campaigns', EP_ROOT | EP_PAGES );
@@ -30,7 +30,7 @@ class Account_Dashboard {
 
     // Query Variable
     public function query_vars( $vars ) {
-        $vars[] = 'crowdfunding-dashboard';
+        $vars[] = 'xwoo-dashboard';
         $vars[] = 'profile';
         $vars[] = 'my-campaigns';
         $vars[] = 'backed-campaigns';
@@ -42,7 +42,7 @@ class Account_Dashboard {
     // Woocommerce Menu Items
     public function menu_items( $items ) {
         $new_items = array(
-            'crowdfunding-dashboard'=> __( 'Crowdfunding Dashboard', 'xwoo' ),
+            'xwoo-dashboard'=> __( 'Crowdfunding Dashboard', 'xwoo' ),
             'profile'               => __( 'Profile', 'xwoo' ),
             'my-campaigns'          => __( 'My Campaigns', 'xwoo' ),
             'backed-campaigns'      => __( 'Backed Campaigns', 'xwoo' ),

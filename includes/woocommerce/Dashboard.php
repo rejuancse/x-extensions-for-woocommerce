@@ -60,7 +60,7 @@ class Dashboard{
                 array(
                     'taxonomy' => 'product_type',
                     'field'    => 'slug',
-                    'terms'    => 'crowdfunding',
+                    'terms'    => 'xwoo',
                 ),
             ),
         );
@@ -85,10 +85,10 @@ class Dashboard{
 
         $html = '';
         $html .= '<ul class="wpneo_d_status_list">';
-            $html .= '<li><span> <strong>'.$totalCampaigns.' </strong> '.__( "Total Campaign","wp-crowdfunding" ).'</span></li>';
-            $html .= '<li><span><strong>'.$total_orders .' </strong> '.__( "Completed Orders","wp-crowdfunding" ).'</span></li>';
-            $html .= '<li><span><strong>'. $on_hole_total_orders.' </strong> '.__( "On-Hold Orders","wp-crowdfunding" ).'</span></li>';
-            $html .= '<li><span><strong>'.get_woocommerce_currency_symbol().$total_campaign_orders.' </strong> '.__( "Total Donation Raised","wp-crowdfunding" ).'</span></li>';
+            $html .= '<li><span> <strong>'.$totalCampaigns.' </strong> '.__( "Total Campaign","wp-xwoo" ).'</span></li>';
+            $html .= '<li><span><strong>'.$total_orders .' </strong> '.__( "Completed Orders","wp-xwoo" ).'</span></li>';
+            $html .= '<li><span><strong>'. $on_hole_total_orders.' </strong> '.__( "On-Hold Orders","wp-xwoo" ).'</span></li>';
+            $html .= '<li><span><strong>'.get_woocommerce_currency_symbol().$total_campaign_orders.' </strong> '.__( "Total Donation Raised","wp-xwoo" ).'</span></li>';
         $html .= '</ul>';
         echo $html;
     }
@@ -146,7 +146,7 @@ class Dashboard{
                 $post =  get_post($post_id);
                 $user = get_userdata($post->post_author);
 
-                $dashboard_page_id = get_option('wpneo_crowdfunding_dashboard_page_id');
+                $dashboard_page_id = get_option('wpneo_xwoo_dashboard_page_id');
                 $query_args= array(
                     'show_user_id'  => $user->ID,
                     'page_type'     => 'profile',
@@ -178,7 +178,7 @@ class Dashboard{
         $html = '';
         $html .='<table class="widefat striped our-products">';
             $html .='<tr>';
-                $html .='<td>'.__( "By","wp-crowdfunding" ).'</td>';
+                $html .='<td>'.__( "By","wp-xwoo" ).'</td>';
                 $html .='<td>';
                     $html .='<span class="label-default">';
                         $user = get_userdata($post->post_author);
@@ -188,22 +188,22 @@ class Dashboard{
             $html .='</tr>';
 
             $html .='<tr>';
-                $html .='<td>'.__("Start Date", "wp-crowdfunding").'</td>';
+                $html .='<td>'.__("Start Date", "wp-xwoo").'</td>';
                 $html .='<td><span class="label-primary">'.get_post_meta($post->ID, "_nf_duration_start", true).'</span></td>';
             $html .='</tr>';
 
             $html .='<tr>';
-                $html .='<td>'.__("End Date", "wp-crowdfunding").'</td>';
+                $html .='<td>'.__("End Date", "wp-xwoo").'</td>';
                 $html .='<td><span class="label-success">'.get_post_meta($post->ID, "_nf_duration_end", true).'</span></td>';
             $html .='</tr>';
 
             $html .='<tr>';
-                $html .='<td>'.__("Goal", "wp-crowdfunding").'</td>';
+                $html .='<td>'.__("Goal", "wp-xwoo").'</td>';
                 $html .='<td><span class="label-info">'.wc_price(get_post_meta($post->ID, "_nf_funding_goal", true)).'</span></td>';
             $html .='</tr>';
 
             $html .='<tr>';
-                $html .='<td>'.__("Raised", "wp-crowdfunding").'</td>';
+                $html .='<td>'.__("Raised", "wp-xwoo").'</td>';
                 $html .='<td>';
                     $html .='<span class="label-warning">';
                         $raised_total = XWOO_function()->fund_raised();
@@ -217,7 +217,7 @@ class Dashboard{
             $html .='</tr>';
 
             $html .='<tr>';
-                $html .='<td>'.__("Raised Percent", "wp-crowdfunding").'</td>';
+                $html .='<td>'.__("Raised Percent", "wp-xwoo").'</td>';
                 if (XWOO_function()->is_campaign_valid() == true) {
                     $html .='<td><span class="label-danger">'.XWOO_function()->get_fund_raised_percent_format().'</span></td>';
                 }else {
@@ -258,9 +258,9 @@ class Dashboard{
         if( $order_id ) {
             $order = new \WC_Order( $order_id );
             $html .= '<div>';
-            $html .= '<div><span>'.__("Order ID","wp-crowdfunding").':</span> '.$order->get_ID().'</div>';
-            $html .= '<div><span>'.__("Order Date","wp-crowdfunding").':</span> '.wc_format_datetime($order->get_date_created()).'</div>';
-            $html .= '<div><span>'.__("Order Status","wp-crowdfunding").':</span> '.wc_get_order_status_name($order->get_status()).'</div>';
+            $html .= '<div><span>'.__("Order ID","wp-xwoo").':</span> '.$order->get_ID().'</div>';
+            $html .= '<div><span>'.__("Order Date","wp-xwoo").':</span> '.wc_format_datetime($order->get_date_created()).'</div>';
+            $html .= '<div><span>'.__("Order Status","wp-xwoo").':</span> '.wc_get_order_status_name($order->get_status()).'</div>';
             
             $html .= '<table>';
             $html .= '<thead>';
@@ -330,23 +330,23 @@ class Dashboard{
             $html .= '</table>';
     
             // Customer Details
-            $html .= '<h3>'.__( "Customer details", "wp-crowdfunding" ).'</h3>';
+            $html .= '<h3>'.__( "Customer details", "wp-xwoo" ).'</h3>';
             $html .= '<table>';
             if ( $order->get_customer_note() ) :
                 $html .= '<tr>';
-                    $html .= '<th>'.__( "Note:", "wp-crowdfunding" ).'</th>';
+                    $html .= '<th>'.__( "Note:", "wp-xwoo" ).'</th>';
                     $html .= '<td>'.wptexturize( $order->get_customer_note() ).'</td>';
                 $html .= '</tr>';
             endif;
             if ( $order->get_billing_email() ) :
                 $html .= '<tr>';
-                    $html .= '<th>'.__( "Email:", "wp-crowdfunding" ).'</th>';
+                    $html .= '<th>'.__( "Email:", "wp-xwoo" ).'</th>';
                     $html .= '<td>'.esc_html__( $order->get_billing_email() ).'</td>';
                 $html .= '</tr>';
             endif;
             if ( $order->get_billing_phone() ) :
                 $html .= '<tr>';
-                    $html .= '<th>'.__( "Phone:", "wp-crowdfunding" ).'</th>';
+                    $html .= '<th>'.__( "Phone:", "wp-xwoo" ).'</th>';
                     $html .= '<td>'.esc_html__( $order->get_billing_phone() ).'</td>';
                 $html .= '</tr>';
             endif;

@@ -33,7 +33,7 @@ class Template_Hooks {
         if (is_product()){
             global $post;
             $product = wc_get_product($post->ID);
-            if ($product->get_type() == 'crowdfunding'){
+            if ($product->get_type() == 'xwoo'){
                 add_action('woocommerce_single_product_summary',        array($this, 'single_fund_raised'), 20);
                 add_action('woocommerce_single_product_summary',        array($this, 'loop_item_fund_raised_percent'), 20);
                 add_action('woocommerce_single_product_summary',        array($this, 'single_fund_this_campaign_btn'), 20);
@@ -55,7 +55,7 @@ class Template_Hooks {
 						array(
 							'taxonomy' => 'product_type',
 							'field' => 'slug',
-							'terms' => 'crowdfunding',
+							'terms' => 'xwoo',
 						)
 					);
 					if( XWOO_function()->wc_version() ){
@@ -182,7 +182,7 @@ class Template_Hooks {
 		XWOO_function()->template('include/tabs/story-tab');
 	}
 
-	public function wpneo_crowdfunding_campaign_rewards_tab() {
+	public function wpneo_xwoo_campaign_rewards_tab() {
 		XWOO_function()->template('include/tabs/rewards-tab');
 	}
 

@@ -75,7 +75,7 @@ $arr =  array(
 	),
 
 	array(
-		'id'        => 'seperate_crowdfunding_categories',
+		'id'        => 'seperate_xwoo_categories',
 		'type'      => 'checkbox',
 		'value'     => 'true',
 		'label'     => __('Separate Crowdfunding Categories','xwoo'),
@@ -118,7 +118,7 @@ $arr =  array(
     ),
 
     array(
-        'id'        => 'wpneo_crowdfunding_add_to_cart_redirect',
+        'id'        => 'wpneo_xwoo_add_to_cart_redirect',
         'type'      => 'radio',
         'option'    =>  array( 'checkout_page' => 'Checkout Page', 'cart_page' => 'Cart Page', 'none' => 'None' ) ,
         'label'     => __('Button Submit Action of "Back This Campaign" ','xwoo'),
@@ -177,7 +177,7 @@ $arr =  array(
         'id'        => 'wpneo_single_page_template',
         'type'      => 'radio',
         'option'    => array(
-            'in_wp_crowdfunding' => __('In WP Crowdfunding own template','xwoo'),
+            'in_wp_xwoo' => __('In WP Crowdfunding own template','xwoo'),
             'in_woocommerce' => __('In WooCommerce Default','xwoo'),
         ),
         'label'     => __('Template for campaign single page','xwoo'),
@@ -219,9 +219,9 @@ $arr =  array(
 
 	// #Save Function
     array(
-        'id'        => 'wpneo_crowdfunding_admin_tab',
+        'id'        => 'wpneo_xwoo_admin_tab',
         'type'      => 'hidden',
         'value'     => 'tab_woocommerce',
     ),
 );
-XWOO_function()->generator( apply_filters('wp_crowdfunding_wc_settings', $arr) );
+XWOO_function()->generator( apply_filters('wp_xwoo_wc_settings', $arr) );

@@ -11,7 +11,7 @@ class CampaignBox{
  
     public function register_campaign_box(){
         register_block_type(
-            'wp-crowdfunding/campaignbox',
+            'wp-xwoo/campaignbox',
             array(
                 'attributes' => array(
                     'campaignID'   => array(

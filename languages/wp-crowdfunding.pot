@@ -886,7 +886,7 @@ msgid "Reviews (%d)"
 msgstr ""
 
 #: includes/woocommerce/Templating.php:224
-msgid "Error crowdfunding theme: "
+msgid "Error xwoo theme: "
 msgstr ""
 
 #: includes/woocommerce/Templating.php:267
@@ -1186,7 +1186,7 @@ msgid "Select Dashboard Page"
 msgstr ""
 
 #: settings/tabs/Tab_General.php:73
-msgid "Select a page for access crowdfunding frontend dashboard"
+msgid "Select a page for access xwoo frontend dashboard"
 msgstr ""
 
 #: settings/tabs/Tab_General.php:81

@@ -66,11 +66,11 @@ $arr =  array(
 
     // #Select Dashboard Page
     array(
-        'id'        => 'wpneo_crowdfunding_dashboard_page_id',
+        'id'        => 'wpneo_xwoo_dashboard_page_id',
         'type'      => 'dropdown',
         'option'    => $pages,
         'label'     => __('Select Dashboard Page','xwoo'),
-        'desc'      => __('Select a page for access crowdfunding frontend dashboard','xwoo'),
+        'desc'      => __('Select a page for access xwoo frontend dashboard','xwoo'),
     ),
 
     // #Select Campaign Submit Form
@@ -94,7 +94,7 @@ $arr =  array(
 
     // #Save Function
     array(
-        'id'        => 'wpneo_crowdfunding_admin_tab',
+        'id'        => 'wpneo_xwoo_admin_tab',
         'type'      => 'hidden',
         'value'     => 'tab_general',
     ),

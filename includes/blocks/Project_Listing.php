@@ -11,7 +11,7 @@ class ProjectListing{
  
     public function register_project_listing(){
         register_block_type(
-            'wp-crowdfunding/projectlisting',
+            'wp-xwoo/projectlisting',
             array(
                 'attributes' => array(
                     'categories'   => array(
@@ -73,7 +73,7 @@ class ProjectListing{
                     array(
                         'taxonomy'  => 'product_type',
                         'field'     => 'slug',
-                        'terms'     => 'crowdfunding',
+                        'terms'     => 'xwoo',
                     ),
                 ),
                 'paged'             => $paged,
@@ -87,7 +87,7 @@ class ProjectListing{
             XWOO_function()->template('wpneo-listing');
             $html = '';
             $html .= '<style>';
-                $html .= '#neo-progressbar > div, ul.wpneo-crowdfunding-update li:hover span.round-circle, .wpneo-links li a:hover, .wpneo-links li.active a, #neo-progressbar > div {
+                $html .= '#neo-progressbar > div, ul.wpneo-xwoo-update li:hover span.round-circle, .wpneo-links li a:hover, .wpneo-links li.active a, #neo-progressbar > div {
                     background-color: '. $progressbarColor .';
                 }';
                 $html .= '.wpneo-funding-data span, .wpneo-time-remaining .wpneo-meta-desc, .wpneo-funding-goal .wpneo-meta-name, .wpneo-raised-percent, .wpneo-listing-content p.wpneo-short-description, .wpneo-location .wpneo-meta-desc, .wpneo-listings .wpneo-listing-content h4 a, .wpneo-fund-raised, .wpneo-time-remaining {

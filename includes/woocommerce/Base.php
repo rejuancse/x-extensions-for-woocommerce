@@ -68,11 +68,11 @@ class Base {
     public function settings_link($links){
 		$actionsLinks = array(
 		    'settings' => '<a href="'.admin_url('admin.php?page=XWOO-settings').'">Settings</a>',
-		    'XWOO_docs' => '<a href="https://docs.themeum.com/wp-crowdfunding/" target="_blank">'.__('Docs', 'xwoo').'</a>',
-            'XWOO_support' => '<a href="https://www.themeum.com/support/" target="_blank">'.__('Support', 'xwoo').'</a>',
+		    'XWOO_docs' => '<a href="https://docs.xwoo.com/wp-xwoo/" target="_blank">'.__('Docs', 'xwoo').'</a>',
+            'XWOO_support' => '<a href="https://www.xwoo.com/support/" target="_blank">'.__('Support', 'xwoo').'</a>',
         );
 		if( !defined('XWOO_PRO_VERSION') ){
-			$actionsLinks['XWOO_update_pro'] = '<a href="https://www.themeum.com/product/wp-crowdfunding-plugin/?utm_source=crowdfunding_plugin" target="_blank">'.__('Update Pro', 'xwoo').'</a>';
+			$actionsLinks['XWOO_update_pro'] = '<a href="https://www.xwoo.com/product/wp-xwoo-plugin/?utm_source=xwoo_plugin" target="_blank">'.__('Update Pro', 'xwoo').'</a>';
 		}
         return array_merge($actionsLinks, $links);
     }
@@ -109,8 +109,8 @@ class Base {
 
     public function admin_script(){
         wp_enqueue_style( 'wp-color-picker' );
-        wp_enqueue_style( 'XWOO-crowdfunding-css', XWOO_DIR_URL .'assets/css/dist/crowdfunding.css', false, XWOO_VERSION );
-        wp_enqueue_script( 'XWOO-jquery-scripts', XWOO_DIR_URL .'assets/js/crowdfunding.min.js', array('jquery','wp-color-picker'), XWOO_VERSION, true );
+        wp_enqueue_style( 'XWOO-xwoo-css', XWOO_DIR_URL .'assets/css/dist/xwoo.css', false, XWOO_VERSION );
+        wp_enqueue_script( 'XWOO-jquery-scripts', XWOO_DIR_URL .'assets/js/xwoo.min.js', array('jquery','wp-color-picker'), XWOO_VERSION, true );
     }
 
     /**
@@ -118,13 +118,13 @@ class Base {
      * @frontend
      */
     public function frontend_script(){
-        wp_enqueue_style( 'neo-crowdfunding-css-front', XWOO_DIR_URL .'assets/css/dist/crowdfunding-front.css', false, XWOO_VERSION );
+        wp_enqueue_style( 'neo-xwoo-css-front', XWOO_DIR_URL .'assets/css/dist/xwoo-front.css', false, XWOO_VERSION );
         wp_enqueue_style( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' );
         
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
         wp_enqueue_script( 'jquery.easypiechart', XWOO_DIR_URL .'assets/js/jquery.easypiechart.min.js', array('jquery'), XWOO_VERSION, true);
-        wp_enqueue_script( 'wp-neo-jquery-scripts-front', XWOO_DIR_URL .'assets/js/crowdfunding-front.min.js', array('jquery'), XWOO_VERSION, true);
+        wp_enqueue_script( 'wp-neo-jquery-scripts-front', XWOO_DIR_URL .'assets/js/xwoo-front.min.js', array('jquery'), XWOO_VERSION, true);
         wp_localize_script( 'wp-neo-jquery-scripts-front', 'XWOO_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_media();
     }
@@ -137,12 +137,12 @@ class Base {
 
     // Declare script for new button
     function add_tinymce_js( $plugin_array ) {
-        $plugin_array['crowdfunding_button'] = XWOO_DIR_URL .'assets/js/mce-button.min.js';
+        $plugin_array['xwoo_button'] = XWOO_DIR_URL .'assets/js/mce-button.min.js';
         return $plugin_array;
     }
     // Register new button in the editor
     function register_mce_button( $buttons ) {
-        array_push( $buttons, 'crowdfunding_button' );
+        array_push( $buttons, 'xwoo_button' );
         return $buttons;
     }
 
@@ -152,14 +152,14 @@ class Base {
         }
 
         $current_screen = get_current_screen();
-        $crowdfunding_screen_ids = XWOO_function()->get_screen_id();
+        $xwoo_screen_ids = XWOO_function()->get_screen_id();
 
-        if ( ! in_array($current_screen->id, $crowdfunding_screen_ids)){
+        if ( ! in_array($current_screen->id, $xwoo_screen_ids)){
             return $footer_text;
         }
 
         if ( ! get_option( 'XWOO_admin_footer_text_rated' ) ) {
-            $footer_text = sprintf(__('If you like <strong>WP Crowdfunding</strong> please leave us a 5-stars %s rating. A huge thanks in advance!', 'xwoo'), '<a href="https://wordpress.org/support/plugin/wp-crowdfunding/reviews?rate=5#new-post" target="_blank" class="XWOO-rating-link" data-rated="' . esc_attr__('Thanks :)', 'woocommerce') . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>');
+            $footer_text = sprintf(__('If you like <strong>WP Crowdfunding</strong> please leave us a 5-stars %s rating. A huge thanks in advance!', 'xwoo'), '<a href="https://wordpress.org/support/plugin/wp-xwoo/reviews?rate=5#new-post" target="_blank" class="XWOO-rating-link" data-rated="' . esc_attr__('Thanks :)', 'woocommerce') . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>');
             wc_enqueue_js("
                 jQuery( 'a.XWOO-rating-link' ).click( function() {
                     jQuery.post( '" . admin_url('admin-ajax.php') . "', { action: 'XWOO_rated' } );
@@ -167,7 +167,7 @@ class Base {
                 });
             ");
         }else{
-            $footer_text = sprintf( __( 'Thank you for raise funds with <strong>WP Crowdfunding</strong> by %s.', 'xwoo' ), '<a href="https://www.themeum.com/?utm_source=wp_crowdfunding_plugin_admin" target="_blank">Themeum</a>');
+            $footer_text = sprintf( __( 'Thank you for raise funds with <strong>WP Crowdfunding</strong> by %s.', 'xwoo' ), '<a href="https://www.xwoo.com/?utm_source=wp_xwoo_plugin_admin" target="_blank">Themeum</a>');
         }
 
         return $footer_text;

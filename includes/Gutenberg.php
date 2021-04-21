@@ -53,7 +53,7 @@ class Gutenberg{
         // Localize Scripts
         wp_localize_script( 'XWOO-block-script-js', 'plugin_option', array(
             'plugin' => XWOO_DIR_URL,
-            'name' => 'crowdfunding'
+            'name' => 'xwoo'
         ) );
         
     }

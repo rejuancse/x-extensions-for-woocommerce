@@ -11,7 +11,7 @@ class Submit_Form{
 
     public function register_submit_form(){
         register_block_type(
-            'wp-crowdfunding/submitform',
+            'wp-xwoo/submitform',
             array(
                 'attributes' => array(
                     'textColor' => array(

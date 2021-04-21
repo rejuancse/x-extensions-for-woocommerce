@@ -75,7 +75,7 @@ defined( 'ABSPATH' ) || exit;
                 
                 // #Save Function
                 array(
-                    'id'        => 'wpneo_crowdfunding_admin_tab',
+                    'id'        => 'wpneo_xwoo_admin_tab',
                     'type'      => 'hidden',
                     'value'     => 'tab_style',
                     ),

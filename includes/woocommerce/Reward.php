@@ -24,7 +24,7 @@ class Reward{
         $tabs['reward'] = array(
             'label'     => __('Reward', 'xwoo'),
             'target'    => 'reward_options',
-            'class'     => array('show_if_neo_crowdfunding_options', 'show_if_neo_crowdfunding_options'),
+            'class'     => array('show_if_neo_xwoo_options', 'show_if_neo_xwoo_options'),
         );
         return $tabs;
     }
@@ -158,7 +158,7 @@ class Reward{
                         echo '<label for="wpneo_rewards_image_field">'.$value["label"].'</label>';
                         echo '<input type="hidden" class="wpneo_rewards_image_field" name="'.$value["id"].'" value="" placeholder="'.$value["label"].'"/>';
                         echo '<span class="wpneo-image-container"></span>';
-                        echo '<button class="wpneo-image-upload-btn shorter">'.__("Upload","wp-crowdfunding").'</button>';
+                        echo '<button class="wpneo-image-upload-btn shorter">'.__("Upload","wp-xwoo").'</button>';
                         echo '</p>';
                         break;
 
@@ -211,7 +211,7 @@ class Reward{
                                     echo '<label for="wpneo_rewards_image_field">'.$value["label"].'</label>';
                                     echo '<input type="hidden" class="wpneo_rewards_image_field" name="'.$value["id"].'" value="'.$raw_id.'" placeholder="'.$value["label"].'"/>';
                                     echo '<span class="wpneo-image-container">'.$image_id.'</span>';
-                                    echo '<button class="wpneo-image-upload-btn shorter">'.__("Upload","wp-crowdfunding").'</button>';
+                                    echo '<button class="wpneo-image-upload-btn shorter">'.__("Upload","wp-xwoo").'</button>';
                                     echo '</p>';
                                     break;
 
@@ -229,7 +229,7 @@ class Reward{
 
             if ( XWOO_function()->is_free() ) {
                 ?>
-                <p class="description"><?php _e('pro version is required to add more than 1 reward', 'xwoo') ?>. <a href="https://www.themeum.com/product/wp-crowdfunding-plugin/?utm_source=crowdfunding_plugin" target="_blank"> <?php _e('click here to get pro version', 'xwoo') ?></a></p>
+                <p class="description"><?php _e('pro version is required to add more than 1 reward', 'xwoo') ?>. <a href="https://www.xwoo.com/product/wp-xwoo-plugin/?utm_source=xwoo_plugin" target="_blank"> <?php _e('click here to get pro version', 'xwoo') ?></a></p>
                 <?php
             } else {
                 ?>
@@ -323,7 +323,7 @@ class Reward{
         if (is_product()) {
             global $post;
             $product = wc_get_product($post->ID);
-            if ($product->get_type() === 'crowdfunding') {
+            if ($product->get_type() === 'xwoo') {
                 $col_9 = '';
                 $col_3 = '';
                 $campaign_rewards = get_post_meta($post->ID, 'wpneo_reward', true);

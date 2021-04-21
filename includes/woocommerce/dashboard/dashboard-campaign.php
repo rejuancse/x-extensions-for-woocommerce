@@ -11,7 +11,7 @@ $args = array(
         array(
             'taxonomy' => 'product_type',
             'field'    => 'slug',
-            'terms'    => 'crowdfunding',
+            'terms'    => 'xwoo',
         ),
     ),
     'posts_per_page'    => 4,

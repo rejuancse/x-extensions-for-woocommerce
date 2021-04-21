@@ -14,7 +14,7 @@ class Registration{
 
     public function register_registration(){
         register_block_type(
-            'wp-crowdfunding/registration',
+            'wp-xwoo/registration',
             array(
                 'attributes' => array(
 
@@ -102,7 +102,7 @@ class Registration{
 
         ob_start();
         if ( is_user_logged_in() ) { ?>
-            <h3 class="wpneo-center"><?php _e("You are already logged in.","wp-crowdfunding"); ?></h3>
+            <h3 class="wpneo-center"><?php _e("You are already logged in.","wp-xwoo"); ?></h3>
         <?php } else {
           global $reg_errors,$reg_success;
           ?>
@@ -113,7 +113,7 @@ class Registration{
                     $regisration_data = array(
                         array(
                             'id'            => 'fname',
-                            'label'         => __( "First Name" , "wp-crowdfunding" ),
+                            'label'         => __( "First Name" , "wp-xwoo" ),
                             'type'          => 'text',
                             'placeholder'   => __('Enter First Name', 'xwoo'),
                             'value'         => '',
@@ -123,7 +123,7 @@ class Registration{
                         ),
                         array(
                             'id'            => 'lname',
-                            'label'         => __( "Last Name" , "wp-crowdfunding" ),
+                            'label'         => __( "Last Name" , "wp-xwoo" ),
                             'type'          => 'text',
                             'placeholder'   => __('Enter Last Name', 'xwoo'),
                             'value'         => '',
@@ -133,7 +133,7 @@ class Registration{
                         ),
                         array(
                             'id'            => 'username',
-                            'label'         => __( "Username *" , "wp-crowdfunding" ),
+                            'label'         => __( "Username *" , "wp-xwoo" ),
                             'type'          => 'text',
                             'placeholder'   => __('Enter Username', 'xwoo'),
                             'value'         => '',
@@ -152,7 +152,7 @@ class Registration{
                         ),
                         array(
                             'id'            => 'email',
-                            'label'         => __( "Email *" , "wp-crowdfunding" ),
+                            'label'         => __( "Email *" , "wp-xwoo" ),
                             'type'          => 'text',
                             'placeholder'   => __('Enter Email', 'xwoo'),
                             'value'         => '',
@@ -162,7 +162,7 @@ class Registration{
                         ),
                         array(
                             'id'            => 'website',
-                            'label'         => __( "Website" , "wp-crowdfunding" ),
+                            'label'         => __( "Website" , "wp-xwoo" ),
                             'type'          => 'text',
                             'placeholder'   => __('Enter Website', 'xwoo'),
                             'value'         => '',
@@ -172,7 +172,7 @@ class Registration{
                         ),
                         array(
                             'id'            => 'nickname',
-                            'label'         => __( "Nickname" , "wp-crowdfunding" ),
+                            'label'         => __( "Nickname" , "wp-xwoo" ),
                             'type'          => 'text',
                             'placeholder'   => __('Enter Nickname', 'xwoo'),
                             'value'         => '',
@@ -182,7 +182,7 @@ class Registration{
                         ),
                         array(
                             'id'            => 'bio',
-                            'label'         => __( "About / Bio" , "wp-crowdfunding" ),
+                            'label'         => __( "About / Bio" , "wp-xwoo" ),
                             'type'          => 'textarea',
                             'placeholder'   => __('Enter About / Bio', 'xwoo'),
                             'value'         => '',
@@ -221,7 +221,7 @@ class Registration{
                     <?php } ?>
     
                     <div class="wpneo-single wpneo-register">
-                        <a href="<?php echo get_home_url(); ?>" class="wpneo-cancel-campaign" style="background: <?php echo $cancelbtnbgColorpalette; ?>; color: <?php echo $cancelbtncolor; ?>; font-size: <?php echo $cancelfontSize; ?>px; font-weight: <?php echo $cancelfontWeight; ?>"><?php _e("Cancel","wp-crowdfunding"); ?></a>
+                        <a href="<?php echo get_home_url(); ?>" class="wpneo-cancel-campaign" style="background: <?php echo $cancelbtnbgColorpalette; ?>; color: <?php echo $cancelbtncolor; ?>; font-size: <?php echo $cancelfontSize; ?>px; font-weight: <?php echo $cancelfontWeight; ?>"><?php _e("Cancel","wp-xwoo"); ?></a>
                         <input type="hidden" name="action" value="XWOO_registration" />
                         <input type="hidden" name="current_page" value="<?php echo get_the_permalink(); ?>" />
                         <input type="submit" class="wpneo-submit-campaign" id="user-registration-btn" value="<?php _e('Sign UP', 'xwoo'); ?>" name="submits" style="background: <?php echo $bgColor; ?>; color: <?php echo $titleColor; ?>; font-size: <?php echo $fontSize; ?>px; font-weight: <?php echo $fontWeight; ?>"/>

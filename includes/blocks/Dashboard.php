@@ -11,7 +11,7 @@ class Dashboard{
 
     public function register_dashboard(){
         register_block_type(
-            'wp-crowdfunding/dashboard',
+            'wp-xwoo/dashboard',
             array(
                 'attributes' => array(
                     'bgColor'    => array(
@@ -115,19 +115,19 @@ class Dashboard{
                         }
                         
                         $html .= $dashboard;
-                        $html .= '<div class="wpneo-links-list wp-crowd-parent"><a href="#">'.__("My Account","wp-crowdfunding").'<span class="wpcrowd-arrow-down"></span></a>';
+                        $html .= '<div class="wpneo-links-list wp-crowd-parent"><a href="#">'.__("My Account","wp-xwoo").'<span class="wpcrowd-arrow-down"></span></a>';
                             $html .= '<div class="wp-crowd-submenu wpneo-shadow">';
                                 $html .= $account;
                                 $html .= '<div class="wpneo-links-lists"><a href="'.wp_logout_url( home_url() ).'">'.__('Logout','xwoo').'</a></div>';
                             $html .= '</div>';
                         $html .= '</div>';
-                        $html .= '<div class="wpneo-links-list wp-crowd-parent"><a href="#">'.__("Campaigns","wp-crowdfunding").'<span class="wpcrowd-arrow-down"></span></a>';
+                        $html .= '<div class="wpneo-links-list wp-crowd-parent"><a href="#">'.__("Campaigns","wp-xwoo").'<span class="wpcrowd-arrow-down"></span></a>';
                             $html .= '<div class="wp-crowd-submenu wpneo-shadow">';
                                 $html .= $campaign;
                             $html .= '</div>';
                         $html .= '</div>';
                         $html .= $extra;
-                        $html .= '<div class="wp-crowd-new-campaign"><a class="wp-crowd-btn wp-crowd-btn-primary" href="'.get_permalink(get_option('wpneo_form_page_id')).'">'.__("Add New Campaign","wp-crowdfunding").'</a></div>';
+                        $html .= '<div class="wp-crowd-new-campaign"><a class="wp-crowd-btn wp-crowd-btn-primary" href="'.get_permalink(get_option('wpneo_form_page_id')).'">'.__("Add New Campaign","wp-xwoo").'</a></div>';
 
                     $html .= '</div>';
                 $html .= '</div>';
@@ -178,7 +178,7 @@ class Dashboard{
 
         } else {
             $html .= '<div class="woocommerce">';
-            $html .= '<div class="woocommerce-info">' . __("Please log in first?", "wp-crowdfunding") . ' <a class="wpneoShowLogin" href="#">' . __("Click here to login", "wp-crowdfunding") . '</a></div>';
+            $html .= '<div class="woocommerce-info">' . __("Please log in first?", "wp-xwoo") . ' <a class="wpneoShowLogin" href="#">' . __("Click here to login", "wp-xwoo") . '</a></div>';
             $html .= XWOO_function()->login_form();
             $html .= '</div>';
         }

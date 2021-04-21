@@ -17,34 +17,34 @@ class Woocommerce {
         add_action( 'plugins_loaded',                                   array($this, 'includes')); //Include all of resource to the plugin 
         add_filter( 'product_type_selector',                            array($this, 'product_type_selector')); //Added one more product type in woocommerce product
         add_action( 'wp_loaded',                                        array($this, 'register_product_type') ); //Initialized the product type class
-        add_action( 'woocommerce_product_options_general_product_data', array($this, 'add_meta_info')); //Additional Meta form for crowdfunding campaign
+        add_action( 'woocommerce_product_options_general_product_data', array($this, 'add_meta_info')); //Additional Meta form for xwoo campaign
         add_action( 'add_meta_boxes',                                   array($this, 'add_campaign_update' ), 30 );
         add_action( 'woocommerce_process_product_meta',                 array($this, 'update_status_save')  ); //Save update status for this campaign with product
         add_action( 'woocommerce_process_product_meta',                 array($this, 'custom_field_save')); //Additional meta action, save right this way
-        add_filter( 'woocommerce_add_cart_item',                        array($this, 'save_user_donation_to_cookie'), 10, 3 ); //Filter cart item and save donation amount into cookir if product type crowdfunding
+        add_filter( 'woocommerce_add_cart_item',                        array($this, 'save_user_donation_to_cookie'), 10, 3 ); //Filter cart item and save donation amount into cookir if product type xwoo
         add_action( 'woocommerce_before_calculate_totals',              array($this, 'add_user_donation')); //Save user input as there preferable amount with cart
         add_filter( 'woocommerce_add_to_cart_redirect',                 array($this, 'redirect_to_checkout')); //Skip cart page after click Donate button, going directly on checkout page
         add_filter( 'woocommerce_get_price_html',                       array($this, 'wc_price_remove'), 10, 2 ); //Hide default price details
         add_filter( 'woocommerce_is_purchasable',                       array($this, 'return_true_woocommerce_is_purchasable'), 10, 2 ); // Return true is purchasable
         add_filter( 'woocommerce_paypal_args',                          array($this, 'custom_override_paypal_email'), 100, 1); // Override paypal reciever email address with campaign creator email
-        add_action( 'woocommerce_add_to_cart_validation',               array($this, 'remove_crowdfunding_item_from_cart'), 10, 5); // Remove crowdfunding item from cart
-        add_action( 'woocommerce_new_order',                            array($this, 'crowdfunding_order_type')); // Track is this product crowdfunding.
+        add_action( 'woocommerce_add_to_cart_validation',               array($this, 'remove_xwoo_item_from_cart'), 10, 5); // Remove xwoo item from cart
+        add_action( 'woocommerce_new_order',                            array($this, 'xwoo_order_type')); // Track is this product xwoo.
         add_filter( 'woocommerce_checkout_fields' ,                     array($this, 'override_checkout_fields') ); // Remove billing address from the checkout page
         add_action( 'woocommerce_review_order_before_payment',          array($this, 'check_anonymous_backer'));
         add_action( 'woocommerce_checkout_order_processed',             array($this, 'check_anonymous_backer_post'));
-        add_action( 'woocommerce_new_order_item',                       array($this, 'crowdfunding_new_order_item'), 10, 3);
-        add_filter( 'wc_tax_enabled',                                   array($this, 'is_tax_enable_for_crowdfunding_product'));
+        add_action( 'woocommerce_new_order_item',                       array($this, 'xwoo_new_order_item'), 10, 3);
+        add_filter( 'wc_tax_enabled',                                   array($this, 'is_tax_enable_for_xwoo_product'));
         add_action( 'product_cat_edit_form_fields',                     array($this, 'edit_product_taxonomy_field'), 10, 1);
-        add_action( 'product_cat_add_form_fields',                      array($this, 'add_checked_crowdfunding_categories'), 10, 1);
-        add_action( 'create_product_cat',                               array($this, 'mark_category_as_crowdfunding'), 10, 2);
-        add_action( 'edit_product_cat',                                 array($this, 'edit_mark_category_as_crowdfunding'), 10, 2);
+        add_action( 'product_cat_add_form_fields',                      array($this, 'add_checked_xwoo_categories'), 10, 1);
+        add_action( 'create_product_cat',                               array($this, 'mark_category_as_xwoo'), 10, 2);
+        add_action( 'edit_product_cat',                                 array($this, 'edit_mark_category_as_xwoo'), 10, 2);
         add_filter( "manage_product_cat_custom_column",                 array($this, 'filter_description_col_product_taxomony'), 10, 3);
-        add_filter( 'manage_edit-product_cat_columns' ,                 array($this, 'product_taxonomy_is_crowdfunding_columns'), 10, 1);
+        add_filter( 'manage_edit-product_cat_columns' ,                 array($this, 'product_taxonomy_is_xwoo_columns'), 10, 1);
     
         //template hooks
         add_action( 'woocommerce_after_shop_loop_item',                 array($this, 'after_item_title_data')); // Woocommerce Backed User
         add_filter( 'woocommerce_product_tabs',                         array($this, 'product_backed_user_tab') );
-        add_filter( 'woocommerce_is_sold_individually',                 array($this, 'remove_crowdfunding_quantity_fields'), 10, 2 ); //Remove quantity and force item 1 cart per checkout if product is crowdfunding
+        add_filter( 'woocommerce_is_sold_individually',                 array($this, 'remove_xwoo_quantity_fields'), 10, 2 ); //Remove quantity and force item 1 cart per checkout if product is xwoo
         if ( 'true' == get_option('hide_cf_campaign_from_shop_page' )) {
             add_action('woocommerce_product_query',                     array($this, 'limit_show_cf_campaign_in_shop')); //Filter product query
         }
@@ -78,7 +78,7 @@ class Woocommerce {
         $meta_query = array(
             'taxonomy' => 'product_type',
             'field'    => 'slug',
-            'terms'    => array( 'crowdfunding' ),
+            'terms'    => array( 'xwoo' ),
             'operator' => 'NOT IN'
         );
         return $meta_query;
@@ -107,12 +107,12 @@ class Woocommerce {
      * Remove billing address from the checkout page
      */
     function override_checkout_fields( $fields ) {
-        $crowdfunding_found = '';
+        $xwoo_found = '';
         $items = WC()->cart->get_cart();
         if( $items ){
             foreach($items as $item => $values) {
                 $product = wc_get_product( $values['product_id'] );
-                if( $product->get_type() == 'crowdfunding' ){
+                if( $product->get_type() == 'xwoo' ){
                     if( 'true' == get_option('hide_cf_address_from_checkout','') ) {
                         unset($fields['billing']['billing_first_name']);
                         unset($fields['billing']['billing_last_name']);
@@ -145,7 +145,7 @@ class Woocommerce {
      * Added a product type in woocommerce
      */
     function product_type_selector($product_type){
-        $product_type['crowdfunding'] = __( 'Crowdfunding', 'xwoo' );
+        $product_type['xwoo'] = __( 'Crowdfunding', 'xwoo' );
         return $product_type;
     }
 
@@ -170,7 +170,7 @@ class Woocommerce {
 
 
     function add_meta_info(){
-        echo '<div class="options_group show_if_neo_crowdfunding_options">';
+        echo '<div class="options_group show_if_neo_xwoo_options">';
 
         // Expirey
         woocommerce_wp_text_input( 
@@ -483,11 +483,11 @@ class Woocommerce {
      * Saving meta information over this method
      */
     function custom_field_save($post_id ){
-        $product_type = sanitize_text_field(XWOO_function()->post('_neo_crowdfunding_product_type'));
+        $product_type = sanitize_text_field(XWOO_function()->post('_neo_xwoo_product_type'));
         if( !empty( $product_type) ) {
-            XWOO_function()->update_meta($post_id, '_neo_crowdfunding_product_type', 'yes');
+            XWOO_function()->update_meta($post_id, '_neo_xwoo_product_type', 'yes');
         } else {
-            XWOO_function()->update_meta($post_id, '_neo_crowdfunding_product_type', 'no');
+            XWOO_function()->update_meta($post_id, '_neo_xwoo_product_type', 'no');
         }
 
         $location = sanitize_text_field( $_POST['_nf_location'] );
@@ -545,7 +545,7 @@ class Woocommerce {
         //wp_die(var_dump($product));
 
         $html = '';
-        if ($product->get_type() == 'crowdfunding') {
+        if ($product->get_type() == 'xwoo') {
             $html .= '<div class="donate_field wp_neo">';
 
             if (XWOO_function()->is_campaign_valid()) {
@@ -572,16 +572,16 @@ class Woocommerce {
     /**
      * Remove Crowdfunding item form cart
      */
-    public function remove_crowdfunding_item_from_cart($passed, $product_id, $quantity, $variation_id = '', $variations= '') {
+    public function remove_xwoo_item_from_cart($passed, $product_id, $quantity, $variation_id = '', $variations= '') {
         $product = wc_get_product($product_id);
 
-        if($product->get_type() == 'crowdfunding') {
+        if($product->get_type() == 'xwoo') {
             foreach (WC()->cart->cart_contents as $item_cart_key => $prod_in_cart) {
                 WC()->cart->remove_cart_item( $item_cart_key );
             }
         }
         foreach (WC()->cart->cart_contents as $item_cart_key => $prod_in_cart) {
-            if ($prod_in_cart['data']->get_type() == 'crowdfunding') {
+            if ($prod_in_cart['data']->get_type() == 'xwoo') {
                 WC()->cart->remove_cart_item( $item_cart_key );
             }
         }
@@ -596,7 +596,7 @@ class Woocommerce {
      * Save user input donation into cookie
      */
     function save_user_donation_to_cookie( $array, $int ) {
-        if ($array['data']->get_type() == 'crowdfunding'){
+        if ($array['data']->get_type() == 'xwoo'){
             if ( !empty($_POST['wpneo_donate_amount_field']) ) {
                 if (is_user_logged_in()){
                     $user_id = get_current_user_id();
@@ -641,7 +641,7 @@ class Woocommerce {
 
     function add_user_donation() {
         foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-            if ($cart_item['data']->get_type() == 'crowdfunding') {
+            if ($cart_item['data']->get_type() == 'xwoo') {
                 $donate_cart_amount = WC()->session->get('wpneo_donate_amount');
                 if ( !empty($donate_cart_amount) ) {
                     $cart_item['data']->set_price($donate_cart_amount);
@@ -660,10 +660,10 @@ class Woocommerce {
             $product_id = absint( $_REQUEST['add-to-cart'] );
             $product = wc_get_product( $product_id );
 
-            if($product && $product->is_type( 'crowdfunding' ) ){
+            if($product && $product->is_type( 'xwoo' ) ){
 
                 $checkout_url   = wc_get_checkout_url();
-                $preferance     = get_option('wpneo_crowdfunding_add_to_cart_redirect');
+                $preferance     = get_option('wpneo_xwoo_add_to_cart_redirect');
 
                 if ($preferance == 'checkout_page'){
                     $checkout_url = wc_get_checkout_url();
@@ -689,7 +689,7 @@ class Woocommerce {
         if( $items ){
             foreach($items as $item => $values) {
                 $product = wc_get_product( $values['product_id'] );
-                if( $product->get_type() == 'crowdfunding' ){
+                if( $product->get_type() == 'xwoo' ){
                     $type = false;
                 }
             }
@@ -702,11 +702,11 @@ class Woocommerce {
      * @param $product
      * @return string
      *
-     * reove price html for crowdfunding campaign
+     * reove price html for xwoo campaign
      */
 
     function wc_price_remove( $price, $product ) {
-        $target_product_types = array( 'crowdfunding' );
+        $target_product_types = array( 'xwoo' );
         if ( in_array ( $product->get_type(), $target_product_types ) ) {
             // if variable product return and empty string
             return '';
@@ -766,7 +766,7 @@ class Woocommerce {
      * 
      * Save order reward if any with order meta
      */
-    public function crowdfunding_order_type($order_id){
+    public function xwoo_order_type($order_id){
         if( WC()->session != null ) {
             $rewards_data = WC()->session->get( 'wpneo_rewards_data' );
             if ( ! empty( $rewards_data ) ) {
@@ -780,15 +780,15 @@ class Woocommerce {
         }
     }
 
-    public function crowdfunding_new_order_item( $item_id, $item, $order_id){
+    public function xwoo_new_order_item( $item_id, $item, $order_id){
         $product_id = wc_get_order_item_meta($item_id, '_product_id', true);
         if( ! $product_id ){
             return;
         }
         $get_product = wc_get_product($product_id);
         $product_type = $get_product->get_type();
-        if ($product_type === 'crowdfunding'){
-            XWOO_function()->update_meta($order_id, 'is_crowdfunding_order','1');
+        if ($product_type === 'xwoo'){
+            XWOO_function()->update_meta($order_id, 'is_xwoo_order','1');
         }
     }
 
@@ -797,7 +797,7 @@ class Woocommerce {
         if( $items ){
             foreach($items as $item => $values) {
                 $product = wc_get_product( $values['product_id'] );
-                if( $product->get_type() == 'crowdfunding' ){
+                if( $product->get_type() == 'xwoo' ){
                     echo '<div id="mark_name_anonymous" class="mark_name_anonymous_wrap">';
                     echo '<label><input type="checkbox" value="true" name="mark_name_anonymous" /> '.__('Make me anonymous', 'xwoo').' </label>';
                     echo '</div>';
@@ -818,7 +818,7 @@ class Woocommerce {
     }
 
 
-    public function is_tax_enable_for_crowdfunding_product($bool){
+    public function is_tax_enable_for_xwoo_product($bool){
         if( ! $bool){
             return false;
         }
@@ -830,17 +830,17 @@ class Woocommerce {
         }
 
 
-        $is_crowdfunding_in_cart = false;
+        $is_xwoo_in_cart = false;
         if ( ! empty(wc()->cart->cart_contents)){
             $cart_content = wc()->cart->cart_contents;
             foreach ($cart_content as $content){
-                if ( ! empty($content['data']->product_type) && $content['data']->product_type === 'crowdfunding'){
-                    $is_crowdfunding_in_cart = true;
+                if ( ! empty($content['data']->product_type) && $content['data']->product_type === 'xwoo'){
+                    $is_xwoo_in_cart = true;
                 }
             }
         }
 
-        if ($is_crowdfunding_in_cart && ! $is_enabled){
+        if ($is_xwoo_in_cart && ! $is_enabled){
             return false;
         }
 
@@ -849,16 +849,16 @@ class Woocommerce {
 
 
 
-    public function add_checked_crowdfunding_categories( $taxonomy){
+    public function add_checked_xwoo_categories( $taxonomy){
         ?>
 
-        <div class="form-field term-check-crowdfunding-category-wrap">
-            <label for="tag-check-crowdfunding-category">
-                <input type="checkbox" name="tag_check_crowdfunding_category" id="tag-check-crowdfunding-category" value="1">
+        <div class="form-field term-check-xwoo-category-wrap">
+            <label for="tag-check-xwoo-category">
+                <input type="checkbox" name="tag_check_xwoo_category" id="tag-check-xwoo-category" value="1">
                 <?php _e( 'Mark as Crowdfunding Category' ); ?>
             </label>
 
-            <p><?php _e('This check mark allow you to detect crowdfunding specific category,'); ?></p>
+            <p><?php _e('This check mark allow you to detect xwoo specific category,'); ?></p>
         </div>
 
         <?php
@@ -872,17 +872,17 @@ class Woocommerce {
             ?></label></th>
             <td>
 
-                <label for="tag-check-crowdfunding-category">
+                <label for="tag-check-xwoo-category">
                     <?php
-                    $is_checked_crowdfunding = get_term_meta($term->term_id, '_marked_as_crowdfunding', true);
+                    $is_checked_xwoo = get_term_meta($term->term_id, '_marked_as_xwoo', true);
 
                     ?>
-                    <input type="checkbox" name="tag_check_crowdfunding_category"
-                            id="tag-check-crowdfunding-category" value="1" <?php checked($is_checked_crowdfunding, '1' ) ?>>
+                    <input type="checkbox" name="tag_check_xwoo_category"
+                            id="tag-check-xwoo-category" value="1" <?php checked($is_checked_xwoo, '1' ) ?>>
                     <?php _e( 'Mark as Crowdfunding Category' ); ?>
                 </label>
 
-                <p><?php _e('This check mark allow you to detect crowdfunding specific category,'); ?></p>
+                <p><?php _e('This check mark allow you to detect xwoo specific category,'); ?></p>
 
             </td>
         </tr>
@@ -897,31 +897,31 @@ class Woocommerce {
      *
      *
      */
-    public function mark_category_as_crowdfunding( $term_id, $tt_id){
-        if (isset($_POST['tag_check_crowdfunding_category']) && $_POST['tag_check_crowdfunding_category'] == '1'){
-            $term_meta = update_term_meta($term_id, '_marked_as_crowdfunding', $_POST['tag_check_crowdfunding_category']);
+    public function mark_category_as_xwoo( $term_id, $tt_id){
+        if (isset($_POST['tag_check_xwoo_category']) && $_POST['tag_check_xwoo_category'] == '1'){
+            $term_meta = update_term_meta($term_id, '_marked_as_xwoo', $_POST['tag_check_xwoo_category']);
         }
     }
 
-    public function edit_mark_category_as_crowdfunding( $term_id, $tt_id){
-        if (isset($_POST['tag_check_crowdfunding_category']) && $_POST['tag_check_crowdfunding_category'] == '1'){
-            $term_meta = update_term_meta($term_id, '_marked_as_crowdfunding', $_POST['tag_check_crowdfunding_category']);
+    public function edit_mark_category_as_xwoo( $term_id, $tt_id){
+        if (isset($_POST['tag_check_xwoo_category']) && $_POST['tag_check_xwoo_category'] == '1'){
+            $term_meta = update_term_meta($term_id, '_marked_as_xwoo', $_POST['tag_check_xwoo_category']);
         }else{
-            delete_term_meta($term_id, '_marked_as_crowdfunding');
+            delete_term_meta($term_id, '_marked_as_xwoo');
         }
     }
 
-    public function product_taxonomy_is_crowdfunding_columns($columns){
-        $columns['crowdfunding_col'] = __('Crowdfunding', 'xwoo');
+    public function product_taxonomy_is_xwoo_columns($columns){
+        $columns['xwoo_col'] = __('Crowdfunding', 'xwoo');
         return $columns;
     }
 
 
     function filter_description_col_product_taxomony($content, $column_name, $term_id ) {
         switch ($column_name) {
-            case 'crowdfunding_col':
-                $is_crowdfunding_col = get_term_meta($term_id, '_marked_as_crowdfunding', true);
-                if ($is_crowdfunding_col == '1'){
+            case 'xwoo_col':
+                $is_xwoo_col = get_term_meta($term_id, '_marked_as_xwoo', true);
+                if ($is_xwoo_col == '1'){
                     $content = __('Yes', 'xwoo');
                 }
                 break;
@@ -935,7 +935,7 @@ class Woocommerce {
         global $post,$wpdb;
         $product = wc_get_product($post->ID);
 
-        if($product->get_type() != 'crowdfunding'){
+        if($product->get_type() != 'xwoo'){
             return '';
         }
 
@@ -968,7 +968,7 @@ class Woocommerce {
         }
 
         $html = '';
-        $html .= '<div class="crowdfunding_wrapper">';
+        $html .= '<div class="xwoo_wrapper">';
 
         if ($country_name) {
             $html .= '<div class="wpneo_location">';
@@ -1014,7 +1014,7 @@ class Woocommerce {
     public function product_backed_user_tab( $tabs ) {
         global $post;
         $product = wc_get_product($post->ID);
-        if($product->get_type() =='crowdfunding'){
+        if($product->get_type() =='xwoo'){
             // Adds the new tab
             $tabs['backed_user'] = array(
                 'title'     => __( 'Backed User', 'xwoo' ),
@@ -1083,8 +1083,8 @@ class Woocommerce {
         echo $html;
     }
 
-    public function remove_crowdfunding_quantity_fields( $return, $product ) {
-        if ($product->get_type() == 'crowdfunding'){
+    public function remove_xwoo_quantity_fields( $return, $product ) {
+        if ($product->get_type() == 'xwoo'){
             return true;
         }
         return $return;
@@ -1096,7 +1096,7 @@ class Woocommerce {
                 'taxonomy' => 'product_type',
                 'field'    => 'slug',
                 'terms'    => array(
-                    'crowdfunding'
+                    'xwoo'
                 ),
                 'operator' => 'NOT IN'
             )

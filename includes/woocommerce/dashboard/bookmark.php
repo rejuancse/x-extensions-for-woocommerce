@@ -26,9 +26,9 @@ ob_start(); ?>
                     <table class="stripe-table">
                         <thead>
                             <tr>
-                                <th><?php _e("Title", "wp-crowdfunding"); ?></th>
-                                <th><?php _e("Created Time", "wp-crowdfunding"); ?></th>
-                                <th><?php _e("Action", "wp-crowdfunding"); ?></th>
+                                <th><?php _e("Title", "wp-xwoo"); ?></th>
+                                <th><?php _e("Created Time", "wp-xwoo"); ?></th>
+                                <th><?php _e("Action", "wp-xwoo"); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,7 +36,7 @@ ob_start(); ?>
                                 <tr>
                                     <td><?php the_title(); ?></td>
                                     <td><?php _e('Created at', 'xwoo'); ?> : <?php the_date(); ?></td>
-                                    <td><a href="<?php the_permalink(); ?>"><?php _e("View", "wp-crowdfunding"); ?></a></td>
+                                    <td><a href="<?php the_permalink(); ?>"><?php _e("View", "wp-xwoo"); ?></a></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>

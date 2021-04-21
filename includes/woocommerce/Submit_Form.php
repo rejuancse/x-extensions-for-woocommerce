@@ -147,7 +147,7 @@ class Submit_Form {
                 $tag = explode( ',',$tag );
                 wp_set_object_terms( $post_id , $tag, 'product_tag',true );
             }
-            wp_set_object_terms( $post_id , 'crowdfunding', 'product_type',true );
+            wp_set_object_terms( $post_id , 'xwoo', 'product_type',true );
 
             XWOO_function()->update_meta($post_id, '_thumbnail_id', esc_attr($image_id));
             XWOO_function()->update_meta($post_id, 'wpneo_funding_video', esc_url($video));
@@ -193,7 +193,7 @@ class Submit_Form {
                 XWOO_function()->update_meta($post_id, 'wpneo_reward', wp_slash($data_json));
             }
         }
-        $redirect = get_permalink(get_option('wpneo_crowdfunding_dashboard_page_id')).'?page_type=campaign';
+        $redirect = get_permalink(get_option('wpneo_xwoo_dashboard_page_id')).'?page_type=campaign';
         
         die(json_encode(array('success'=> 1, 'message' => __('Campaign successfully submitted', 'xwoo'), 'redirect' => $redirect)));
     }

@@ -88,7 +88,7 @@ if ($from_time < $to_time) {
 LEFT JOIN $wpdb->postmeta 
 ON $wpdb->posts.ID = $wpdb->postmeta.post_id
 WHERE $wpdb->posts.post_type = 'shop_order' AND $wpdb->posts.ID IN ( '" . implode( "','", $getting_order_ids_by_products ) . "' )
-AND meta_key = 'is_crowdfunding_order' AND meta_value = '1' AND post_status = 'wc-completed'  AND post_date LIKE 
+AND meta_key = 'is_xwoo_order' AND meta_value = '1' AND post_status = 'wc-completed'  AND post_date LIKE 
 '".date('Y-m-d%', $from_time)."' group by order_time";
 
             $sales_count          = 0;
@@ -125,7 +125,7 @@ AND meta_key = 'is_crowdfunding_order' AND meta_value = '1' AND post_status = 'w
                     LEFT JOIN 
                         $wpdb->postmeta ON $wpdb->posts.ID = $wpdb->postmeta.post_id 
                     WHERE 
-                        $wpdb->posts.post_type = 'shop_order'  AND $wpdb->posts.ID IN ( '" . implode( "','", $getting_order_ids_by_products ) . "' ) AND meta_key = 'is_crowdfunding_order' AND meta_value = '1' AND post_status = 'wc-completed' AND post_date 
+                        $wpdb->posts.post_type = 'shop_order'  AND $wpdb->posts.ID IN ( '" . implode( "','", $getting_order_ids_by_products ) . "' ) AND meta_key = 'is_xwoo_order' AND meta_value = '1' AND post_status = 'wc-completed' AND post_date 
                     LIKE 
                         '".date('Y-m%', $from_time)."' group by order_time";
 
@@ -165,7 +165,7 @@ $query_args = array(
     'author'      => $user_id,
     'meta_query' => array(
         array(
-            'meta_key'    => 'is_crowdfunding_order',
+            'meta_key'    => 'is_xwoo_order',
             'meta_value'  => 1,
             'compare'     => '=',
         ),
@@ -183,7 +183,7 @@ $query_args = array(
         ),
     ),
 );
-$get_crowdfunding_campaigns = new WP_Query($query_args);
+$get_xwoo_campaigns = new WP_Query($query_args);
 
 $pladges_received = XWOO_function()->get_pladge_received($from_date, $to_date);
 ?>
@@ -192,7 +192,7 @@ $pladges_received = XWOO_function()->get_pladge_received($from_date, $to_date);
 
     <div class="wpneo-dashboard-head wpneo-clearfix">
         <div class="wpneo-dashboard-head-left">
-            <span><?php _e( "Summary" , "wp-crowdfunding" );?></span>
+            <span><?php _e( "Summary" , "wp-xwoo" );?></span>
             <ul>
                 <li class="<?php echo ($date_range === 'last_7_days') ? 'active':''; ?>"><a href="<?php echo add_query_arg(array('date_range' => 'last_7_days'),get_permalink()); ?>"><?php echo __('1W','xwoo'); ?></a></li>
                 <li class="<?php echo ($date_range === 'last_14_days') ? 'active':''; ?>"><a href="<?php echo add_query_arg(array('date_range' => 'last_14_days'), get_permalink()); ?>"><?php echo __('2W','xwoo'); ?></a></li>
@@ -204,9 +204,9 @@ $pladges_received = XWOO_function()->get_pladge_received($from_date, $to_date);
         </div><!--dashboard-head-left-->
         <div class="dashboard-head-right">
             <form method="get" action="" class="dashboard-head-date">
-                <input type="hidden" name="page" value="wpcrowd-crowdfunding-reports" />
+                <input type="hidden" name="page" value="wpcrowd-xwoo-reports" />
                 <input type="text" id="datepicker" name="date_range_from" class="datepickers_1" value="<?php echo date('Y-m-d', strtotime($from_date)); ?>" placeholder="From" />
-                <span><?php _e( "to" , "wp-crowdfunding" ); ?></span>
+                <span><?php _e( "to" , "wp-xwoo" ); ?></span>
                 <input type="text" name="date_range_to" class="datepickers_1" value="<?php echo date('Y-m-d', strtotime($to_date)); ?>" placeholder="To" />
                 <button type="submit" class="wp-crowd-btn wp-crowd-btn-primary" id="search-submit"><?php _e('Search', 'xwoo') ?></button>
             </form>
@@ -215,9 +215,9 @@ $pladges_received = XWOO_function()->get_pladge_received($from_date, $to_date);
 
     <div class="wpneo-dashboard-summary wpneo-clearfix">
         <ul>
-            <li class="active"><span class="wpneo-value"> <?php echo wc_price(array_sum($total_backers_amount_ever)); ?></span><span class="wpneo-value-info"><?php _e( "Fund Raised" , "wp-crowdfunding" ); ?></span></li>
-            <li><span class="wpneo-value"><?php echo array_sum($sales_count_ever); ?></span><span class="wpneo-value-info"><?php _e( "Total Backed" , "wp-crowdfunding" ); ?></span></li>
-            <li><span class="wpneo-value"><?php echo count($pladges_received); ?></span><span class="wpneo-value-info"><?php _e( "Pledge Received" , "wp-crowdfunding" ); ?></span></li>
+            <li class="active"><span class="wpneo-value"> <?php echo wc_price(array_sum($total_backers_amount_ever)); ?></span><span class="wpneo-value-info"><?php _e( "Fund Raised" , "wp-xwoo" ); ?></span></li>
+            <li><span class="wpneo-value"><?php echo array_sum($sales_count_ever); ?></span><span class="wpneo-value-info"><?php _e( "Total Backed" , "wp-xwoo" ); ?></span></li>
+            <li><span class="wpneo-value"><?php echo count($pladges_received); ?></span><span class="wpneo-value-info"><?php _e( "Pledge Received" , "wp-xwoo" ); ?></span></li>
         </ul>
     </div><!--wpneo-dashboard-summary-->
     <canvas id="WPcrowdFundChart" width="400" height="60"></canvas>

@@ -79,7 +79,7 @@ class Admin_Menu {
     
             if( $color_scheme ){
                 $style .=  '#neo-progressbar > div,
-                            ul.wpneo-crowdfunding-update li:hover span.round-circle,
+                            ul.wpneo-xwoo-update li:hover span.round-circle,
                             .wpneo-links li a:hover, .wpneo-links li.active a,#neo-progressbar > div {
                                 background-color: '.$color_scheme.';
                             }
@@ -103,11 +103,11 @@ class Admin_Menu {
                                 border-color: '.$color_scheme.';
                             }
                             .wpneo-link-style1,
-                            ul.wpneo-crowdfunding-update li .wpneo-crowdfunding-update-title,
+                            ul.wpneo-xwoo-update li .wpneo-xwoo-update-title,
                             .wpneo-fields-action span a:hover,.wpneo-name > p,
                             .wpneo-listings-dashboard .wpneo-listing-content h4 a,
                             .wpneo-listings-dashboard .wpneo-listing-content .wpneo-author a,
-                            .XWOO-order-view,#wpneo_crowdfunding_modal_message td a,
+                            .XWOO-order-view,#wpneo_xwoo_modal_message td a,
                             .dashboard-price-number,.wpcrowd-listing-content .wpcrowd-admin-title h3 a,
                             .campaign-listing-page .stripe-table a,.stripe-table  a.label-default:hover,
                             a.wpneo-fund-modal-btn.wpneo-link-style1,.wpneo-tabs-menu li.wpneo-current a,
@@ -120,7 +120,7 @@ class Admin_Menu {
                             }
                             .wpneo-listings-dashboard .wpneo-listing-content h4 a:hover,
                             .wpneo-listings-dashboard .wpneo-listing-content .wpneo-author a:hover,
-                            #wpneo_crowdfunding_modal_message td a:hover{
+                            #wpneo_xwoo_modal_message td a:hover{
                                 color: rgba('.$color_scheme.','.$color_scheme.','.$color_scheme.',0.95);
                             }';
     
@@ -215,7 +215,7 @@ class Admin_Menu {
 
         if (XWOO_function()->post('wpneo_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
-                echo '<p>'.__( "Settings have been Saved.", "wp-crowdfunding" ).'</p>';
+                echo '<p>'.__( "Settings have been Saved.", "wp-xwoo" ).'</p>';
             echo '</div>';
         }
 
@@ -228,7 +228,7 @@ class Admin_Menu {
         echo '</h2>';
         ?>
 
-        <form id="XWOO-crowdfunding" role="form" method="post" action="">
+        <form id="XWOO-xwoo" role="form" method="post" action="">
             <?php
             //Load tab file
             $default_file = XWOO_DIR_PATH.'settings/tabs/Tab_General.php';
@@ -245,7 +245,7 @@ class Admin_Menu {
             wp_nonce_field( 'wpneo_settings_page_action', 'wpneo_settings_page_nonce_field' );
             submit_button( null, 'primary', 'wpneo_admin_settings_submit_btn' );
             ?>
-            <a href="javascript:;" class="button wpneo-crowdfunding-reset-btn"> <i class="dashicons dashicons-image-rotate"></i> <?php _e('Reset Settings', 'xwoo'); ?></a>
+            <a href="javascript:;" class="button wpneo-xwoo-reset-btn"> <i class="dashicons dashicons-image-rotate"></i> <?php _e('Reset Settings', 'xwoo'); ?></a>
         </form>
         <?php
     }
@@ -258,7 +258,7 @@ class Admin_Menu {
         
         if (XWOO_function()->post('wpneo_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(XWOO_function()->post('wpneo_settings_page_nonce_field')), 'wpneo_settings_page_action' ) ){
 
-            $current_tab = sanitize_text_field(XWOO_function()->post('wpneo_crowdfunding_admin_tab'));
+            $current_tab = sanitize_text_field(XWOO_function()->post('wpneo_xwoo_admin_tab'));
             if( ! empty($current_tab) ){
                 if ( $current_tab == 'tab_fields' ){
 
@@ -393,20 +393,20 @@ class Admin_Menu {
                         $page_id = $form_page_id;
                         update_option( 'wpneo_form_page_id', $page_id );
 
-                        //Update That Page with new crowdFunding [wpneo_crowdfunding_form]
-                        $previous_content = str_replace( array( '[XWOO_form]', '[wpneo_crowdfunding_form]' ), array( '', '' ), get_post_field('post_content', $page_id));
+                        //Update That Page with new crowdFunding [wpneo_xwoo_form]
+                        $previous_content = str_replace( array( '[XWOO_form]', '[wpneo_xwoo_form]' ), array( '', '' ), get_post_field('post_content', $page_id));
                         $new_content = $previous_content . '[XWOO_form]';
                         //Update Post
                         $wpdb->update($wpdb->posts, array('post_content' => $new_content), array('ID'=> $page_id));
                     }
 
-                    $dashboard_page_id = intval(XWOO_function()->post('wpneo_crowdfunding_dashboard_page_id'));
+                    $dashboard_page_id = intval(XWOO_function()->post('wpneo_xwoo_dashboard_page_id'));
                     if (!empty($dashboard_page_id)) {
                         $page_id = $dashboard_page_id;
-                        update_option('wpneo_crowdfunding_dashboard_page_id', $page_id);
+                        update_option('wpneo_xwoo_dashboard_page_id', $page_id);
 
                         //Update That Page with new crowdFunding [XWOO_dashboard]
-                        $previous_content = str_replace( array( '[XWOO_dashboard]', '[wpneo_crowdfunding_dashboard]' ), array( '', '' ), get_post_field('post_content', $page_id));
+                        $previous_content = str_replace( array( '[XWOO_dashboard]', '[wpneo_xwoo_dashboard]' ), array( '', '' ), get_post_field('post_content', $page_id));
                         $new_content = $previous_content . '[XWOO_dashboard]';
                         //Update Post
                         $wpdb->update($wpdb->posts, array('post_content' => $new_content), array('ID'=> $page_id));
@@ -467,8 +467,8 @@ class Admin_Menu {
                     $registration = intval(sanitize_text_field(XWOO_function()->post('wpneo_registration_page_id')));
                     XWOO_function()->update_text('wpneo_registration_page_id', $registration );
 
-                    $categories = sanitize_text_field(XWOO_function()->post('seperate_crowdfunding_categories'));
-                    XWOO_function()->update_checkbox('seperate_crowdfunding_categories', $categories );
+                    $categories = sanitize_text_field(XWOO_function()->post('seperate_xwoo_categories'));
+                    XWOO_function()->update_checkbox('seperate_xwoo_categories', $categories );
 
                     $selected_theme = sanitize_text_field(XWOO_function()->post('wpneo_cf_selected_theme'));
                     XWOO_function()->update_text('wpneo_cf_selected_theme', $selected_theme );
@@ -482,8 +482,8 @@ class Admin_Menu {
                     $agree_title = sanitize_text_field(XWOO_function()->post('wpneo_requirement_agree_title'));
                     XWOO_function()->update_text('wpneo_requirement_agree_title', $agree_title);
 
-                    $cart_redirect = sanitize_text_field(XWOO_function()->post('wpneo_crowdfunding_add_to_cart_redirect'));
-                    XWOO_function()->update_text('wpneo_crowdfunding_add_to_cart_redirect', $cart_redirect);
+                    $cart_redirect = sanitize_text_field(XWOO_function()->post('wpneo_xwoo_add_to_cart_redirect'));
+                    XWOO_function()->update_text('wpneo_xwoo_add_to_cart_redirect', $cart_redirect);
 
                     $collumns  = intval(XWOO_function()->post('number_of_collumn_in_row'));
                     XWOO_function()->update_text('number_of_collumn_in_row', $collumns );

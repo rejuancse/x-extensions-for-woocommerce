@@ -1,5 +1,5 @@
 <div class="wrap">
-    <div class="wp-crowdfunding-addons-list">
+    <div class="wp-xwoo-addons-list">
         <h1 class="addon-list-heading"><?php _e('Addons List', 'xwoo'); ?></h1>
         <br class="clear">
 		<?php
@@ -9,14 +9,14 @@
 			?>
             <div class="wp-list-table widefat plugin-install">
                 <style>
-                    .wp-crowdfunding-addons-list .plugin-card-top{
+                    .wp-xwoo-addons-list .plugin-card-top{
                         min-height: 98px;
                     }
-                    .wp-crowdfunding-addons-list .plugin-icon{
+                    .wp-xwoo-addons-list .plugin-icon{
                         width: 64px;
                         height: 64px;
                     }
-                    .wp-crowdfunding-addons-list .wp-list-table a{
+                    .wp-xwoo-addons-list .wp-list-table a{
                         color: #fff;
                         margin-top: 100px;
                         padding: 10px 20px;
@@ -28,21 +28,21 @@
                         box-shadow: inset 0 -1px 0 #00648c;
                         text-shadow: 0 -1px 1px #005d82, 1px 0 1px #005d82, 0 1px 1px #005d82, -1px 0 1px #005d82;
                     }
-                    .wp-crowdfunding-addons-list .plugin-card .name,
-                    .wp-crowdfunding-addons-list .plugin-card .desc{
+                    .wp-xwoo-addons-list .plugin-card .name,
+                    .wp-xwoo-addons-list .plugin-card .desc{
                         margin-left: 84px;
                     }
 
-                    .wp-crowdfunding-addons-list .btn-switch {
+                    .wp-xwoo-addons-list .btn-switch {
                         display: inline-block;
                         height: 22px;
                         position: relative;
                         width: 50px;
                     }
-                    .wp-crowdfunding-addons-list .btn-switch input {
+                    .wp-xwoo-addons-list .btn-switch input {
                         display:none;
                     }
-                    .wp-crowdfunding-addons-list .btn-slider {
+                    .wp-xwoo-addons-list .btn-slider {
                         background-color: #ccc;
                         bottom: 0;
                         cursor: pointer;
@@ -52,7 +52,7 @@
                         top: 0;
                         transition: .4s;
                     }
-                    .wp-crowdfunding-addons-list .btn-slider:before {
+                    .wp-xwoo-addons-list .btn-slider:before {
                         background-color: #fff;
                         bottom: 3px;
                         content: "";
@@ -62,16 +62,16 @@
                         transition: .4s;
                         width: 16px;
                     }
-                    .wp-crowdfunding-addons-list .btn-switch input:checked + .btn-slider {
+                    .wp-xwoo-addons-list .btn-switch input:checked + .btn-slider {
                         background-color: #66bb6a;
                     }
-                    .wp-crowdfunding-addons-list .btn-switch input:checked + .btn-slider:before {
+                    .wp-xwoo-addons-list .btn-switch input:checked + .btn-slider:before {
                         transform: translateX(26px);
                     }
-                    .wp-crowdfunding-addons-list .btn-slider.btn-round {
+                    .wp-xwoo-addons-list .btn-slider.btn-round {
                         border-radius: 34px;
                     }
-                    .wp-crowdfunding-addons-list .btn-slider.btn-round:before {
+                    .wp-xwoo-addons-list .btn-slider.btn-round:before {
                         border-radius: 50%;
                     }
                 </style>
@@ -177,7 +177,7 @@
                                         <ul class="plugin-action-buttons">
                                             <?php if( XWOO_function()->is_free() ) { ?>
                                                 <li>
-                                                    <a href="https://www.themeum.com/product/wp-crowdfunding-plugin/?utm_source=crowdfunding_plugin"
+                                                    <a href="https://www.xwoo.com/product/wp-xwoo-plugin/?utm_source=xwoo_plugin"
                                                     class="addon-buynow-link" target="_blank"><?php _e('Buy Now','xwoo'); ?></a>
                                                 </li>
                                             <?php } ?>

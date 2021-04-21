@@ -16,13 +16,13 @@ $html .= ob_get_clean();
 $html .= '<div class="wpneo-row">';
     $html .= '<div class="wpneo-col6">';
     $html .= '<div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">'; 
-        $html .= '<h4>'.__( "My Campaigns" , "wp-crowdfunding" ).'</h4>';
+        $html .= '<h4>'.__( "My Campaigns" , "wp-xwoo" ).'</h4>';
         include_once XWOO_DIR_PATH.'includes/woocommerce/dashboard/dashboard-campaign.php';
     $html .= '</div>';//wpneo-shadow 
 
     global $wp;
     $html .= '<div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">'; 
-        $html .= '<h4>'.__( "Export Data" , "wp-crowdfunding" ).'</h4>';
+        $html .= '<h4>'.__( "Export Data" , "wp-xwoo" ).'</h4>';
         $html .= '<br/><a href="'.home_url( $wp->request ).'/?download_data=personal" class="wpneo-edit-btn">'.__('Export Campaign Data', 'xwoo').'</a>';
     $html .= '</div>';//wpneo-shadow 
 
@@ -39,7 +39,7 @@ $html .= '<div class="wpneo-row">';
                 $html .= '<h4>'.__('My Information', 'xwoo').'</h4>';
                 $html .= '<div class="wpneo-single">';
                     $html .= '<div class="wpneo-name float-left">';
-                        $html .= '<p>'.__( "Username:" , "wp-crowdfunding" ).'</p>';
+                        $html .= '<p>'.__( "Username:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="wpneo-fields float-right">';
                         $html .= '<input type="hidden" name="action" value="wpneo_dashboard_form">';
@@ -50,7 +50,7 @@ $html .= '<div class="wpneo-row">';
                 // Email Address
                 $html .= '<div class="wpneo-single">';
                     $html .= '<div class="wpneo-name float-left">';
-                        $html .= '<p>'.__( "Email:" , "wp-crowdfunding" ).'</p>';
+                        $html .= '<p>'.__( "Email:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="wpneo-fields float-right">';
                         $html .= '<input type="email" name="email" value="'.$current_user->user_email.'" disabled>';
@@ -60,7 +60,7 @@ $html .= '<div class="wpneo-row">';
                 // First Name
                 $html .= '<div class="wpneo-single">';
                     $html .= '<div class="wpneo-name float-left">';
-                        $html .= '<p>'.__( "First Name:" , "wp-crowdfunding" ).'</p>';
+                        $html .= '<p>'.__( "First Name:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="wpneo-fields float-right">';
                         $html .= '<input type="text" name="firstname" value="'.$current_user->user_firstname.'" disabled>';
@@ -70,7 +70,7 @@ $html .= '<div class="wpneo-row">';
                 // Last Name
                 $html .= '<div class="wpneo-single">';
                     $html .= '<div class="wpneo-name float-left">';
-                        $html .= '<p>'.__( "Last Name:" , "wp-crowdfunding" ).'</p>';
+                        $html .= '<p>'.__( "Last Name:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="wpneo-fields float-right">';
                         $html .= '<input type="text" name="lastname" value="'.$current_user->user_lastname.'" disabled>';
@@ -80,7 +80,7 @@ $html .= '<div class="wpneo-row">';
                 // Website
                 $html .= '<div class="wpneo-single">';
                     $html .= '<div class="wpneo-name float-left">';
-                        $html .= '<p>'.__( "Website:" , "wp-crowdfunding" ).'</p>';
+                        $html .= '<p>'.__( "Website:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="wpneo-fields float-right">';
                         $html .= '<input type="text" name="website" value="'.$current_user->user_url.'" disabled>';
@@ -90,7 +90,7 @@ $html .= '<div class="wpneo-row">';
                 // Bio Info
                 $html .= '<div class="wpneo-single">';
                     $html .= '<div class="wpneo-name float-left">';
-                        $html .= '<p>'.__( "Bio:" , "wp-crowdfunding" ).'</p>';
+                        $html .= '<p>'.__( "Bio:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="wpneo-fields float-right">';
                         $html .= '<textarea name="description" rows="3" disabled>'.$current_user->description.'</textarea>';
@@ -102,12 +102,12 @@ $html .= '<div class="wpneo-row">';
             do_action('XWOO_dashboard_after_dashboard_form');
             $html .= ob_get_clean();
 
-            $html .= wp_nonce_field( 'wpneo_crowdfunding_dashboard_form_action', 'wpneo_crowdfunding_dashboard_nonce_field', true, false );
+            $html .= wp_nonce_field( 'wpneo_xwoo_dashboard_form_action', 'wpneo_xwoo_dashboard_nonce_field', true, false );
             //Save Button
             $html .= '<div class="wpneo-buttons-group float-right">';
-                $html .= '<button id="wpneo-edit" class="wpneo-edit-btn">'.__( "Edit" , "wp-crowdfunding" ).'</button>';
-                $html .= '<button id="wpneo-dashboard-btn-cancel" class="wpneo-cancel-btn wpneo-hidden" type="submit">'.__( "Cancel" , "wp-crowdfunding" ).'</button>';
-                $html .= '<button id="wpneo-dashboard-save" class="wpneo-save-btn wpneo-hidden" type="submit">'.__( "Save" , "wp-crowdfunding" ).'</button>';
+                $html .= '<button id="wpneo-edit" class="wpneo-edit-btn">'.__( "Edit" , "wp-xwoo" ).'</button>';
+                $html .= '<button id="wpneo-dashboard-btn-cancel" class="wpneo-cancel-btn wpneo-hidden" type="submit">'.__( "Cancel" , "wp-xwoo" ).'</button>';
+                $html .= '<button id="wpneo-dashboard-save" class="wpneo-save-btn wpneo-hidden" type="submit">'.__( "Save" , "wp-xwoo" ).'</button>';
             $html .= '</div>';
             $html .= '<div class="clear-float"></div>';
         $html .= '</form>';//#wpneo-dashboard-form
