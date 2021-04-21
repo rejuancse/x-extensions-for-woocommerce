@@ -18,11 +18,11 @@ $the_query = new WP_Query($args);
 
 ob_start(); ?>
 
-<div class="wpneo-content">
-    <div class="wpneo-form campaign-listing-page">
-        <div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">
+<div class="xwoo-content">
+    <div class="xwoo-form campaign-listing-page">
+        <div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">
             <?php if ($the_query->have_posts()) : global $post; ?>
-                <div class="wpneo-responsive-table">
+                <div class="xwoo-responsive-table">
                     <table class="stripe-table">
                         <thead>
                             <tr>

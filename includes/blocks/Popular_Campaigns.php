@@ -72,7 +72,7 @@ class PopularCampaigns{
         query_posts($query_args);
         
         ob_start();
-        XWOO_function()->template('wpneo-listing');
+        XWOO_function()->template('xwoo-listing');
         $html = ob_get_clean();
         wp_reset_query();
         return $html;     

@@ -2,42 +2,42 @@
 defined( 'ABSPATH' ) || exit;
 
 $post_id = (int) $_GET['postid'];
-$saved_campaign_update = get_post_meta($post_id, 'wpneo_campaign_updates', true);
+$saved_campaign_update = get_post_meta($post_id, 'wp_campaign_updates', true);
 $saved_campaign_update_a = (array) json_decode($saved_campaign_update, true);
 
 if(isset($_GET["postid"])){
     $post_author = get_post_field( 'post_author', $_GET["postid"] );
     if( $post_author == get_current_user_id() ){
-        $var = get_post_meta( $_GET["postid"],"wpneo_campaign_updates",true );
+        $var = get_post_meta( $_GET["postid"],"wp_campaign_updates",true );
     }
 }
 
 $data = get_user_meta(get_current_user_id());
 
-$html .= '<div id="wpneo_update_form_wrapper" style="display: none;">';
+$html .= '<div id="wp_update_form_wrapper" style="display: none;">';
 
-    $html .= '<div class="wpneo-content">';
-    $html .= '<form id="wpneo-dashboard-form" action="" method="" class="wpneo-form">';
+    $html .= '<div class="xwoo-content">';
+    $html .= '<form id="xwoo-dashboard-form" action="" method="" class="xwoo-form">';
 
     $display = 'block';
     if (count($saved_campaign_update_a) > 0) $display = 'none';
     
     $html .= '<div class="panel woocommerce_options_panel" id="campaign_status">';
-    $html .= '<div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">';
+    $html .= '<div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">';
         
         $html .= '<div style="display: '.$display.'" id="campaign_update_field">';
             $html .= '<div class="campaign_update_field_copy">';
-                $html .= '<p class="form-field wpneo_prject_update_date_field[]_field wpneo-single wpneo-first-half">';
-                    $html .= '<label for="wpneo_prject_update_date_field[]">'.__("Date", "wp-xwoo").':</label>';
-                    $html .= '<input type="text" placeholder="'.date('d-m-Y').'" value="" id="wpneo_prject_update_date_field[]" name="wpneo_prject_update_date_field[]" style="" class="datepicker">';
+                $html .= '<p class="form-field wp_prject_update_date_field[]_field xwoo-single xwoo-first-half">';
+                    $html .= '<label for="wp_prject_update_date_field[]">'.__("Date", "wp-xwoo").':</label>';
+                    $html .= '<input type="text" placeholder="'.date('d-m-Y').'" value="" id="wp_prject_update_date_field[]" name="wp_prject_update_date_field[]" style="" class="datepicker">';
                 $html .= '</p>';
-                $html .= '<p class="form-field wpneo_prject_update_title_field[]_field wpneo-single wpneo-second-half">';
-                    $html .= '<label for="wpneo_prject_update_title_field[]">'.__("Update Title", "wp-xwoo").':</label>';
-                    $html .= '<input type="text" placeholder="'.__("Update Title", "wp-xwoo").'" value="" id="wpneo_prject_update_title_field[]" name="wpneo_prject_update_title_field[]" style="" class="short">';
+                $html .= '<p class="form-field wp_prject_update_title_field[]_field xwoo-single xwoo-second-half">';
+                    $html .= '<label for="wp_prject_update_title_field[]">'.__("Update Title", "wp-xwoo").':</label>';
+                    $html .= '<input type="text" placeholder="'.__("Update Title", "wp-xwoo").'" value="" id="wp_prject_update_title_field[]" name="wp_prject_update_title_field[]" style="" class="short">';
                 $html .= '</p>';
-                $html .= '<p class="form-field wpneo_prject_update_details_field[]_field wpneo-single">';
-                    $html .= '<label for="wpneo_prject_update_details_field[]">'.__("Update Details", "wp-xwoo").':</label>';
-                    $html .= '<textarea cols="20" rows="2" placeholder="'.__("Update Details", "wp-xwoo").'" id="wpneo_prject_update_details_field[]" name="wpneo_prject_update_details_field[]" style="" class="short"></textarea>';
+                $html .= '<p class="form-field wp_prject_update_details_field[]_field xwoo-single">';
+                    $html .= '<label for="wp_prject_update_details_field[]">'.__("Update Details", "wp-xwoo").':</label>';
+                    $html .= '<textarea cols="20" rows="2" placeholder="'.__("Update Details", "wp-xwoo").'" id="wp_prject_update_details_field[]" name="wp_prject_update_details_field[]" style="" class="short"></textarea>';
                 $html .= '</p>';
                 $html .= '<input type="button" value="'.__('Remove', 'xwoo').'" class="button tagadd removecampaignupdate" name="remove_udpate" style="display: none;">';
             $html .= '</div>';
@@ -47,17 +47,17 @@ $html .= '<div id="wpneo_update_form_wrapper" style="display: none;">';
             if ( count($saved_campaign_update_a) > 0 ){
                 foreach( $saved_campaign_update_a as $key => $value ){
                     $html .= '<div class="campaign_update_field_copy">';
-                        $html .= '<p class="form-field wpneo_prject_update_date_field[]_field wpneo-single wpneo-first-half">';
-                            $html .= '<label for="wpneo_prject_update_date_field[]">'.__("Date", "wp-xwoo").':</label>';
-                            $html .= '<input type="text" placeholder="'.date('d-m-Y').'" value="'.esc_attr($value['date']).'" id="wpneo_prject_update_date_field[]" name="wpneo_prject_update_date_field[]" style="" class="datepicker">';
+                        $html .= '<p class="form-field wp_prject_update_date_field[]_field xwoo-single xwoo-first-half">';
+                            $html .= '<label for="wp_prject_update_date_field[]">'.__("Date", "wp-xwoo").':</label>';
+                            $html .= '<input type="text" placeholder="'.date('d-m-Y').'" value="'.esc_attr($value['date']).'" id="wp_prject_update_date_field[]" name="wp_prject_update_date_field[]" style="" class="datepicker">';
                         $html .= '</p>';
-                        $html .= '<p class="form-field wpneo_prject_update_title_field[]_field wpneo-single wpneo-second-half">';
-                            $html .= '<label for="wpneo_prject_update_title_field[]">'.__("Update Title", "wp-xwoo").':</label>';
-                            $html .= '<input type="text" placeholder="'.__("Update Title", "wp-xwoo").'" value="'.esc_attr($value['title']).'" id="wpneo_prject_update_title_field[]" name="wpneo_prject_update_title_field[]" style="" class="short">';
+                        $html .= '<p class="form-field wp_prject_update_title_field[]_field xwoo-single xwoo-second-half">';
+                            $html .= '<label for="wp_prject_update_title_field[]">'.__("Update Title", "wp-xwoo").':</label>';
+                            $html .= '<input type="text" placeholder="'.__("Update Title", "wp-xwoo").'" value="'.esc_attr($value['title']).'" id="wp_prject_update_title_field[]" name="wp_prject_update_title_field[]" style="" class="short">';
                         $html .= '</p>';
-                        $html .= '<p class="form-field wpneo_prject_update_details_field[]_field wpneo-single">';
-                            $html .= '<label for="wpneo_prject_update_details_field[]">'.__("Update Details", "wp-xwoo").':</label>';
-                            $html .= '<textarea cols="20" rows="2" placeholder="'.__("Update Details", "wp-xwoo").'" id="wpneo_prject_update_details_field[]" name="wpneo_prject_update_details_field[]" style="" class="short" >'.esc_textarea($value['details']).'</textarea>';
+                        $html .= '<p class="form-field wp_prject_update_details_field[]_field xwoo-single">';
+                            $html .= '<label for="wp_prject_update_details_field[]">'.__("Update Details", "wp-xwoo").':</label>';
+                            $html .= '<textarea cols="20" rows="2" placeholder="'.__("Update Details", "wp-xwoo").'" id="wp_prject_update_details_field[]" name="wp_prject_update_details_field[]" style="" class="short" >'.esc_textarea($value['details']).'</textarea>';
                         $html .= '</p>';
                         $html .= '<input type="button" value="'.__('Remove', 'xwoo').'" class="button tagadd removecampaignupdate" name="remove_udpate" style="display: none;">';
                     $html .= '</div>';
@@ -69,12 +69,12 @@ $html .= '<div id="wpneo_update_form_wrapper" style="display: none;">';
         $html .= '<div style="clear: both;"></div>';
     $html .= '</div>';
 
-    $html .= '<input type="hidden"  value="wpneo_update_status_save" name="action" />';
+    $html .= '<input type="hidden"  value="wp_update_status_save" name="action" />';
     $html .= '<input type="hidden"  value="'. intval(esc_attr($post_id)) .'" name="postid" />';
-    $html .= '</div>';//wpneo-padding25
+    $html .= '</div>';//xwoo-padding25
     //Save Button
-    $html .= '<div class="wpneo-buttons-group float-right">';
-    $html .= '<button id="wpneo-update-save" class="wpneo-save-btn" type="submit">'.__( "Save" , "wp-xwoo" ).'</button>';
+    $html .= '<div class="xwoo-buttons-group float-right">';
+    $html .= '<button id="xwoo-update-save" class="xwoo-save-btn" type="submit">'.__( "Save" , "wp-xwoo" ).'</button>';
     $html .= '</div>';
     $html .= '<div class="clear-float"></div>';
 
@@ -85,10 +85,10 @@ $html .= '<div id="wpneo_update_form_wrapper" style="display: none;">';
 $html .='</div>'; //update_form_wrapper
 
 
-$html .= '<div id="wpneo_update_display_wrapper">';
+$html .= '<div id="wp_update_display_wrapper">';
     if (count($saved_campaign_update_a) > 0){
-        $html .= '<div class="wpneo-form">';
-            $html .='<div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">';
+        $html .= '<div class="xwoo-form">';
+            $html .='<div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">';
                 $html .= '<table class="stripe-table">';
                     $html .= '<thead>';
                         $html .= '<tr>';
@@ -106,12 +106,12 @@ $html .= '<div id="wpneo_update_display_wrapper">';
                     $html .= '</tbody>';
                 $html .= '</table>';
             $html .= '</div>';
-            $html .= '<input type="button" value="'.__('Add Update', 'xwoo').'" id="wpneo_active_edit_form" class="button tagadd" name="save_update">';
+            $html .= '<input type="button" value="'.__('Add Update', 'xwoo').'" id="wp_active_edit_form" class="button tagadd" name="save_update">';
         $html .= '</div>';
 
     } else {
-        $html .= '<div class="wpneo-form">';
-            $html .= '<input type="button" value="'.__('Add Update', 'xwoo').'" id="wpneo_active_edit_form" class="button tagadd" name="save_update">';
+        $html .= '<div class="xwoo-form">';
+            $html .= '<input type="button" value="'.__('Add Update', 'xwoo').'" id="wp_active_edit_form" class="button tagadd" name="save_update">';
         $html .= '</div>';
     }
-$html .='</div>'; //wpneo_update_display_wrapper
+$html .='</div>'; //wp_update_display_wrapper

@@ -36,14 +36,14 @@ class Reward{
     function reward_content($post_id){
         global $post;
 
-        $var = get_post_meta($post->ID, 'wpneo_reward', true);
+        $var = get_post_meta($post->ID, 'wp_reward', true);
        // $var = stripslashes($var);
         $data_array = json_decode($var, true);
 
         $woocommerce_meta_field = array(
             // Pledge Amount
             array(
-                'id'            => 'wpneo_rewards_pladge_amount[]',
+                'id'            => 'wp_rewards_pladge_amount[]',
                 'label'         => __('Pledge Amount', 'xwoo'),
                 'desc_tip'      => 'true',
                 'type'          => 'text',
@@ -54,7 +54,7 @@ class Reward{
             ),
             // Reward Image
             array(
-                'id'            => 'wpneo_rewards_image_field[]',
+                'id'            => 'wp_rewards_image_field[]',
                 'label'         => __('Image Field', 'xwoo'),
                 'desc_tip'      => 'true',
                 'type'          => 'image',
@@ -65,7 +65,7 @@ class Reward{
             ),
             // Reward Description
             array(
-                'id'            => 'wpneo_rewards_description[]',
+                'id'            => 'wp_rewards_description[]',
                 'label'         => __('Reward', 'xwoo'),
                 'desc_tip'      => 'true',
                 'type'          => 'text',
@@ -75,7 +75,7 @@ class Reward{
             ),
             // Reward Month
             array(
-                'id'            => 'wpneo_rewards_endmonth[]',
+                'id'            => 'wp_rewards_endmonth[]',
                 'label'         => __('Estimated Delivery Month', 'xwoo'),
                 'type'          => 'text',
                 'value'         => '',
@@ -98,7 +98,7 @@ class Reward{
             ),
             // Reward Year
             array(
-                'id'            => 'wpneo_rewards_endyear[]',
+                'id'            => 'wp_rewards_endyear[]',
                 'label'         => __('Estimated Delivery Year', 'xwoo'),
                 'type'          => 'text',
                 'value'         => '',
@@ -116,7 +116,7 @@ class Reward{
             ),
             // Quantity (Number of Pledge Items)
             array(
-                'id'            => 'wpneo_rewards_item_limit[]',
+                'id'            => 'wp_rewards_item_limit[]',
                 'label'         => __('Quantity', 'xwoo'),
                 'desc_tip'      => 'true',
                 'type'          => 'text',
@@ -155,10 +155,10 @@ class Reward{
 
                     case 'image':
                         echo '<p class="form-field">';
-                        echo '<label for="wpneo_rewards_image_field">'.$value["label"].'</label>';
-                        echo '<input type="hidden" class="wpneo_rewards_image_field" name="'.$value["id"].'" value="" placeholder="'.$value["label"].'"/>';
-                        echo '<span class="wpneo-image-container"></span>';
-                        echo '<button class="wpneo-image-upload-btn shorter">'.__("Upload","wp-xwoo").'</button>';
+                        echo '<label for="wp_rewards_image_field">'.$value["label"].'</label>';
+                        echo '<input type="hidden" class="wp_rewards_image_field" name="'.$value["id"].'" value="" placeholder="'.$value["label"].'"/>';
+                        echo '<span class="xwoo-image-container"></span>';
+                        echo '<button class="xwoo-image-upload-btn shorter">'.__("Upload","wp-xwoo").'</button>';
                         echo '</p>';
                         break;
 
@@ -203,15 +203,15 @@ class Reward{
                                     $raw_id = $image_id;
                                     if( $image_id!=0 && $image_id!='' ){
                                         $image_id = wp_get_attachment_url( $image_id );
-                                        $image_id = '<img width="100" src="'.$image_id.'"><span class="wpneo-image-remove">x</span>';
+                                        $image_id = '<img width="100" src="'.$image_id.'"><span class="xwoo-image-remove">x</span>';
                                     }else{
                                         $image_id = '';
                                     }
                                     echo '<p class="form-field">';
-                                    echo '<label for="wpneo_rewards_image_field">'.$value["label"].'</label>';
-                                    echo '<input type="hidden" class="wpneo_rewards_image_field" name="'.$value["id"].'" value="'.$raw_id.'" placeholder="'.$value["label"].'"/>';
-                                    echo '<span class="wpneo-image-container">'.$image_id.'</span>';
-                                    echo '<button class="wpneo-image-upload-btn shorter">'.__("Upload","wp-xwoo").'</button>';
+                                    echo '<label for="wp_rewards_image_field">'.$value["label"].'</label>';
+                                    echo '<input type="hidden" class="wp_rewards_image_field" name="'.$value["id"].'" value="'.$raw_id.'" placeholder="'.$value["label"].'"/>';
+                                    echo '<span class="xwoo-image-container">'.$image_id.'</span>';
+                                    echo '<button class="xwoo-image-upload-btn shorter">'.__("Upload","wp-xwoo").'</button>';
                                     echo '</p>';
                                     break;
 
@@ -246,29 +246,29 @@ class Reward{
     * Update Post Meta for Reward Tab
     */
     function reward_action($post_id){
-        if (!empty($_POST['wpneo_rewards_pladge_amount'])) {
+        if (!empty($_POST['wp_rewards_pladge_amount'])) {
             $data             = array();
-            $pladge_amount    = $_POST['wpneo_rewards_pladge_amount'];
-            $image_field      = $_POST['wpneo_rewards_image_field'];
-            $description      = $_POST['wpneo_rewards_description'];
-            $end_month        = $_POST['wpneo_rewards_endmonth'];
-            $end_year         = $_POST['wpneo_rewards_endyear'];
-            $item_limit       = $_POST['wpneo_rewards_item_limit'];
+            $pladge_amount    = $_POST['wp_rewards_pladge_amount'];
+            $image_field      = $_POST['wp_rewards_image_field'];
+            $description      = $_POST['wp_rewards_description'];
+            $end_month        = $_POST['wp_rewards_endmonth'];
+            $end_year         = $_POST['wp_rewards_endyear'];
+            $item_limit       = $_POST['wp_rewards_item_limit'];
             $field_count      = count($pladge_amount);
             for ($i = 0; $i < $field_count; $i++) {
                 if (!empty($pladge_amount[$i])) {
                     $data[] = array(
-                        'wpneo_rewards_pladge_amount'   => intval($pladge_amount[$i]),
-                        'wpneo_rewards_image_field'     => intval($image_field[$i]),
-                        'wpneo_rewards_description'     => $description[$i],
-                        'wpneo_rewards_endmonth'        => esc_html($end_month[$i]),
-                        'wpneo_rewards_endyear'         => esc_html($end_year[$i]),
-                        'wpneo_rewards_item_limit'      => esc_html($item_limit[$i]),
+                        'wp_rewards_pladge_amount'   => intval($pladge_amount[$i]),
+                        'wp_rewards_image_field'     => intval($image_field[$i]),
+                        'wp_rewards_description'     => $description[$i],
+                        'wp_rewards_endmonth'        => esc_html($end_month[$i]),
+                        'wp_rewards_endyear'         => esc_html($end_year[$i]),
+                        'wp_rewards_item_limit'      => esc_html($item_limit[$i]),
                     );
                 }
             }
             $data_json = json_encode( $data, JSON_UNESCAPED_UNICODE );
-            XWOO_function()->update_meta($post_id, 'wpneo_reward', wp_slash($data_json));
+            XWOO_function()->update_meta($post_id, 'wp_reward', wp_slash($data_json));
         }
     }
 
@@ -281,15 +281,15 @@ class Reward{
         $order_id = $order->get_id();
         $html = '';
 
-        $r = get_post_meta($order_id, 'wpneo_selected_reward', true);
+        $r = get_post_meta($order_id, 'wp_selected_reward', true);
         if ( ! empty($r) && is_array($r) ){
             $html .="<h2>".__('Selected Reward', 'xwoo')."</h2>";
-            if ( ! empty($r['wpneo_rewards_description'])){
-                // $html .= "<div>{$r['wpneo_rewards_description']}</div>";
-                $html .= "<div>". wpautop($r['wpneo_rewards_description'])."</div>";
+            if ( ! empty($r['wp_rewards_description'])){
+                // $html .= "<div>{$r['wp_rewards_description']}</div>";
+                $html .= "<div>". wpautop($r['wp_rewards_description'])."</div>";
             }
-            if ( ! empty($r['wpneo_rewards_pladge_amount'])){
-                $html .= "<div><abbr>".__('Amount','xwoo').' : '.wc_price($r['wpneo_rewards_pladge_amount']).', '.__(', Delivery','xwoo').' : '.$r['wpneo_rewards_endmonth'].', '.$r['wpneo_rewards_endyear'];
+            if ( ! empty($r['wp_rewards_pladge_amount'])){
+                $html .= "<div><abbr>".__('Amount','xwoo').' : '.wc_price($r['wp_rewards_pladge_amount']).', '.__(', Delivery','xwoo').' : '.$r['wp_rewards_endmonth'].', '.$r['wp_rewards_endyear'];
             }
     
         }
@@ -297,19 +297,19 @@ class Reward{
     }
 
     public function selected_reward_in_order_review(){
-        $rewards_data = WC()->session->get('wpneo_rewards_data');
-        $reward_data = isset($rewards_data['wpneo_selected_rewards_checkout']) ? $rewards_data['wpneo_selected_rewards_checkout'] : array();
+        $rewards_data = WC()->session->get('wp_rewards_data');
+        $reward_data = isset($rewards_data['wp_selected_rewards_checkout']) ? $rewards_data['wp_selected_rewards_checkout'] : array();
         if (is_array($reward_data) && count($reward_data) ) {
             ?>
             <tr>
                 <td>
                     <h4><?php _e('Selected Reward','xwoo'); ?> </h4>
                     <?php
-                    if ( isset($reward_data['wpneo_rewards_description'])){
-                        // echo "<div>{$reward_data['wpneo_rewards_description']}</div>";
-                        echo "<div>". wpautop($reward_data['wpneo_rewards_description']) ."</div>";
-                        echo __('Amount','xwoo').' : <strong>'.wc_price($reward_data['wpneo_rewards_pladge_amount']).'</strong>, ';
-                        echo __('Delivery','xwoo').' : '.$reward_data['wpneo_rewards_endmonth'].', '.$reward_data['wpneo_rewards_endyear'];
+                    if ( isset($reward_data['wp_rewards_description'])){
+                        // echo "<div>{$reward_data['wp_rewards_description']}</div>";
+                        echo "<div>". wpautop($reward_data['wp_rewards_description']) ."</div>";
+                        echo __('Amount','xwoo').' : <strong>'.wc_price($reward_data['wp_rewards_pladge_amount']).'</strong>, ';
+                        echo __('Delivery','xwoo').' : '.$reward_data['wp_rewards_endmonth'].', '.$reward_data['wp_rewards_endyear'];
                     }
                     ?>
                 </td>
@@ -326,7 +326,7 @@ class Reward{
             if ($product->get_type() === 'xwoo') {
                 $col_9 = '';
                 $col_3 = '';
-                $campaign_rewards = get_post_meta($post->ID, 'wpneo_reward', true);
+                $campaign_rewards = get_post_meta($post->ID, 'wp_reward', true);
                 $campaign_rewards = stripslashes($campaign_rewards);
                 $campaign_rewards_a = json_decode($campaign_rewards, true);
                 if (is_array($campaign_rewards_a)) {
@@ -336,13 +336,13 @@ class Reward{
                     }
                 }
 
-                $html = "<div class='tab-description-wrap wpneo-clearfix'>";
+                $html = "<div class='tab-description-wrap xwoo-clearfix'>";
                     $html .= "<div class='tab-description {$col_9} '>";
                         $html .= $content;
                     $html .= '</div>';
                     $html .= "<div class='tab-rewards {$col_3} '>";
                         ob_start();
-                        wpneo_campaign_story_right_sidebar();
+                        wp_campaign_story_right_sidebar();
                         $html .= ob_get_clean();
                     $html .= '</div>';
                 $html .= '</div>';

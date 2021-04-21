@@ -22,17 +22,17 @@ $current_page = get_permalink();
 $the_query = new WP_Query( $args );
 ?>
 
-<div class="wpneo-content">
-<div class="wpneo-form campaign-listing-page">
+<div class="xwoo-content">
+<div class="xwoo-form campaign-listing-page">
 
 
 <?php if ( $the_query->have_posts() ) : global $post; $i = 1;
     while ( $the_query->have_posts() ) : $the_query->the_post();
         ob_start();
 ?>
-        <div class="wpneo-listings-dashboard wpneo-shadow wpneo-padding15 wpneo-clearfix">
+        <div class="xwoo-listings-dashboard xwoo-shadow xwoo-padding15 xwoo-clearfix">
             
-            <div class="wpneo-listing-img">
+            <div class="xwoo-listing-img">
                 <a href="<?php echo get_permalink(); ?>" title="<?php  echo get_the_title(); ?>"> <?php echo woocommerce_get_product_thumbnail(); ?></a>
                 <div class="overlay">
                     <div>
@@ -43,31 +43,31 @@ $the_query = new WP_Query( $args );
                 </div>
             </div>
 
-            <div class="wpneo-listing-content clearfix">
+            <div class="xwoo-listing-content clearfix">
 
-                <div class="wpneo-admin-title float-left">
+                <div class="xwoo-admin-title float-left">
                     <!-- title -->
                     <h4><a href="<?php  echo get_permalink(); ?> "><?php echo get_the_title(); ?></a></h4>
                     
                     <!-- author -->
-                    <p class="wpneo-author"><?php _e('by','xwoo'); ?> 
+                    <p class="xwoo-author"><?php _e('by','xwoo'); ?> 
                         <a href="<?php echo XWOO_function()->get_author_url( get_the_author_meta( 'user_login' ) ); ?>"><?php echo XWOO_function()->get_author_name(); ?></a>
                     </p>
 
                     <!-- location -->
                     <?php $location = XWOO_function()->campaign_location(); ?>
                     <?php if($location) { ?>
-                        <div class="wpneo-location">
-                            <i class="wpneo-icon wpneo-icon-location"></i>
-                            <div class="wpneo-meta-desc"><?php echo $location; ?></div>
+                        <div class="xwoo-location">
+                            <i class="xwoo-icon xwoo-icon-location"></i>
+                            <div class="xwoo-meta-desc"><?php echo $location; ?></div>
                         </div>
                     <?php } ?>
                 </div>
-                <div class="wpneo-admin-location float-right">
+                <div class="xwoo-admin-location float-right">
                     <?php
                     $operation_btn = '';
-                    $operation_btn .= '<div class="wpneo-fields-action">';
-                        $page_id = get_option('wpneo_form_page_id');
+                    $operation_btn .= '<div class="xwoo-fields-action">';
+                        $page_id = get_option('wp_form_page_id');
                         if ($page_id != '') {
                             $permalink_edit     = add_query_arg( array( 'action' => 'edit', 'postid' => get_the_ID() ) , get_permalink($page_id) );
                             $permalink_update   = add_query_arg( array( 'page_type' => 'update', 'postid' => get_the_ID() ) , $current_page );
@@ -76,14 +76,14 @@ $the_query = new WP_Query( $args );
                         }
                         
                     if (get_post_status() == 'draft'){
-	                    $operation_btn .='<span class="wp-crowd-btn wpneo-campaign-status">['.__("Draft", "wp-xwoo").']</span>';
+	                    $operation_btn .='<span class="wp-crowd-btn xwoo-campaign-status">['.__("Draft", "wp-xwoo").']</span>';
                     }
                     $operation_btn .= '</div>';
                     echo $operation_btn;
                     ?>
                 </div>
-                <div class="wpneo-clearfix"></div>
-                <div class="wpneo-percent-rund-wrap">
+                <div class="xwoo-clearfix"></div>
+                <div class="xwoo-percent-rund-wrap">
                     
                     <!-- percent -->
                     <?php $raised_percent = XWOO_function()->get_fund_raised_percent_format(); ?>
@@ -101,15 +101,15 @@ $the_query = new WP_Query( $args );
                     }
                     ?>
                     <div class="crowdfound-fund-raised">
-                        <div class="wpneo-meta-desc"><?php echo wc_price($raised); ?></div>
-                        <div class="wpneo-meta-name"><?php _e('Fund Raised', 'xwoo'); ?></div>
+                        <div class="xwoo-meta-desc"><?php echo wc_price($raised); ?></div>
+                        <div class="xwoo-meta-name"><?php _e('Fund Raised', 'xwoo'); ?></div>
                     </div>
 
                     <!-- Funding Goal -->
                     <?php $funding_goal = get_post_meta($post->ID, '_nf_funding_goal', true); ?>
                     <div class="crowdfound-funding-goal">
-                        <div class="wpneo-meta-desc"><?php echo wc_price( $funding_goal ); ?></div>
-                        <div class="wpneo-meta-name"><?php _e('Funding Goal', 'xwoo'); ?></div>
+                        <div class="xwoo-meta-desc"><?php echo wc_price( $funding_goal ); ?></div>
+                        <div class="xwoo-meta-name"><?php _e('Funding Goal', 'xwoo'); ?></div>
                     </div>
 
                     <!--  Days to go -->
@@ -118,21 +118,21 @@ $the_query = new WP_Query( $args );
                         $days_remaining = apply_filters('date_remaining_msg', __(XWOO_function()->get_date_remaining(), 'xwoo'));
                     }
 
-                    $end_method = get_post_meta(get_the_ID(), 'wpneo_campaign_end_method', true);
+                    $end_method = get_post_meta(get_the_ID(), 'wp_campaign_end_method', true);
 
                     if ($end_method != 'never_end'){ ?>
                         <div class="crowdfound-time-remaining">
                             <?php if (XWOO_function()->is_campaign_started()){ ?>
-                                <div class="wpneo-meta-desc"><?php echo XWOO_function()->get_date_remaining(); ?></div>
-                                <div class="wpneo-meta-name"><?php _e( 'Days to go','xwoo' ); ?></div>
+                                <div class="xwoo-meta-desc"><?php echo XWOO_function()->get_date_remaining(); ?></div>
+                                <div class="xwoo-meta-name"><?php _e( 'Days to go','xwoo' ); ?></div>
                             <?php } else { ?>
-                                <div class="wpneo-meta-desc"><?php echo XWOO_function()->days_until_launch(); ?></div>
-                                <div class="wpneo-meta-name"><?php _e( 'Days Until Launch','xwoo' ); ?></div>
+                                <div class="xwoo-meta-desc"><?php echo XWOO_function()->days_until_launch(); ?></div>
+                                <div class="xwoo-meta-name"><?php _e( 'Days Until Launch','xwoo' ); ?></div>
                             <?php } ?>
                         </div>
                     <?php } ?>
-                </div><!-- wpneo-percent-rund-wrap -->
-            </div><!-- wpneo-listing-content -->
+                </div><!-- xwoo-percent-rund-wrap -->
+            </div><!-- xwoo-listing-content -->
             <?php do_action('XWOO_dashboard_campaign_loop_item_after_content'); ?>
             <div style="clear: both"></div>
         </div>

@@ -144,7 +144,7 @@ class Template_Hooks {
 			'callback'  => array($this, 'campaign_story_tab')
 		);
 
-		$saved_campaign_update = get_post_meta($post->ID, 'wpneo_campaign_updates', true);
+		$saved_campaign_update = get_post_meta($post->ID, 'wp_campaign_updates', true);
 		$saved_campaign_update = json_decode($saved_campaign_update, true);
 		if (is_array($saved_campaign_update) && count($saved_campaign_update) > 0) {
 			$tabs['update'] = array(
@@ -154,7 +154,7 @@ class Template_Hooks {
 			);
 		}
 
-		$show_table = get_post_meta($post->ID, 'wpneo_show_contributor_table', true);
+		$show_table = get_post_meta($post->ID, 'wp_show_contributor_table', true);
 		if($show_table == '1') {
 			$baker_list = XWOO_function()->get_customers_product();
 			if (count($baker_list) > 0) {
@@ -182,7 +182,7 @@ class Template_Hooks {
 		XWOO_function()->template('include/tabs/story-tab');
 	}
 
-	public function wpneo_xwoo_campaign_rewards_tab() {
+	public function wp_xwoo_campaign_rewards_tab() {
 		XWOO_function()->template('include/tabs/rewards-tab');
 	}
 
@@ -200,7 +200,7 @@ class Template_Hooks {
 
 	public function overwrite_product_feature_image($img_html) {
 		global $post;
-		$url = trim(get_post_meta($post->ID, 'wpneo_funding_video', true));
+		$url = trim(get_post_meta($post->ID, 'wp_funding_video', true));
 		if ( !empty($url) ) {
 			XWOO_function()->get_embeded_video( $url );
 		} else {

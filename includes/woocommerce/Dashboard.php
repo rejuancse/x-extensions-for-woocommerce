@@ -84,7 +84,7 @@ class Dashboard{
         }
 
         $html = '';
-        $html .= '<ul class="wpneo_d_status_list">';
+        $html .= '<ul class="wp_d_status_list">';
             $html .= '<li><span> <strong>'.$totalCampaigns.' </strong> '.__( "Total Campaign","wp-xwoo" ).'</span></li>';
             $html .= '<li><span><strong>'.$total_orders .' </strong> '.__( "Completed Orders","wp-xwoo" ).'</span></li>';
             $html .= '<li><span><strong>'. $on_hole_total_orders.' </strong> '.__( "On-Hold Orders","wp-xwoo" ).'</span></li>';
@@ -146,7 +146,7 @@ class Dashboard{
                 $post =  get_post($post_id);
                 $user = get_userdata($post->post_author);
 
-                $dashboard_page_id = get_option('wpneo_xwoo_dashboard_page_id');
+                $dashboard_page_id = get_option('wp_xwoo_dashboard_page_id');
                 $query_args= array(
                     'show_user_id'  => $user->ID,
                     'page_type'     => 'profile',
@@ -236,7 +236,7 @@ class Dashboard{
     function selected_reward_meta_box(){
         global $post;
         //Check is reward selected
-        $r = get_post_meta($post->ID, 'wpneo_selected_reward', true);
+        $r = get_post_meta($post->ID, 'wp_selected_reward', true);
         if ( ! empty($r) && is_array($r) ) {
             add_meta_box('meta-box-selected-reward', __('Selected Reward', 'xwoo'), array($this, 'selected_reward_meta_box_display_callback'), 'shop_order', 'side', 'high');
         }
@@ -291,7 +291,7 @@ class Dashboard{
             }
 
             ob_start();
-            $r = get_post_meta($order_id, 'wpneo_selected_reward', true);
+            $r = get_post_meta($order_id, 'wp_selected_reward', true);
             $r = json_decode($r, true);
             if ( ! empty($r) && is_array($r) ){
                 ?>
@@ -299,12 +299,12 @@ class Dashboard{
                     <td>
                         <h4><?php _e('Selected Reward', 'xwoo'); ?> </h4>
                         <?php
-                        if ( ! empty($r['wpneo_rewards_description'])){
-                            // echo "<div>{$r['wpneo_rewards_description']}</div>";
-                            echo "<div>". wpautop($r['wpneo_rewards_description'])."</div>";
+                        if ( ! empty($r['wp_rewards_description'])){
+                            // echo "<div>{$r['wp_rewards_description']}</div>";
+                            echo "<div>". wpautop($r['wp_rewards_description'])."</div>";
                         }
-                        if ( ! empty($r['wpneo_rewards_pladge_amount'])){ ?>
-                            <?php echo sprintf('Amount : %s, Delivery : %s', wc_price($r['wpneo_rewards_pladge_amount']), $r['wpneo_rewards_endmonth'].', '.$r['wpneo_rewards_endyear'] ); ?>
+                        if ( ! empty($r['wp_rewards_pladge_amount'])){ ?>
+                            <?php echo sprintf('Amount : %s, Delivery : %s', wc_price($r['wp_rewards_pladge_amount']), $r['wp_rewards_endmonth'].', '.$r['wp_rewards_endyear'] ); ?>
                         <?php } ?>
                     </td>
                     <td> </td>

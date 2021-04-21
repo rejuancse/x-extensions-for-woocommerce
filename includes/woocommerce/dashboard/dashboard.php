@@ -13,86 +13,86 @@ $html .= ob_get_clean();
 
 <?php
 
-$html .= '<div class="wpneo-row">';
-    $html .= '<div class="wpneo-col6">';
-    $html .= '<div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">'; 
+$html .= '<div class="xwoo-row">';
+    $html .= '<div class="xwoo-col6">';
+    $html .= '<div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">'; 
         $html .= '<h4>'.__( "My Campaigns" , "wp-xwoo" ).'</h4>';
         include_once XWOO_DIR_PATH.'includes/woocommerce/dashboard/dashboard-campaign.php';
-    $html .= '</div>';//wpneo-shadow 
+    $html .= '</div>';//xwoo-shadow 
 
     global $wp;
-    $html .= '<div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">'; 
+    $html .= '<div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">'; 
         $html .= '<h4>'.__( "Export Data" , "wp-xwoo" ).'</h4>';
-        $html .= '<br/><a href="'.home_url( $wp->request ).'/?download_data=personal" class="wpneo-edit-btn">'.__('Export Campaign Data', 'xwoo').'</a>';
-    $html .= '</div>';//wpneo-shadow 
+        $html .= '<br/><a href="'.home_url( $wp->request ).'/?download_data=personal" class="xwoo-edit-btn">'.__('Export Campaign Data', 'xwoo').'</a>';
+    $html .= '</div>';//xwoo-shadow 
 
-    $html .= '</div>';//wpneo-col6 
-    $html .= '<div class="wpneo-col6">';
+    $html .= '</div>';//xwoo-col6 
+    $html .= '<div class="xwoo-col6">';
 
     ob_start();
     do_action('XWOO_dashboard_place_3');
     $html .= ob_get_clean();
 
-    $html .= '<div class="wpneo-content wpneo-shadow wpneo-padding25 wpneo-clearfix">'; 
-        $html .= '<form id="wpneo-dashboard-form" action="" method="" class="wpneo-form">';
+    $html .= '<div class="xwoo-content xwoo-shadow xwoo-padding25 xwoo-clearfix">'; 
+        $html .= '<form id="xwoo-dashboard-form" action="" method="" class="xwoo-form">';
                 // User Name
                 $html .= '<h4>'.__('My Information', 'xwoo').'</h4>';
-                $html .= '<div class="wpneo-single">';
-                    $html .= '<div class="wpneo-name float-left">';
+                $html .= '<div class="xwoo-single">';
+                    $html .= '<div class="xwoo-name float-left">';
                         $html .= '<p>'.__( "Username:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
-                    $html .= '<div class="wpneo-fields float-right">';
-                        $html .= '<input type="hidden" name="action" value="wpneo_dashboard_form">';
+                    $html .= '<div class="xwoo-fields float-right">';
+                        $html .= '<input type="hidden" name="action" value="wp_dashboard_form">';
                         $html .= '<input type="text" name="username" value="'.$current_user->user_login.'" disabled>';
                     $html .= '</div>';
                 $html .= '</div>';
             
                 // Email Address
-                $html .= '<div class="wpneo-single">';
-                    $html .= '<div class="wpneo-name float-left">';
+                $html .= '<div class="xwoo-single">';
+                    $html .= '<div class="xwoo-name float-left">';
                         $html .= '<p>'.__( "Email:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
-                    $html .= '<div class="wpneo-fields float-right">';
+                    $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="email" name="email" value="'.$current_user->user_email.'" disabled>';
                     $html .= '</div>';
                 $html .= '</div>';
 
                 // First Name
-                $html .= '<div class="wpneo-single">';
-                    $html .= '<div class="wpneo-name float-left">';
+                $html .= '<div class="xwoo-single">';
+                    $html .= '<div class="xwoo-name float-left">';
                         $html .= '<p>'.__( "First Name:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
-                    $html .= '<div class="wpneo-fields float-right">';
+                    $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="text" name="firstname" value="'.$current_user->user_firstname.'" disabled>';
                     $html .= '</div>';
                 $html .= '</div>';
 
                 // Last Name
-                $html .= '<div class="wpneo-single">';
-                    $html .= '<div class="wpneo-name float-left">';
+                $html .= '<div class="xwoo-single">';
+                    $html .= '<div class="xwoo-name float-left">';
                         $html .= '<p>'.__( "Last Name:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
-                    $html .= '<div class="wpneo-fields float-right">';
+                    $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="text" name="lastname" value="'.$current_user->user_lastname.'" disabled>';
                     $html .= '</div>';
                 $html .= '</div>';
 
                 // Website
-                $html .= '<div class="wpneo-single">';
-                    $html .= '<div class="wpneo-name float-left">';
+                $html .= '<div class="xwoo-single">';
+                    $html .= '<div class="xwoo-name float-left">';
                         $html .= '<p>'.__( "Website:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
-                    $html .= '<div class="wpneo-fields float-right">';
+                    $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="text" name="website" value="'.$current_user->user_url.'" disabled>';
                     $html .= '</div>';
                 $html .= '</div>';
 
                 // Bio Info
-                $html .= '<div class="wpneo-single">';
-                    $html .= '<div class="wpneo-name float-left">';
+                $html .= '<div class="xwoo-single">';
+                    $html .= '<div class="xwoo-name float-left">';
                         $html .= '<p>'.__( "Bio:" , "wp-xwoo" ).'</p>';
                     $html .= '</div>';
-                    $html .= '<div class="wpneo-fields float-right">';
+                    $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<textarea name="description" rows="3" disabled>'.$current_user->description.'</textarea>';
                     $html .= '</div>';
                 $html .= '</div>';
@@ -102,15 +102,15 @@ $html .= '<div class="wpneo-row">';
             do_action('XWOO_dashboard_after_dashboard_form');
             $html .= ob_get_clean();
 
-            $html .= wp_nonce_field( 'wpneo_xwoo_dashboard_form_action', 'wpneo_xwoo_dashboard_nonce_field', true, false );
+            $html .= wp_nonce_field( 'wp_xwoo_dashboard_form_action', 'wp_xwoo_dashboard_nonce_field', true, false );
             //Save Button
-            $html .= '<div class="wpneo-buttons-group float-right">';
-                $html .= '<button id="wpneo-edit" class="wpneo-edit-btn">'.__( "Edit" , "wp-xwoo" ).'</button>';
-                $html .= '<button id="wpneo-dashboard-btn-cancel" class="wpneo-cancel-btn wpneo-hidden" type="submit">'.__( "Cancel" , "wp-xwoo" ).'</button>';
-                $html .= '<button id="wpneo-dashboard-save" class="wpneo-save-btn wpneo-hidden" type="submit">'.__( "Save" , "wp-xwoo" ).'</button>';
+            $html .= '<div class="xwoo-buttons-group float-right">';
+                $html .= '<button id="xwoo-edit" class="xwoo-edit-btn">'.__( "Edit" , "wp-xwoo" ).'</button>';
+                $html .= '<button id="xwoo-dashboard-btn-cancel" class="xwoo-cancel-btn xwoo-hidden" type="submit">'.__( "Cancel" , "wp-xwoo" ).'</button>';
+                $html .= '<button id="xwoo-dashboard-save" class="xwoo-save-btn xwoo-hidden" type="submit">'.__( "Save" , "wp-xwoo" ).'</button>';
             $html .= '</div>';
             $html .= '<div class="clear-float"></div>';
-        $html .= '</form>';//#wpneo-dashboard-form
-    $html .= '</div>';//wpneo-content
-    $html .= '</div>';//wpneo-col6 
-$html .= '</div>';//wpneo-row
+        $html .= '</form>';//#xwoo-dashboard-form
+    $html .= '</div>';//xwoo-content
+    $html .= '</div>';//xwoo-col6 
+$html .= '</div>';//xwoo-row

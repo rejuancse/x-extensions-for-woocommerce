@@ -14,7 +14,7 @@ $args = array(
 	'post_status'	=> 'wc-completed',
 	'meta_query' => array(
 		array(
-			'key' => 'wpneo_selected_reward',
+			'key' => 'wp_selected_reward',
 			'value'   => array('', null),
 			'compare' => 'NOT IN'
 		),
@@ -28,11 +28,11 @@ $args = array(
 $rewards_query = new WP_Query($args);
 ?>
 
-<div class="wpneo-content">
-	<div class="wpneo-form">
-		<div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">
+<div class="xwoo-content">
+	<div class="xwoo-form">
+		<div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">
 			<?php if ($rewards_query->have_posts()){ ?>
-				<div class="wpneo-responsive-table">
+				<div class="xwoo-responsive-table">
 					<table class="stripe-table reward_table_dashboard">
 						<thead>
 							<tr>
@@ -45,7 +45,7 @@ $rewards_query = new WP_Query($args);
 							<?php
 							while ($rewards_query->have_posts()) {
 								$rewards_query->the_post();
-								$reward = get_post_meta(get_the_ID(), 'wpneo_selected_reward', true);
+								$reward = get_post_meta(get_the_ID(), 'wp_selected_reward', true);
 								$order = new WC_Order(get_the_ID());
 								?>
 								<tr>
@@ -55,20 +55,20 @@ $rewards_query = new WP_Query($args);
 										foreach ($order->get_items() as $key => $item){
 											echo $item['name'];
 										}
-										if ( ! empty($reward['wpneo_rewards_pladge_amount'])){
-											echo ' / '.wc_price($reward['wpneo_rewards_pladge_amount']);
+										if ( ! empty($reward['wp_rewards_pladge_amount'])){
+											echo ' / '.wc_price($reward['wp_rewards_pladge_amount']);
 										}
 										?>
 										<div class="reward_description" style="display: none;">
 											<?php
-											if ( ! empty($reward['wpneo_rewards_endmonth'])){
+											if ( ! empty($reward['wp_rewards_endmonth'])){
 												echo '<div><strong>'. __('Estimated Delivery', 'xwoo')."</strong><br />";
-												$est_delivery = ucfirst($reward['wpneo_rewards_endmonth']).'-'.$reward['wpneo_rewards_endyear'];
+												$est_delivery = ucfirst($reward['wp_rewards_endmonth']).'-'.$reward['wp_rewards_endyear'];
 												echo date_i18n( 'F, Y', strtotime( '1-'.$est_delivery ) );
 											}
-											if ( ! empty($reward['wpneo_rewards_description'])){
+											if ( ! empty($reward['wp_rewards_description'])){
 												echo '<div><strong>'. __('Description', 'xwoo')."</strong><br />";
-												echo $reward['wpneo_rewards_description'].'</div>';
+												echo $reward['wp_rewards_description'].'</div>';
 											}
 											echo '<div><strong>'.__('Backer info', 'xwoo').'</strong> <br />';
 
@@ -99,7 +99,7 @@ $rewards_query = new WP_Query($args);
 					</table>
 				</div> <?php
 			} else {
-				echo '<div class="wpneocf-alert-info"> '.__('There is no rewards selected by backer', 'xwoo').' </div>';
+				echo '<div class="xwoocf-alert-info"> '.__('There is no rewards selected by backer', 'xwoo').' </div>';
 			}
 			?>
 		</div>

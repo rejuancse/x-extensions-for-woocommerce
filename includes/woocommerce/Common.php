@@ -57,7 +57,7 @@ class Common {
 
         update_user_meta($user_id, 'loved_campaign_ids', $ids);
 
-        die(json_encode(array('success'=> 1, 'message' => __('Loved campaign', 'xwoo'), 'return_html' =>  '<a href="javascript:;" id="remove_from_love_campaign" data-campaign-id="'.$campaign_id.'"><i class="wpneo-icon wpneo-icon-love-full"></i></a>' )));
+        die(json_encode(array('success'=> 1, 'message' => __('Loved campaign', 'xwoo'), 'return_html' =>  '<a href="javascript:;" id="remove_from_love_campaign" data-campaign-id="'.$campaign_id.'"><i class="xwoo-icon xwoo-icon-love-full"></i></a>' )));
     }
 
     public function remove_love_campaign_action(){

@@ -84,17 +84,17 @@ class ProjectListing{
 
             query_posts($query_args);
             ob_start();
-            XWOO_function()->template('wpneo-listing');
+            XWOO_function()->template('xwoo-listing');
             $html = '';
             $html .= '<style>';
-                $html .= '#neo-progressbar > div, ul.wpneo-xwoo-update li:hover span.round-circle, .wpneo-links li a:hover, .wpneo-links li.active a, #neo-progressbar > div {
+                $html .= '#neo-progressbar > div, ul.xwoo-update li:hover span.round-circle, .xwoo-links li a:hover, .xwoo-links li.active a, #neo-progressbar > div {
                     background-color: '. $progressbarColor .';
                 }';
-                $html .= '.wpneo-funding-data span, .wpneo-time-remaining .wpneo-meta-desc, .wpneo-funding-goal .wpneo-meta-name, .wpneo-raised-percent, .wpneo-listing-content p.wpneo-short-description, .wpneo-location .wpneo-meta-desc, .wpneo-listings .wpneo-listing-content h4 a, .wpneo-fund-raised, .wpneo-time-remaining {
+                $html .= '.xwoo-funding-data span, .xwoo-time-remaining .xwoo-meta-desc, .xwoo-funding-goal .xwoo-meta-name, .xwoo-raised-percent, .xwoo-listing-content p.xwoo-short-description, .xwoo-location .xwoo-meta-desc, .xwoo-listings .xwoo-listing-content h4 a, .xwoo-fund-raised, .xwoo-time-remaining {
                     color: '. $majorColor .';
                 }';
 
-                $html .= '.wpneo-listings .wpneo-listing-content .wpneo-author a, .wpneo-listings .wpneo-listing-content p.wpneo-author {
+                $html .= '.xwoo-listings .xwoo-listing-content .xwoo-author a, .xwoo-listings .xwoo-listing-content p.xwoo-author {
                     color: '. $authorColor .'
                 }';
             $html .= '</style>';

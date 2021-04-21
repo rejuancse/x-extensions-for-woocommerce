@@ -41,13 +41,13 @@ class Submit_Form{
         $html .= XWOO_get_submit_form_campaign();
 
         $html .= '<style>';
-            $html .= 'input[type="button"].wpneo-image-upload, .wpneo-image-upload.float-right, .wpneo-image-upload-btn, #addreward, #wpneofrontenddata .wpneo-form-action input[type="submit"].wpneo-submit-campaign, .wpneo-single .wpneo-image-upload-btn {
+            $html .= 'input[type="button"].xwoo-image-upload, .xwoo-image-upload.float-right, .xwoo-image-upload-btn, #addreward, #xwoofrontenddata .xwoo-form-action input[type="submit"].xwoo-submit-campaign, .xwoo-single .xwoo-image-upload-btn {
                 background-color: '. $bgColor .';
             }';
-            $html .= 'input[type="button"].wpneo-image-upload, .wpneo-image-upload.float-right, .wpneo-image-upload-btn, #addreward, #wpneofrontenddata .wpneo-form-action input[type="submit"].wpneo-submit-campaign, a.wpneo-cancel-campaign, .editor-styles-wrapper a.wpneo-cancel-campaign {
+            $html .= 'input[type="button"].xwoo-image-upload, .xwoo-image-upload.float-right, .xwoo-image-upload-btn, #addreward, #xwoofrontenddata .xwoo-form-action input[type="submit"].xwoo-submit-campaign, a.xwoo-cancel-campaign, .editor-styles-wrapper a.xwoo-cancel-campaign {
                 color: '.$textColor.'
             }';
-            $html .= 'a.wpneo-cancel-campaign {
+            $html .= 'a.xwoo-cancel-campaign {
                 background-color: '.$cancelBtnColor.'
             }';
         $html .= '</style>';

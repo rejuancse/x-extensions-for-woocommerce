@@ -1,8 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-$html .= '<div class="wpneo-content">';
-$html .= '<div class="wpneo-form campaign-listing-page">';
+$html .= '<div class="xwoo-content">';
+$html .= '<div class="xwoo-form campaign-listing-page">';
 
 $args = array(
     'post_type' 		=> 'product',
@@ -56,10 +56,10 @@ $customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_q
     'post_status' => array_keys( wc_get_order_statuses() )
 ) ) );
 
-$html .='<div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">';
+$html .='<div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">';
 
 if ( $customer_orders ) :
-    $html .='<div class="wpneo-responsive-table">';
+    $html .='<div class="xwoo-responsive-table">';
         $html .='<table width="100%" class="stripe-table">';
         $html .='<thead>';
         $html .='<tr>';
@@ -106,7 +106,7 @@ if ( $customer_orders ) :
 
                         //$html .= $product_id;
 
-                        $campaign_rewards = get_post_meta($product_id, 'wpneo_reward', true);
+                        $campaign_rewards = get_post_meta($product_id, 'wp_reward', true);
                         $campaign_rewards_a = json_decode($campaign_rewards, true);
 
                         $order_total = $order->get_total('raw');
@@ -117,10 +117,10 @@ if ( $customer_orders ) :
                         if (is_array($campaign_rewards_a)) {
                             if (count($campaign_rewards_a) > 0) {
                                 foreach ($campaign_rewards_a as $key => $value) {
-                                    if ($order_total >= $value['wpneo_rewards_pladge_amount']) {
-                                        if( $temp <= $value['wpneo_rewards_pladge_amount'] ){
-                                            $temp = $value['wpneo_rewards_pladge_amount'];
-                                            $rewards_amount = '<a class="label-default" href="'.get_permalink($product_id).'" target="_blank">'.__('Rewards', 'xwoo').': ' . XWOO_function()->price($value['wpneo_rewards_pladge_amount']).'</a>';
+                                    if ($order_total >= $value['wp_rewards_pladge_amount']) {
+                                        if( $temp <= $value['wp_rewards_pladge_amount'] ){
+                                            $temp = $value['wp_rewards_pladge_amount'];
+                                            $rewards_amount = '<a class="label-default" href="'.get_permalink($product_id).'" target="_blank">'.__('Rewards', 'xwoo').': ' . XWOO_function()->price($value['wp_rewards_pladge_amount']).'</a>';
                                         }
                                     }
                                 }
@@ -139,11 +139,11 @@ if ( $customer_orders ) :
         $html .='</tbody>';
 
         $html .='</table>';
-    $html .='</div>';//wpneo-responsive-table
+    $html .='</div>';//xwoo-responsive-table
 else:
     $html .= "<p>".__( 'Sorry, No Backed Campaigns Data Found.','xwoo' )."</p>";
 endif;
-$html .= "</div>";//wpneo-padding25
+$html .= "</div>";//xwoo-padding25
 
 $customer_order_all = get_posts( apply_filters( 'woocommerce_my_account_my_orders_query', array(
     'numberposts' => -1,

@@ -188,10 +188,10 @@ $get_xwoo_campaigns = new WP_Query($query_args);
 $pladges_received = XWOO_function()->get_pladge_received($from_date, $to_date);
 ?>
 
-<div class="wpneo-dashboard-chart wpneo-shadow chart-container">
+<div class="xwoo-dashboard-chart xwoo-shadow chart-container">
 
-    <div class="wpneo-dashboard-head wpneo-clearfix">
-        <div class="wpneo-dashboard-head-left">
+    <div class="xwoo-dashboard-head xwoo-clearfix">
+        <div class="xwoo-dashboard-head-left">
             <span><?php _e( "Summary" , "wp-xwoo" );?></span>
             <ul>
                 <li class="<?php echo ($date_range === 'last_7_days') ? 'active':''; ?>"><a href="<?php echo add_query_arg(array('date_range' => 'last_7_days'),get_permalink()); ?>"><?php echo __('1W','xwoo'); ?></a></li>
@@ -211,17 +211,17 @@ $pladges_received = XWOO_function()->get_pladge_received($from_date, $to_date);
                 <button type="submit" class="wp-crowd-btn wp-crowd-btn-primary" id="search-submit"><?php _e('Search', 'xwoo') ?></button>
             </form>
         </div><!--dashboard-head-right-->
-    </div><!--wpneo-dashboard-head-->
+    </div><!--xwoo-dashboard-head-->
 
-    <div class="wpneo-dashboard-summary wpneo-clearfix">
+    <div class="xwoo-dashboard-summary xwoo-clearfix">
         <ul>
-            <li class="active"><span class="wpneo-value"> <?php echo wc_price(array_sum($total_backers_amount_ever)); ?></span><span class="wpneo-value-info"><?php _e( "Fund Raised" , "wp-xwoo" ); ?></span></li>
-            <li><span class="wpneo-value"><?php echo array_sum($sales_count_ever); ?></span><span class="wpneo-value-info"><?php _e( "Total Backed" , "wp-xwoo" ); ?></span></li>
-            <li><span class="wpneo-value"><?php echo count($pladges_received); ?></span><span class="wpneo-value-info"><?php _e( "Pledge Received" , "wp-xwoo" ); ?></span></li>
+            <li class="active"><span class="xwoo-value"> <?php echo wc_price(array_sum($total_backers_amount_ever)); ?></span><span class="xwoo-value-info"><?php _e( "Fund Raised" , "wp-xwoo" ); ?></span></li>
+            <li><span class="xwoo-value"><?php echo array_sum($sales_count_ever); ?></span><span class="xwoo-value-info"><?php _e( "Total Backed" , "wp-xwoo" ); ?></span></li>
+            <li><span class="xwoo-value"><?php echo count($pladges_received); ?></span><span class="xwoo-value-info"><?php _e( "Pledge Received" , "wp-xwoo" ); ?></span></li>
         </ul>
-    </div><!--wpneo-dashboard-summary-->
+    </div><!--xwoo-dashboard-summary-->
     <canvas id="WPcrowdFundChart" width="400" height="60"></canvas>
-</div><!--"wpneo-dashboard-chart-->
+</div><!--"xwoo-dashboard-chart-->
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 <script type="text/javascript">

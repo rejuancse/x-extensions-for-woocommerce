@@ -74,7 +74,7 @@ $arr =  array(
 
     // #Show Target Goal
     array(
-        'id'        => 'wpneo_show_target_goal',
+        'id'        => 'wp_show_target_goal',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -83,7 +83,7 @@ $arr =  array(
 
     // #Show Target Date
     array(
-        'id'        => 'wpneo_show_target_date',
+        'id'        => 'wp_show_target_date',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -92,7 +92,7 @@ $arr =  array(
 
     // #Show Target Goal & Date
     array(
-        'id'        => 'wpneo_show_target_goal_and_date',
+        'id'        => 'wp_show_target_goal_and_date',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -101,7 +101,7 @@ $arr =  array(
 
     // #Show Campaign Never End
     array(
-        'id'        => 'wpneo_show_campaign_never_end',
+        'id'        => 'wp_show_campaign_never_end',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -134,7 +134,7 @@ $arr =  array(
 
     // #Enable Minimum Price
     array(
-        'id'        => 'wpneo_show_min_price',
+        'id'        => 'wp_show_min_price',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -143,7 +143,7 @@ $arr =  array(
 
     // #Enable Maximum Price
     array(
-        'id'        => 'wpneo_show_max_price',
+        'id'        => 'wp_show_max_price',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -152,7 +152,7 @@ $arr =  array(
 
     // #Enable Recommended Price
     array(
-        'id'        => 'wpneo_show_recommended_price',
+        'id'        => 'wp_show_recommended_price',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -275,7 +275,7 @@ $arr =  array(
     ),
 
     array(
-        'id'        => 'wpneo_xwoo_admin_tab',
+        'id'        => 'wp_xwoo_admin_tab',
         'type'      => 'hidden',
         'value'     => 'tab_fields',
     ),

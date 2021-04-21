@@ -44,7 +44,7 @@ class Templating {
      * @var
      *
      * determine you are used which vendor
-     * [woocommerce, edd, wpneo]
+     * [woocommerce, edd, xwoo]
      */
 
     public $_vendor;
@@ -67,7 +67,7 @@ class Templating {
     }
 
     public function __construct() {
-        $this->_theme = get_option('wpneo_cf_selected_theme',true);
+        $this->_theme = get_option('wp_cf_selected_theme',true);
 
         /**
          * Set Vendor, we checking here which vendor we are using currently
@@ -81,7 +81,7 @@ class Templating {
             $is_new_theme = false;
         }
 
-        $this->_theme_in_themes_path = get_stylesheet_directory()."/".( $is_new_theme ? "XWOOtemplate" : "wpneotemplate" )."/{$this->_vendor}/{$this->_theme}/";
+        $this->_theme_in_themes_path = get_stylesheet_directory()."/".( $is_new_theme ? "XWOOtemplate" : "xwootemplate" )."/{$this->_vendor}/{$this->_theme}/";
         $this->_theme_in_plugin_path = XWOO_DIR_PATH."XWOOtemplate/{$this->_vendor}/{$this->_theme}/";
         $this->_vendor_path = XWOO_DIR_PATH."XWOOtemplate/{$this->_vendor}/";
 
@@ -98,20 +98,20 @@ class Templating {
 
         if ($this->check_theme_standard($this->_selected_theme_path)){
             if (file_exists($this->_theme_in_themes_path.'style.css')){
-                $this->_selected_theme_uri = get_stylesheet_directory_uri()."/".( $is_new_theme ? "XWOOtemplate" : "wpneotemplate" )."/{$this->_vendor}/{$this->_theme}/";
+                $this->_selected_theme_uri = get_stylesheet_directory_uri()."/".( $is_new_theme ? "XWOOtemplate" : "xwootemplate" )."/{$this->_vendor}/{$this->_theme}/";
             }else{
                 $this->_selected_theme_uri = XWOO_DIR_URL."XWOOtemplate/{$this->_vendor}/{$this->_theme}/";
             }
         }else{
             if (file_exists($this->_selected_theme_path.'style.css')){
-                $this->_selected_theme_uri = get_stylesheet_directory_uri()."/".( $is_new_theme ? "XWOOtemplate" : "wpneotemplate" )."/{$this->_vendor}/{$this->_theme}/";
+                $this->_selected_theme_uri = get_stylesheet_directory_uri()."/".( $is_new_theme ? "XWOOtemplate" : "xwootemplate" )."/{$this->_vendor}/{$this->_theme}/";
             }else{
                 $this->_selected_theme_uri = XWOO_DIR_URL."/XWOOtemplate/{$this->_vendor}/{$this->_theme}/";
             }
         }
 
         //Determine where single campaign will be load, is it WooCommerce or Wp Crowdfunding
-        $single_page_template = get_option('wpneo_single_page_template');
+        $single_page_template = get_option('wp_single_page_template');
 
         if (empty($single_page_template) || ($single_page_template == 'in_wp_xwoo') ){
             add_filter( 'template_include',         array( $this, 'template_chooser_callback' ), 99); //Get custom template for this
@@ -189,15 +189,15 @@ class Templating {
     }
     /**
      * Theme standard
-     * These file required for develop a wpneo xwoo theme
+     * These file required for develop a xwoo xwoo theme
      */
     public function theme_standard_check(){
         $theme_standard = array(
             'index.php',
             'style.css',
-            'wpneo-listing.php',
+            'xwoo-listing.php',
             'single-xwoo.php',
-            'wpneo-functions.php'
+            'xwoo-functions.php'
         );
 
         return $theme_standard;
@@ -258,7 +258,7 @@ class Templating {
      * Generate select option html for theme
      */
     public function selected_theme_callback(){
-        $themes_dir = $this->wpneo_cf_select_themes_dir();
+        $themes_dir = $this->wp_cf_select_themes_dir();
         $html = '';
 
         $html .='<table class="form-table">';
@@ -266,7 +266,7 @@ class Templating {
             $html .='<tr>';
                 $html .='<th scope="row"><label>'.__('Select a Theme for Single and Listing Pages', 'xwoo').'</label></th>';
                 $html .='<td>';
-                    $html .= '<select name="wpneo_cf_selected_theme">';
+                    $html .= '<select name="wp_cf_selected_theme">';
                         if (count($themes_dir) > 0){
                             $html .= '<option value="">'.__('Select a theme', 'xwoo').'</option>';
                             foreach($themes_dir as $k => $v) {
@@ -305,19 +305,19 @@ class Templating {
     }
 
     /**
-     * Include wpneo theme functions with wordpress core
+     * Include xwoo theme functions with wordpress core
      */
     public function require_theme_resources(){
         $is_valid_theme = $this->check_theme_standard($this->_selected_theme_path);
         if ($is_valid_theme) {
-            include_once $this->_selected_theme_path . 'wpneo-functions.php';
+            include_once $this->_selected_theme_path . 'xwoo-functions.php';
         }else{
-            include_once $this->_theme_in_plugin_path . 'wpneo-functions.php';
+            include_once $this->_theme_in_plugin_path . 'xwoo-functions.php';
         }
     }
 
     /**
-     * Include wpneo theme CSS in frontend
+     * Include xwoo theme CSS in frontend
      */
     public function load_theme_css_callback(){
         $is_valid_theme = $this->check_theme_standard($this->_selected_theme_path);
@@ -332,16 +332,16 @@ class Templating {
         }
     }
 
-
+ 
     /**
      * Template Redirect
      */
 
     public function theme_redirect_callback() {
-        $listing_id = get_option('wpneo_listing_page_id','');
-        $form_id = get_option('wpneo_form_page_id','');
-        $registration_id = get_option('wpneo_registration_page_id','');
-        $dashboard_id = get_option('wpneo_xwoo_dashboard_page_id','');
+        $listing_id = get_option('wp_listing_page_id','');
+        $form_id = get_option('wp_form_page_id','');
+        $registration_id = get_option('wp_registration_page_id','');
+        $dashboard_id = get_option('wp_xwoo_dashboard_page_id','');
 
         if( is_page() ){
             if( ($listing_id != '') && ($listing_id != '0') ){
@@ -366,7 +366,7 @@ class Templating {
             if(is_single()){
                 if(function_exists('is_product')){
                     if( is_product() ){
-                        $var = get_option( 'wpneo_single_page_id');
+                        $var = get_option( 'wp_single_page_id');
                         if($var=='true'){
                             $_product = wc_get_product( get_the_ID() );
                             if( $_product->is_type( 'xwoo' ) ){

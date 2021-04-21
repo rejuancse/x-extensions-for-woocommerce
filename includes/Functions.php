@@ -101,9 +101,9 @@ class Functions {
     
     public function get_screen_id(){
         $screen_ids = array(
-            'toplevel_page_wpneo-xwoo',
-            'xwoo_page_wpneo-xwoo-reports',
-            'xwoo_page_wpneo-xwoo-withdraw',
+            'toplevel_page_xwoo',
+            'xwoo_page_xwoo-reports',
+            'xwoo_page_xwoo-withdraw',
         );
         return apply_filters('XWOO_screen_id', $screen_ids);
     }
@@ -280,7 +280,7 @@ class Functions {
 
 	public function campaign_location(){
 		global $post;
-		$country = get_post_meta($post->ID, 'wpneo_country', true);
+		$country = get_post_meta($post->ID, 'wp_country', true);
 		$location = get_post_meta($post->ID, '_nf_location', true);
 		$country_name = '';
 		if (class_exists('WC_Countries')) {
@@ -355,12 +355,12 @@ class Functions {
 
 			//If found previous liked
 			if (in_array($campaign_id, $loved_campaign_ids)){
-				$html .= '<a href="javascript:;" id="remove_from_love_campaign" data-campaign-id="'.$campaign_id.'"><i class="wpneo-icon wpneo-icon-love-full"></i></a>';
+				$html .= '<a href="javascript:;" id="remove_from_love_campaign" data-campaign-id="'.$campaign_id.'"><i class="xwoo-icon xwoo-icon-love-full"></i></a>';
 			} else {
-				$html .= '<a href="javascript:;" id="love_this_campaign" data-campaign-id="'.$campaign_id.'"><i class="wpneo-icon wpneo-icon-love-empty"></i></a>';
+				$html .= '<a href="javascript:;" id="love_this_campaign" data-campaign-id="'.$campaign_id.'"><i class="xwoo-icon xwoo-icon-love-empty"></i></a>';
 			}
 		} else {
-			$html .= '<a href="javascript:;" id="love_this_campaign" data-campaign-id="'.$campaign_id.'"><i class="wpneo-icon wpneo-icon-love-empty"></i></a>';
+			$html .= '<a href="javascript:;" id="love_this_campaign" data-campaign-id="'.$campaign_id.'"><i class="xwoo-icon xwoo-icon-love-empty"></i></a>';
 		}
 
 		if ($echo){
@@ -381,7 +381,7 @@ class Functions {
             $error = true;
             $html .= '<p class="error"><strong>ERROR:</strong> Username or Password is empty.</p><br><br>';
         }
-		$html .= '<div class="wpneo_login_form_div" '.($error == false ? 'style="display: none;"' : '').'>';
+		$html .= '<div class="wp_login_form_div" '.($error == false ? 'style="display: none;"' : '').'>';
 		$html .= wp_login_form(array('echo' => false, 'hidden' => true));
 		$html .= '</div>';
 		return $html;
@@ -451,7 +451,7 @@ class Functions {
 				}
 				$embeded = '<video controls><source src="' . $url . '" type="video/' . $format . '">'.__('Your browser does not support the video tag.', 'xwoo').'</video>';
 			}
-			return '<div class="wpneo-video-wrapper">' . $embeded . '</div>';
+			return '<div class="xwoo-video-wrapper">' . $embeded . '</div>';
 		} else {
 			return false;
 		}
@@ -461,7 +461,7 @@ class Functions {
 	function get_pagination($page_numb, $max_page) {
 		$html = '';
 		$big = 999999999; // need an unlikely integer
-		$html .= '<div class="wpneo-pagination">';
+		$html .= '<div class="xwoo-pagination">';
 		$html .= paginate_links(array(
 			'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
 			'format' => '?paged=%#%',
@@ -537,7 +537,7 @@ class Functions {
                 return false;
             }
         }
-        $campaign_end_method = get_post_meta($campaign_id, 'wpneo_campaign_end_method' , true);
+        $campaign_end_method = get_post_meta($campaign_id, 'wp_campaign_end_method' , true);
         switch ($campaign_end_method){
 
             case 'target_goal':
@@ -710,7 +710,7 @@ class Functions {
     public function get_campaign_update_status(){
 
         global $post;
-        $saved_campaign_update = get_post_meta($post->ID, 'wpneo_campaign_updates', true);
+        $saved_campaign_update = get_post_meta($post->ID, 'wp_campaign_updates', true);
         $saved_campaign_update_a = json_decode($saved_campaign_update, true);
 
         $html = '';

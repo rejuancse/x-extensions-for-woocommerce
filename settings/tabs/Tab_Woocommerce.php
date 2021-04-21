@@ -31,7 +31,7 @@ $arr =  array(
 
     // #Product Single Page Fullwith
 /*    array(
-        'id'        => 'wpneo_single_page_id',
+        'id'        => 'wp_single_page_id',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -50,7 +50,7 @@ $arr =  array(
 
     // #Listing Page Select
     array(
-        'id'        => 'wpneo_listing_page_id',
+        'id'        => 'wp_listing_page_id',
         'type'      => 'dropdown',
         'option'    => $pages,
         'label'     => __('Select Listing Page','xwoo'),
@@ -59,7 +59,7 @@ $arr =  array(
 
     // #Campaign Registration Page Select
     array(
-        'id'        => 'wpneo_registration_page_id',
+        'id'        => 'wp_registration_page_id',
         'type'      => 'dropdown',
         'option'    => $pages,
         'label'     => __('Select Registration Page','xwoo'),
@@ -92,7 +92,7 @@ $arr =  array(
 
     // #Campaign Submit Form Requirement Title
     array(
-        'id'        => 'wpneo_requirement_title',
+        'id'        => 'wp_requirement_title',
         'type'      => 'text',
         'label'     => __('Submit Form Requirement Title','xwoo'),
         'desc'      => __('Additional title for Submit Form Requirement Title goes here.','xwoo'),
@@ -101,7 +101,7 @@ $arr =  array(
 
     // #Campaign Submit Form Requirement Text
     array(
-        'id'        => 'wpneo_requirement_text',
+        'id'        => 'wp_requirement_text',
         'type'      => 'textarea',
         'value'     => '',
         'label'     => __('Submit Form Requirement Text','xwoo'),
@@ -110,7 +110,7 @@ $arr =  array(
 
     // #Campaign Submit Form Requirement Agree Title
     array(
-        'id'        => 'wpneo_requirement_agree_title',
+        'id'        => 'wp_requirement_agree_title',
         'type'      => 'text',
         'value'     => '',
         'label'     => __('Submit Form Agree Title','xwoo'),
@@ -118,7 +118,7 @@ $arr =  array(
     ),
 
     array(
-        'id'        => 'wpneo_xwoo_add_to_cart_redirect',
+        'id'        => 'wp_xwoo_add_to_cart_redirect',
         'type'      => 'radio',
         'option'    =>  array( 'checkout_page' => 'Checkout Page', 'cart_page' => 'Cart Page', 'none' => 'None' ) ,
         'label'     => __('Button Submit Action of "Back This Campaign" ','xwoo'),
@@ -174,7 +174,7 @@ $arr =  array(
 
     //Load campaign in single page
     array(
-        'id'        => 'wpneo_single_page_template',
+        'id'        => 'wp_single_page_template',
         'type'      => 'radio',
         'option'    => array(
             'in_wp_xwoo' => __('In WP Crowdfunding own template','xwoo'),
@@ -185,7 +185,7 @@ $arr =  array(
 
     // #Number of Columns in a Row
     array(
-        'id'        => 'wpneo_single_page_reward_design',
+        'id'        => 'wp_single_page_reward_design',
         'type'      => 'dropdown',
         'option'    => array(
             '1' => __('1','xwoo'),
@@ -196,7 +196,7 @@ $arr =  array(
 
     // #Reward fixed price
     array(
-        'id'        => 'wpneo_reward_fixed_price',
+        'id'        => 'wp_reward_fixed_price',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Set fixed price instead of range on Rewards','xwoo'),
@@ -219,7 +219,7 @@ $arr =  array(
 
 	// #Save Function
     array(
-        'id'        => 'wpneo_xwoo_admin_tab',
+        'id'        => 'wp_xwoo_admin_tab',
         'type'      => 'hidden',
         'value'     => 'tab_woocommerce',
     ),

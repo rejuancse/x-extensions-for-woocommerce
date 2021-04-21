@@ -29,18 +29,18 @@ class Actions {
      */
 
     public function __construct() {
-        add_action( 'wp_ajax_wpneo_dashboard_form',      array($this, 'dashboard_form_save'));
-        add_action( 'wp_ajax_wpneo_profile_form',        array($this, 'profile_form_save'));
-        add_action( 'wp_ajax_wpneo_contact_form',        array($this, 'contact_form_save'));
-        add_action( 'wp_ajax_wpneo_password_form',       array($this, 'password_form_save'));
-        add_action( 'wp_ajax_wpneo_update_status_save',  array($this, 'update_status_save'));
+        add_action( 'wp_ajax_wp_dashboard_form',      array($this, 'dashboard_form_save'));
+        add_action( 'wp_ajax_wp_profile_form',        array($this, 'profile_form_save'));
+        add_action( 'wp_ajax_wp_contact_form',        array($this, 'contact_form_save'));
+        add_action( 'wp_ajax_wp_password_form',       array($this, 'password_form_save'));
+        add_action( 'wp_ajax_wp_update_status_save',  array($this, 'update_status_save'));
     }
 
 
 
     // General Form Action for Dashboard
     public function dashboard_form_save() {
-        if ( ! isset( $_POST['wpneo_xwoo_dashboard_nonce_field'] ) || ! wp_verify_nonce( $_POST['wpneo_xwoo_dashboard_nonce_field'], 'wpneo_xwoo_dashboard_form_action' )) {
+        if ( ! isset( $_POST['wp_xwoo_dashboard_nonce_field'] ) || ! wp_verify_nonce( $_POST['wp_xwoo_dashboard_nonce_field'], 'wp_xwoo_dashboard_form_action' )) {
             die(json_encode(array('success'=> 0, 'message' => __('Sorry, your nonce did not verify.', 'xwoo'))));
         }
 
@@ -62,7 +62,7 @@ class Actions {
         do_action('XWOO_after_save_dashboard');
 
         $update = wp_update_user( $userdata );
-        $redirect = get_permalink(get_option('wpneo_xwoo_dashboard_page_id')).'?page_type=dashboard';
+        $redirect = get_permalink(get_option('wp_xwoo_dashboard_page_id')).'?page_type=dashboard';
         if ($update){
             die(json_encode(array('success'=> 1, 'message' => __('Successfully updated.', 'xwoo'), 'redirect' => $redirect)));
         }else{
@@ -72,7 +72,7 @@ class Actions {
 
     // Profile Form Action for Dashboard
     public function profile_form_save(){
-        if ( ! isset( $_POST['wpneo_xwoo_dashboard_nonce_field'] ) || ! wp_verify_nonce( $_POST['wpneo_xwoo_dashboard_nonce_field'], 'wpneo_xwoo_dashboard_form_action' )) {
+        if ( ! isset( $_POST['wp_xwoo_dashboard_nonce_field'] ) || ! wp_verify_nonce( $_POST['wp_xwoo_dashboard_nonce_field'], 'wp_xwoo_dashboard_form_action' )) {
             die(json_encode(array('success'=> 0, 'message' => __('Sorry, your nonce did not verify.', 'xwoo'))));
         }
 
@@ -118,13 +118,13 @@ class Actions {
         wp_update_user( array( 'ID' => $user_id, 'first_name' => $first_name, 'last_name' => $last_name ) );
 
         do_action('XWOO_after_save_profile');
-        $redirect = get_permalink(get_option('wpneo_xwoo_dashboard_page_id')).'?page_type=profile';
+        $redirect = get_permalink(get_option('wp_xwoo_dashboard_page_id')).'?page_type=profile';
         die(json_encode(array('success'=> 1, 'message' => __('Successfully updated.','xwoo'),'redirect' => $redirect)));
     }
 
     // Profile Form Action for Dashboard
     public function contact_form_save(){
-        if ( ! isset( $_POST['wpneo_xwoo_dashboard_nonce_field'] ) || ! wp_verify_nonce( $_POST['wpneo_xwoo_dashboard_nonce_field'], 'wpneo_xwoo_dashboard_form_action' )) {
+        if ( ! isset( $_POST['wp_xwoo_dashboard_nonce_field'] ) || ! wp_verify_nonce( $_POST['wp_xwoo_dashboard_nonce_field'], 'wp_xwoo_dashboard_form_action' )) {
             die(json_encode(array('success'=> 0, 'message' => __('Sorry, your nonce did not verify.', 'xwoo'))));
         }
 
@@ -177,14 +177,14 @@ class Actions {
 
         update_user_meta($user_id,'billing_email', $billing_email);
 
-        $redirect = get_permalink(get_option('wpneo_xwoo_dashboard_page_id')).'?page_type=contact';
+        $redirect = get_permalink(get_option('wp_xwoo_dashboard_page_id')).'?page_type=contact';
 
         die(json_encode(array('success'=> 1, 'message' => __('Successfully updated.'), 'redirect' => $redirect)));
     }
 
     // Password Form Action for Dashboard
     public function password_form_save() {
-        if ( ! isset( $_POST['wpneo_xwoo_dashboard_nonce_field'] ) || ! wp_verify_nonce( $_POST['wpneo_xwoo_dashboard_nonce_field'], 'wpneo_xwoo_dashboard_form_action' )) {
+        if ( ! isset( $_POST['wp_xwoo_dashboard_nonce_field'] ) || ! wp_verify_nonce( $_POST['wp_xwoo_dashboard_nonce_field'], 'wp_xwoo_dashboard_form_action' )) {
             die(json_encode(array('success'=> 0, 'message' => __('Sorry, your nonce did not verify.', 'xwoo'))));
         }
 
@@ -192,7 +192,7 @@ class Actions {
         $password           = sanitize_text_field($_POST['password']);
         $new_password       = sanitize_text_field($_POST['new-password']);
         $retype_password    = sanitize_text_field($_POST['retype-password']);
-        $redirect           = get_permalink(get_option('wpneo_xwoo_dashboard_page_id')).'?page_type=password';
+        $redirect           = get_permalink(get_option('wp_xwoo_dashboard_page_id')).'?page_type=password';
 
         if( isset($_POST['password']) && isset($_POST['new-password']) && isset($_POST['retype-password']) ){
             if( ( $new_password == $retype_password ) && ( $retype_password != "" ) ){
@@ -211,12 +211,12 @@ class Actions {
             die(json_encode(array('success'=> 0, 'message' => __('Sorry, your status did not verify.', 'xwoo'))));
             exit;
         }
-        if ( ! empty($_POST['wpneo_prject_update_title_field'])){
+        if ( ! empty($_POST['wp_prject_update_title_field'])){
             $data           = array();
             $post_id        = $_POST['postid'];
-            $title_field    = $_POST['wpneo_prject_update_title_field'];
-            $date_field     = $_POST['wpneo_prject_update_date_field'];
-            $details_field  = $_POST['wpneo_prject_update_details_field'];
+            $title_field    = $_POST['wp_prject_update_title_field'];
+            $date_field     = $_POST['wp_prject_update_date_field'];
+            $details_field  = $_POST['wp_prject_update_details_field'];
             $field_count    = count($title_field);
             for ($i=0; $i<$field_count; $i++){
                 if (! empty($title_field[$i])) {
@@ -228,13 +228,13 @@ class Actions {
                 }
             }
             $data_json = json_encode($data,JSON_UNESCAPED_UNICODE);
-            $post_update = XWOO_function()->update_meta( $post_id, 'wpneo_campaign_updates', wp_slash($data_json) );
+            $post_update = XWOO_function()->update_meta( $post_id, 'wp_campaign_updates', wp_slash($data_json) );
             if ($post_update) {
                 WC()->mailer(); // load email classes
                 do_action('XWOO_campaign_update_email', $post_id);
 
             }
-            $redirect = get_permalink(get_option('wpneo_xwoo_dashboard_page_id')).'?page_type=update&postid='.$post_id;
+            $redirect = get_permalink(get_option('wp_xwoo_dashboard_page_id')).'?page_type=update&postid='.$post_id;
             die(json_encode(array('success'=> 1, 'message' => __('Successfully updated.'), 'redirect' => $redirect)));
         }
     }

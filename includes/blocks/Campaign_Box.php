@@ -61,9 +61,9 @@ class CampaignBox{
             $single_product->the_post();
             ?>
 
-            <div class="wpneo-listings three">
+            <div class="xwoo-listings three">
                 <?php do_action('XWOO_campaign_loop_item_before_content'); ?>
-                <div class="wpneo-listing-content">
+                <div class="xwoo-listing-content">
                     <?php do_action('XWOO_campaign_loop_item_content'); ?>
                 </div>
                 <?php do_action('XWOO_campaign_loop_item_after_content'); ?>

@@ -102,12 +102,12 @@ class Registration{
 
         ob_start();
         if ( is_user_logged_in() ) { ?>
-            <h3 class="wpneo-center"><?php _e("You are already logged in.","wp-xwoo"); ?></h3>
+            <h3 class="xwoo-center"><?php _e("You are already logged in.","wp-xwoo"); ?></h3>
         <?php } else {
           global $reg_errors,$reg_success;
           ?>
-            <div class="wpneo-user-registration-wrap">
-                <form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" id="wpneo-registration" method="post">
+            <div class="xwoo-user-registration-wrap">
+                <form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" id="xwoo-registration" method="post">
                 <?php echo wp_nonce_field( 'XWOO_form_action', 'XWOO_form_action_field', true, false ); ?>
                     <?php
                     $regisration_data = array(
@@ -118,7 +118,7 @@ class Registration{
                             'placeholder'   => __('Enter First Name', 'xwoo'),
                             'value'         => '',
                             'class'         => '',
-                            'warpclass'     => 'wpneo-first-half',
+                            'warpclass'     => 'xwoo-first-half',
                             'autocomplete'  => 'off',
                         ),
                         array(
@@ -128,7 +128,7 @@ class Registration{
                             'placeholder'   => __('Enter Last Name', 'xwoo'),
                             'value'         => '',
                             'class'         => '',
-                            'warpclass'     => 'wpneo-second-half',
+                            'warpclass'     => 'xwoo-second-half',
                             'autocomplete'  => 'off',
                         ),
                         array(
@@ -156,7 +156,7 @@ class Registration{
                             'type'          => 'text',
                             'placeholder'   => __('Enter Email', 'xwoo'),
                             'value'         => '',
-                            'warpclass'     => 'wpneo-first-half',
+                            'warpclass'     => 'xwoo-first-half',
                             'class'         => 'required',
                             'autocomplete'  => 'off',
                         ),
@@ -167,7 +167,7 @@ class Registration{
                             'placeholder'   => __('Enter Website', 'xwoo'),
                             'value'         => '',
                             'class'         => '',
-                            'warpclass'     => 'wpneo-second-half',
+                            'warpclass'     => 'xwoo-second-half',
                             'autocomplete'  => 'off',
                         ),
                         array(
@@ -195,9 +195,9 @@ class Registration{
                     $regisration_meta = apply_filters('XWOO_user_registration_fields', $regisration_data );
     
                     foreach( $regisration_meta as $item ){ ?>
-                        <div class="wpneo-single <?php echo (isset($item['warpclass'])? $item['warpclass'] : "" ); ?>">
-                            <div class="wpneo-name"><?php echo (isset($item['label'])? $item['label'] : "" ); ?></div>
-                            <div class="wpneo-fields">
+                        <div class="xwoo-single <?php echo (isset($item['warpclass'])? $item['warpclass'] : "" ); ?>">
+                            <div class="xwoo-name"><?php echo (isset($item['label'])? $item['label'] : "" ); ?></div>
+                            <div class="xwoo-fields">
                                 <?php
                                 switch ($item['type']){
                                     case 'text':
@@ -220,20 +220,20 @@ class Registration{
                         </div>
                     <?php } ?>
     
-                    <div class="wpneo-single wpneo-register">
-                        <a href="<?php echo get_home_url(); ?>" class="wpneo-cancel-campaign" style="background: <?php echo $cancelbtnbgColorpalette; ?>; color: <?php echo $cancelbtncolor; ?>; font-size: <?php echo $cancelfontSize; ?>px; font-weight: <?php echo $cancelfontWeight; ?>"><?php _e("Cancel","wp-xwoo"); ?></a>
+                    <div class="xwoo-single xwoo-register">
+                        <a href="<?php echo get_home_url(); ?>" class="xwoo-cancel-campaign" style="background: <?php echo $cancelbtnbgColorpalette; ?>; color: <?php echo $cancelbtncolor; ?>; font-size: <?php echo $cancelfontSize; ?>px; font-weight: <?php echo $cancelfontWeight; ?>"><?php _e("Cancel","wp-xwoo"); ?></a>
                         <input type="hidden" name="action" value="XWOO_registration" />
                         <input type="hidden" name="current_page" value="<?php echo get_the_permalink(); ?>" />
-                        <input type="submit" class="wpneo-submit-campaign" id="user-registration-btn" value="<?php _e('Sign UP', 'xwoo'); ?>" name="submits" style="background: <?php echo $bgColor; ?>; color: <?php echo $titleColor; ?>; font-size: <?php echo $fontSize; ?>px; font-weight: <?php echo $fontWeight; ?>"/>
+                        <input type="submit" class="xwoo-submit-campaign" id="user-registration-btn" value="<?php _e('Sign UP', 'xwoo'); ?>" name="submits" style="background: <?php echo $bgColor; ?>; color: <?php echo $titleColor; ?>; font-size: <?php echo $fontSize; ?>px; font-weight: <?php echo $fontWeight; ?>"/>
                     </div>
 
                     <style>
-                        .wpneo-fields input[type="number"], .wpneo-fields input[type="text"], .wpneo-fields input[type="email"], .wpneo-fields input[type="password"] {
+                        .xwoo-fields input[type="number"], .xwoo-fields input[type="text"], .xwoo-fields input[type="email"], .xwoo-fields input[type="password"] {
                             font-size: <?php echo $inputfontSize; ?>px;
                             color: <?php echo $inputTextColor; ?>;
                             border: 1px solid <?php echo $borderColor; ?>px;
                         }
-                        .wpneo-user-registration-wrap .wpneo-name {
+                        .xwoo-user-registration-wrap .xwoo-name {
                             font-size: <?php echo $labelfontSize; ?>px;
                             color: <?php echo $labelColor; ?>
                         }

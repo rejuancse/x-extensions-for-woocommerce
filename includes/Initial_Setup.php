@@ -52,7 +52,7 @@ if (! class_exists('Initial_Setup')) {
          * Do some task during plugin activation
          */
         public function initial_plugin_activation() {
-            if (get_option('wpneo_xwoo_is_used')) { // Check is plugin used before or not
+            if (get_option('wp_xwoo_is_used')) { // Check is plugin used before or not
                 return false;
             }
             self::update_option();
@@ -64,19 +64,19 @@ if (! class_exists('Initial_Setup')) {
          */
         public function update_option() {
             $init_setup_data = array(
-                'wpneo_xwoo_is_used' => XWOO_VERSION,
-                'wpneo_cf_selected_theme' => 'basic',
+                'wp_xwoo_is_used' => XWOO_VERSION,
+                'wp_cf_selected_theme' => 'basic',
                 'vendor_type' => 'woocommerce',
-                'wpneo_default_campaign_status' => 'draft',
-                'wpneo_campaign_edit_status' => 'pending',
-                'wpneo_enable_color_styling' => 'true',
-                'wpneo_show_min_price' => 'true',
-                'wpneo_show_max_price' => 'true',
-                'wpneo_show_recommended_price' => 'true',
-                'wpneo_show_target_goal' => 'true',
-                'wpneo_show_target_date' => 'true',
-                'wpneo_show_target_goal_and_date' => 'true',
-                'wpneo_show_campaign_never_end' => 'true',
+                'wp_default_campaign_status' => 'draft',
+                'wp_campaign_edit_status' => 'pending',
+                'wp_enable_color_styling' => 'true',
+                'wp_show_min_price' => 'true',
+                'wp_show_max_price' => 'true',
+                'wp_show_recommended_price' => 'true',
+                'wp_show_target_goal' => 'true',
+                'wp_show_target_date' => 'true',
+                'wp_show_target_goal_and_date' => 'true',
+                'wp_show_campaign_never_end' => 'true',
                 'XWOO_show_description' => 'true',
                 'XWOO_show_short_description' => 'true',
                 'XWOO_show_category' => 'true',
@@ -98,16 +98,16 @@ if (! class_exists('Initial_Setup')) {
                 'XWOO_show_estimated_delivery_year' => 'true',
                 'XWOO_show_quantity' => 'true',
                 'XWOO_show_terms_and_conditions' => 'true',
-                'wpneo_enable_paypal_per_campaign_email' => 'true',
-                'wpneo_single_page_template' => 'in_wp_xwoo',
-                'wpneo_single_page_reward_design' => '1',
+                'wp_enable_paypal_per_campaign_email' => 'true',
+                'wp_single_page_template' => 'in_wp_xwoo',
+                'wp_single_page_reward_design' => '1',
                 'hide_cf_campaign_from_shop_page' => 'false',
-                'wpneo_xwoo_add_to_cart_redirect' => 'checkout_page',
-                'wpneo_single_page_id' => 'true',
-                'wpneo_enable_recaptcha' => 'false',
-                'wpneo_enable_recaptcha_in_user_registration' => 'false',
-                'wpneo_enable_recaptcha_campaign_submit_page' => 'false',
-                'wpneo_requirement_agree_title' => 'I agree with the terms and conditions.',
+                'wp_xwoo_add_to_cart_redirect' => 'checkout_page',
+                'wp_single_page_id' => 'true',
+                'wp_enable_recaptcha' => 'false',
+                'wp_enable_recaptcha_in_user_registration' => 'false',
+                'wp_enable_recaptcha_campaign_submit_page' => 'false',
+                'wp_requirement_agree_title' => 'I agree with the terms and conditions.',
             );
 
             foreach ($init_setup_data as $key => $value ) {
@@ -115,8 +115,8 @@ if (! class_exists('Initial_Setup')) {
             }
     
             //Upload Permission
-            update_option( 'wpneo_user_role_selector', array('administrator', 'editor', 'author', 'shop_manager') );
-            $role_list = get_option( 'wpneo_user_role_selector' );
+            update_option( 'wp_user_role_selector', array('administrator', 'editor', 'author', 'shop_manager') );
+            $role_list = get_option( 'wp_user_role_selector' );
             if( is_array( $role_list ) ){
                 if( !empty( $role_list ) ){
                     foreach( $role_list as $val ){
@@ -166,19 +166,19 @@ if (! class_exists('Initial_Setup')) {
              */
             $dashboard_page = wp_insert_post( $dashboard );
             if ( !is_wp_error( $dashboard_page ) ) {
-                XWOO_function()->update_text( 'wpneo_xwoo_dashboard_page_id', $dashboard_page );
+                XWOO_function()->update_text( 'wp_xwoo_dashboard_page_id', $dashboard_page );
             }
             $form_page = wp_insert_post( $form );
             if( !is_wp_error( $form_page ) ){
-                XWOO_function()->update_text( 'wpneo_form_page_id', $form_page );
+                XWOO_function()->update_text( 'wp_form_page_id', $form_page );
             }
             $listing_page = wp_insert_post( $listing );
             if( !is_wp_error( $listing_page ) ){
-                XWOO_function()->update_text( 'wpneo_listing_page_id', $listing_page );
+                XWOO_function()->update_text( 'wp_listing_page_id', $listing_page );
             }
             $registration_page = wp_insert_post( $registration );
             if( !is_wp_error( $registration_page ) ){
-                XWOO_function()->update_text( 'wpneo_registration_page_id', $registration_page );
+                XWOO_function()->update_text( 'wp_registration_page_id', $registration_page );
             }
         }
 

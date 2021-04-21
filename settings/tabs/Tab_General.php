@@ -40,7 +40,7 @@ $arr =  array(
 
     // #Default Campaign Status
     array(
-        'id'        => 'wpneo_default_campaign_status',
+        'id'        => 'wp_default_campaign_status',
         'type'      => 'dropdown',
         'option'    => array(
             'publish'    => __('Published','xwoo'),
@@ -53,7 +53,7 @@ $arr =  array(
 
     //Update by campaign owner
 	array(
-		'id'        => 'wpneo_campaign_edit_status',
+		'id'        => 'wp_campaign_edit_status',
 		'type'      => 'dropdown',
 		'option'    => array(
 			'publish'    => __('Campaign remain publish','xwoo'),
@@ -66,7 +66,7 @@ $arr =  array(
 
     // #Select Dashboard Page
     array(
-        'id'        => 'wpneo_xwoo_dashboard_page_id',
+        'id'        => 'wp_xwoo_dashboard_page_id',
         'type'      => 'dropdown',
         'option'    => $pages,
         'label'     => __('Select Dashboard Page','xwoo'),
@@ -75,7 +75,7 @@ $arr =  array(
 
     // #Select Campaign Submit Form
     array(
-        'id'        => 'wpneo_form_page_id',
+        'id'        => 'wp_form_page_id',
         'type'      => 'dropdown',
         'option'    => $pages,
         'label'     => __('Select Campaign Submit Form','xwoo'),
@@ -84,7 +84,7 @@ $arr =  array(
 
     // #User Role Selector Option
     array(
-        'id'        => 'wpneo_user_role_selector',
+        'id'        => 'wp_user_role_selector',
         'type'      => 'multiple',
         'multiple'  => 'true',
         'option'    => $campaign_creator,
@@ -94,7 +94,7 @@ $arr =  array(
 
     // #Save Function
     array(
-        'id'        => 'wpneo_xwoo_admin_tab',
+        'id'        => 'wp_xwoo_admin_tab',
         'type'      => 'hidden',
         'value'     => 'tab_general',
     ),

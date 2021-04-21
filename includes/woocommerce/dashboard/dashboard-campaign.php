@@ -18,7 +18,7 @@ $args = array(
     'paged'             => $page_numb
 );
 
-$html .= '<div class="wpneo-row wp-dashboard-row">';
+$html .= '<div class="xwoo-row wp-dashboard-row">';
 $the_query = new WP_Query( $args );
 if ( $the_query->have_posts() ) :
     global $post;
@@ -27,7 +27,7 @@ if ( $the_query->have_posts() ) :
         ob_start(); 
         $permalink = XWOO_function()->is_published() ? get_permalink() : '#';
         ?>
-        <div class="wpneo-col6">
+        <div class="xwoo-col6">
             <div class="wpcrowd-listing">
                 <a href="<?php echo $permalink; ?>" title="<?php  echo get_the_title(); ?>"> <?php echo woocommerce_get_product_thumbnail(); ?></a>
             </div>
@@ -38,12 +38,12 @@ if ( $the_query->have_posts() ) :
                     <div class="wpcrowd-admin-metadata">
                         <div class="wpcrowd-admin-meta-info">
                             <!--  Days to go -->
-                            <span class="wpneo-meta-wrap">
+                            <span class="xwoo-meta-wrap">
                                 <?php $days_remaining = apply_filters('date_expired_msg', __('0', 'xwoo'));
                                 if (XWOO_function()->get_date_remaining()){
                                     $days_remaining = apply_filters('date_remaining_msg', __(XWOO_function()->get_date_remaining(), 'xwoo'));
                                 }
-                                $end_method = get_post_meta(get_the_ID(), 'wpneo_campaign_end_method', true);
+                                $end_method = get_post_meta(get_the_ID(), 'wp_campaign_end_method', true);
                                 if ($end_method != 'never_end'){ ?>
                                     <?php if (XWOO_function()->is_campaign_started()){ ?>
                                         <span class="info-text"><?php echo XWOO_function()->get_date_remaining().' '; _e( 'Days to go','xwoo' ); ?></span>
@@ -53,8 +53,8 @@ if ( $the_query->have_posts() ) :
                                 <?php } ?>
                             </span>
                             <!-- author -->
-                            <span class="wpneo-meta-wrap">
-                                <span class="wpneo-meta-name"><?php _e('by','xwoo'); ?> </span>
+                            <span class="xwoo-meta-wrap">
+                                <span class="xwoo-meta-name"><?php _e('by','xwoo'); ?> </span>
                                 <a href="<?php echo XWOO_function()->get_author_url( get_the_author_meta( 'user_login' ) ); ?>"><?php echo XWOO_function()->get_author_name(); ?></a>
                             </span>
 
@@ -67,20 +67,20 @@ if ( $the_query->have_posts() ) :
                                 $raised = $total_raised;
                             }
                             ?>
-                            <span class="wpneo-meta-wrap">
-                                <span class="wpneo-meta-name"><?php _e('Total', 'xwoo'); ?> </span>
+                            <span class="xwoo-meta-wrap">
+                                <span class="xwoo-meta-name"><?php _e('Total', 'xwoo'); ?> </span>
                                 <?php echo wc_price($raised); ?>
                             </span>
-                            <span class="wpneo-meta-wrap">
+                            <span class="xwoo-meta-wrap">
                                 <!-- Funding Goal -->
                                 <?php $funding_goal = get_post_meta($post->ID, '_nf_funding_goal', true); ?>
-                                <span class="wpneo-meta-name"><?php _e('Goal', 'xwoo'); ?></span>
+                                <span class="xwoo-meta-name"><?php _e('Goal', 'xwoo'); ?></span>
                                 <?php echo wc_price( $funding_goal ); ?>
                             </span>   
 
                         </div><!--wpcrowd-admin-meta-info -->
                     </div><!-- wpcrowd-admin-metadata -->
-            </div><!-- wpneo-listing-content -->
+            </div><!-- xwoo-listing-content -->
             <?php do_action('XWOO_dashboard_campaign_loop_item_after_content'); ?>
             <div style="clear: both"></div>
         </div>

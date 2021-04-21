@@ -80,7 +80,7 @@ class Single_Campaign{
 
         $html = '';
         $html .= '<style>';
-            $html .= '.wpneo-list-details .wpneo_donate_button, #wpneo-tab-reviews .submit, #neo-progressbar > div, ul.wpneo-xwoo-update li:hover span.round-circle, .wpneo-links li a:hover, .wpneo-links li.active a, #neo-progressbar > div {
+            $html .= '.xwoo-list-details .wp_donate_button, #xwoo-tab-reviews .submit, #neo-progressbar > div, ul.xwoo-update li:hover span.round-circle, .xwoo-links li a:hover, .xwoo-links li.active a, #neo-progressbar > div {
                 background-color: '. $bgColor .';
                 color: #ffffff;
             }';
@@ -88,11 +88,11 @@ class Single_Campaign{
                 background: '. $bgColor .';
             }';
 
-            $html .= 'a.wpneo-fund-modal-btn.wpneo-link-style1, .wpneo-tabs-menu li.wpneo-current a, ul.wpneo-xwoo-update li .wpneo-xwoo-update-title {
+            $html .= 'a.xwoo-fund-modal-btn.xwoo-link-style1, .xwoo-tabs-menu li.xwoo-current a, ul.xwoo-update li .xwoo-update-title {
                 color: '. $textcolor .';
             }';
 
-            $html .= '.wpneo-tabs-menu li.wpneo-current {
+            $html .= '.xwoo-tabs-menu li.xwoo-current {
                 border-bottom: 3px solid '. $textcolor .';
             }';
         $html .= '</style>';

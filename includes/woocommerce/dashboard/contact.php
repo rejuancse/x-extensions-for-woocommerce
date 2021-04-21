@@ -28,93 +28,93 @@ ob_start();
 ?>
 
 
-<div class="wpneo-content">
+<div class="xwoo-content">
 
-    <form id="wpneo-dashboard-form" action="" method="" class="wpneo-form">
+    <form id="xwoo-dashboard-form" action="" method="" class="xwoo-form">
 
-        <div class="wpneo-row">
+        <div class="xwoo-row">
 
-            <div class="wpneo-col6">
-                <div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">
+            <div class="xwoo-col6">
+                <div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">
                     <h4><?php _e("Shipping Address","wp-xwoo"); ?></h4>
                     
                     <!-- // First Name ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "First Name:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
-                        <input type="hidden" name="action" value="wpneo_contact_form">
+                        <div class="xwoo-fields">
+                        <input type="hidden" name="action" value="wp_contact_form">
                             <input type="text" name="shipping_first_name" value="<?php echo $f_name; ?>" disabled>
                         </div>
                     </div>
 
                     <!-- // Last Name ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Last Name:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="shipping_last_name" value="<?php echo $l_name; ?>" disabled>
                         </div>
                     </div>
 
                     <!-- // Company ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Company:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="shipping_company" value="<?php echo $company; ?>" disabled>
                         </div>
                     </div>
 
                     <!-- // Address 1 ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Address 1:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="shipping_address_1" value="<?php echo $address1; ?>" disabled>
                         </div>
                     </div>
 
                     <!-- // Address 2 ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Address 2:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="shipping_address_2" value="<?php echo $address2; ?>" disabled>
                         </div>
                     </div>
 
                     <!-- // City ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "City:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="shipping_city" value="<?php echo $city; ?>" disabled>
                         </div>
                     </div>
 
                     <!-- // Postcode ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Postcode:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="shipping_postcode" value="<?php echo $postcode; ?>" disabled>
                         </div>
                     </div>
 
                     <!-- // Country ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Country:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <?php
                             $countries_obj   = new WC_Countries();
                             $countries   = $countries_obj->__get('countries');
@@ -133,11 +133,11 @@ ob_start();
                     </div>
 
                     <!-- // State ( Shipping ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "State:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="shipping_state" value="<?php echo $state; ?>" disabled>
                         </div>
                     </div>
@@ -145,93 +145,93 @@ ob_start();
                 </div>
             </div>
 
-            <div class="wpneo-col6">
-                <div class="wpneo-shadow wpneo-padding25 wpneo-clearfix">
+            <div class="xwoo-col6">
+                <div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">
                     <!-- // Billing Address -->
                     <h4><?php _e("Billing Address","wp-xwoo"); ?></h4>
                     <!-- // First Name ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "First Name:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_first_name" value="<?php echo $b_f_name; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // Last Name ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Last Name:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_last_name" value="<?php echo $b_l_name; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // Company ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Company:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_company" value="<?php echo $b_company; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // Address 1 ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Address 1:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_address_1" value="<?php echo $b_address1; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // Address 2 ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Address 2:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_address_2" value="<?php echo $b_address2; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // City ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "City:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_city" value="<?php echo $b_city; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // Postcode ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Postcode:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_postcode" value="<?php echo $b_postcode; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // Country ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Country:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <?php
                             $countries_obj = new WC_Countries();
                             $countries = $countries_obj->__get('countries');
@@ -250,33 +250,33 @@ ob_start();
 
 
                     <!-- // State ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "State:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_state" value="<?php echo $b_state; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // Telephone ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Telephone:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="text" name="billing_phone" value="<?php echo $b_phone; ?>" disabled>
                         </div>
                     </div>
 
 
                     <!-- // Email ( Billing ) -->
-                    <div class="wpneo-single">
-                        <div class="wpneo-name float-left">
+                    <div class="xwoo-single">
+                        <div class="xwoo-name float-left">
                             <p><?php _e( "Email:" , "wp-xwoo" ); ?></p>
                         </div>
-                        <div class="wpneo-fields">
+                        <div class="xwoo-fields">
                             <input type="email" name="billing_email" value="<?php echo $b_email; ?>" disabled>
                         </div>
                     </div>
@@ -286,13 +286,13 @@ ob_start();
 
         </div>
 
-        <?php echo wp_nonce_field( 'wpneo_xwoo_dashboard_form_action', 'wpneo_xwoo_dashboard_nonce_field', true, false ); ?>
+        <?php echo wp_nonce_field( 'wp_xwoo_dashboard_form_action', 'wp_xwoo_dashboard_nonce_field', true, false ); ?>
 
 		<!-- //Save Button -->
-        <div class="wpneo-buttons-group float-right">
-            <button id="wpneo-edit" class="wpneo-edit-btn"><?php _e( "Edit" , "wp-xwoo" ); ?></button>
-            <button id="wpneo-dashboard-btn-cancel" class="wpneo-cancel-btn wpneo-hidden" type="submit"><?php _e( "Cancel" , "wp-xwoo" ); ?></button>
-            <button id="wpneo-contact-save" class="wpneo-save-btn wpneo-hidden" type="submit"><?php _e( "Save" , "wp-xwoo" ); ?></button>
+        <div class="xwoo-buttons-group float-right">
+            <button id="xwoo-edit" class="xwoo-edit-btn"><?php _e( "Edit" , "wp-xwoo" ); ?></button>
+            <button id="xwoo-dashboard-btn-cancel" class="xwoo-cancel-btn xwoo-hidden" type="submit"><?php _e( "Cancel" , "wp-xwoo" ); ?></button>
+            <button id="xwoo-contact-save" class="xwoo-save-btn xwoo-hidden" type="submit"><?php _e( "Save" , "wp-xwoo" ); ?></button>
         </div>
         <div class="clear-float"></div>
 
