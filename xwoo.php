@@ -51,7 +51,7 @@ if (!function_exists('xwoo_function')) {
     }
 }
 
-if (!class_exists( 'Crowdfunding' )) {
-    require_once XWOO_DIR_PATH . 'includes/Crowdfunding.php';
-    new \XWOO\Crowdfunding();
+if (!class_exists( 'XWOO_Extensions' )) {
+    require_once XWOO_DIR_PATH . 'includes/XWOO.php';
+    new \XWOO\XWOO_Extensions();
 }

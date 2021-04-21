@@ -147,8 +147,8 @@ class Admin_Menu {
             'manage_options',
             'xwoo',
             '',
-            'dashicons-admin-multisite', 
-            null 
+            'dashicons-rest-api', 
+            10 
         );
 
         $addon_pro =  __('Add-ons', 'xwoo');

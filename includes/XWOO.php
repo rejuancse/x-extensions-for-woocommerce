@@ -3,7 +3,7 @@ namespace XWOO;
 
 defined( 'ABSPATH' ) || exit;
 
-final class Crowdfunding {
+final class XWOO_Extensions {
 
 	protected static $_instance = null;
 
