@@ -88,7 +88,7 @@ class Base {
     public static function network_notice_callback(){
         $html = '';
         $html .= '<div class="notice notice-error is-dismissible">';
-            $html .= '<p>'.__('WP Crowdfunding will not work properly if you activate it from network, please deactivate from network and activate again from individual site admin.', 'xwoo').'</p>';
+            $html .= '<p>'.__('WP Xwoo will not work properly if you activate it from network, please deactivate from network and activate again from individual site admin.', 'xwoo').'</p>';
         $html .= '</div>';
         echo $html;
     }
@@ -159,7 +159,7 @@ class Base {
         }
 
         if ( ! get_option( 'XWOO_admin_footer_text_rated' ) ) {
-            $footer_text = sprintf(__('If you like <strong>WP Crowdfunding</strong> please leave us a 5-stars %s rating. A huge thanks in advance!', 'xwoo'), '<a href="https://wordpress.org/support/plugin/wp-xwoo/reviews?rate=5#new-post" target="_blank" class="XWOO-rating-link" data-rated="' . esc_attr__('Thanks :)', 'woocommerce') . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>');
+            $footer_text = sprintf(__('If you like <strong>WP Xwoo</strong> please leave us a 5-stars %s rating. A huge thanks in advance!', 'xwoo'), '<a href="https://wordpress.org/support/plugin/wp-xwoo/reviews?rate=5#new-post" target="_blank" class="XWOO-rating-link" data-rated="' . esc_attr__('Thanks :)', 'woocommerce') . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>');
             wc_enqueue_js("
                 jQuery( 'a.XWOO-rating-link' ).click( function() {
                     jQuery.post( '" . admin_url('admin-ajax.php') . "', { action: 'XWOO_rated' } );
@@ -167,7 +167,7 @@ class Base {
                 });
             ");
         }else{
-            $footer_text = sprintf( __( 'Thank you for raise funds with <strong>WP Crowdfunding</strong> by %s.', 'xwoo' ), '<a href="https://www.xwoo.com/?utm_source=wp_xwoo_plugin_admin" target="_blank">Themeum</a>');
+            $footer_text = sprintf( __( 'Thank you for raise funds with <strong>WP Xwoo</strong> by %s.', 'xwoo' ), '<a href="https://www.xwoo.com/?utm_source=wp_xwoo_plugin_admin" target="_blank">Xwoo</a>');
         }
 
         return $footer_text;

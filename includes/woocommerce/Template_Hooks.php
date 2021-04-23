@@ -21,7 +21,7 @@ class Template_Hooks {
         //Dashboard Campaigns
 		add_action('XWOO_dashboard_campaign_loop_item_content',        	array($this, 'dashboard_campaign_loop_item_content'));
         add_action('XWOO_dashboard_campaign_loop_item_before_content', 	array($this, 'loop_item_thumbnail'));
-        // Filter Search for Crowdfunding campaign
+        // Filter Search for Xwoo campaign
         add_filter('pre_get_posts' ,                                    array($this, 'search_shortcode_filter'));
         add_action('get_the_generator_html',                            array($this, 'tag_generator'), 10, 2 ); // Single Page Html
         add_action('get_the_generator_xhtml',                           array($this, 'tag_generator'), 10, 2 );
@@ -256,10 +256,10 @@ class Template_Hooks {
 	public function tag_generator( $gen, $type ) {
 		switch ( $type ) {
 			case 'html':
-				$gen .= "\n" . '<meta name="generator" content="WP Crowdfunding ' . esc_attr( XWOO_VERSION ) . '">';
+				$gen .= "\n" . '<meta name="generator" content="WP Xwoo ' . esc_attr( XWOO_VERSION ) . '">';
 				break;
 			case 'xhtml':
-				$gen .= "\n" . '<meta name="generator" content="WP Crowdfunding ' . esc_attr( XWOO_VERSION ) . '" />';
+				$gen .= "\n" . '<meta name="generator" content="WP Xwoo ' . esc_attr( XWOO_VERSION ) . '" />';
 				break;
 		}
 		return $gen;

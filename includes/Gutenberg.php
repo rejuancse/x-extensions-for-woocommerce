@@ -67,7 +67,7 @@ class Gutenberg{
             array(
                 array(
                     'slug' 	=> 'xwoo',
-                    'title' => __( 'WP Crowdfunding', 'xwoo' ),
+                    'title' => __( 'WP Xwoo', 'xwoo' ),
                 )
             )
         );

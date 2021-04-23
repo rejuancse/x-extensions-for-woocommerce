@@ -1,5 +1,5 @@
 /*========================================================================
- * Crowdfunding Shortcode Button
+ * Xwoo Shortcode Button
  *======================================================================== */
 (function() {
 	tinymce.PluginManager.add('xwoo_button', function( editor, url ) {

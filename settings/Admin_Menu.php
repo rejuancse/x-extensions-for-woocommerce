@@ -13,7 +13,7 @@ class Admin_Menu {
 
 
     /**
-     * Crowdfunding Custom Styling Option
+     * Xwoo Custom Styling Option
      */
     public function style_custom_css(){
 

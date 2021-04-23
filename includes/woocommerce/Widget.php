@@ -9,7 +9,7 @@ class Latest_Backers extends \WP_Widget {
         parent::__construct(
             'wpb_widget',
             __('Latest Backers', 'wpb_widget_domain'), 
-            array( 'description' => __( 'Latest Backers of Crowdfunding', 'wpb_widget_domain' ), ) 
+            array( 'description' => __( 'Latest Backers of Xwoo', 'wpb_widget_domain' ), ) 
         );
     }
       

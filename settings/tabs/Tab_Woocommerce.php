@@ -20,14 +20,14 @@ $arr =  array(
         'top_line'  => 'true',
     ),
 
-    // #Hide Crowdfunding Campaign From Shop Page
-    array(
-        'id'        => 'hide_cf_campaign_from_shop_page',
-        'type'      => 'checkbox',
-        'value'     => 'true',
-        'label'     => __('Hide Crowdfunding Campaign From Shop Page','xwoo'),
-        'desc'      => __('Enable/Disable','xwoo'),
-    ),
+    // #Hide XWOO Campaign From Shop Page
+    // array(
+    //     'id'        => 'hide_cf_campaign_from_shop_page',
+    //     'type'      => 'checkbox',
+    //     'value'     => 'true',
+    //     'label'     => __('Hide XWOO Campaign From Shop Page','xwoo'),
+    //     'desc'      => __('Enable/Disable','xwoo'),
+    // ),
 
     // #Product Single Page Fullwith
 /*    array(
@@ -35,7 +35,7 @@ $arr =  array(
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
-        'desc'      => __('Crowdfunding Product Single Page Fullwith.','xwoo'),
+        'desc'      => __('XWOO Product Single Page Fullwith.','xwoo'),
     ),*/
 
 
@@ -54,7 +54,7 @@ $arr =  array(
         'type'      => 'dropdown',
         'option'    => $pages,
         'label'     => __('Select Listing Page','xwoo'),
-        'desc'      => __('Select Crowdfunding Product Listing Page.','xwoo'),
+        'desc'      => __('Select XWOO Product Listing Page.','xwoo'),
     ),
 
     // #Campaign Registration Page Select
@@ -63,7 +63,7 @@ $arr =  array(
         'type'      => 'dropdown',
         'option'    => $pages,
         'label'     => __('Select Registration Page','xwoo'),
-        'desc'      => __('Select Crowdfunding Registration Page.','xwoo'),
+        'desc'      => __('Select XWOO Registration Page.','xwoo'),
     ),
 
 	// #Categories
@@ -74,13 +74,13 @@ $arr =  array(
 		'top_line'  => 'true',
 	),
 
-	array(
-		'id'        => 'seperate_xwoo_categories',
-		'type'      => 'checkbox',
-		'value'     => 'true',
-		'label'     => __('Separate Crowdfunding Categories','xwoo'),
-		'desc'      => __('Enable/Disable','xwoo'),
-	),
+	// array(
+	// 	'id'        => 'seperate_xwoo_categories',
+	// 	'type'      => 'checkbox',
+	// 	'value'     => 'true',
+	// 	'label'     => __('Separate XWOO Categories','xwoo'),
+	// 	'desc'      => __('Enable/Disable','xwoo'),
+	// ),
 
     // #Listing Page Seperator
     array(
@@ -177,7 +177,7 @@ $arr =  array(
         'id'        => 'wp_single_page_template',
         'type'      => 'radio',
         'option'    => array(
-            'in_wp_xwoo' => __('In WP Crowdfunding own template','xwoo'),
+            'in_wp_xwoo' => __('In WP XWOO own template','xwoo'),
             'in_woocommerce' => __('In WooCommerce Default','xwoo'),
         ),
         'label'     => __('Template for campaign single page','xwoo'),
@@ -214,7 +214,7 @@ $arr =  array(
 		'type'      => 'checkbox',
 		'value'     => 'true',
 		'label'     => __('Enable/Disable','xwoo'),
-		'desc'      => __('Enable Tax in Crowdfunding Products','xwoo'),
+		'desc'      => __('Enable Tax in XWOO Products','xwoo'),
 	),
 
 	// #Save Function

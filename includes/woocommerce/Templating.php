@@ -110,7 +110,7 @@ class Templating {
             }
         }
 
-        //Determine where single campaign will be load, is it WooCommerce or Wp Crowdfunding
+        //Determine where single campaign will be load, is it WooCommerce or Wp Xwoo
         $single_page_template = get_option('wp_single_page_template');
 
         if (empty($single_page_template) || ($single_page_template == 'in_wp_xwoo') ){

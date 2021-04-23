@@ -191,7 +191,7 @@ if (! class_exists('Initial_Setup')) {
         }
 
         /**
-         * Deactivation Hook For Crowdfunding
+         * Deactivation Hook For Xwoo
          */
         public function initial_plugin_deactivation(){
 
@@ -272,17 +272,17 @@ if (! class_exists('Initial_Setup')) {
                         <img src="<?php echo XWOO_DIR_URL.'assets/images/woocommerce-icon.png'; ?>" alt="logo" />
                     </div>
                     <div class="XWOO-install-notice-content">
-                        <h2><?php _e('Thanks for using WP Crowdfunding', 'xwoo'); ?></h2>
+                        <h2><?php _e('Thanks for using WP Xwoo', 'xwoo'); ?></h2>
                         <?php 
                             printf(
                                 '<p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p>', 
                                 __('You must have','xwoo'), 
                                 'https://wordpress.org/plugins/woocommerce/', 
                                 __('WooCommerce','xwoo'), 
-                                __('installed and activated on this website in order to use WP Crowdfunding.','xwoo')
+                                __('installed and activated on this website in order to use WP Xwoo.','xwoo')
                             );
                         ?>
-                        <a href="https://docs.xwoo.com/wp-xwoo/" target="_blank"><?php _e('Learn more about WP Crowdfunding', 'xwoo'); ?></a>
+                        <a href="https://docs.xwoo.com/wp-xwoo/" target="_blank"><?php _e('Learn more about WP Xwoo', 'xwoo'); ?></a>
                     </div>
                     <div class="XWOO-install-notice-button">
                         <a  class="button button-primary" href="<?php echo add_query_arg(array('action' => 'activate_woocommerce_free'), admin_url()); ?>"><?php _e('Activate WooCommerce', 'xwoo'); ?></a>

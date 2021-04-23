@@ -18,7 +18,7 @@ class Reward{
 
     /*
     * Add Reward tab (Woocommerce).
-    * Only show if type "Crowdfunding" Selected
+    * Only show if type "Xwoo" Selected
     */
     function reward_tabs($tabs){
         $tabs['reward'] = array(

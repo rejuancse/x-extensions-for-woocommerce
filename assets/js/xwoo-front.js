@@ -1,4 +1,4 @@
-// Crowdfunding Scripts
+// Xwoo Scripts
 
 jQuery(document).ready(function($){
     

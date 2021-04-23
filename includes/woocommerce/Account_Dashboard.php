@@ -42,7 +42,7 @@ class Account_Dashboard {
     // Woocommerce Menu Items
     public function menu_items( $items ) {
         $new_items = array(
-            'xwoo-dashboard'=> __( 'Crowdfunding Dashboard', 'xwoo' ),
+            'xwoo-dashboard'=> __( 'Xwoo Dashboard', 'xwoo' ),
             'profile'               => __( 'Profile', 'xwoo' ),
             'my-campaigns'          => __( 'My Campaigns', 'xwoo' ),
             'backed-campaigns'      => __( 'Backed Campaigns', 'xwoo' ),
@@ -54,7 +54,7 @@ class Account_Dashboard {
     }
 
 
-    // Crowdfunding Dashboard
+    // Xwoo Dashboard
     public function dashboard_callback() {
         $html = '';
         require_once XWOO_DIR_PATH.'includes/woocommerce/dashboard/dashboard.php';

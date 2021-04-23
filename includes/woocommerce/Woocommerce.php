@@ -145,19 +145,19 @@ class Woocommerce {
      * Added a product type in woocommerce
      */
     function product_type_selector($product_type){
-        $product_type['xwoo'] = __( 'Crowdfunding', 'xwoo' );
+        $product_type['xwoo'] = __( 'Xwoo', 'xwoo' );
         return $product_type;
     }
 
     /**
-     * Registering Crowdfunding product type in product post woocommerce
+     * Registering Xwoo product type in product post woocommerce
      */
     public function register_product_type() {
         require_once XWOO_DIR_PATH.'includes/woocommerce/WC_Product_Type.php';
     }
 
     /**
-     * Additional Meta form for Crowdfunding plugin
+     * Additional Meta form for Xwoo plugin
      */
     public static function wp_check_settings($arg){
         $var = get_option($arg,true);
@@ -570,7 +570,7 @@ class Woocommerce {
 
 
     /**
-     * Remove Crowdfunding item form cart
+     * Remove Xwoo item form cart
      */
     public function remove_xwoo_item_from_cart($passed, $product_id, $quantity, $variation_id = '', $variations= '') {
         $product = wc_get_product($product_id);
@@ -855,7 +855,7 @@ class Woocommerce {
         <div class="form-field term-check-xwoo-category-wrap">
             <label for="tag-check-xwoo-category">
                 <input type="checkbox" name="tag_check_xwoo_category" id="tag-check-xwoo-category" value="1">
-                <?php _e( 'Mark as Crowdfunding Category' ); ?>
+                <?php _e( 'Mark as Xwoo Category' ); ?>
             </label>
 
             <p><?php _e('This check mark allow you to detect xwoo specific category,'); ?></p>
@@ -868,7 +868,7 @@ class Woocommerce {
         ?>
 
         <tr class="form-field">
-            <th scope="row" valign="top"><label><?php _e( 'Is Crowdfunding Category', 'woocommerce' );
+            <th scope="row" valign="top"><label><?php _e( 'Is Xwoo Category', 'woocommerce' );
             ?></label></th>
             <td>
 
@@ -879,7 +879,7 @@ class Woocommerce {
                     ?>
                     <input type="checkbox" name="tag_check_xwoo_category"
                             id="tag-check-xwoo-category" value="1" <?php checked($is_checked_xwoo, '1' ) ?>>
-                    <?php _e( 'Mark as Crowdfunding Category' ); ?>
+                    <?php _e( 'Mark as Xwoo Category' ); ?>
                 </label>
 
                 <p><?php _e('This check mark allow you to detect xwoo specific category,'); ?></p>
@@ -912,7 +912,7 @@ class Woocommerce {
     }
 
     public function product_taxonomy_is_xwoo_columns($columns){
-        $columns['xwoo_col'] = __('Crowdfunding', 'xwoo');
+        $columns['xwoo_col'] = __('Xwoo', 'xwoo');
         return $columns;
     }
 
