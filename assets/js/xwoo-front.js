@@ -40,13 +40,6 @@ jQuery(document).ready(function($){
         }
     });
 
-    // Pie Chart
-    $('.crowdfound-pie-chart').easyPieChart({
-        barColor: '#1adc68',
-        trackColor: '#f5f5f5',
-        scaleColor: false,
-        lineWidth: 5,
-    });
 
     $('.datepickers_1').datepicker({
         dateFormat: 'yy-mm-dd'

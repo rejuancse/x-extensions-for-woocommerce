@@ -16,4 +16,4 @@ add_action( 'wp_dashboard_campaign_loop_item_content',           array( $templat
 add_action( 'wp_dashboard_campaign_loop_item_before_content',    array( $template_hook_obj, 'loop_item_thumbnail' ) );
 
 //TEMPLATING
-add_action( 'wp_cf_select_theme',  array( $templating_obj, 'selected_theme_callback' ) );
+add_action( 'wp_xwoo_select_theme',  array( $templating_obj, 'selected_theme_callback' ) );

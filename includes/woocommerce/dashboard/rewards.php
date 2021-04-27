@@ -19,7 +19,7 @@ $args = array(
 			'compare' => 'NOT IN'
 		),
 		array(
-			'key' => '_cf_product_author_id',
+			'key' => '_xwoo_product_author_id',
 			'value'   => $user_id,
 			'compare' => '='
 		)
@@ -63,7 +63,7 @@ $rewards_query = new WP_Query($args);
 											<?php
 											if ( ! empty($reward['wp_rewards_endmonth'])){
 												echo '<div><strong>'. __('Estimated Delivery', 'xwoo')."</strong><br />";
-												$est_delivery = ucfirst($reward['wp_rewards_endmonth']).'-'.$reward['wp_rewards_endyear'];
+												$est_delivery = uxwooirst($reward['wp_rewards_endmonth']).'-'.$reward['wp_rewards_endyear'];
 												echo date_i18n( 'F, Y', strtotime( '1-'.$est_delivery ) );
 											}
 											if ( ! empty($reward['wp_rewards_description'])){
@@ -99,7 +99,7 @@ $rewards_query = new WP_Query($args);
 					</table>
 				</div> <?php
 			} else {
-				echo '<div class="xwoocf-alert-info"> '.__('There is no rewards selected by backer', 'xwoo').' </div>';
+				echo '<div class="xwooxwoo-alert-info"> '.__('There is no rewards selected by backer', 'xwoo').' </div>';
 			}
 			?>
 		</div>

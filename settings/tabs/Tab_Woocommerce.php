@@ -20,28 +20,9 @@ $arr =  array(
         'top_line'  => 'true',
     ),
 
-    // #Hide XWOO Campaign From Shop Page
-    // array(
-    //     'id'        => 'hide_cf_campaign_from_shop_page',
-    //     'type'      => 'checkbox',
-    //     'value'     => 'true',
-    //     'label'     => __('Hide XWOO Campaign From Shop Page','xwoo'),
-    //     'desc'      => __('Enable/Disable','xwoo'),
-    // ),
-
-    // #Product Single Page Fullwith
-/*    array(
-        'id'        => 'wp_single_page_id',
-        'type'      => 'checkbox',
-        'value'     => 'true',
-        'label'     => __('Enable/Disable','xwoo'),
-        'desc'      => __('XWOO Product Single Page Fullwith.','xwoo'),
-    ),*/
-
-
     // #Listing Page Select
     array(
-        'id'        => 'hide_cf_address_from_checkout',
+        'id'        => 'hide_xwoo_address_from_checkout',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Hide Billing Address From Checkout Page','xwoo'),

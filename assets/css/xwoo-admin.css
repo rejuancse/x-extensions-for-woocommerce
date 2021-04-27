@@ -222,7 +222,7 @@ h1.top-reports {
 
 .alert-warning {
   color: #8a6d3b;
-  background-color: #fcf8e3;
+  background-color: #fxwoo8e3;
   border-color: #faebcc; }
 
 .alert-danger {
@@ -942,7 +942,7 @@ input[type="submit"].xwoo-submit-campaign {
   font-weight: 300;
   font-size: 14px; }
 
-/* cf-dashboard */
+/* xwoo-dashboard */
 .xwoo-dashboard-head-left ul {
   list-style: none;
   display: inline-block;
@@ -1092,8 +1092,8 @@ table.reward_table_dashboard td {
 .xwoo-fields-action {
   right: 15px !important; }
 
-.xwoocf-alert-info {
-  background: #f2fcff none repeat scroll 0 0;
+.xwooxwoo-alert-info {
+  background: #f2fxwoof none repeat scroll 0 0;
   margin-bottom: 20px;
   margin-top: 20px;
   padding: 20px; }

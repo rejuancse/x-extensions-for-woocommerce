@@ -65,7 +65,7 @@ if (! class_exists('Initial_Setup')) {
         public function update_option() {
             $init_setup_data = array(
                 'wp_xwoo_is_used' => XWOO_VERSION,
-                'wp_cf_selected_theme' => 'basic',
+                'wp_xwoo_selected_theme' => 'basic',
                 'vendor_type' => 'woocommerce',
                 'wp_default_campaign_status' => 'draft',
                 'wp_campaign_edit_status' => 'pending',
@@ -101,7 +101,7 @@ if (! class_exists('Initial_Setup')) {
                 'wp_enable_paypal_per_campaign_email' => 'true',
                 'wp_single_page_template' => 'in_wp_xwoo',
                 'wp_single_page_reward_design' => '1',
-                'hide_cf_campaign_from_shop_page' => 'false',
+                'hide_xwoo_campaign_from_shop_page' => 'false',
                 'wp_xwoo_add_to_cart_redirect' => 'checkout_page',
                 'wp_single_page_id' => 'true',
                 'wp_enable_recaptcha' => 'false',
@@ -136,25 +136,25 @@ if (! class_exists('Initial_Setup')) {
         public function insert_page() {
             // Create page object
             $dashboard = array(
-                'post_title'    => 'CF Dashboard',
+                'post_title'    => 'XWOODashboard',
                 'post_content'  => '[XWOO_dashboard]',
                 'post_type'     => 'page',
                 'post_status'   => 'publish',
             );
             $form = array(
-                'post_title'    => 'CF campaign form',
+                'post_title'    => 'XWOOcampaign form',
                 'post_content'  => '[XWOO_form]',
                 'post_type'     => 'page',
                 'post_status'   => 'publish',
             );
             $listing = array(
-                'post_title'    => 'CF Listing Page',
+                'post_title'    => 'XWOOListing Page',
                 'post_content'  => '[XWOO_listing]',
                 'post_type'     => 'page',
                 'post_status'   => 'publish',
             );
             $registration = array(
-                'post_title'    => 'CF User Registration',
+                'post_title'    => 'XWOOUser Registration',
                 'post_content'  => '[XWOO_registration]',
                 'post_type'     => 'page',
                 'post_status'   => 'publish',

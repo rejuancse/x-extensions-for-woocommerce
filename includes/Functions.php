@@ -726,7 +726,7 @@ class Functions {
                 $html .= '<tr>';
                 foreach ($saved_campaign_update_a[0] as $k => $v) {
                     $html .= '<th>';
-                    $html .= ucfirst($k);
+                    $html .= uxwooirst($k);
                     $html .= '</th>';
                 }
                 $html .= '</tr>';

@@ -67,7 +67,7 @@ class Templating {
     }
 
     public function __construct() {
-        $this->_theme = get_option('wp_cf_selected_theme',true);
+        $this->_theme = get_option('wp_xwoo_selected_theme',true);
 
         /**
          * Set Vendor, we checking here which vendor we are using currently
@@ -258,7 +258,7 @@ class Templating {
      * Generate select option html for theme
      */
     public function selected_theme_callback(){
-        $themes_dir = $this->wp_cf_select_themes_dir();
+        $themes_dir = $this->wp_xwoo_select_themes_dir();
         $html = '';
 
         $html .='<table class="form-table">';
@@ -266,7 +266,7 @@ class Templating {
             $html .='<tr>';
                 $html .='<th scope="row"><label>'.__('Select a Theme for Single and Listing Pages', 'xwoo').'</label></th>';
                 $html .='<td>';
-                    $html .= '<select name="wp_cf_selected_theme">';
+                    $html .= '<select name="wp_xwoo_selected_theme">';
                         if (count($themes_dir) > 0){
                             $html .= '<option value="">'.__('Select a theme', 'xwoo').'</option>';
                             foreach($themes_dir as $k => $v) {

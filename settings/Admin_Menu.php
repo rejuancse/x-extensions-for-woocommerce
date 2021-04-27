@@ -449,14 +449,14 @@ class Admin_Menu {
 
                 // WooCommerce Settings
                 if ( $current_tab == 'tab_woocommerce' ){
-                    $hide_shop_page = sanitize_text_field(XWOO_function()->post('hide_cf_campaign_from_shop_page'));
-                    XWOO_function()->update_checkbox('hide_cf_campaign_from_shop_page', $hide_shop_page );
+                    $hide_shop_page = sanitize_text_field(XWOO_function()->post('hide_xwoo_campaign_from_shop_page'));
+                    XWOO_function()->update_checkbox('hide_xwoo_campaign_from_shop_page', $hide_shop_page );
 
                     $single = sanitize_text_field(XWOO_function()->post('wp_single_page_id'));
                     XWOO_function()->update_checkbox('wp_single_page_id', $single );
 
-                    $from_checkout = sanitize_text_field(XWOO_function()->post('hide_cf_address_from_checkout'));
-                    XWOO_function()->update_checkbox('hide_cf_address_from_checkout', $from_checkout );
+                    $from_checkout = sanitize_text_field(XWOO_function()->post('hide_xwoo_address_from_checkout'));
+                    XWOO_function()->update_checkbox('hide_xwoo_address_from_checkout', $from_checkout );
 
                     $listing = intval(sanitize_text_field(XWOO_function()->post('wp_listing_page_id')));
                     XWOO_function()->update_text('wp_listing_page_id', $listing );
@@ -470,8 +470,8 @@ class Admin_Menu {
                     $categories = sanitize_text_field(XWOO_function()->post('seperate_xwoo_categories'));
                     XWOO_function()->update_checkbox('seperate_xwoo_categories', $categories );
 
-                    $selected_theme = sanitize_text_field(XWOO_function()->post('wp_cf_selected_theme'));
-                    XWOO_function()->update_text('wp_cf_selected_theme', $selected_theme );
+                    $selected_theme = sanitize_text_field(XWOO_function()->post('wp_xwoo_selected_theme'));
+                    XWOO_function()->update_text('wp_xwoo_selected_theme', $selected_theme );
 
                     $requirement_title = sanitize_text_field(XWOO_function()->post('wp_requirement_title'));
                     XWOO_function()->update_text('wp_requirement_title', $requirement_title);

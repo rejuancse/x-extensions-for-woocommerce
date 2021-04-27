@@ -130,11 +130,6 @@ class Base {
     }
 
 
-
-
-
-
-
     // Declare script for new button
     function add_tinymce_js( $plugin_array ) {
         $plugin_array['xwoo_button'] = XWOO_DIR_URL .'assets/js/mce-button.min.js';

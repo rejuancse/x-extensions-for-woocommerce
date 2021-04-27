@@ -87,7 +87,7 @@ $the_query = new WP_Query( $args );
                     
                     <!-- percent -->
                     <?php $raised_percent = XWOO_function()->get_fund_raised_percent_format(); ?>
-                    <div class="crowdfound-pie-chart" data-size="60" data-percent="<?php echo $raised_percent; ?>">
+                    <div class="xwoo-pie-chart" data-size="60" data-percent="<?php echo $raised_percent; ?>">
                         <div class="sppb-chart-percent"><span><?php echo $raised_percent; ?></span></div>
                     </div>
 
@@ -100,14 +100,14 @@ $the_query = new WP_Query( $args );
                         $raised = $total_raised;
                     }
                     ?>
-                    <div class="crowdfound-fund-raised">
+                    <div class="xwoo-fund-raised">
                         <div class="xwoo-meta-desc"><?php echo wc_price($raised); ?></div>
                         <div class="xwoo-meta-name"><?php _e('Fund Raised', 'xwoo'); ?></div>
                     </div>
 
                     <!-- Funding Goal -->
                     <?php $funding_goal = get_post_meta($post->ID, '_nf_funding_goal', true); ?>
-                    <div class="crowdfound-funding-goal">
+                    <div class="xwoo-funding-goal">
                         <div class="xwoo-meta-desc"><?php echo wc_price( $funding_goal ); ?></div>
                         <div class="xwoo-meta-name"><?php _e('Funding Goal', 'xwoo'); ?></div>
                     </div>
@@ -121,7 +121,7 @@ $the_query = new WP_Query( $args );
                     $end_method = get_post_meta(get_the_ID(), 'wp_campaign_end_method', true);
 
                     if ($end_method != 'never_end'){ ?>
-                        <div class="crowdfound-time-remaining">
+                        <div class="xwoo-time-remaining">
                             <?php if (XWOO_function()->is_campaign_started()){ ?>
                                 <div class="xwoo-meta-desc"><?php echo XWOO_function()->get_date_remaining(); ?></div>
                                 <div class="xwoo-meta-name"><?php _e( 'Days to go','xwoo' ); ?></div>

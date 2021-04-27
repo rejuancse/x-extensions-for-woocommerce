@@ -45,8 +45,8 @@ class Woocommerce {
         add_action( 'woocommerce_after_shop_loop_item',                 array($this, 'after_item_title_data')); // Woocommerce Backed User
         add_filter( 'woocommerce_product_tabs',                         array($this, 'product_backed_user_tab') );
         add_filter( 'woocommerce_is_sold_individually',                 array($this, 'remove_xwoo_quantity_fields'), 10, 2 ); //Remove quantity and force item 1 cart per checkout if product is xwoo
-        if ( 'true' == get_option('hide_cf_campaign_from_shop_page' )) {
-            add_action('woocommerce_product_query',                     array($this, 'limit_show_cf_campaign_in_shop')); //Filter product query
+        if ( 'true' == get_option('hide_xwoo_campaign_from_shop_page' )) {
+            add_action('woocommerce_product_query',                     array($this, 'limit_show_xwoo_campaign_in_shop')); //Filter product query
         }
         add_action('woocommerce_product_thumbnails',                    array($this, 'XWOO_campaign_single_love_this') );
         !is_admin() and add_filter( 'woocommerce_coupons_enabled',      array($this, 'wc_coupon_disable') ); //Hide coupon form on checkout page
@@ -62,19 +62,19 @@ class Woocommerce {
      * @since v.1.4.9
      */
     public function filter_product_in_shop_page(){
-        $hide_cf_campaign_from_shop_page = (bool) get_option('hide_cf_campaign_from_shop_page');
-        if(!$hide_cf_campaign_from_shop_page){
+        $hide_xwoo_campaign_from_shop_page = (bool) get_option('hide_xwoo_campaign_from_shop_page');
+        if(!$hide_xwoo_campaign_from_shop_page){
             return;
         }
         add_action('woocommerce_product_query', array($this, 'filter_woocommerce_product_query'));
     }
 
     public function filter_woocommerce_product_query($wp_query){
-        $wp_query->set('meta_query', array($this->cf_product_meta_query()));
+        $wp_query->set('meta_query', array($this->xwoo_product_meta_query()));
         return $wp_query;
     }
 
-    public function cf_product_meta_query(){
+    public function xwoo_product_meta_query(){
         $meta_query = array(
             'taxonomy' => 'product_type',
             'field'    => 'slug',
@@ -113,7 +113,7 @@ class Woocommerce {
             foreach($items as $item => $values) {
                 $product = wc_get_product( $values['product_id'] );
                 if( $product->get_type() == 'xwoo' ){
-                    if( 'true' == get_option('hide_cf_address_from_checkout','') ) {
+                    if( 'true' == get_option('hide_xwoo_address_from_checkout','') ) {
                         unset($fields['billing']['billing_first_name']);
                         unset($fields['billing']['billing_last_name']);
                         unset($fields['billing']['billing_company']);
@@ -616,7 +616,7 @@ class Woocommerce {
                     $selected_reward    = json_decode($selected_reward, TRUE);
                     $reward_index       = (int) XWOO_function()->post('wp_rewards_index');
                     $rewards_index      = (int) XWOO_function()->post('wp_rewards_index') -1;
-                    $product_author_id  = (int) XWOO_function()->post('_cf_product_author_id');
+                    $product_author_id  = (int) XWOO_function()->post('_xwoo_product_author_id');
                     $product_id         = (int) XWOO_function()->post('add-to-cart');
 
                     WC()->session->set('wp_rewards_data',
@@ -624,7 +624,7 @@ class Woocommerce {
                             'wp_selected_rewards_checkout' => $selected_reward,
                             'rewards_index' => $rewards_index,
                             'product_id' => $product_id,
-                            '_cf_product_author_id' => $product_author_id
+                            '_xwoo_product_author_id' => $product_author_id
                         )
                     );
                 }else{
@@ -774,7 +774,7 @@ class Woocommerce {
                 $reward_json = json_encode($reward,JSON_UNESCAPED_UNICODE);
                 // XWOO_function()->update_meta( $order_id, 'wp_selected_reward', $reward );
                 XWOO_function()->update_meta( $order_id, 'wp_selected_reward', wp_slash($reward_json) );
-                XWOO_function()->update_meta( $order_id, '_cf_product_author_id', $rewards_data['_cf_product_author_id'] );
+                XWOO_function()->update_meta( $order_id, '_xwoo_product_author_id', $rewards_data['_xwoo_product_author_id'] );
                 WC()->session->__unset( 'wp_rewards_data' );
             }
         }
@@ -1002,7 +1002,7 @@ class Woocommerce {
         }
 
         $html .= '</div>';
-        echo apply_filters('woocommerce_product_cf_meta_data',$html);
+        echo apply_filters('woocommerce_product_xwoo_meta_data',$html);
     }
 
     /**
@@ -1090,7 +1090,7 @@ class Woocommerce {
         return $return;
     }
 
-    function limit_show_cf_campaign_in_shop($wp_query){
+    function limit_show_xwoo_campaign_in_shop($wp_query){
         $tax_query = array(
             array(
                 'taxonomy' => 'product_type',
