@@ -119,7 +119,7 @@ class Templating {
 
         add_action( 'XWOO_select_theme',    array( $this, 'selected_theme_callback') ); //Generate a dropdown for theme
         add_action( 'admin_notices',            array( $this, 'theme_noticed_callback') );
-        add_action( 'init',                     array( $this, 'require_theme_resources') );
+        // add_action( 'init',                     array( $this, 'require_theme_resources') );
         add_action( 'wp_enqueue_scripts',       array( $this, 'load_theme_css_callback' ) );
         //add_action( 'template_redirect',        array( $this, 'theme_redirect_callback') ); //Template Redirect
     }
@@ -307,14 +307,16 @@ class Templating {
     /**
      * Include xwoo theme functions with wordpress core
      */
-    public function require_theme_resources(){
-        $is_valid_theme = $this->check_theme_standard($this->_selected_theme_path);
-        if ($is_valid_theme) {
-            include_once $this->_selected_theme_path . 'xwoo-functions.php';
-        }else{
-            include_once $this->_theme_in_plugin_path . 'xwoo-functions.php';
-        }
-    }
+    // public function require_theme_resources(){
+    //     $is_valid_theme = $this->check_theme_standard($this->_selected_theme_path);
+    //     if ($is_valid_theme) {
+    //         include_once $this->_selected_theme_path . 'xwoo-functions.php';
+    //     }
+    //     else{
+    //         print_r($this->_theme_in_plugin_path);
+    //         include_once $this->_theme_in_plugin_path . 'xwoo-functions.php';
+    //     }
+    // }
 
     /**
      * Include xwoo theme CSS in frontend
