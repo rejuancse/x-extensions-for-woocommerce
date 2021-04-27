@@ -26,7 +26,6 @@ final class XWOO_Extensions {
 
 	// Include Core
 	public function includes_core() {
-		require_once XWOO_DIR_PATH.'includes/compatibility/Functions.php'; //require file for compatibility
 		require_once XWOO_DIR_PATH.'includes/Initial_Setup.php';
 		require_once XWOO_DIR_PATH.'settings/Admin_Menu.php';
 		require_once XWOO_DIR_PATH.'includes/Gutenberg.php';

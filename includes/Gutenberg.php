@@ -18,22 +18,10 @@ class Gutenberg{
         require_once XWOO_DIR_PATH . 'includes/blocks/Search.php';
         require_once XWOO_DIR_PATH . 'includes/blocks/Donate.php';
         require_once XWOO_DIR_PATH . 'includes/blocks/Project_Listing.php';
-        require_once XWOO_DIR_PATH . 'includes/blocks/Popular_Campaigns.php';
-        require_once XWOO_DIR_PATH . 'includes/blocks/Campaign_Box.php';
-        require_once XWOO_DIR_PATH . 'includes/blocks/Registration.php';
-        require_once XWOO_DIR_PATH . 'includes/blocks/Dashboard.php';
-        require_once XWOO_DIR_PATH . 'includes/blocks/Single_Campaign.php';
-        require_once XWOO_DIR_PATH . 'includes/blocks/Submit_Form.php';
 
         new \XWOO\blocks\Search();
         new \XWOO\blocks\Donate();
         new \XWOO\blocks\ProjectListing();
-        new \XWOO\blocks\PopularCampaigns();
-        new \XWOO\blocks\CampaignBox();
-        new \XWOO\blocks\Registration();
-        new \XWOO\blocks\Dashboard();
-        new \XWOO\blocks\Single_Campaign();
-        new \XWOO\blocks\Submit_Form();
     }
     
     /**

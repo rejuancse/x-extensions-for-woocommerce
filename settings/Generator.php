@@ -191,5 +191,4 @@ class Settings_Generator {
 
         echo $html;
     }
-    
 }
