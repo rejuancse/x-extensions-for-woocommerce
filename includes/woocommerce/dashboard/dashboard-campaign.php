@@ -25,7 +25,7 @@ if ( $the_query->have_posts() ) :
     $i = 1;
     while ( $the_query->have_posts() ) : $the_query->the_post();
         ob_start(); 
-        $permalink = XWOO_function()->is_published() ? get_permalink() : '#';
+        $permalink = xwoo_function()->is_published() ? get_permalink() : '#';
         ?>
         <div class="xwoo-col6">
             <div class="wpcrowd-listing">
@@ -40,29 +40,29 @@ if ( $the_query->have_posts() ) :
                             <!--  Days to go -->
                             <span class="xwoo-meta-wrap">
                                 <?php $days_remaining = apply_filters('date_expired_msg', __('0', 'xwoo'));
-                                if (XWOO_function()->get_date_remaining()){
-                                    $days_remaining = apply_filters('date_remaining_msg', __(XWOO_function()->get_date_remaining(), 'xwoo'));
+                                if (xwoo_function()->get_date_remaining()){
+                                    $days_remaining = apply_filters('date_remaining_msg', __(xwoo_function()->get_date_remaining(), 'xwoo'));
                                 }
                                 $end_method = get_post_meta(get_the_ID(), 'wp_campaign_end_method', true);
                                 if ($end_method != 'never_end'){ ?>
-                                    <?php if (XWOO_function()->is_campaign_started()){ ?>
-                                        <span class="info-text"><?php echo XWOO_function()->get_date_remaining().' '; _e( 'Days to go','xwoo' ); ?></span>
+                                    <?php if (xwoo_function()->is_campaign_started()){ ?>
+                                        <span class="info-text"><?php echo xwoo_function()->get_date_remaining().' '; _e( 'Days to go','xwoo' ); ?></span>
                                     <?php } else { ?>
-                                        <span class="info-text"><?php echo XWOO_function()->days_until_launch().' '; _e( 'Days Until Launch','xwoo' ); ?></span>
+                                        <span class="info-text"><?php echo xwoo_function()->days_until_launch().' '; _e( 'Days Until Launch','xwoo' ); ?></span>
                                     <?php } ?>
                                 <?php } ?>
                             </span>
                             <!-- author -->
                             <span class="xwoo-meta-wrap">
                                 <span class="xwoo-meta-name"><?php _e('by','xwoo'); ?> </span>
-                                <a href="<?php echo XWOO_function()->get_author_url( get_the_author_meta( 'user_login' ) ); ?>"><?php echo XWOO_function()->get_author_name(); ?></a>
+                                <a href="<?php echo xwoo_function()->get_author_url( get_the_author_meta( 'user_login' ) ); ?>"><?php echo xwoo_function()->get_author_name(); ?></a>
                             </span>
 
                             <!-- fund-raised -->
                             <?php 
-                            $raised_percent = XWOO_function()->get_fund_raised_percent_format();
+                            $raised_percent = xwoo_function()->get_fund_raised_percent_format();
                             $raised = 0;
-                            $total_raised = XWOO_function()->get_total_fund();
+                            $total_raised = xwoo_function()->get_total_fund();
                             if ($total_raised){
                                 $raised = $total_raised;
                             }
@@ -92,5 +92,5 @@ else :
     $html .= "<p>".__( 'Sorry, no Campaign Found.','xwoo' )."</p>";
 endif;
 $html .= '</div>';
-$html .= XWOO_function()->get_pagination( $page_numb , $the_query->max_num_pages );
+$html .= xwoo_function()->get_pagination( $page_numb , $the_query->max_num_pages );
 

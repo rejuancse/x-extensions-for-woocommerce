@@ -473,7 +473,7 @@ class Woocommerce {
                 }
             }
             $data_json = json_encode($data,JSON_UNESCAPED_UNICODE);
-            XWOO_function()->update_meta($post_id, 'wp_campaign_updates', wp_slash($data_json));
+            xwoo_function()->update_meta($post_id, 'wp_campaign_updates', wp_slash($data_json));
         }
     }
 
@@ -483,54 +483,54 @@ class Woocommerce {
      * Saving meta information over this method
      */
     function custom_field_save($post_id ){
-        $product_type = sanitize_text_field(XWOO_function()->post('_neo_xwoo_product_type'));
+        $product_type = sanitize_text_field(xwoo_function()->post('_neo_xwoo_product_type'));
         if( !empty( $product_type) ) {
-            XWOO_function()->update_meta($post_id, '_neo_xwoo_product_type', 'yes');
+            xwoo_function()->update_meta($post_id, '_neo_xwoo_product_type', 'yes');
         } else {
-            XWOO_function()->update_meta($post_id, '_neo_xwoo_product_type', 'no');
+            xwoo_function()->update_meta($post_id, '_neo_xwoo_product_type', 'no');
         }
 
         $location = sanitize_text_field( $_POST['_nf_location'] );
-        XWOO_function()->update_meta($post_id, '_nf_location', $location);
+        xwoo_function()->update_meta($post_id, '_nf_location', $location);
 
         $funding_video = sanitize_text_field( $_POST['wp_funding_video'] );
-        XWOO_function()->update_meta($post_id, 'wp_funding_video', $funding_video);
+        xwoo_function()->update_meta($post_id, 'wp_funding_video', $funding_video);
 
         $duration_start = sanitize_text_field( $_POST['_nf_duration_start'] );
-        XWOO_function()->update_meta($post_id, '_nf_duration_start', $duration_start);
+        xwoo_function()->update_meta($post_id, '_nf_duration_start', $duration_start);
 
         $duration_end = sanitize_text_field( $_POST['_nf_duration_end'] );
-        XWOO_function()->update_meta($post_id, '_nf_duration_end', $duration_end);
+        xwoo_function()->update_meta($post_id, '_nf_duration_end', $duration_end);
 
         $funding_goal = sanitize_text_field($_POST['_nf_funding_goal']);
-        XWOO_function()->update_meta($post_id, '_nf_funding_goal', $funding_goal);
+        xwoo_function()->update_meta($post_id, '_nf_funding_goal', $funding_goal);
 
         $minimum_price = sanitize_text_field($_POST['wp_funding_minimum_price']);
-        XWOO_function()->update_meta($post_id, 'wp_funding_minimum_price', $minimum_price);
+        xwoo_function()->update_meta($post_id, 'wp_funding_minimum_price', $minimum_price);
 
         $maximum_price = sanitize_text_field($_POST['wp_funding_maximum_price']);
-        XWOO_function()->update_meta($post_id, 'wp_funding_maximum_price', $maximum_price);
+        xwoo_function()->update_meta($post_id, 'wp_funding_maximum_price', $maximum_price);
 
         $recommended_price = sanitize_text_field($_POST['wp_funding_recommended_price']);
-        XWOO_function()->update_meta($post_id, 'wp_funding_recommended_price', $recommended_price);
+        xwoo_function()->update_meta($post_id, 'wp_funding_recommended_price', $recommended_price);
 
         $pledge_amount = sanitize_text_field($_POST['XWOO_predefined_pledge_amount']);
-        XWOO_function()->update_meta($post_id, 'XWOO_predefined_pledge_amount', $pledge_amount);
+        xwoo_function()->update_meta($post_id, 'XWOO_predefined_pledge_amount', $pledge_amount);
 
         $end_method = sanitize_text_field( $_POST['wp_campaign_end_method'] );
-        XWOO_function()->update_meta($post_id, 'wp_campaign_end_method', $end_method);
+        xwoo_function()->update_meta($post_id, 'wp_campaign_end_method', $end_method);
 
         $contributor_table = sanitize_text_field( $_POST['wp_show_contributor_table'] );
-        XWOO_function()->update_meta($post_id, 'wp_show_contributor_table', $contributor_table);
+        xwoo_function()->update_meta($post_id, 'wp_show_contributor_table', $contributor_table);
 
         $contributors_as_anonymous = sanitize_text_field( $_POST['wp_mark_contributors_as_anonymous'] );
-        XWOO_function()->update_meta($post_id, 'wp_mark_contributors_as_anonymous', $contributors_as_anonymous);
+        xwoo_function()->update_meta($post_id, 'wp_mark_contributors_as_anonymous', $contributors_as_anonymous);
 
         $campaigner_paypal_id = sanitize_text_field( $_POST['wp_campaigner_paypal_id'] );
-        XWOO_function()->update_meta($post_id, 'wp_campaigner_paypal_id', $campaigner_paypal_id);
+        xwoo_function()->update_meta($post_id, 'wp_campaigner_paypal_id', $campaigner_paypal_id);
 
         $country = sanitize_text_field( $_POST['wp_country'] );
-        XWOO_function()->update_meta($post_id, 'wp_country', $country);
+        xwoo_function()->update_meta($post_id, 'wp_country', $country);
     }
 
 
@@ -548,7 +548,7 @@ class Woocommerce {
         if ($product->get_type() == 'xwoo') {
             $html .= '<div class="donate_field wp_neo">';
 
-            if (XWOO_function()->is_campaign_valid()) {
+            if (xwoo_function()->is_campaign_valid()) {
 
                 $html .= '<form class="cart" method="post" enctype="multipart/form-data">';
                 $html .= do_action('before_wp_donate_field');
@@ -604,7 +604,7 @@ class Woocommerce {
                 }
 
                 //setcookie("wp_user_donation", esc_attr($_POST['wp_donate_amount_field']), 0, "/");
-                $donate_amount = XWOO_function()->post('wp_donate_amount_field');
+                $donate_amount = xwoo_function()->post('wp_donate_amount_field');
                 WC()->session->set('wp_donate_amount', $donate_amount);
 
                 if ( isset($_POST['wp_rewards_index'])) {
@@ -612,12 +612,12 @@ class Woocommerce {
                         return;
                     }
 
-                    $selected_reward    = stripslashes_deep( XWOO_function()->post('wp_selected_rewards_checkout') );
+                    $selected_reward    = stripslashes_deep( xwoo_function()->post('wp_selected_rewards_checkout') );
                     $selected_reward    = json_decode($selected_reward, TRUE);
-                    $reward_index       = (int) XWOO_function()->post('wp_rewards_index');
-                    $rewards_index      = (int) XWOO_function()->post('wp_rewards_index') -1;
-                    $product_author_id  = (int) XWOO_function()->post('_xwoo_product_author_id');
-                    $product_id         = (int) XWOO_function()->post('add-to-cart');
+                    $reward_index       = (int) xwoo_function()->post('wp_rewards_index');
+                    $rewards_index      = (int) xwoo_function()->post('wp_rewards_index') -1;
+                    $product_author_id  = (int) xwoo_function()->post('_xwoo_product_author_id');
+                    $product_id         = (int) xwoo_function()->post('add-to-cart');
 
                     WC()->session->set('wp_rewards_data',
                         array(
@@ -772,9 +772,9 @@ class Woocommerce {
             if ( ! empty( $rewards_data ) ) {
                 $reward = $rewards_data['wp_selected_rewards_checkout'];
                 $reward_json = json_encode($reward,JSON_UNESCAPED_UNICODE);
-                // XWOO_function()->update_meta( $order_id, 'wp_selected_reward', $reward );
-                XWOO_function()->update_meta( $order_id, 'wp_selected_reward', wp_slash($reward_json) );
-                XWOO_function()->update_meta( $order_id, '_xwoo_product_author_id', $rewards_data['_xwoo_product_author_id'] );
+                // xwoo_function()->update_meta( $order_id, 'wp_selected_reward', $reward );
+                xwoo_function()->update_meta( $order_id, 'wp_selected_reward', wp_slash($reward_json) );
+                xwoo_function()->update_meta( $order_id, '_xwoo_product_author_id', $rewards_data['_xwoo_product_author_id'] );
                 WC()->session->__unset( 'wp_rewards_data' );
             }
         }
@@ -788,7 +788,7 @@ class Woocommerce {
         $get_product = wc_get_product($product_id);
         $product_type = $get_product->get_type();
         if ($product_type === 'xwoo'){
-            XWOO_function()->update_meta($order_id, 'is_xwoo_order','1');
+            xwoo_function()->update_meta($order_id, 'is_xwoo_order','1');
         }
     }
 
@@ -812,7 +812,7 @@ class Woocommerce {
     public function check_anonymous_backer_post($order_id){
         if (! empty($_POST['mark_name_anonymous'])){
             if ($_POST['mark_name_anonymous'] === 'true'){
-                XWOO_function()->update_meta($order_id, 'mark_name_anonymous', 'true');
+                xwoo_function()->update_meta($order_id, 'mark_name_anonymous', 'true');
             }
         }
     }
@@ -939,7 +939,7 @@ class Woocommerce {
             return '';
         }
 
-        $funding_goal   = XWOO_function()->get_total_goal($post->ID);
+        $funding_goal   = xwoo_function()->get_total_goal($post->ID);
         $country        = get_post_meta( $post->ID, 'wp_country', true);
         $total_sales    = get_post_meta( $post->ID, 'total_sales', true );
         $enddate        = get_post_meta( $post->ID, '_nf_duration_end', true );
@@ -954,7 +954,7 @@ class Woocommerce {
         }
 
         $raised = 0;
-        $total_raised = XWOO_function()->get_total_fund();
+        $total_raised = xwoo_function()->get_total_fund();
         if ($total_raised){
             $raised = $total_raised;
         }
@@ -963,8 +963,8 @@ class Woocommerce {
         $sales_value_by_product = 0;
 
         $days_remaining = apply_filters('date_expired_msg', __('Date expired', 'xwoo'));
-        if ( XWOO_function()->get_date_remaining() ) {
-            $days_remaining = apply_filters('date_remaining_msg', __( XWOO_function()->get_date_remaining().' days remaining', 'xwoo') );
+        if ( xwoo_function()->get_date_remaining() ) {
+            $days_remaining = apply_filters('date_remaining_msg', __( xwoo_function()->get_date_remaining().' days remaining', 'xwoo') );
         }
 
         $html = '';
@@ -989,7 +989,7 @@ class Woocommerce {
         }
 
         if ($total_sales && $funding_goal) {
-            $percent = XWOO_function()->get_raised_percent();
+            $percent = xwoo_function()->get_raised_percent();
             $html .= '<div class="percent_funded">';
             $html .= '<p class="wp_thumb_text">'.__('Funded percent: ', 'xwoo') . '<span class="price amount">' . $percent.' %</span>'. '</p>';
             $html .= '</div>';
@@ -1031,7 +1031,7 @@ class Woocommerce {
         $html       = '';
         $prefix     = $wpdb->prefix;
         $product_id = $post->ID;
-        $data_array = XWOO_function()->get_campaign_orders_id_list();
+        $data_array = xwoo_function()->get_campaign_orders_id_list();
 
         $args = array(
             'post_type'     => 'shop_order',
@@ -1106,7 +1106,7 @@ class Woocommerce {
     }
 
     function XWOO_campaign_single_love_this() {
-        return XWOO_function()->campaign_single_love_this();
+        return xwoo_function()->campaign_single_love_this();
     }
 
     function wc_empty_cart() {

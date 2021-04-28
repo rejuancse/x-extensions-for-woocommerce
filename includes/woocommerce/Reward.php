@@ -227,7 +227,7 @@ class Reward{
                 }
             }
 
-            if ( XWOO_function()->is_free() ) {
+            if ( xwoo_function()->is_free() ) {
                 ?>
                 <p class="description"><?php _e('pro version is required to add more than 1 reward', 'xwoo') ?>. <a href="https://www.xwoo.com/product/wp-xwoo-plugin/?utm_source=xwoo_plugin" target="_blank"> <?php _e('click here to get pro version', 'xwoo') ?></a></p>
                 <?php
@@ -268,7 +268,7 @@ class Reward{
                 }
             }
             $data_json = json_encode( $data, JSON_UNESCAPED_UNICODE );
-            XWOO_function()->update_meta($post_id, 'wp_reward', wp_slash($data_json));
+            xwoo_function()->update_meta($post_id, 'wp_reward', wp_slash($data_json));
         }
     }
 

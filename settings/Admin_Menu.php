@@ -161,7 +161,7 @@ class Admin_Menu {
             $addon_pro,
             'manage_options',
             'xwoo',
-            array( $this, 'XWOO_manage_addons' )
+            array( $this, 'xwoo_manage_addons' )
         );
         add_submenu_page(
             'xwoo',
@@ -169,12 +169,12 @@ class Admin_Menu {
             __( 'Settings', 'xwoo' ),
             'manage_options',
             'xwoo-settings',
-            array( $this, 'XWOO_menu_page' )
+            array( $this, 'xwoo_menu_page' )
         );
     }
 
     // Addon Listing
-    public function XWOO_manage_addons() {
+    public function xwoo_manage_addons() {
         include XWOO_DIR_PATH.'settings/view/Addons.php';
     }
 
@@ -182,9 +182,9 @@ class Admin_Menu {
     /**
      * Display a custom menu page
      */
-    public function XWOO_menu_page(){
+    public function xwoo_menu_page(){
         // Settings Tab With slug and Display name
-        $tabs = apply_filters('XWOO_settings_panel_tabs', array(
+        $tabs = apply_filters('xwoo_settings_panel_tabs', array(
                 'general' => array(
                     'tab_name' => __('General Settings','xwoo'),
                     'load_form_file' => XWOO_DIR_PATH.'settings/tabs/Tab_General.php'
@@ -213,7 +213,7 @@ class Admin_Menu {
             $current_page = sanitize_text_field($_GET['tab']);
         }
 
-        if (XWOO_function()->post('wp_settings_page_nonce_field')){
+        if (xwoo_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
                 echo '<p>'.__( "Settings have been Saved.", "wp-xwoo" ).'</p>';
             echo '</div>';
@@ -228,7 +228,7 @@ class Admin_Menu {
         echo '</h2>';
         ?>
 
-        <form id="XWOO-xwoo" role="form" method="post" action="">
+        <form id="xwoo" role="form" method="post" action="">
             <?php
             //Load tab file
             $default_file = XWOO_DIR_PATH.'settings/tabs/Tab_General.php';
@@ -256,95 +256,95 @@ class Admin_Menu {
      */
     public function save_menu_settings() {
         
-        if (XWOO_function()->post('wp_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(XWOO_function()->post('wp_settings_page_nonce_field')), 'wp_settings_page_action' ) ){
+        if (xwoo_function()->post('wp_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(xwoo_function()->post('wp_settings_page_nonce_field')), 'wp_settings_page_action' ) ){
 
-            $current_tab = sanitize_text_field(XWOO_function()->post('wp_xwoo_admin_tab'));
+            $current_tab = sanitize_text_field(xwoo_function()->post('wp_xwoo_admin_tab'));
             if( ! empty($current_tab) ){
                 if ( $current_tab == 'tab_fields' ){
 
-                    $description = sanitize_text_field(XWOO_function()->post('XWOO_show_description'));
-                    XWOO_function()->update_checkbox('XWOO_show_description', $description);
+                    $description = sanitize_text_field(xwoo_function()->post('xwoo_show_description'));
+                    xwoo_function()->update_checkbox('xwoo_show_description', $description);
 
-                    $short_description = sanitize_text_field(XWOO_function()->post('XWOO_show_short_description'));
-                    XWOO_function()->update_checkbox('XWOO_show_short_description', $short_description);
+                    $short_description = sanitize_text_field(xwoo_function()->post('xwoo_show_short_description'));
+                    xwoo_function()->update_checkbox('xwoo_show_short_description', $short_description);
 
-                    $category = sanitize_text_field(XWOO_function()->post('XWOO_show_category'));
-                    XWOO_function()->update_checkbox('XWOO_show_category', $category);
+                    $category = sanitize_text_field(xwoo_function()->post('xwoo_show_category'));
+                    xwoo_function()->update_checkbox('xwoo_show_category', $category);
 
-                    $tag = sanitize_text_field(XWOO_function()->post('XWOO_show_tag'));
-                    XWOO_function()->update_checkbox('XWOO_show_tag', $tag);
+                    $tag = sanitize_text_field(xwoo_function()->post('xwoo_show_tag'));
+                    xwoo_function()->update_checkbox('xwoo_show_tag', $tag);
 
-                    $feature = sanitize_text_field(XWOO_function()->post('XWOO_show_feature'));
-                    XWOO_function()->update_checkbox('XWOO_show_feature', $feature);
+                    $feature = sanitize_text_field(xwoo_function()->post('xwoo_show_feature'));
+                    xwoo_function()->update_checkbox('xwoo_show_feature', $feature);
 
-                    $video = sanitize_text_field(XWOO_function()->post('XWOO_show_video'));
-                    XWOO_function()->update_checkbox('XWOO_show_video', $video);
+                    $video = sanitize_text_field(xwoo_function()->post('xwoo_show_video'));
+                    xwoo_function()->update_checkbox('xwoo_show_video', $video);
 
-                    $end_method = sanitize_text_field(XWOO_function()->post('XWOO_show_end_method'));
-                    XWOO_function()->update_checkbox('XWOO_show_end_method', $end_method);
+                    $end_method = sanitize_text_field(xwoo_function()->post('xwoo_show_end_method'));
+                    xwoo_function()->update_checkbox('xwoo_show_end_method', $end_method);
 
-                    $target_goal = sanitize_text_field(XWOO_function()->post('wp_show_target_goal'));
-                    XWOO_function()->update_checkbox('wp_show_target_goal', $target_goal);
+                    $target_goal = sanitize_text_field(xwoo_function()->post('wp_show_target_goal'));
+                    xwoo_function()->update_checkbox('wp_show_target_goal', $target_goal);
 
-                    $target_date = sanitize_text_field(XWOO_function()->post('wp_show_target_date'));
-                    XWOO_function()->update_checkbox('wp_show_target_date', $target_date);
+                    $target_date = sanitize_text_field(xwoo_function()->post('wp_show_target_date'));
+                    xwoo_function()->update_checkbox('wp_show_target_date', $target_date);
 
-                    $target_goal_and_date = sanitize_text_field(XWOO_function()->post('wp_show_target_goal_and_date'));
-                    XWOO_function()->update_checkbox('wp_show_target_goal_and_date', $target_goal_and_date);
+                    $target_goal_and_date = sanitize_text_field(xwoo_function()->post('wp_show_target_goal_and_date'));
+                    xwoo_function()->update_checkbox('wp_show_target_goal_and_date', $target_goal_and_date);
 
-                    $campaign_never_end = sanitize_text_field(XWOO_function()->post('wp_show_campaign_never_end'));
-                    XWOO_function()->update_checkbox('wp_show_campaign_never_end', $campaign_never_end);
+                    $campaign_never_end = sanitize_text_field(xwoo_function()->post('wp_show_campaign_never_end'));
+                    xwoo_function()->update_checkbox('wp_show_campaign_never_end', $campaign_never_end);
 
-                    $start_date = sanitize_text_field(XWOO_function()->post('XWOO_show_start_date'));
-                    XWOO_function()->update_checkbox('XWOO_show_start_date', $start_date);
+                    $start_date = sanitize_text_field(xwoo_function()->post('xwoo_show_start_date'));
+                    xwoo_function()->update_checkbox('xwoo_show_start_date', $start_date);
 
-                    $end_date = sanitize_text_field(XWOO_function()->post('XWOO_show_end_date'));
-                    XWOO_function()->update_checkbox('XWOO_show_end_date', $end_date);
+                    $end_date = sanitize_text_field(xwoo_function()->post('xwoo_show_end_date'));
+                    xwoo_function()->update_checkbox('xwoo_show_end_date', $end_date);
 
-                    $min_price = sanitize_text_field(XWOO_function()->post('wp_show_min_price'));
-                    XWOO_function()->update_checkbox('wp_show_min_price', $min_price);
+                    $min_price = sanitize_text_field(xwoo_function()->post('wp_show_min_price'));
+                    xwoo_function()->update_checkbox('wp_show_min_price', $min_price);
 
-                    $max_price = sanitize_text_field(XWOO_function()->post('wp_show_max_price'));
-                    XWOO_function()->update_checkbox('wp_show_max_price', $max_price);
+                    $max_price = sanitize_text_field(xwoo_function()->post('wp_show_max_price'));
+                    xwoo_function()->update_checkbox('wp_show_max_price', $max_price);
 
-                    $recommended_price = sanitize_text_field(XWOO_function()->post('wp_show_recommended_price'));
-                    XWOO_function()->update_checkbox('wp_show_recommended_price', $recommended_price);
+                    $recommended_price = sanitize_text_field(xwoo_function()->post('wp_show_recommended_price'));
+                    xwoo_function()->update_checkbox('wp_show_recommended_price', $recommended_price);
 
-                    $funding_goal = sanitize_text_field(XWOO_function()->post('XWOO_show_funding_goal'));
-                    XWOO_function()->update_checkbox('XWOO_show_funding_goal', $funding_goal);
+                    $funding_goal = sanitize_text_field(xwoo_function()->post('xwoo_show_funding_goal'));
+                    xwoo_function()->update_checkbox('xwoo_show_funding_goal', $funding_goal);
 
-                    $predefined_amount = sanitize_text_field(XWOO_function()->post('XWOO_show_predefined_amount'));
-                    XWOO_function()->update_checkbox('XWOO_show_predefined_amount', $predefined_amount);
+                    $predefined_amount = sanitize_text_field(xwoo_function()->post('xwoo_show_predefined_amount'));
+                    xwoo_function()->update_checkbox('xwoo_show_predefined_amount', $predefined_amount);
 
-                    $contributor_table = sanitize_text_field(XWOO_function()->post('XWOO_show_contributor_table'));
-                    XWOO_function()->update_checkbox('XWOO_show_contributor_table', $contributor_table);
+                    $contributor_table = sanitize_text_field(xwoo_function()->post('xwoo_show_contributor_table'));
+                    xwoo_function()->update_checkbox('xwoo_show_contributor_table', $contributor_table);
 
-                    $contributor_anonymity = sanitize_text_field(XWOO_function()->post('XWOO_show_contributor_anonymity'));
-                    XWOO_function()->update_checkbox('XWOO_show_contributor_anonymity', $contributor_anonymity);
+                    $contributor_anonymity = sanitize_text_field(xwoo_function()->post('xwoo_show_contributor_anonymity'));
+                    xwoo_function()->update_checkbox('xwoo_show_contributor_anonymity', $contributor_anonymity);
 
-                    $country = sanitize_text_field(XWOO_function()->post('XWOO_show_country'));
-                    XWOO_function()->update_checkbox('XWOO_show_country', $country);
+                    $country = sanitize_text_field(xwoo_function()->post('xwoo_show_country'));
+                    xwoo_function()->update_checkbox('xwoo_show_country', $country);
 
-                    $location = sanitize_text_field(XWOO_function()->post('XWOO_show_location'));
-                    XWOO_function()->update_checkbox('XWOO_show_location', $location);
+                    $location = sanitize_text_field(xwoo_function()->post('xwoo_show_location'));
+                    xwoo_function()->update_checkbox('xwoo_show_location', $location);
 
-                    $reward_image = sanitize_text_field(XWOO_function()->post('XWOO_show_reward_image'));
-                    XWOO_function()->update_checkbox('XWOO_show_reward_image', $reward_image);
+                    $reward_image = sanitize_text_field(xwoo_function()->post('xwoo_show_reward_image'));
+                    xwoo_function()->update_checkbox('xwoo_show_reward_image', $reward_image);
 
-                    $reward = sanitize_text_field(XWOO_function()->post('XWOO_show_reward'));
-                    XWOO_function()->update_checkbox('XWOO_show_reward', $reward);
+                    $reward = sanitize_text_field(xwoo_function()->post('xwoo_show_reward'));
+                    xwoo_function()->update_checkbox('xwoo_show_reward', $reward);
 
-                    $estimated_delivery_month = sanitize_text_field(XWOO_function()->post('XWOO_show_estimated_delivery_month'));
-                    XWOO_function()->update_checkbox('XWOO_show_estimated_delivery_month', $estimated_delivery_month);
+                    $estimated_delivery_month = sanitize_text_field(xwoo_function()->post('xwoo_show_estimated_delivery_month'));
+                    xwoo_function()->update_checkbox('xwoo_show_estimated_delivery_month', $estimated_delivery_month);
 
-                    $estimated_delivery_year = sanitize_text_field(XWOO_function()->post('XWOO_show_estimated_delivery_year'));
-                    XWOO_function()->update_checkbox('XWOO_show_estimated_delivery_year', $estimated_delivery_year);
+                    $estimated_delivery_year = sanitize_text_field(xwoo_function()->post('xwoo_show_estimated_delivery_year'));
+                    xwoo_function()->update_checkbox('xwoo_show_estimated_delivery_year', $estimated_delivery_year);
 
-                    $quantity = sanitize_text_field(XWOO_function()->post('XWOO_show_quantity'));
-                    XWOO_function()->update_checkbox('XWOO_show_quantity', $quantity);
+                    $quantity = sanitize_text_field(xwoo_function()->post('xwoo_show_quantity'));
+                    xwoo_function()->update_checkbox('xwoo_show_quantity', $quantity);
 
-                    $terms_and_conditions = sanitize_text_field(XWOO_function()->post('XWOO_show_terms_and_conditions'));
-                    XWOO_function()->update_checkbox('XWOO_show_terms_and_conditions', $terms_and_conditions);
+                    $terms_and_conditions = sanitize_text_field(xwoo_function()->post('xwoo_show_terms_and_conditions'));
+                    xwoo_function()->update_checkbox('xwoo_show_terms_and_conditions', $terms_and_conditions);
                 }
 
                 /**
@@ -352,19 +352,19 @@ class Admin_Menu {
                  */
                 if ( $current_tab == 'tab_general' ){
 
-                    $vendor_type = sanitize_text_field(XWOO_function()->post('vendor_type'));
-                    XWOO_function()->update_text('vendor_type', $vendor_type);
+                    $vendor_type = sanitize_text_field(xwoo_function()->post('vendor_type'));
+                    xwoo_function()->update_text('vendor_type', $vendor_type);
 
-                    $campaign_status = sanitize_text_field(XWOO_function()->post('wp_default_campaign_status'));
-                    XWOO_function()->update_text('wp_default_campaign_status', $campaign_status);
+                    $campaign_status = sanitize_text_field(xwoo_function()->post('wp_default_campaign_status'));
+                    xwoo_function()->update_text('wp_default_campaign_status', $campaign_status);
                     
-                    $edit_status = sanitize_text_field(XWOO_function()->post('wp_campaign_edit_status'));
-                    XWOO_function()->update_text('wp_campaign_edit_status', $edit_status);
+                    $edit_status = sanitize_text_field(xwoo_function()->post('wp_campaign_edit_status'));
+                    xwoo_function()->update_text('wp_campaign_edit_status', $edit_status);
 
-                    $paypal_per_campaign_email = sanitize_text_field(XWOO_function()->post('wp_enable_paypal_per_campaign_email'));
-                    XWOO_function()->update_checkbox('wp_enable_paypal_per_campaign_email', $paypal_per_campaign_email);
+                    $paypal_per_campaign_email = sanitize_text_field(xwoo_function()->post('wp_enable_paypal_per_campaign_email'));
+                    xwoo_function()->update_checkbox('wp_enable_paypal_per_campaign_email', $paypal_per_campaign_email);
 
-                    $role_selector = XWOO_function()->post('wp_user_role_selector');
+                    $role_selector = xwoo_function()->post('wp_user_role_selector');
                     update_option( 'wp_user_role_selector', $role_selector );
 
 
@@ -387,20 +387,20 @@ class Admin_Menu {
                         }
                     }
 
-                    $form_page_id = intval(XWOO_function()->post('wp_form_page_id'));
+                    $form_page_id = intval(xwoo_function()->post('wp_form_page_id'));
                     if (!empty($form_page_id)) {
                         global $wpdb;
                         $page_id = $form_page_id;
                         update_option( 'wp_form_page_id', $page_id );
 
                         //Update That Page with new crowdFunding [wp_xwoo_form]
-                        $previous_content = str_replace( array( '[XWOO_form]', '[wp_xwoo_form]' ), array( '', '' ), get_post_field('post_content', $page_id));
-                        $new_content = $previous_content . '[XWOO_form]';
+                        $previous_content = str_replace( array( '[xwoo_form]', '[wp_xwoo_form]' ), array( '', '' ), get_post_field('post_content', $page_id));
+                        $new_content = $previous_content . '[xwoo_form]';
                         //Update Post
                         $wpdb->update($wpdb->posts, array('post_content' => $new_content), array('ID'=> $page_id));
                     }
 
-                    $dashboard_page_id = intval(XWOO_function()->post('wp_xwoo_dashboard_page_id'));
+                    $dashboard_page_id = intval(xwoo_function()->post('wp_xwoo_dashboard_page_id'));
                     if (!empty($dashboard_page_id)) {
                         $page_id = $dashboard_page_id;
                         update_option('wp_xwoo_dashboard_page_id', $page_id);
@@ -412,130 +412,126 @@ class Admin_Menu {
                         $wpdb->update($wpdb->posts, array('post_content' => $new_content), array('ID'=> $page_id));
                     }
 
-                    $XWOO_user_reg_success_redirect_uri = sanitize_text_field(XWOO_function()->post('XWOO_user_reg_success_redirect_uri'));
-                    update_option('XWOO_user_reg_success_redirect_uri', $XWOO_user_reg_success_redirect_uri);
+                    $xwoo_user_reg_success_redirect_uri = sanitize_text_field(xwoo_function()->post('xwoo_user_reg_success_redirect_uri'));
+                    update_option('xwoo_user_reg_success_redirect_uri', $xwoo_user_reg_success_redirect_uri);
                 }
 
 
                 // Listing Page Settings
                 if ( $current_tab == 'tab_listing_page' ){
-                    $columns  = intval(XWOO_function()->post('number_of_collumn_in_row'));
-                    XWOO_function()->update_text('number_of_collumn_in_row', $columns );
+                    $columns  = intval(xwoo_function()->post('number_of_collumn_in_row'));
+                    xwoo_function()->update_text('number_of_collumn_in_row', $columns );
 
-                    $description_limits = intval(XWOO_function()->post('number_of_words_show_in_listing_description'));
-                    XWOO_function()->update_text('number_of_words_show_in_listing_description', $description_limits );
+                    $description_limits = intval(xwoo_function()->post('number_of_words_show_in_listing_description'));
+                    xwoo_function()->update_text('number_of_words_show_in_listing_description', $description_limits );
                     
+                    $product_limits = intval(xwoo_function()->post('XWOO_listing_post_number'));
+                    xwoo_function()->update_text('XWOO_listing_post_number', $product_limits );
 
-                    $product_limits = intval(XWOO_function()->post('XWOO_listing_post_number'));
-                    XWOO_function()->update_text('XWOO_listing_post_number', $product_limits );
-
-
-
-
-                    $show_rating = sanitize_text_field(XWOO_function()->post('wp_show_rating'));
-                    XWOO_function()->update_checkbox('wp_show_rating', $show_rating);
+                    $show_rating = sanitize_text_field(xwoo_function()->post('wp_show_rating'));
+                    xwoo_function()->update_checkbox('wp_show_rating', $show_rating);
                 }
 
 
                 // Single Page Settings
                 if ( $current_tab == 'tab_single_page' ){
-                    $reward_design = intval(XWOO_function()->post('wp_single_page_reward_design'));
-                    XWOO_function()->update_text('wp_single_page_reward_design', $reward_design);
+                    $reward_design = intval(xwoo_function()->post('wp_single_page_reward_design'));
+                    xwoo_function()->update_text('wp_single_page_reward_design', $reward_design);
 
-                    $fixed_price = sanitize_text_field(XWOO_function()->post('wp_reward_fixed_price'));
-                    XWOO_function()->update_checkbox('wp_reward_fixed_price', $fixed_price);
+                    $fixed_price = sanitize_text_field(xwoo_function()->post('wp_reward_fixed_price'));
+                    xwoo_function()->update_checkbox('wp_reward_fixed_price', $fixed_price);
                 }
 
 
                 // WooCommerce Settings
                 if ( $current_tab == 'tab_woocommerce' ){
-                    $hide_shop_page = sanitize_text_field(XWOO_function()->post('hide_xwoo_campaign_from_shop_page'));
-                    XWOO_function()->update_checkbox('hide_xwoo_campaign_from_shop_page', $hide_shop_page );
+                    $hide_shop_page = sanitize_text_field(xwoo_function()->post('hide_xwoo_campaign_from_shop_page'));
+                    xwoo_function()->update_checkbox('hide_xwoo_campaign_from_shop_page', $hide_shop_page );
 
-                    $single = sanitize_text_field(XWOO_function()->post('wp_single_page_id'));
-                    XWOO_function()->update_checkbox('wp_single_page_id', $single );
+                    $single = sanitize_text_field(xwoo_function()->post('wp_single_page_id'));
+                    xwoo_function()->update_checkbox('wp_single_page_id', $single );
 
-                    $from_checkout = sanitize_text_field(XWOO_function()->post('hide_xwoo_address_from_checkout'));
-                    XWOO_function()->update_checkbox('hide_xwoo_address_from_checkout', $from_checkout );
+                    $from_checkout = sanitize_text_field(xwoo_function()->post('hide_xwoo_address_from_checkout'));
+                    xwoo_function()->update_checkbox('hide_xwoo_address_from_checkout', $from_checkout );
 
-                    $listing = intval(sanitize_text_field(XWOO_function()->post('wp_listing_page_id')));
-                    XWOO_function()->update_text('wp_listing_page_id', $listing );
+                    $listing = intval(sanitize_text_field(xwoo_function()->post('wp_listing_page_id')));
+                    xwoo_function()->update_text('wp_listing_page_id', $listing );
 
-                    $form_page = intval(sanitize_text_field(XWOO_function()->post('wp_form_page_id')));
-                    XWOO_function()->update_text('wp_form_page_id', $form_page );
+                    $form_page = intval(sanitize_text_field(xwoo_function()->post('wp_form_page_id')));
+                    xwoo_function()->update_text('wp_form_page_id', $form_page );
 
-                    $registration = intval(sanitize_text_field(XWOO_function()->post('wp_registration_page_id')));
-                    XWOO_function()->update_text('wp_registration_page_id', $registration );
+                    $registration = intval(sanitize_text_field(xwoo_function()->post('wp_registration_page_id')));
+                    xwoo_function()->update_text('wp_registration_page_id', $registration );
 
-                    $categories = sanitize_text_field(XWOO_function()->post('seperate_xwoo_categories'));
-                    XWOO_function()->update_checkbox('seperate_xwoo_categories', $categories );
+                    $categories = sanitize_text_field(xwoo_function()->post('seperate_xwoo_categories'));
+                    xwoo_function()->update_checkbox('seperate_xwoo_categories', $categories );
 
-                    $selected_theme = sanitize_text_field(XWOO_function()->post('wp_xwoo_selected_theme'));
-                    XWOO_function()->update_text('wp_xwoo_selected_theme', $selected_theme );
+                    $selected_theme = sanitize_text_field(xwoo_function()->post('wp_xwoo_selected_theme'));
+                    xwoo_function()->update_text('wp_xwoo_selected_theme', $selected_theme );
 
-                    $requirement_title = sanitize_text_field(XWOO_function()->post('wp_requirement_title'));
-                    XWOO_function()->update_text('wp_requirement_title', $requirement_title);
+                    $requirement_title = sanitize_text_field(xwoo_function()->post('wp_requirement_title'));
+                    xwoo_function()->update_text('wp_requirement_title', $requirement_title);
 
-                    $requirement = sanitize_text_field(XWOO_function()->post('wp_requirement_text'));
-                    XWOO_function()->update_text('wp_requirement_text', $requirement );
+                    $requirement = sanitize_text_field(xwoo_function()->post('wp_requirement_text'));
+                    xwoo_function()->update_text('wp_requirement_text', $requirement );
 
-                    $agree_title = sanitize_text_field(XWOO_function()->post('wp_requirement_agree_title'));
-                    XWOO_function()->update_text('wp_requirement_agree_title', $agree_title);
+                    $agree_title = sanitize_text_field(xwoo_function()->post('wp_requirement_agree_title'));
+                    xwoo_function()->update_text('wp_requirement_agree_title', $agree_title);
 
-                    $cart_redirect = sanitize_text_field(XWOO_function()->post('wp_xwoo_add_to_cart_redirect'));
-                    XWOO_function()->update_text('wp_xwoo_add_to_cart_redirect', $cart_redirect);
+                    $cart_redirect = sanitize_text_field(xwoo_function()->post('wp_xwoo_add_to_cart_redirect'));
+                    xwoo_function()->update_text('wp_xwoo_add_to_cart_redirect', $cart_redirect);
 
-                    $collumns  = intval(XWOO_function()->post('number_of_collumn_in_row'));
-                    XWOO_function()->update_text('number_of_collumn_in_row', $collumns );
+                    $collumns  = intval(xwoo_function()->post('number_of_collumn_in_row'));
+                    xwoo_function()->update_text('number_of_collumn_in_row', $collumns );
 
-                    $number_of_words_show_in_listing_description = intval(XWOO_function()->post('number_of_words_show_in_listing_description'));
-                    XWOO_function()->update_text('number_of_words_show_in_listing_description', $number_of_words_show_in_listing_description);
+                    $number_of_words_show_in_listing_description = intval(xwoo_function()->post('number_of_words_show_in_listing_description'));
+                    xwoo_function()->update_text('number_of_words_show_in_listing_description', $number_of_words_show_in_listing_description);
 
                     # Product number.
-                    $XWOO_listing_post_number = intval(XWOO_function()->post('XWOO_listing_post_number'));
-                    XWOO_function()->update_text('XWOO_listing_post_number', $XWOO_listing_post_number);
+                    $XWOO_listing_post_number = intval(xwoo_function()->post('XWOO_listing_post_number'));
+                    xwoo_function()->update_text('XWOO_listing_post_number', $XWOO_listing_post_number);
 
 
-                    $show_rating = sanitize_text_field(XWOO_function()->post('wp_show_rating'));
-                    XWOO_function()->update_checkbox('wp_show_rating', $show_rating);
+                    $show_rating = sanitize_text_field(xwoo_function()->post('wp_show_rating'));
+                    xwoo_function()->update_checkbox('wp_show_rating', $show_rating);
 
                     //Load single campaign to WooCommerce or not
-                    $page_template = sanitize_text_field(XWOO_function()->post('wp_single_page_template'));
-                    XWOO_function()->update_checkbox('wp_single_page_template', $page_template);
+                    $page_template = sanitize_text_field(xwoo_function()->post('wp_single_page_template'));
+                    xwoo_function()->update_checkbox('wp_single_page_template', $page_template);
 
-                    $reward_design = intval(XWOO_function()->post('wp_single_page_reward_design'));
-                    XWOO_function()->update_text('wp_single_page_reward_design', $reward_design);
+                    $reward_design = intval(xwoo_function()->post('wp_single_page_reward_design'));
+                    xwoo_function()->update_text('wp_single_page_reward_design', $reward_design);
 
-                    $fixed_price = sanitize_text_field(XWOO_function()->post('wp_reward_fixed_price'));
-                    XWOO_function()->update_checkbox('wp_reward_fixed_price', $fixed_price);
+                    $fixed_price = sanitize_text_field(xwoo_function()->post('wp_reward_fixed_price'));
+                    xwoo_function()->update_checkbox('wp_reward_fixed_price', $fixed_price);
 
-                    $enable_tax = sanitize_text_field(XWOO_function()->post('XWOO_enable_tax'));
-                    XWOO_function()->update_checkbox('XWOO_enable_tax', $enable_tax);
+                    $enable_tax = sanitize_text_field(xwoo_function()->post('XWOO_enable_tax'));
+                    xwoo_function()->update_checkbox('XWOO_enable_tax', $enable_tax);
                 }
 
                 // Style Settings
                 if ( $current_tab == 'tab_style' ){
 
-                    $styling = sanitize_text_field(XWOO_function()->post('wp_enable_color_styling'));
-                    XWOO_function()->update_checkbox( 'wp_enable_color_styling', $styling);
+                    $styling = sanitize_text_field(xwoo_function()->post('wp_enable_color_styling'));
+                    xwoo_function()->update_checkbox( 'wp_enable_color_styling', $styling);
 
-                    $scheme = sanitize_text_field(XWOO_function()->post('wp_color_scheme'));
-                    XWOO_function()->update_text('wp_color_scheme', $scheme);
+                    $scheme = sanitize_text_field(xwoo_function()->post('wp_color_scheme'));
+                    xwoo_function()->update_text('wp_color_scheme', $scheme);
 
-                    $button_bg_color = sanitize_text_field(XWOO_function()->post('wp_button_bg_color'));
-                    XWOO_function()->update_text('wp_button_bg_color', $button_bg_color);
+                    $button_bg_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_color'));
+                    xwoo_function()->update_text('wp_button_bg_color', $button_bg_color);
 
-                    $button_bg_hover_color = sanitize_text_field(XWOO_function()->post('wp_button_bg_hover_color'));
-                    XWOO_function()->update_text('wp_button_bg_hover_color', $button_bg_hover_color);
+                    $button_bg_hover_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_hover_color'));
+                    xwoo_function()->update_text('wp_button_bg_hover_color', $button_bg_hover_color);
 
-                    $button_text_color = sanitize_text_field(XWOO_function()->post('wp_button_text_color'));
-                    XWOO_function()->update_text('wp_button_text_color', $button_text_color);
+                    $button_text_color = sanitize_text_field(xwoo_function()->post('wp_button_text_color'));
+                    xwoo_function()->update_text('wp_button_text_color', $button_text_color);
 
-                    $button_text_hover_color = sanitize_text_field(XWOO_function()->post('wp_button_text_hover_color'));
-                    XWOO_function()->update_text('wp_button_text_hover_color', $button_text_hover_color);
+                    $button_text_hover_color = sanitize_text_field(xwoo_function()->post('wp_button_text_hover_color'));
+                    xwoo_function()->update_text('wp_button_text_hover_color', $button_text_hover_color);
 
-                    $custom_css = XWOO_function()->post( 'wp_custom_css' );
-                    XWOO_function()->update_text( 'wp_custom_css', $custom_css );
+                    $custom_css = xwoo_function()->post( 'wp_custom_css' );
+                    xwoo_function()->update_text( 'wp_custom_css', $custom_css );
                 }
             }
         }

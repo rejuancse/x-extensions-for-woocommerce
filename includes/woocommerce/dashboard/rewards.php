@@ -72,7 +72,7 @@ $rewards_query = new WP_Query($args);
 											}
 											echo '<div><strong>'.__('Backer info', 'xwoo').'</strong> <br />';
 
-											if ( XWOO_function()->wc_version() ){
+											if ( xwoo_function()->wc_version() ){
 												echo $order->get_billing_first_name().' '.$order->get_billing_last_name().'<br />';
 												echo $order->get_billing_email().'<br />';
 												echo $order->get_billing_phone().'<br />';

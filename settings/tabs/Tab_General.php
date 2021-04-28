@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 global $wp_roles;
-$pages = XWOO_function()->get_pages();
+$pages = xwoo_function()->get_pages();
 $page_array = array();
 if (count($pages)>0) {
     foreach ($pages as $page) {
@@ -101,10 +101,10 @@ $arr =  array(
 
 	// #Show Campaign Never End
 	array(
-		'id'        => 'XWOO_user_reg_success_redirect_uri',
+		'id'        => 'xwoo_user_reg_success_redirect_uri',
 		'type'      => 'text',
 		'value'     => esc_url( home_url( '/' ) ),
 		'label'     => __('Redirect URL for User Registration Success','xwoo'),
 	),
 );
-XWOO_function()->generator( $arr );
+xwoo_function()->generator( $arr );

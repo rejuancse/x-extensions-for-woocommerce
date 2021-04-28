@@ -15,30 +15,30 @@ if (! class_exists('Initial_Setup')) {
 
         public function initial_compatibility_check(){
             if (version_compare(XWOO_VERSION, '2.0.5', '>')){
-                $option_check = get_option('XWOO_show_description');
+                $option_check = get_option('xwoo_show_description');
                 if($option_check != 'true' && $option_check != 'false'){
                     $default_value = array(
-                        'XWOO_show_description' => 'true',
-                        'XWOO_show_short_description' => 'true',
-                        'XWOO_show_category' => 'true',
-                        'XWOO_show_tag' => 'true',
-                        'XWOO_show_feature' => 'true',
-                        'XWOO_show_video' => 'true',
-                        'XWOO_show_end_method' => 'true',
-                        'XWOO_show_start_date' => 'true',
-                        'XWOO_show_end_date' => 'true',
-                        'XWOO_show_funding_goal' => 'true',
-                        'XWOO_show_predefined_amount' => 'true',
-                        'XWOO_show_contributor_table' => 'true',
-                        'XWOO_show_contributor_anonymity' => 'true',
-                        'XWOO_show_country' => 'true',
-                        'XWOO_show_location' => 'true',
-                        'XWOO_show_reward_image' => 'true',
-                        'XWOO_show_reward' => 'true',
-                        'XWOO_show_estimated_delivery_month' => 'true',
-                        'XWOO_show_estimated_delivery_year' => 'true',
-                        'XWOO_show_quantity' => 'true',
-                        'XWOO_show_terms_and_conditions' => 'true'
+                        'xwoo_show_description' => 'true',
+                        'xwoo_show_short_description' => 'true',
+                        'xwoo_show_category' => 'true',
+                        'xwoo_show_tag' => 'true',
+                        'xwoo_show_feature' => 'true',
+                        'xwoo_show_video' => 'true',
+                        'xwoo_show_end_method' => 'true',
+                        'xwoo_show_start_date' => 'true',
+                        'xwoo_show_end_date' => 'true',
+                        'xwoo_show_funding_goal' => 'true',
+                        'xwoo_show_predefined_amount' => 'true',
+                        'xwoo_show_contributor_table' => 'true',
+                        'xwoo_show_contributor_anonymity' => 'true',
+                        'xwoo_show_country' => 'true',
+                        'xwoo_show_location' => 'true',
+                        'xwoo_show_reward_image' => 'true',
+                        'xwoo_show_reward' => 'true',
+                        'xwoo_show_estimated_delivery_month' => 'true',
+                        'xwoo_show_estimated_delivery_year' => 'true',
+                        'xwoo_show_quantity' => 'true',
+                        'xwoo_show_terms_and_conditions' => 'true'
                     );
                     foreach ($default_value as $key => $value ) {
                         update_option( $key , $value );
@@ -77,27 +77,27 @@ if (! class_exists('Initial_Setup')) {
                 'wp_show_target_date' => 'true',
                 'wp_show_target_goal_and_date' => 'true',
                 'wp_show_campaign_never_end' => 'true',
-                'XWOO_show_description' => 'true',
-                'XWOO_show_short_description' => 'true',
-                'XWOO_show_category' => 'true',
-                'XWOO_show_tag' => 'true',
-                'XWOO_show_feature' => 'true',
-                'XWOO_show_video' => 'true',
-                'XWOO_show_end_method' => 'true',
-                'XWOO_show_start_date' => 'true',
-                'XWOO_show_end_date' => 'true',
-                'XWOO_show_funding_goal' => 'true',
-                'XWOO_show_predefined_amount' => 'true',
-                'XWOO_show_contributor_table' => 'true',
-                'XWOO_show_contributor_anonymity' => 'true',
-                'XWOO_show_country' => 'true',
-                'XWOO_show_location' => 'true',
-                'XWOO_show_reward_image' => 'true',
-                'XWOO_show_reward' => 'true',
-                'XWOO_show_estimated_delivery_month' => 'true',
-                'XWOO_show_estimated_delivery_year' => 'true',
-                'XWOO_show_quantity' => 'true',
-                'XWOO_show_terms_and_conditions' => 'true',
+                'xwoo_show_description' => 'true',
+                'xwoo_show_short_description' => 'true',
+                'xwoo_show_category' => 'true',
+                'xwoo_show_tag' => 'true',
+                'xwoo_show_feature' => 'true',
+                'xwoo_show_video' => 'true',
+                'xwoo_show_end_method' => 'true',
+                'xwoo_show_start_date' => 'true',
+                'xwoo_show_end_date' => 'true',
+                'xwoo_show_funding_goal' => 'true',
+                'xwoo_show_predefined_amount' => 'true',
+                'xwoo_show_contributor_table' => 'true',
+                'xwoo_show_contributor_anonymity' => 'true',
+                'xwoo_show_country' => 'true',
+                'xwoo_show_location' => 'true',
+                'xwoo_show_reward_image' => 'true',
+                'xwoo_show_reward' => 'true',
+                'xwoo_show_estimated_delivery_month' => 'true',
+                'xwoo_show_estimated_delivery_year' => 'true',
+                'xwoo_show_quantity' => 'true',
+                'xwoo_show_terms_and_conditions' => 'true',
                 'wp_enable_paypal_per_campaign_email' => 'true',
                 'wp_single_page_template' => 'in_wp_xwoo',
                 'wp_single_page_reward_design' => '1',
@@ -143,7 +143,7 @@ if (! class_exists('Initial_Setup')) {
             );
             $form = array(
                 'post_title'    => 'XWOOcampaign form',
-                'post_content'  => '[XWOO_form]',
+                'post_content'  => '[xwoo_form]',
                 'post_type'     => 'page',
                 'post_status'   => 'publish',
             );
@@ -166,19 +166,19 @@ if (! class_exists('Initial_Setup')) {
              */
             $dashboard_page = wp_insert_post( $dashboard );
             if ( !is_wp_error( $dashboard_page ) ) {
-                XWOO_function()->update_text( 'wp_xwoo_dashboard_page_id', $dashboard_page );
+                xwoo_function()->update_text( 'wp_xwoo_dashboard_page_id', $dashboard_page );
             }
             $form_page = wp_insert_post( $form );
             if( !is_wp_error( $form_page ) ){
-                XWOO_function()->update_text( 'wp_form_page_id', $form_page );
+                xwoo_function()->update_text( 'wp_form_page_id', $form_page );
             }
             $listing_page = wp_insert_post( $listing );
             if( !is_wp_error( $listing_page ) ){
-                XWOO_function()->update_text( 'wp_listing_page_id', $listing_page );
+                xwoo_function()->update_text( 'wp_listing_page_id', $listing_page );
             }
             $registration_page = wp_insert_post( $registration );
             if( !is_wp_error( $registration_page ) ){
-                XWOO_function()->update_text( 'wp_registration_page_id', $registration_page );
+                xwoo_function()->update_text( 'wp_registration_page_id', $registration_page );
             }
         }
 

@@ -78,7 +78,7 @@ $html .= '<div id="wp_update_form_wrapper" style="display: none;">';
     $html .= '</div>';
     $html .= '<div class="clear-float"></div>';
 
-    $html .= wp_nonce_field( 'XWOO_form_action', 'XWOO_form_action_field', true, false );
+    $html .= wp_nonce_field( 'xwoo_form_action', 'xwoo_form_action_field', true, false );
 
     $html .= '</form>';
     $html .= '</div>';

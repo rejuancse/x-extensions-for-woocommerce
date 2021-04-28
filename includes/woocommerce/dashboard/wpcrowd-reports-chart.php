@@ -72,8 +72,8 @@ $csv[]              = array("Date", "Pledge Amount ", "Sales");
 $format             = array();
 $label              = array();
 
-$product_ids = XWOO_function()->get_products_id_by_user();
-$getting_order_ids_by_products = XWOO_function()->get_order_ids_by_product_ids($product_ids);
+$product_ids = xwoo_function()->get_products_id_by_user();
+$getting_order_ids_by_products = xwoo_function()->get_order_ids_by_product_ids($product_ids);
 
 if ($from_time < $to_time) {
     // $format .= "['Date', 'Pledge Amount (".get_woocommerce_currency().")', 'Sales'],";
@@ -185,7 +185,7 @@ $query_args = array(
 );
 $get_xwoo_campaigns = new WP_Query($query_args);
 
-$pladges_received = XWOO_function()->get_pladge_received($from_date, $to_date);
+$pladges_received = xwoo_function()->get_pladge_received($from_date, $to_date);
 ?>
 
 <div class="xwoo-dashboard-chart xwoo-shadow chart-container">

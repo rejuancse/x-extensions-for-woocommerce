@@ -120,7 +120,7 @@ if ( $customer_orders ) :
                                     if ($order_total >= $value['wp_rewards_pladge_amount']) {
                                         if( $temp <= $value['wp_rewards_pladge_amount'] ){
                                             $temp = $value['wp_rewards_pladge_amount'];
-                                            $rewards_amount = '<a class="label-default" href="'.get_permalink($product_id).'" target="_blank">'.__('Rewards', 'xwoo').': ' . XWOO_function()->price($value['wp_rewards_pladge_amount']).'</a>';
+                                            $rewards_amount = '<a class="label-default" href="'.get_permalink($product_id).'" target="_blank">'.__('Rewards', 'xwoo').': ' . xwoo_function()->price($value['wp_rewards_pladge_amount']).'</a>';
                                         }
                                     }
                                 }
@@ -159,7 +159,7 @@ if(!empty($customer_order_all)){
     $max_page = ceil( count($customer_order_all)/10 );
 }
 // Pagination
-$html .= XWOO_function()->get_pagination( $page_numb , $max_page );
+$html .= xwoo_function()->get_pagination( $page_numb , $max_page );
 
 $html .='</div>';
 $html .='</div>';

@@ -480,7 +480,7 @@ class Functions {
 			if( function_exists('get_product') ){
 				$product = wc_get_product( $post->ID );
 				if( $product->is_type( 'xwoo' ) ){
-					XWOO_function()->template('include/love_campaign');
+					xwoo_function()->template('include/love_campaign');
 				}
 			}
 		}

@@ -147,13 +147,13 @@ class Base {
         }
 
         $current_screen = get_current_screen();
-        $xwoo_screen_ids = XWOO_function()->get_screen_id();
+        $xwoo_screen_ids = xwoo_function()->get_screen_id();
 
         if ( ! in_array($current_screen->id, $xwoo_screen_ids)){
             return $footer_text;
         }
 
-        if ( ! get_option( 'XWOO_admin_footer_text_rated' ) ) {
+        if ( ! get_option( 'xwoo_admin_footer_text_rated' ) ) {
             $footer_text = sprintf(__('If you like <strong>WP Xwoo</strong> please leave us a 5-stars %s rating. A huge thanks in advance!', 'xwoo'), '<a href="https://wordpress.org/support/plugin/wp-xwoo/reviews?rate=5#new-post" target="_blank" class="XWOO-rating-link" data-rated="' . esc_attr__('Thanks :)', 'woocommerce') . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>');
             wc_enqueue_js("
                 jQuery( 'a.XWOO-rating-link' ).click( function() {
@@ -172,7 +172,7 @@ class Base {
      * Added rated
      */
     function admin_footer_text_rated(){
-        update_option('XWOO_admin_footer_text_rated', 'true');
+        update_option('xwoo_admin_footer_text_rated', 'true');
     }
 
 
@@ -191,8 +191,8 @@ class Base {
      */
     public function addon_enable_disable(){
         $addonsConfig = maybe_unserialize(get_option('XWOO_addons_config'));
-        $isEnable = (bool) sanitize_text_field( XWOO_function()->avalue_dot('isEnable', $_POST) );
-        $addonFieldName = sanitize_text_field( XWOO_function()->avalue_dot('addonFieldName', $_POST) );
+        $isEnable = (bool) sanitize_text_field( xwoo_function()->avalue_dot('isEnable', $_POST) );
+        $addonFieldName = sanitize_text_field( xwoo_function()->avalue_dot('addonFieldName', $_POST) );
         $addonsConfig[$addonFieldName]['is_enable'] = ($isEnable) ? 1 : 0;
         update_option('XWOO_addons_config', $addonsConfig);
         wp_send_json_success();

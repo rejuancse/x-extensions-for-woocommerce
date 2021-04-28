@@ -51,7 +51,7 @@ $html .= '<div class="xwoo-content">';
 					$html .= '<p>'.__( "Name:" , "wp-xwoo" ).'</p>';
 					$html .= '</div>';
 					$html .= '<div class="xwoo-fields float-right">';
-					$html .= "<p>".XWOO_function()->get_author_name()."</p>";
+					$html .= "<p>".xwoo_function()->get_author_name()."</p>";
                     $html .= '</div>';
 
 					$html .= '<div class="xwoo-single">';

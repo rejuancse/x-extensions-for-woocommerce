@@ -206,8 +206,8 @@ class Dashboard{
                 $html .='<td>'.__("Raised", "wp-xwoo").'</td>';
                 $html .='<td>';
                     $html .='<span class="label-warning">';
-                        $raised_total = XWOO_function()->fund_raised();
-                        if (XWOO_function()->is_campaign_valid() == true) {
+                        $raised_total = xwoo_function()->fund_raised();
+                        if (xwoo_function()->is_campaign_valid() == true) {
                             $html .= $raised_total ? wc_price($raised_total) : wc_price(0);
                         }else {
                             $html .= wc_price(0);
@@ -218,8 +218,8 @@ class Dashboard{
 
             $html .='<tr>';
                 $html .='<td>'.__("Raised Percent", "wp-xwoo").'</td>';
-                if (XWOO_function()->is_campaign_valid() == true) {
-                    $html .='<td><span class="label-danger">'.XWOO_function()->get_fund_raised_percent_format().'</span></td>';
+                if (xwoo_function()->is_campaign_valid() == true) {
+                    $html .='<td><span class="label-danger">'.xwoo_function()->get_fund_raised_percent_format().'</span></td>';
                 }else {
                     $html .='<td><span class="label-danger">0%</span></td>';
                 }

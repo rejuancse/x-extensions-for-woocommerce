@@ -47,7 +47,7 @@ ob_start(); ?>
                 <p><?php _e('Sorry, No bookmark found.', 'xwoo'); ?></p>
             <?php endif; ?>
         </div>
-        <?php echo XWOO_function()->get_pagination($page_numb, $the_query->max_num_pages); ?>
+        <?php echo xwoo_function()->get_pagination($page_numb, $the_query->max_num_pages); ?>
     </div>
 </div>
 

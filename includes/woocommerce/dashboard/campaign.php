@@ -51,11 +51,11 @@ $the_query = new WP_Query( $args );
                     
                     <!-- author -->
                     <p class="xwoo-author"><?php _e('by','xwoo'); ?> 
-                        <a href="<?php echo XWOO_function()->get_author_url( get_the_author_meta( 'user_login' ) ); ?>"><?php echo XWOO_function()->get_author_name(); ?></a>
+                        <a href="<?php echo xwoo_function()->get_author_url( get_the_author_meta( 'user_login' ) ); ?>"><?php echo xwoo_function()->get_author_name(); ?></a>
                     </p>
 
                     <!-- location -->
-                    <?php $location = XWOO_function()->campaign_location(); ?>
+                    <?php $location = xwoo_function()->campaign_location(); ?>
                     <?php if($location) { ?>
                         <div class="xwoo-location">
                             <i class="xwoo-icon xwoo-icon-location"></i>
@@ -86,16 +86,16 @@ $the_query = new WP_Query( $args );
                 <div class="xwoo-percent-rund-wrap">
                     
                     <!-- percent -->
-                    <?php $raised_percent = XWOO_function()->get_fund_raised_percent_format(); ?>
+                    <?php $raised_percent = xwoo_function()->get_fund_raised_percent_format(); ?>
                     <div class="xwoo-pie-chart" data-size="60" data-percent="<?php echo $raised_percent; ?>">
                         <div class="sppb-chart-percent"><span><?php echo $raised_percent; ?></span></div>
                     </div>
 
                     <!-- fund-raised -->
                     <?php 
-                    $raised_percent = XWOO_function()->get_fund_raised_percent_format();
+                    $raised_percent = xwoo_function()->get_fund_raised_percent_format();
                     $raised = 0;
-                    $total_raised = XWOO_function()->get_total_fund();
+                    $total_raised = xwoo_function()->get_total_fund();
                     if ($total_raised){
                         $raised = $total_raised;
                     }
@@ -114,19 +114,19 @@ $the_query = new WP_Query( $args );
 
                     <!--  Days to go -->
                     <?php $days_remaining = apply_filters('date_expired_msg', __('0', 'xwoo'));
-                    if (XWOO_function()->get_date_remaining()){
-                        $days_remaining = apply_filters('date_remaining_msg', __(XWOO_function()->get_date_remaining(), 'xwoo'));
+                    if (xwoo_function()->get_date_remaining()){
+                        $days_remaining = apply_filters('date_remaining_msg', __(xwoo_function()->get_date_remaining(), 'xwoo'));
                     }
 
                     $end_method = get_post_meta(get_the_ID(), 'wp_campaign_end_method', true);
 
                     if ($end_method != 'never_end'){ ?>
                         <div class="xwoo-time-remaining">
-                            <?php if (XWOO_function()->is_campaign_started()){ ?>
-                                <div class="xwoo-meta-desc"><?php echo XWOO_function()->get_date_remaining(); ?></div>
+                            <?php if (xwoo_function()->is_campaign_started()){ ?>
+                                <div class="xwoo-meta-desc"><?php echo xwoo_function()->get_date_remaining(); ?></div>
                                 <div class="xwoo-meta-name"><?php _e( 'Days to go','xwoo' ); ?></div>
                             <?php } else { ?>
-                                <div class="xwoo-meta-desc"><?php echo XWOO_function()->days_until_launch(); ?></div>
+                                <div class="xwoo-meta-desc"><?php echo xwoo_function()->days_until_launch(); ?></div>
                                 <div class="xwoo-meta-name"><?php _e( 'Days Until Launch','xwoo' ); ?></div>
                             <?php } ?>
                         </div>
@@ -144,7 +144,7 @@ else :
     $html .= "<p>".__( 'Sorry, no Campaign Found.','xwoo' )."</p>";
 endif;
 
-$html .= XWOO_function()->get_pagination( $page_numb , $the_query->max_num_pages );
+$html .= xwoo_function()->get_pagination( $page_numb , $the_query->max_num_pages );
 
 $html .= '<div style="clear: both;"></div>';
 $html .= '</div>';

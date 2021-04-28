@@ -5,7 +5,7 @@ $arr =  array(
 
     // Show Description
     array(
-        'id'        => 'XWOO_show_description',
+        'id'        => 'xwoo_show_description',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -14,7 +14,7 @@ $arr =  array(
 
     // Show Short Description
     array(
-        'id'        => 'XWOO_show_short_description',
+        'id'        => 'xwoo_show_short_description',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -23,7 +23,7 @@ $arr =  array(
 
     // Show Category
     array(
-        'id'        => 'XWOO_show_category',
+        'id'        => 'xwoo_show_category',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -32,7 +32,7 @@ $arr =  array(
 
     // Show Tag
     array(
-        'id'        => 'XWOO_show_tag',
+        'id'        => 'xwoo_show_tag',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -41,7 +41,7 @@ $arr =  array(
 
     // Show Feature
     array(
-        'id'        => 'XWOO_show_feature',
+        'id'        => 'xwoo_show_feature',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -50,7 +50,7 @@ $arr =  array(
 
     // Show Video
     array(
-        'id'        => 'XWOO_show_video',
+        'id'        => 'xwoo_show_video',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -59,7 +59,7 @@ $arr =  array(
 
     // Show End Method
     array(
-        'id'        => 'XWOO_show_end_method',
+        'id'        => 'xwoo_show_end_method',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -116,7 +116,7 @@ $arr =  array(
     
     // Show Start Data
     array(
-        'id'        => 'XWOO_show_start_date',
+        'id'        => 'xwoo_show_start_date',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -125,7 +125,7 @@ $arr =  array(
 
     // Show End Date
     array(
-        'id'        => 'XWOO_show_end_date',
+        'id'        => 'xwoo_show_end_date',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -161,7 +161,7 @@ $arr =  array(
 
     // Show Funding Goal
     array(
-        'id'        => 'XWOO_show_funding_goal',
+        'id'        => 'xwoo_show_funding_goal',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -170,7 +170,7 @@ $arr =  array(
 
     // Show Pledge Amount
     array(
-        'id'        => 'XWOO_show_predefined_amount',
+        'id'        => 'xwoo_show_predefined_amount',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -179,7 +179,7 @@ $arr =  array(
 
     // Show Contributor Table
     array(
-        'id'        => 'XWOO_show_contributor_table',
+        'id'        => 'xwoo_show_contributor_table',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -188,7 +188,7 @@ $arr =  array(
 
     // Show Contributor Anonymity
     array(
-        'id'        => 'XWOO_show_contributor_anonymity',
+        'id'        => 'xwoo_show_contributor_anonymity',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -197,7 +197,7 @@ $arr =  array(
 
     // Show Country
     array(
-        'id'        => 'XWOO_show_country',
+        'id'        => 'xwoo_show_country',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -206,7 +206,7 @@ $arr =  array(
 
     // Show Location
     array(
-        'id'        => 'XWOO_show_location',
+        'id'        => 'xwoo_show_location',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -219,7 +219,7 @@ $arr =  array(
 
     // Show Reward Image
     array(
-        'id'        => 'XWOO_show_reward_image',
+        'id'        => 'xwoo_show_reward_image',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -228,7 +228,7 @@ $arr =  array(
 
     // Show Reward
     array(
-        'id'        => 'XWOO_show_reward',
+        'id'        => 'xwoo_show_reward',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -237,7 +237,7 @@ $arr =  array(
 
     // Show Estimated Delivery Month
     array(
-        'id'        => 'XWOO_show_estimated_delivery_month',
+        'id'        => 'xwoo_show_estimated_delivery_month',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -246,7 +246,7 @@ $arr =  array(
 
     // Show Estimated Delivery Year
     array(
-        'id'        => 'XWOO_show_estimated_delivery_year',
+        'id'        => 'xwoo_show_estimated_delivery_year',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -255,7 +255,7 @@ $arr =  array(
 
     // Show Quantity
     array(
-        'id'        => 'XWOO_show_quantity',
+        'id'        => 'xwoo_show_quantity',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -267,7 +267,7 @@ $arr =  array(
 
     // Show Terms and Conditions
     array(
-        'id'        => 'XWOO_show_terms_and_conditions',
+        'id'        => 'xwoo_show_terms_and_conditions',
         'type'      => 'checkbox',
         'value'     => 'true',
         'label'     => __('Enable/Disable','xwoo'),
@@ -280,4 +280,4 @@ $arr =  array(
         'value'     => 'tab_fields',
     ),
 );
-XWOO_function()->generator( $arr );
+xwoo_function()->generator( $arr );

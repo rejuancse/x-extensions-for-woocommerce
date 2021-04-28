@@ -80,4 +80,4 @@ defined( 'ABSPATH' ) || exit;
                     'value'     => 'tab_style',
                     ),
     );
-XWOO_function()->generator( $arr );
+xwoo_function()->generator( $arr );

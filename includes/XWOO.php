@@ -35,10 +35,10 @@ final class XWOO_Extensions {
 
 	//Checking Vendor
 	public function run() {
-		if( XWOO_function()->is_woocommerce() ) {
+		if( xwoo_function()->is_woocommerce() ) {
 			$initial_setup = new \XWOO\Initial_Setup();
 			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) {
-				if ( XWOO_function()->wc_version() ) {
+				if ( xwoo_function()->wc_version() ) {
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Base.php';
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Common.php';
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Templating.php';

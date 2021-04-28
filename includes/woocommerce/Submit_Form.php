@@ -32,39 +32,39 @@ class Submit_Form {
      */
 
     function frontend_data_save(){
-        if ( ! isset( $_POST['XWOO_form_action_field'] ) || ! wp_verify_nonce( $_POST['XWOO_form_action_field'], 'XWOO_form_action' ) ) {
+        if ( ! isset( $_POST['xwoo_form_action_field'] ) || ! wp_verify_nonce( $_POST['xwoo_form_action_field'], 'xwoo_form_action' ) ) {
             die(json_encode(array('success'=> 0, 'message' => __('Sorry, your data did not verify.', 'xwoo'))));
             exit;
         }
 
         global $wpdb;
 
-        $show_description = get_option('XWOO_show_description');
-        $show_short_description = get_option('XWOO_show_short_description');
-        $show_category = get_option('XWOO_show_category');
-        $show_tag = get_option('XWOO_show_tag');
-        $show_feature = get_option('XWOO_show_feature');
-        $show_video = get_option('XWOO_show_video');
-        $show_end_method = get_option('XWOO_show_end_method');
-        $show_start_date = get_option('XWOO_show_start_date');
-        $show_end_date = get_option('XWOO_show_end_date');
+        $show_description = get_option('xwoo_show_description');
+        $show_short_description = get_option('xwoo_show_short_description');
+        $show_category = get_option('xwoo_show_category');
+        $show_tag = get_option('xwoo_show_tag');
+        $show_feature = get_option('xwoo_show_feature');
+        $show_video = get_option('xwoo_show_video');
+        $show_end_method = get_option('xwoo_show_end_method');
+        $show_start_date = get_option('xwoo_show_start_date');
+        $show_end_date = get_option('xwoo_show_end_date');
         $show_min_price = get_option('wp_show_min_price');
         $show_max_price = get_option('wp_show_max_price');
         $show_recommended_price = get_option('wp_show_recommended_price');
-        $predefined_amount = get_option('XWOO_show_predefined_amount');
-        $show_funding_goal = get_option('XWOO_show_funding_goal');
-        $show_contributor_table = get_option('XWOO_show_contributor_table');
-        $show_contributor_anonymity = get_option('XWOO_show_contributor_anonymity');
-        $show_country = get_option('XWOO_show_country');
-        $show_location = get_option('XWOO_show_location');
+        $predefined_amount = get_option('xwoo_show_predefined_amount');
+        $show_funding_goal = get_option('xwoo_show_funding_goal');
+        $show_contributor_table = get_option('xwoo_show_contributor_table');
+        $show_contributor_anonymity = get_option('xwoo_show_contributor_anonymity');
+        $show_country = get_option('xwoo_show_country');
+        $show_location = get_option('xwoo_show_location');
         // Repetable
-        $show_reward_image = get_option('XWOO_show_reward_image');
-        $show_reward = get_option('XWOO_show_reward');
-        $show_estimated_delivery_month = get_option('XWOO_show_estimated_delivery_month');
-        $show_estimated_delivery_year = get_option('XWOO_show_estimated_delivery_year');
-        $show_quantity = get_option('XWOO_show_quantity');
+        $show_reward_image = get_option('xwoo_show_reward_image');
+        $show_reward = get_option('xwoo_show_reward');
+        $show_estimated_delivery_month = get_option('xwoo_show_estimated_delivery_month');
+        $show_estimated_delivery_year = get_option('xwoo_show_estimated_delivery_year');
+        $show_quantity = get_option('xwoo_show_quantity');
 
-        $show_terms_and_conditions = get_option('XWOO_show_terms_and_conditions');
+        $show_terms_and_conditions = get_option('xwoo_show_terms_and_conditions');
         
         if ( empty($_POST['xwoo-form-title'])){
             die(json_encode(array('success'=> 0, 'message' => __('Title required', 'xwoo'))));
@@ -149,21 +149,21 @@ class Submit_Form {
             }
             wp_set_object_terms( $post_id , 'xwoo', 'product_type',true );
 
-            XWOO_function()->update_meta($post_id, '_thumbnail_id', esc_attr($image_id));
-            XWOO_function()->update_meta($post_id, 'wp_funding_video', esc_url($video));
-            XWOO_function()->update_meta($post_id, '_nf_duration_start', esc_attr($start_date));
-            XWOO_function()->update_meta($post_id, '_nf_duration_end', esc_attr($end_date));
-            XWOO_function()->update_meta($post_id, 'wp_funding_minimum_price', esc_attr($min_price));
-            XWOO_function()->update_meta($post_id, 'wp_funding_maximum_price', esc_attr($max_price));
-            XWOO_function()->update_meta($post_id, 'wp_funding_recommended_price', esc_attr($recommended_price));
-            XWOO_function()->update_meta($post_id, 'XWOO_predefined_pledge_amount', esc_attr($XWOO_predefined_pledge_amount));
-            XWOO_function()->update_meta($post_id, '_nf_funding_goal', esc_attr($funding_goal));
-            XWOO_function()->update_meta($post_id, 'wp_campaign_end_method', esc_attr($type));
-            XWOO_function()->update_meta($post_id, 'wp_show_contributor_table', esc_attr($contributor_table));
-            XWOO_function()->update_meta($post_id, 'wp_mark_contributors_as_anonymous', esc_attr($contributor_show));
-            XWOO_function()->update_meta($post_id, 'wp_campaigner_paypal_id', esc_attr($paypal));
-            XWOO_function()->update_meta($post_id, 'wp_country', esc_attr($country));
-            XWOO_function()->update_meta($post_id, '_nf_location', esc_html($location));
+            xwoo_function()->update_meta($post_id, '_thumbnail_id', esc_attr($image_id));
+            xwoo_function()->update_meta($post_id, 'wp_funding_video', esc_url($video));
+            xwoo_function()->update_meta($post_id, '_nf_duration_start', esc_attr($start_date));
+            xwoo_function()->update_meta($post_id, '_nf_duration_end', esc_attr($end_date));
+            xwoo_function()->update_meta($post_id, 'wp_funding_minimum_price', esc_attr($min_price));
+            xwoo_function()->update_meta($post_id, 'wp_funding_maximum_price', esc_attr($max_price));
+            xwoo_function()->update_meta($post_id, 'wp_funding_recommended_price', esc_attr($recommended_price));
+            xwoo_function()->update_meta($post_id, 'XWOO_predefined_pledge_amount', esc_attr($XWOO_predefined_pledge_amount));
+            xwoo_function()->update_meta($post_id, '_nf_funding_goal', esc_attr($funding_goal));
+            xwoo_function()->update_meta($post_id, 'wp_campaign_end_method', esc_attr($type));
+            xwoo_function()->update_meta($post_id, 'wp_show_contributor_table', esc_attr($contributor_table));
+            xwoo_function()->update_meta($post_id, 'wp_mark_contributors_as_anonymous', esc_attr($contributor_show));
+            xwoo_function()->update_meta($post_id, 'wp_campaigner_paypal_id', esc_attr($paypal));
+            xwoo_function()->update_meta($post_id, 'wp_country', esc_attr($country));
+            xwoo_function()->update_meta($post_id, '_nf_location', esc_html($location));
 
             //Saved repeatable rewards
             if (!empty($_POST['wp_rewards_pladge_amount'])) {
@@ -190,7 +190,7 @@ class Submit_Form {
                     }
                 }
                 $data_json = json_encode($data,JSON_UNESCAPED_UNICODE);
-                XWOO_function()->update_meta($post_id, 'wp_reward', wp_slash($data_json));
+                xwoo_function()->update_meta($post_id, 'wp_reward', wp_slash($data_json));
             }
         }
         $redirect = get_permalink(get_option('wp_xwoo_dashboard_page_id')).'?page_type=campaign';

@@ -207,7 +207,7 @@ class Actions {
     }
 
     public function update_status_save(){
-        if ( ! isset( $_POST['XWOO_form_action_field'] ) || ! wp_verify_nonce( $_POST['XWOO_form_action_field'], 'XWOO_form_action' ) ) {
+        if ( ! isset( $_POST['xwoo_form_action_field'] ) || ! wp_verify_nonce( $_POST['xwoo_form_action_field'], 'xwoo_form_action' ) ) {
             die(json_encode(array('success'=> 0, 'message' => __('Sorry, your status did not verify.', 'xwoo'))));
             exit;
         }
@@ -228,7 +228,7 @@ class Actions {
                 }
             }
             $data_json = json_encode($data,JSON_UNESCAPED_UNICODE);
-            $post_update = XWOO_function()->update_meta( $post_id, 'wp_campaign_updates', wp_slash($data_json) );
+            $post_update = xwoo_function()->update_meta( $post_id, 'wp_campaign_updates', wp_slash($data_json) );
             if ($post_update) {
                 WC()->mailer(); // load email classes
                 do_action('XWOO_campaign_update_email', $post_id);

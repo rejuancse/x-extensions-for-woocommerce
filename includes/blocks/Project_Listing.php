@@ -57,7 +57,7 @@ class ProjectListing{
         $progressbarColor   = isset( $att['progressbarColor']) ? $att['progressbarColor'] : '#1adc68';
         $authorColor        = isset( $att['authorColor']) ? $att['authorColor'] : '#737373';
 
-        if( function_exists('XWOO_function') ){
+        if( function_exists('xwoo_function') ){
             $paged = 1;
             if ( get_query_var('paged') ){
                 $paged = absint( get_query_var('paged') );
@@ -84,7 +84,7 @@ class ProjectListing{
 
             query_posts($query_args);
             ob_start();
-            XWOO_function()->template('xwoo-listing');
+            xwoo_function()->template('xwoo-listing');
             $html = '';
             $html .= '<style>';
                 $html .= '#neo-progressbar > div, ul.xwoo-update li:hover span.round-circle, .xwoo-links li a:hover, .xwoo-links li.active a, #neo-progressbar > div {

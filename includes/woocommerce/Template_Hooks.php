@@ -58,7 +58,7 @@ class Template_Hooks {
 							'terms' => 'xwoo',
 						)
 					);
-					if( XWOO_function()->wc_version() ){
+					if( xwoo_function()->wc_version() ){
 						$taxquery['relation'] = 'AND';
 						$taxquery[] = array(
 							'taxonomy' => 'product_visibility',
@@ -75,11 +75,11 @@ class Template_Hooks {
 	}
 
 	public function single_campaign_summary() {
-		XWOO_function()->template('include/campaign-title');
-		XWOO_function()->template('include/author');
+		xwoo_function()->template('include/campaign-title');
+		xwoo_function()->template('include/author');
 		$this->loop_item_rating();
 		$this->single_fund_raised();
-		XWOO_function()->template('include/fund_raised_percent');
+		xwoo_function()->template('include/fund_raised_percent');
 		$this->single_fund_this_campaign_btn();
 		$this->campaign_location();
 		$this->creator_info();
@@ -90,7 +90,7 @@ class Template_Hooks {
 		$this->loop_item_title();
 		$this->loop_item_author();
 		$this->loop_item_location();
-		XWOO_function()->template('include/loop/description');
+		xwoo_function()->template('include/loop/description');
 		$this->loop_item_fund_raised_percent();
 		$this->loop_item_funding_goal();
 		$this->loop_item_time_remaining();
@@ -111,27 +111,27 @@ class Template_Hooks {
 
 
 	public function campaign_location() {
-		XWOO_function()->template('include/location');
+		xwoo_function()->template('include/location');
 	}
 
 	public function campaign_single_tab() {
-		XWOO_function()->template('include/campaign-tab');
+		xwoo_function()->template('include/campaign-tab');
     }
     
 	public function campaign_single_feature_image() {
-		XWOO_function()->template('include/feature-image');
+		xwoo_function()->template('include/feature-image');
 	}
 
 	public function campaign_single_description() {
-		XWOO_function()->template('include/description');
+		xwoo_function()->template('include/description');
 	}
 
 	public function single_fund_raised() {
-		XWOO_function()->template('include/fund-raised');
+		xwoo_function()->template('include/fund-raised');
 	}
 
 	public function single_fund_this_campaign_btn() {
-		XWOO_function()->template('include/fund-campaign-btn');
+		xwoo_function()->template('include/fund-campaign-btn');
 	}
 
 	public function single_campaign_tabs( $tabs = array() ) {
@@ -156,7 +156,7 @@ class Template_Hooks {
 
 		$show_table = get_post_meta($post->ID, 'wp_show_contributor_table', true);
 		if($show_table == '1') {
-			$baker_list = XWOO_function()->get_customers_product();
+			$baker_list = xwoo_function()->get_customers_product();
 			if (count($baker_list) > 0) {
 				$tabs['baker_list'] = array(
 					'title' => __('Backer List', 'xwoo'),
@@ -179,77 +179,77 @@ class Template_Hooks {
 	}
 
 	public function campaign_story_tab() {
-		XWOO_function()->template('include/tabs/story-tab');
+		xwoo_function()->template('include/tabs/story-tab');
 	}
 
 	public function wp_xwoo_campaign_rewards_tab() {
-		XWOO_function()->template('include/tabs/rewards-tab');
+		xwoo_function()->template('include/tabs/rewards-tab');
 	}
 
 	public function campaign_update_tab() {
-		XWOO_function()->template('include/tabs/update-tab');
+		xwoo_function()->template('include/tabs/update-tab');
 	}
 
 	public function campaign_baker_list_tab() {
-		XWOO_function()->template('include/tabs/baker-list-tab');
+		xwoo_function()->template('include/tabs/baker-list-tab');
     }
     
 	public function creator_info() {
-		XWOO_function()->template('include/creator-info');
+		xwoo_function()->template('include/creator-info');
 	}
 
 	public function overwrite_product_feature_image($img_html) {
 		global $post;
 		$url = trim(get_post_meta($post->ID, 'wp_funding_video', true));
 		if ( !empty($url) ) {
-			XWOO_function()->get_embeded_video( $url );
+			xwoo_function()->get_embeded_video( $url );
 		} else {
 			return $img_html;
 		}
 	}
 
 	public function loop_item_thumbnail()  {
-		XWOO_function()->template('include/loop/thumbnail');
+		xwoo_function()->template('include/loop/thumbnail');
 	}
 
 	public function loop_item_button() {
-		XWOO_function()->template('include/loop/details_button');
+		xwoo_function()->template('include/loop/details_button');
 	}
 
 	public function loop_item_title() {
-		XWOO_function()->template('include/loop/title');
+		xwoo_function()->template('include/loop/title');
 	}
 
 	public function loop_item_author() {
-		XWOO_function()->template('include/loop/author');
+		xwoo_function()->template('include/loop/author');
 	}
 
 	public function loop_item_rating() {
-		XWOO_function()->template('include/loop/rating_html');
+		xwoo_function()->template('include/loop/rating_html');
 	}
 
 	public function loop_item_location() {
-		XWOO_function()->template('include/loop/location');
+		xwoo_function()->template('include/loop/location');
 	}
 
 	public function loop_item_funding_goal() {
-		XWOO_function()->template('include/loop/funding_goal');
+		xwoo_function()->template('include/loop/funding_goal');
 	}
 
 	public function loop_item_fund_raised() {
-		XWOO_function()->template('include/loop/fund_raised');
+		xwoo_function()->template('include/loop/fund_raised');
 	}
 
 	public function loop_item_fund_raised_percent() {
-		XWOO_function()->template('include/loop/fund_raised_percent');
+		xwoo_function()->template('include/loop/fund_raised_percent');
 	}
 
 	public function loop_item_time_remaining() {
-		XWOO_function()->template('include/loop/time_remaining');
+		xwoo_function()->template('include/loop/time_remaining');
 	}
 
 	public function story_right_sidebar() {
-		XWOO_function()->template('include/tabs/rewards-sidebar-form');
+		xwoo_function()->template('include/tabs/rewards-sidebar-form');
 	}
 
 

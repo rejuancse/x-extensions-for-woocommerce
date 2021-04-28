@@ -78,8 +78,8 @@
                 <div id="the-list">
 					<?php
 					foreach ( $addons as $basName => $addon ) {
-						$addonConfig = XWOO_function()->get_addon_config($basName);
-                        $isEnable = (bool)XWOO_function()->avalue_dot('is_enable', $addonConfig);
+						$addonConfig = xwoo_function()->get_addon_config($basName);
+                        $isEnable = (bool)xwoo_function()->avalue_dot('is_enable', $addonConfig);
 
 						$thumbnailURL =  XWOO_DIR_URL.'assets/images/XWOO-plugin.png';
 						if (file_exists($addon['path'].'assets/images/thumbnail.png') ){
@@ -116,7 +116,7 @@
                     <?php }
 
                     //PRO ADDONS LIST FOR DISPLAY
-                    if( XWOO_function()->is_free() || (!function_exists('WC') && !XWOO_function()->is_free()) ) {
+                    if( xwoo_function()->is_free() || (!function_exists('WC') && !xwoo_function()->is_free()) ) {
                         $proAddons = array(
                             '2checkout' => array(
                                 'name'          => __( '2Checkout', 'xwoo' ),
@@ -149,7 +149,7 @@
                         );
 
                         foreach ( $proAddons as $basName => $addon ) {
-                            $addonConfig = XWOO_function()->get_addon_config($basName);
+                            $addonConfig = xwoo_function()->get_addon_config($basName);
     
                             $addons_path = trailingslashit(XWOO_DIR_PATH."assets/addons/{$basName}");
                             $addons_url = trailingslashit(XWOO_DIR_URL."assets/addons/{$basName}");
@@ -175,7 +175,7 @@
                                     </div>
                                     <div class="action-links">
                                         <ul class="plugin-action-buttons">
-                                            <?php if( XWOO_function()->is_free() ) { ?>
+                                            <?php if( xwoo_function()->is_free() ) { ?>
                                                 <li>
                                                     <a href="https://www.xwoo.com/product/wp-xwoo-plugin/?utm_source=xwoo_plugin"
                                                     class="addon-buynow-link" target="_blank"><?php _e('Buy Now','xwoo'); ?></a>

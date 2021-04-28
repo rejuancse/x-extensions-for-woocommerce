@@ -78,7 +78,7 @@ class Common {
 
             $json_update_campaign_ids = json_encode($loved_campaign_ids);
             update_user_meta($user_id, 'loved_campaign_ids', $json_update_campaign_ids);
-            die(json_encode(array('success'=> 1, 'message' => __('Campaign has been deleted', 'xwoo'), 'return_html' => XWOO_function()->campaign_loved(false) )));
+            die(json_encode(array('success'=> 1, 'message' => __('Campaign has been deleted', 'xwoo'), 'return_html' => xwoo_function()->campaign_loved(false) )));
         }
     }
 
@@ -112,7 +112,7 @@ class Common {
         if(!isset( $wp_query->query['campaigns'] ))
             return $templates;
 
-        $templates = XWOO_function()->template('author-campaigns');
+        $templates = xwoo_function()->template('author-campaigns');
 
         return $templates;
     }
