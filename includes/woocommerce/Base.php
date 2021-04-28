@@ -67,12 +67,12 @@ class Base {
 
     public function settings_link($links){
 		$actionsLinks = array(
-		    'settings' => '<a href="'.admin_url('admin.php?page=XWOO-settings').'">Settings</a>',
-		    'XWOO_docs' => '<a href="https://docs.xwoo.com/wp-xwoo/" target="_blank">'.__('Docs', 'xwoo').'</a>',
-            'XWOO_support' => '<a href="https://www.xwoo.com/support/" target="_blank">'.__('Support', 'xwoo').'</a>',
+		    'settings' => '<a href="'.admin_url('admin.php?page=xwoo-settings').'">Settings</a>',
+		    'xwoo_docs' => '<a href="https://docs.xwoo.com/wp-xwoo/" target="_blank">'.__('Docs', 'xwoo').'</a>',
+            'xwoo_support' => '<a href="https://www.xwoo.com/support/" target="_blank">'.__('Support', 'xwoo').'</a>',
         );
 		if( !defined('XWOO_PRO_VERSION') ){
-			$actionsLinks['XWOO_update_pro'] = '<a href="https://www.xwoo.com/product/wp-xwoo-plugin/?utm_source=xwoo_plugin" target="_blank">'.__('Update Pro', 'xwoo').'</a>';
+			$actionsLinks['xwoo_update_pro'] = '<a href="https://www.xwoo.com/product/wp-xwoo-plugin/?utm_source=xwoo_plugin" target="_blank">'.__('Update Pro', 'xwoo').'</a>';
 		}
         return array_merge($actionsLinks, $links);
     }

@@ -168,7 +168,7 @@ class Admin_Menu {
             __( 'Settings', 'xwoo' ),
             __( 'Settings', 'xwoo' ),
             'manage_options',
-            'XWOO-settings',
+            'xwoo-settings',
             array( $this, 'XWOO_menu_page' )
         );
     }
@@ -223,7 +223,7 @@ class Admin_Menu {
         echo '<h2 class="nav-tab-wrapper">';
         foreach( $tabs as $tab => $name ){
             $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';
-            echo "<a class='nav-tab$class' href='?page=XWOO-settings&tab=$tab'>{$name['tab_name']}</a>";
+            echo "<a class='nav-tab$class' href='?page=xwoo-settings&tab=$tab'>{$name['tab_name']}</a>";
         }
         echo '</h2>';
         ?>
