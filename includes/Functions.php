@@ -37,13 +37,11 @@ class Functions {
         }
     }
 
-
     public function update_text($option_name = '', $option_value = null){
         if (!empty($option_value)) {
             update_option($option_name, $option_value);
         }
     }
-
 
     public function update_checkbox($option_name = '', $option_value = null, $checked_default_value = 'false'){
         if (!empty($option_value)) {
@@ -53,7 +51,6 @@ class Functions {
         }
     }
     
-
     public function update_meta($post_id, $meta_name = '', $meta_value = '', $checked_default_value = ''){
         if (!empty($meta_value)) {
             update_post_meta( $post_id, $meta_name, $meta_value);
@@ -61,7 +58,6 @@ class Functions {
             update_post_meta( $post_id, $meta_name, $checked_default_value);
         }
     }
-
 
     public function get_pages(){
         $args = array(
@@ -77,7 +73,6 @@ class Functions {
         $pages = get_pages($args);
         return $pages;
     }
-    
 
     public function wc_version($version = '3.0'){
         if (class_exists('WooCommerce')) {
@@ -88,7 +83,6 @@ class Functions {
         return false;
     }
     
-
     public function is_woocommerce(){
         $vendor = get_option('vendor_type', 'woocommerce');
         if( $vendor == 'woocommerce' ){
@@ -98,22 +92,20 @@ class Functions {
         }
     }
     
-    
     public function get_screen_id(){
         $screen_ids = array(
             'toplevel_page_xwoo',
             'xwoo_page_xwoo-reports',
             'xwoo_page_xwoo-withdraw',
         );
-        return apply_filters('XWOO_screen_id', $screen_ids);
+        return apply_filters('xwoo_screen_id', $screen_ids);
     }
     
-
     public function get_addon_config($addon_field = null){
         if ( ! $addon_field){
             return false;
         }
-        $addonsConfig = maybe_unserialize(get_option('XWOO_addons_config'));
+        $addonsConfig = maybe_unserialize(get_option('xwoo_addons_config'));
         if (isset($addonsConfig[$addon_field])){
             return $addonsConfig[$addon_field];
         }

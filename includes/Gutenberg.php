@@ -31,7 +31,7 @@ class Gutenberg{
         
         // Scripts
         wp_enqueue_script(
-            'XWOO-block-script-js',
+            'xwoo-block-script-js',
             XWOO_DIR_URL . 'assets/js/blocks.min.js', 
             array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
             false,
@@ -39,7 +39,7 @@ class Gutenberg{
         );
 
         // Localize Scripts
-        wp_localize_script( 'XWOO-block-script-js', 'plugin_option', array(
+        wp_localize_script( 'xwoo-block-script-js', 'plugin_option', array(
             'plugin' => XWOO_DIR_URL,
             'name' => 'xwoo'
         ) );

@@ -190,11 +190,11 @@ class Base {
      * Method for enable / disable addons
      */
     public function addon_enable_disable(){
-        $addonsConfig = maybe_unserialize(get_option('XWOO_addons_config'));
+        $addonsConfig = maybe_unserialize(get_option('xwoo_addons_config'));
         $isEnable = (bool) sanitize_text_field( xwoo_function()->avalue_dot('isEnable', $_POST) );
         $addonFieldName = sanitize_text_field( xwoo_function()->avalue_dot('addonFieldName', $_POST) );
         $addonsConfig[$addonFieldName]['is_enable'] = ($isEnable) ? 1 : 0;
-        update_option('XWOO_addons_config', $addonsConfig);
+        update_option('xwoo_addons_config', $addonsConfig);
         wp_send_json_success();
     }
 }

@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
 
 class Search {
     function __construct() {
-        add_shortcode( 'XWOO_search', array( $this, 'search_callback' ) );
+        add_shortcode( 'xwoo_search', array( $this, 'search_callback' ) );
     }
 
     function search_callback() {

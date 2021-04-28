@@ -81,7 +81,7 @@ final class XWOO_Extensions {
 		if( class_exists( 'WooCommerce' ) ){
 			include_once XWOO_DIR_PATH.'shortcode/Search.php';
 	
-			$XWOO_search_box = new \XWOO\shortcode\Search();
+			$xwoo_search_box = new \XWOO\shortcode\Search();
 	
 			//require file for compatibility
 			require_once XWOO_DIR_PATH.'includes/compatibility/Shortcodes.php';
