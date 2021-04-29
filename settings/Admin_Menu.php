@@ -28,53 +28,9 @@ class Admin_Menu {
             $style = '';
     
             if( $button_bg ){
-                $style .= '.wp_donate_button, 
-                            #xwoo-tab-reviews .submit,
-                            .xwoo-edit-btn,
-                            .xwoo-image-upload.float-right,
-                            .xwoo-image-upload-btn,
-                            .xwoo-save-btn,
-                            #wp_active_edit_form,
-                            .removeCampaignRewards,
-                            #addreward,
-                            .btn-style1,
-                            #addcampaignupdate,
-                            .xwoo-profile-button,
-                            .dashboard-btn-link,
-                            .wp_login_form_div #wp-submit,
-                            .xwoo-submit-campaign,
-                            input[type="button"].xwoo-image-upload,
-                            input[type="button"]#search-submit,
-                            #addreward,input[type="submit"].xwoo-submit-campaign,
-                            .dashboard-btn-link,.label-primary,
-                            #xwoofrontenddata input[type="button"],
-                            #xwoofrontenddata .xwoo-form-action input[type="submit"].xwoo-submit-campaign,
-                            .btn-style1,#xwoo-tab-reviews .submit,.dashboard-head-date input[type="submit"],
-                            .wp-crowd-btn-primary, .wp_withdraw_button,.xwoo-dashboard-head-left ul li.active,
-                            .xwoo-pagination ul li a:hover, .xwoo-pagination ul li span.current{ background-color:'.$button_bg.'; color:'.$button_text_color.'; }';
+                $style .= '.xwoo-save-btn{ background-color:'.$button_bg.'; color:'.$button_text_color.'; }';
     
-                $style .= '.wp_donate_button:hover, 
-                            #xwoo-tab-reviews .submit:hover,
-                            .xwoo-edit-btn:hover,
-                            .xwoo-image-upload.float-right:hover,
-                            .xwoo-image-upload-btn:hover,
-                            .xwoo-save-btn:hover,
-                            .removeCampaignRewards:hover,
-                            #addreward:hover,
-                            .removecampaignupdate:hover,
-                            .btn-style1:hover,
-                            #addcampaignupdate:hover,
-                            #wp_active_edit_form:hover,
-                            .removecampaignupdate:hover,
-                            .xwoo-profile-button:hover,
-                            .dashboard-btn-link:hover,
-                            #xwoofrontenddata input[type="button"]:hover,
-                            #xwoofrontenddata .xwoo-form-action input[type="submit"].xwoo-submit-campaign:hover,
-                            .wp_login_form_div #wp-submit:hover,
-                            .xwoo-submit-campaign:hover,
-                            .wp_donate_button:hover,.dashboard-head-date input[type="submit"]:hover,
-                            .wp-crowd-btn-primary:hover,
-                            .wp_withdraw_button:hover{ background-color:'.$button_bg_hover.'; color:'.$text_hover_color.'; }';
+                $style .= '.xwoo-save-btn:hover{ background-color:'.$button_bg_hover.'; color:'.$text_hover_color.'; }';
             }
     
             if( $color_scheme ){
@@ -82,46 +38,6 @@ class Admin_Menu {
                             ul.xwoo-update li:hover span.round-circle,
                             .xwoo-links li a:hover, .xwoo-links li.active a,#neo-progressbar > div {
                                 background-color: '.$color_scheme.';
-                            }
-                            .xwoo-dashboard-summary ul li.active {
-                                background: '.$color_scheme.';
-                            }
-                            .xwoo-tabs-menu li.xwoo-current {
-                                border-bottom: 3px solid '.$color_scheme.';
-                            }
-                            .xwoo-pagination ul li a:hover,
-                            .xwoo-pagination ul li span.current {
-                                border: 2px solid '.$color_scheme.';
-                            }
-                            .xwoo-dashboard-summary ul li.active:after {
-                                border-color: '.$color_scheme.' rgba(0, 128, 0, 0) rgba(255, 255, 0, 0) rgba(0, 0, 0, 0);
-                            }
-                            .xwoo-fields input[type="email"]:focus,
-                            .xwoo-fields input[type="text"]:focus,
-                            .xwoo-fields select:focus,
-                            .xwoo-fields textarea {
-                                border-color: '.$color_scheme.';
-                            }
-                            .xwoo-link-style1,
-                            ul.xwoo-update li .xwoo-update-title,
-                            .xwoo-fields-action span a:hover,.xwoo-name > p,
-                            .xwoo-listings-dashboard .xwoo-listing-content h4 a,
-                            .xwoo-listings-dashboard .xwoo-listing-content .xwoo-author a,
-                            .XWOO-order-view,#wp_xwoo_modal_message td a,
-                            .dashboard-price-number,.wpcrowd-listing-content .wpcrowd-admin-title h3 a,
-                            .campaign-listing-page .stripe-table a,.stripe-table  a.label-default:hover,
-                            a.xwoo-fund-modal-btn.xwoo-link-style1,.xwoo-tabs-menu li.xwoo-current a,
-                            .xwoo-links div a:hover, .xwoo-links div.active a{
-                                color: '.$color_scheme.';
-                            }
-                            .xwoo-links div a:hover .wpcrowd-arrow-down, .xwoo-links div.active a .wpcrowd-arrow-down {
-                                border: solid '.$color_scheme.';
-                                border-width: 0 2px 2px 0;
-                            }
-                            .xwoo-listings-dashboard .xwoo-listing-content h4 a:hover,
-                            .xwoo-listings-dashboard .xwoo-listing-content .xwoo-author a:hover,
-                            #wp_xwoo_modal_message td a:hover{
-                                color: rgba('.$color_scheme.','.$color_scheme.','.$color_scheme.',0.95);
                             }';
     
                 list($r, $g, $b) = sscanf( $color_scheme, "#%02x%02x%02x" );
