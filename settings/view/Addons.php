@@ -102,7 +102,7 @@
                                     <ul class="plugin-action-buttons">
                                         <li>
                                             <label class="btn-switch">
-                                                <input type="checkbox" class="XWOO_addons_list_item" value="1" name="<?php echo $basName; ?>" <?php checked(true, $isEnable) ?> />
+                                                <input type="checkbox" class="xwoo_addons_list_item" value="1" name="<?php echo $basName; ?>" <?php checked(true, $isEnable) ?> />
                                                 <div class="btn-slider btn-round"></div>
                                             </label>
                                         </li>

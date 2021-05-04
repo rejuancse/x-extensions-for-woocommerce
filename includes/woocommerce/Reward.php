@@ -13,7 +13,6 @@ class Reward{
         //Show reward in woocommerce order details
         add_action('woocommerce_order_details_after_order_table', array($this, 'selected_reward_in_order_view'));
         add_action('woocommerce_review_order_after_cart_contents', array($this, 'selected_reward_in_order_review'));
-        //add_filter('the_content', array($this, 'show_reward_in_general_tab'));
     }
 
     /*

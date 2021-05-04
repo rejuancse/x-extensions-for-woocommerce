@@ -73,17 +73,17 @@ class Donate{
         );
 
         if ( ! $atts['campaign_id']){
-            return '<p class="XWOO-donate-form-response">'.__('Campaign ID required', 'xwoo').'</p>';
+            return '<p class="xwoo-donate-form-response">'.__('Campaign ID required', 'xwoo').'</p>';
         }
  
         $campaign = wc_get_product($atts['campaign_id']);
         if ( ! $campaign || $campaign->get_type() !== 'xwoo'){
-            return '<p class="XWOO-donate-form-response">'.__('Invalid Campaign ID', 'xwoo').'</p>';
+            return '<p class="xwoo-donate-form-response">'.__('Invalid Campaign ID', 'xwoo').'</p>';
         }
 
         $html = '';
-        $html .= '<div class="XWOO-form-field '. $formSize .' '.$formAlign.'">';
-            $html .= '<div class="XWOO-donate-form-wrap">';
+        $html .= '<div class="xwoo-form-field '. $formSize .' '.$formAlign.'">';
+            $html .= '<div class="xwoo-donate-form-wrap">';
                 $html .= '<form enctype="multipart/form-data" method="post" class="cart">';
                     if ($atts['show_input_box'] == 'true') {
                         $html .= get_woocommerce_currency_symbol();

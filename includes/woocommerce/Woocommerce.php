@@ -429,7 +429,7 @@ class Woocommerce {
 
                     wp_editor(stripslashes($value['details']), 'wp_prject_update_details_field'.$key, array('textarea_name' => 'wp_prject_update_details_field[]'));
 
-                    echo '<div class="XWOO-campaign-update-btn-wrap"><input name="remove_udpate" type="button" class="button tagadd removecampaignupdate" value="'.__('Remove', 'xwoo').'" /></div>';
+                    echo '<div class="xwoo-campaign-update-btn-wrap"><input name="remove_udpate" type="button" class="button tagadd removecampaignupdate" value="'.__('Remove', 'xwoo').'" /></div>';
                     echo '<div style="border-bottom: 1px solid #eee"></div>';
                     echo "</div>";
                 }

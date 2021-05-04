@@ -795,7 +795,7 @@ class Functions {
         $_nf_duration_start = get_post_meta($post->ID, '_nf_duration_start', true);
 
         ?>
-        <p class="XWOO-start-campaign-countdown"><?php _e('Campaign will be started within') ?> <span id="XWOO-campaign-countdown"></span></p>
+        <p class="xwoo-start-campaign-countdown"><?php _e('Campaign will be started within') ?> <span id="XWOO-campaign-countdown"></span></p>
         
         <script type="text/javascript">
             // Set the date we're counting down to

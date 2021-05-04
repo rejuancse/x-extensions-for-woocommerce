@@ -37,7 +37,7 @@ class Base {
         add_action('wp_ajax_XWOO_addon_enable_disable',array($this, 'addon_enable_disable'));
         add_filter('admin_footer_text',                 array($this, 'admin_footer_text'), 2); // Footer Text, Asking Rating
         add_action('wp_ajax_XWOO_rated',                array($this, 'admin_footer_text_rated'));
-        add_filter('plugin_action_links_'.XWOO_BASENAME,array($this, 'settings_link' ), 10, 5);
+        add_filter('plugin_action_links_'.xwoo_BASENAME,array($this, 'settings_link' ), 10, 5);
     }
 
     
@@ -102,7 +102,6 @@ class Base {
         }
         // check if WYSIWYG is enabled
         if ( 'true' == get_user_option( 'rich_editing' ) ) {
-            // add_filter( 'mce_external_plugins', array($this, 'add_tinymce_js') );
             add_filter( 'mce_buttons', array($this, 'register_mce_button') );
         }
     }
@@ -129,12 +128,6 @@ class Base {
         wp_enqueue_media();
     }
 
-
-    // Declare script for new button
-    // function add_tinymce_js( $plugin_array ) {
-    //     $plugin_array['xwoo_button'] = XWOO_DIR_URL .'assets/js/mce-button.min.js';
-    //     return $plugin_array;
-    // }
     // Register new button in the editor
     function register_mce_button( $buttons ) {
         array_push( $buttons, 'xwoo_button' );
@@ -154,9 +147,9 @@ class Base {
         }
 
         if ( ! get_option( 'xwoo_admin_footer_text_rated' ) ) {
-            $footer_text = sprintf(__('If you like <strong>WP Xwoo</strong> please leave us a 5-stars %s rating. A huge thanks in advance!', 'xwoo'), '<a href="https://wordpress.org/support/plugin/wp-xwoo/reviews?rate=5#new-post" target="_blank" class="XWOO-rating-link" data-rated="' . esc_attr__('Thanks :)', 'woocommerce') . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>');
+            $footer_text = sprintf(__('If you like <strong>WP Xwoo</strong> please leave us a 5-stars %s rating. A huge thanks in advance!', 'xwoo'), '<a href="https://wordpress.org/support/plugin/wp-xwoo/reviews?rate=5#new-post" target="_blank" class="xwoo-rating-link" data-rated="' . esc_attr__('Thanks :)', 'woocommerce') . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>');
             wc_enqueue_js("
-                jQuery( 'a.XWOO-rating-link' ).click( function() {
+                jQuery( 'a.xwoo-rating-link' ).click( function() {
                     jQuery.post( '" . admin_url('admin-ajax.php') . "', { action: 'XWOO_rated' } );
                     jQuery( this ).parent().text( jQuery( this ).data( 'rated' ) );
                 });
