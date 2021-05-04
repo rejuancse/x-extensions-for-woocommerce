@@ -37,7 +37,7 @@ class Base {
         add_action('wp_ajax_XWOO_addon_enable_disable',array($this, 'addon_enable_disable'));
         add_filter('admin_footer_text',                 array($this, 'admin_footer_text'), 2); // Footer Text, Asking Rating
         add_action('wp_ajax_XWOO_rated',                array($this, 'admin_footer_text_rated'));
-        add_filter('plugin_action_links_'.xwoo_BASENAME,array($this, 'settings_link' ), 10, 5);
+        add_filter('plugin_action_links_'.XWOO_BASENAME,array($this, 'settings_link' ), 10, 5);
     }
 
     
