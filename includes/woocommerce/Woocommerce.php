@@ -92,15 +92,6 @@ class Woocommerce {
     public function includes(){
         include_once XWOO_DIR_PATH .'includes/woocommerce/Reward.php'; 
         new \XWOO\woocommerce\Reward();
-
-        require_once XWOO_DIR_PATH.'includes/woocommerce/Dashboard.php';
-        new \XWOO\woocommerce\Dashboard();
-        
-        require_once XWOO_DIR_PATH.'includes/woocommerce/Submit_Form.php';
-        new \XWOO\woocommerce\Submit_Form();
-        
-        require_once XWOO_DIR_PATH.'includes/woocommerce/Account_Dashboard.php';
-        new \XWOO\woocommerce\Account_Dashboard();
     }
 
     /**

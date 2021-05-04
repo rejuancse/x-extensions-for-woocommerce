@@ -40,13 +40,11 @@ final class XWOO_Extensions {
 			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) {
 				if ( xwoo_function()->wc_version() ) {
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Base.php';
-					require_once XWOO_DIR_PATH.'includes/woocommerce/Common.php';
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Templating.php';
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Woocommerce.php';
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Actions.php';
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Template_Hooks.php';
 					new \XWOO\woocommerce\Base();
-					new \XWOO\woocommerce\Common();
 					$templating_obj = new \XWOO\woocommerce\Templating(); //variable used @compatibility actions
 					new \XWOO\woocommerce\Woocommerce();
 					new \XWOO\woocommerce\Actions();

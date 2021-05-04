@@ -102,7 +102,7 @@ class Base {
         }
         // check if WYSIWYG is enabled
         if ( 'true' == get_user_option( 'rich_editing' ) ) {
-            add_filter( 'mce_external_plugins', array($this, 'add_tinymce_js') );
+            // add_filter( 'mce_external_plugins', array($this, 'add_tinymce_js') );
             add_filter( 'mce_buttons', array($this, 'register_mce_button') );
         }
     }
@@ -131,10 +131,10 @@ class Base {
 
 
     // Declare script for new button
-    function add_tinymce_js( $plugin_array ) {
-        $plugin_array['xwoo_button'] = XWOO_DIR_URL .'assets/js/mce-button.min.js';
-        return $plugin_array;
-    }
+    // function add_tinymce_js( $plugin_array ) {
+    //     $plugin_array['xwoo_button'] = XWOO_DIR_URL .'assets/js/mce-button.min.js';
+    //     return $plugin_array;
+    // }
     // Register new button in the editor
     function register_mce_button( $buttons ) {
         array_push( $buttons, 'xwoo_button' );
