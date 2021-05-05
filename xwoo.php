@@ -39,8 +39,8 @@ define('XWOO_BASENAME', plugin_basename( XWOO_FILE ));
 /**
 * Load Text Domain Language
 */
-add_action('init', 'XWOO_language_load');
-function XWOO_language_load(){
+add_action('init', 'xwoo_language_load');
+function xwoo_language_load(){
     load_plugin_textdomain('xwoo', false, basename(dirname( XWOO_FILE )).'/languages/');
 }
 

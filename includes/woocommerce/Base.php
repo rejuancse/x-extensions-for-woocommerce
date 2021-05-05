@@ -33,10 +33,10 @@ class Base {
         add_action('init',                             array($this, 'media_pluggable'));
         add_action('admin_init',                       array($this, 'network_disable_notice' ));
         add_action('admin_head',                       array($this, 'add_mce_button'));
-        add_action('wp_ajax_XWOO_settings_reset',      array($this, 'settings_reset'));
-        add_action('wp_ajax_XWOO_addon_enable_disable',array($this, 'addon_enable_disable'));
+        add_action('wp_ajax_xwoo_settings_reset',      array($this, 'settings_reset'));
+        add_action('wp_ajax_xwoo_addon_enable_disable',array($this, 'addon_enable_disable'));
         add_filter('admin_footer_text',                 array($this, 'admin_footer_text'), 2); // Footer Text, Asking Rating
-        add_action('wp_ajax_XWOO_rated',                array($this, 'admin_footer_text_rated'));
+        add_action('wp_ajax_xwoo_rated',                array($this, 'admin_footer_text_rated'));
         add_filter('plugin_action_links_'.XWOO_BASENAME,array($this, 'settings_link' ), 10, 5);
     }
 
@@ -150,7 +150,7 @@ class Base {
             $footer_text = sprintf(__('If you like <strong>WP Xwoo</strong> please leave us a 5-stars %s rating. A huge thanks in advance!', 'xwoo'), '<a href="https://wordpress.org/support/plugin/wp-xwoo/reviews?rate=5#new-post" target="_blank" class="xwoo-rating-link" data-rated="' . esc_attr__('Thanks :)', 'woocommerce') . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>');
             wc_enqueue_js("
                 jQuery( 'a.xwoo-rating-link' ).click( function() {
-                    jQuery.post( '" . admin_url('admin-ajax.php') . "', { action: 'XWOO_rated' } );
+                    jQuery.post( '" . admin_url('admin-ajax.php') . "', { action: 'xwoo_rated' } );
                     jQuery( this ).parent().text( jQuery( this ).data( 'rated' ) );
                 });
             ");
