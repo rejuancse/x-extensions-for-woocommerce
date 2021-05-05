@@ -138,7 +138,7 @@ $arr =  array(
 
     // # Number of post
     array(
-        'id'        => 'XWOO_listing_post_number',
+        'id'        => 'xwoo_listing_post_number',
         'type'      => 'number',
         'min'       => '1',
         'max'       => '',

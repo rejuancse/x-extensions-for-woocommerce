@@ -11,7 +11,6 @@ class Admin_Menu {
         add_action('admin_init',   array($this, 'save_menu_settings' ));
     }
 
-
     /**
      * Xwoo Custom Styling Option
      */
@@ -29,7 +28,6 @@ class Admin_Menu {
     
             if( $button_bg ){
                 $style .= '.xwoo-save-btn{ background-color:'.$button_bg.'; color:'.$button_text_color.'; }';
-    
                 $style .= '.xwoo-save-btn:hover{ background-color:'.$button_bg_hover.'; color:'.$text_hover_color.'; }';
             }
     
@@ -51,8 +49,6 @@ class Admin_Menu {
         }
     }
     
-    
-
     /**
      * XWOO Menu Option Page
      */
@@ -94,7 +90,6 @@ class Admin_Menu {
         include XWOO_DIR_PATH.'settings/view/Addons.php';
     }
 
-
     /**
      * Display a custom menu page
      */
@@ -131,7 +126,7 @@ class Admin_Menu {
 
         if (xwoo_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
-                echo '<p>'.__( "Settings have been Saved.", "wp-xwoo" ).'</p>';
+                echo '<p>'.__( "Settings have been Saved.", "xwoo" ).'</p>';
             echo '</div>';
         }
 
@@ -283,7 +278,6 @@ class Admin_Menu {
                     $role_selector = xwoo_function()->post('wp_user_role_selector');
                     update_option( 'wp_user_role_selector', $role_selector );
 
-
                     $role_list = maybe_unserialize(get_option( 'wp_user_role_selector' ));
                     $roles  = get_editable_roles();
                     foreach( $roles as $key=>$role ){
@@ -332,7 +326,6 @@ class Admin_Menu {
                     update_option('xwoo_user_reg_success_redirect_uri', $xwoo_user_reg_success_redirect_uri);
                 }
 
-
                 // Listing Page Settings
                 if ( $current_tab == 'tab_listing_page' ){
                     $columns  = intval(xwoo_function()->post('number_of_collumn_in_row'));
@@ -341,13 +334,12 @@ class Admin_Menu {
                     $description_limits = intval(xwoo_function()->post('number_of_words_show_in_listing_description'));
                     xwoo_function()->update_text('number_of_words_show_in_listing_description', $description_limits );
                     
-                    $product_limits = intval(xwoo_function()->post('XWOO_listing_post_number'));
-                    xwoo_function()->update_text('XWOO_listing_post_number', $product_limits );
+                    $product_limits = intval(xwoo_function()->post('xwoo_listing_post_number'));
+                    xwoo_function()->update_text('xwoo_listing_post_number', $product_limits );
 
                     $show_rating = sanitize_text_field(xwoo_function()->post('wp_show_rating'));
                     xwoo_function()->update_checkbox('wp_show_rating', $show_rating);
                 }
-
 
                 // Single Page Settings
                 if ( $current_tab == 'tab_single_page' ){
@@ -404,9 +396,8 @@ class Admin_Menu {
                     xwoo_function()->update_text('number_of_words_show_in_listing_description', $number_of_words_show_in_listing_description);
 
                     # Product number.
-                    $XWOO_listing_post_number = intval(xwoo_function()->post('XWOO_listing_post_number'));
-                    xwoo_function()->update_text('XWOO_listing_post_number', $XWOO_listing_post_number);
-
+                    $xwoo_listing_post_number = intval(xwoo_function()->post('xwoo_listing_post_number'));
+                    xwoo_function()->update_text('xwoo_listing_post_number', $xwoo_listing_post_number);
 
                     $show_rating = sanitize_text_field(xwoo_function()->post('wp_show_rating'));
                     xwoo_function()->update_checkbox('wp_show_rating', $show_rating);
@@ -452,5 +443,4 @@ class Admin_Menu {
             }
         }
     }
-
 }

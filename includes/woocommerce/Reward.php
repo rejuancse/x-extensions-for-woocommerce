@@ -157,7 +157,7 @@ class Reward{
                         echo '<label for="wp_rewards_image_field">'.$value["label"].'</label>';
                         echo '<input type="hidden" class="wp_rewards_image_field" name="'.$value["id"].'" value="" placeholder="'.$value["label"].'"/>';
                         echo '<span class="xwoo-image-container"></span>';
-                        echo '<button class="xwoo-image-upload-btn shorter">'.__("Upload","wp-xwoo").'</button>';
+                        echo '<button class="xwoo-image-upload-btn shorter">'.__("Upload","xwoo").'</button>';
                         echo '</p>';
                         break;
 
@@ -210,7 +210,7 @@ class Reward{
                                     echo '<label for="wp_rewards_image_field">'.$value["label"].'</label>';
                                     echo '<input type="hidden" class="wp_rewards_image_field" name="'.$value["id"].'" value="'.$raw_id.'" placeholder="'.$value["label"].'"/>';
                                     echo '<span class="xwoo-image-container">'.$image_id.'</span>';
-                                    echo '<button class="xwoo-image-upload-btn shorter">'.__("Upload","wp-xwoo").'</button>';
+                                    echo '<button class="xwoo-image-upload-btn shorter">'.__("Upload","xwoo").'</button>';
                                     echo '</p>';
                                     break;
 

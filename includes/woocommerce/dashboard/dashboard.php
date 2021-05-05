@@ -16,13 +16,13 @@ $html .= ob_get_clean();
 $html .= '<div class="xwoo-row">';
     $html .= '<div class="xwoo-col6">';
     $html .= '<div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">'; 
-        $html .= '<h4>'.__( "My Campaigns" , "wp-xwoo" ).'</h4>';
+        $html .= '<h4>'.__( "My Campaigns" , "xwoo" ).'</h4>';
         include_once XWOO_DIR_PATH.'includes/woocommerce/dashboard/dashboard-campaign.php';
     $html .= '</div>';//xwoo-shadow 
 
     global $wp;
     $html .= '<div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">'; 
-        $html .= '<h4>'.__( "Export Data" , "wp-xwoo" ).'</h4>';
+        $html .= '<h4>'.__( "Export Data" , "xwoo" ).'</h4>';
         $html .= '<br/><a href="'.home_url( $wp->request ).'/?download_data=personal" class="xwoo-edit-btn">'.__('Export Campaign Data', 'xwoo').'</a>';
     $html .= '</div>';//xwoo-shadow 
 
@@ -39,7 +39,7 @@ $html .= '<div class="xwoo-row">';
                 $html .= '<h4>'.__('My Information', 'xwoo').'</h4>';
                 $html .= '<div class="xwoo-single">';
                     $html .= '<div class="xwoo-name float-left">';
-                        $html .= '<p>'.__( "Username:" , "wp-xwoo" ).'</p>';
+                        $html .= '<p>'.__( "Username:" , "xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="hidden" name="action" value="wp_dashboard_form">';
@@ -50,7 +50,7 @@ $html .= '<div class="xwoo-row">';
                 // Email Address
                 $html .= '<div class="xwoo-single">';
                     $html .= '<div class="xwoo-name float-left">';
-                        $html .= '<p>'.__( "Email:" , "wp-xwoo" ).'</p>';
+                        $html .= '<p>'.__( "Email:" , "xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="email" name="email" value="'.$current_user->user_email.'" disabled>';
@@ -60,7 +60,7 @@ $html .= '<div class="xwoo-row">';
                 // First Name
                 $html .= '<div class="xwoo-single">';
                     $html .= '<div class="xwoo-name float-left">';
-                        $html .= '<p>'.__( "First Name:" , "wp-xwoo" ).'</p>';
+                        $html .= '<p>'.__( "First Name:" , "xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="text" name="firstname" value="'.$current_user->user_firstname.'" disabled>';
@@ -70,7 +70,7 @@ $html .= '<div class="xwoo-row">';
                 // Last Name
                 $html .= '<div class="xwoo-single">';
                     $html .= '<div class="xwoo-name float-left">';
-                        $html .= '<p>'.__( "Last Name:" , "wp-xwoo" ).'</p>';
+                        $html .= '<p>'.__( "Last Name:" , "xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="text" name="lastname" value="'.$current_user->user_lastname.'" disabled>';
@@ -80,7 +80,7 @@ $html .= '<div class="xwoo-row">';
                 // Website
                 $html .= '<div class="xwoo-single">';
                     $html .= '<div class="xwoo-name float-left">';
-                        $html .= '<p>'.__( "Website:" , "wp-xwoo" ).'</p>';
+                        $html .= '<p>'.__( "Website:" , "xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<input type="text" name="website" value="'.$current_user->user_url.'" disabled>';
@@ -90,7 +90,7 @@ $html .= '<div class="xwoo-row">';
                 // Bio Info
                 $html .= '<div class="xwoo-single">';
                     $html .= '<div class="xwoo-name float-left">';
-                        $html .= '<p>'.__( "Bio:" , "wp-xwoo" ).'</p>';
+                        $html .= '<p>'.__( "Bio:" , "xwoo" ).'</p>';
                     $html .= '</div>';
                     $html .= '<div class="xwoo-fields float-right">';
                         $html .= '<textarea name="description" rows="3" disabled>'.$current_user->description.'</textarea>';
@@ -105,9 +105,9 @@ $html .= '<div class="xwoo-row">';
             $html .= wp_nonce_field( 'wp_xwoo_dashboard_form_action', 'wp_xwoo_dashboard_nonce_field', true, false );
             //Save Button
             $html .= '<div class="xwoo-buttons-group float-right">';
-                $html .= '<button id="xwoo-edit" class="xwoo-edit-btn">'.__( "Edit" , "wp-xwoo" ).'</button>';
-                $html .= '<button id="xwoo-dashboard-btn-cancel" class="xwoo-cancel-btn xwoo-hidden" type="submit">'.__( "Cancel" , "wp-xwoo" ).'</button>';
-                $html .= '<button id="xwoo-dashboard-save" class="xwoo-save-btn xwoo-hidden" type="submit">'.__( "Save" , "wp-xwoo" ).'</button>';
+                $html .= '<button id="xwoo-edit" class="xwoo-edit-btn">'.__( "Edit" , "xwoo" ).'</button>';
+                $html .= '<button id="xwoo-dashboard-btn-cancel" class="xwoo-cancel-btn xwoo-hidden" type="submit">'.__( "Cancel" , "xwoo" ).'</button>';
+                $html .= '<button id="xwoo-dashboard-save" class="xwoo-save-btn xwoo-hidden" type="submit">'.__( "Save" , "xwoo" ).'</button>';
             $html .= '</div>';
             $html .= '<div class="clear-float"></div>';
         $html .= '</form>';//#xwoo-dashboard-form
