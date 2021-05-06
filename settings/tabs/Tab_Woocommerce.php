@@ -38,74 +38,6 @@ $arr =  array(
         'desc'      => __('Select XWOO Product Listing Page.','xwoo'),
     ),
 
-    // #Campaign Registration Page Select
-    array(
-        'id'        => 'wp_registration_page_id',
-        'type'      => 'dropdown',
-        'option'    => $pages,
-        'label'     => __('Select Registration Page','xwoo'),
-        'desc'      => __('Select XWOO Registration Page.','xwoo'),
-    ),
-
-	// #Categories
-	array(
-		'type'      => 'seperator',
-		'label'     => __('Categories Settings','xwoo'),
-		'desc'      => __('Exclude or include WooCommerce product categories.','xwoo'),
-		'top_line'  => 'true',
-	),
-
-	// array(
-	// 	'id'        => 'seperate_xwoo_categories',
-	// 	'type'      => 'checkbox',
-	// 	'value'     => 'true',
-	// 	'label'     => __('Separate XWOO Categories','xwoo'),
-	// 	'desc'      => __('Enable/Disable','xwoo'),
-	// ),
-
-    // #Listing Page Seperator
-    array(
-        'type'      => 'seperator',
-        'label'     => __('Submit Form Text Settings','xwoo'),
-        'desc'      => __('All settings related to Submit Form Text.','xwoo'),
-        'top_line'  => 'true',
-    ),
-
-    // #Campaign Submit Form Requirement Title
-    array(
-        'id'        => 'wp_requirement_title',
-        'type'      => 'text',
-        'label'     => __('Submit Form Requirement Title','xwoo'),
-        'desc'      => __('Additional title for Submit Form Requirement Title goes here.','xwoo'),
-        'value'     => ''
-    ),
-
-    // #Campaign Submit Form Requirement Text
-    array(
-        'id'        => 'wp_requirement_text',
-        'type'      => 'textarea',
-        'value'     => '',
-        'label'     => __('Submit Form Requirement Text','xwoo'),
-        'desc'      => __('Additional text for Submit Form Requirement goes here.','xwoo'),
-    ),
-
-    // #Campaign Submit Form Requirement Agree Title
-    array(
-        'id'        => 'wp_requirement_agree_title',
-        'type'      => 'text',
-        'value'     => '',
-        'label'     => __('Submit Form Agree Title','xwoo'),
-        'desc'      => __('The checkmark text for agreeing with terms and conditions.','xwoo'),
-    ),
-
-    array(
-        'id'        => 'wp_xwoo_add_to_cart_redirect',
-        'type'      => 'radio',
-        'option'    =>  array( 'checkout_page' => 'Checkout Page', 'cart_page' => 'Cart Page', 'none' => 'None' ) ,
-        'label'     => __('Button Submit Action of "Back This Campaign" ','xwoo'),
-        'desc'      => __('This action will determine where to redirect after clicking on “Back This Campaign” button of campaign single page.','xwoo'),
-    ),
-
     // #Listing Page Seperator
     array(
         'type'      => 'seperator',
@@ -174,29 +106,6 @@ $arr =  array(
         ),
         'label'     => __('Select Style for Rewards','xwoo'),
     ),
-
-    // #Reward fixed price
-    array(
-        'id'        => 'wp_reward_fixed_price',
-        'type'      => 'checkbox',
-        'value'     => 'true',
-        'label'     => __('Set fixed price instead of range on Rewards','xwoo'),
-        'desc'      => __('Enable/Disable','xwoo'),
-    ),
-
-	array(
-		'type'      => 'seperator',
-		'label'     => __('Tax Settings','xwoo'),
-		'top_line'  => 'true',
-	),
-	// #Reward fixed price
-	array(
-		'id'        => 'XWOO_enable_tax',
-		'type'      => 'checkbox',
-		'value'     => 'true',
-		'label'     => __('Enable/Disable','xwoo'),
-		'desc'      => __('Enable Tax in XWOO Products','xwoo'),
-	),
 
 	// #Save Function
     array(
