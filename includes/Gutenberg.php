@@ -3,9 +3,9 @@ namespace XWOO;
 
 defined( 'ABSPATH' ) || exit;
 
-class Gutenberg{
+class Gutenberg {
 
-    public function __construct(){
+    public function __construct() {
         add_action( 'init', array( $this, 'blocks_init' ));
         add_action( 'enqueue_block_editor_assets', array( $this, 'post_editor_assets' ) );
         add_filter( 'block_categories', array( $this, 'block_categorie_callback'), 1 , 2 );
@@ -14,7 +14,7 @@ class Gutenberg{
     /** 
      * Blocks Init
      */
-    public function blocks_init(){
+    public function blocks_init() {
         require_once XWOO_DIR_PATH . 'includes/blocks/Search.php';
         require_once XWOO_DIR_PATH . 'includes/blocks/Donate.php';
         require_once XWOO_DIR_PATH . 'includes/blocks/Project_Listing.php';
@@ -27,7 +27,7 @@ class Gutenberg{
     /**
      * Only for the Gutenberg Editor(Backend Only)
      */
-    public function post_editor_assets(){
+    public function post_editor_assets() {
         
         // Scripts
         wp_enqueue_script(
@@ -43,13 +43,12 @@ class Gutenberg{
             'plugin' => XWOO_DIR_URL,
             'name' => 'xwoo'
         ) );
-        
     }
 
     /**
      * Block Category Add
      */
-    public function block_categorie_callback( $categories, $post ){
+    public function block_categorie_callback( $categories, $post ) {
         return array_merge(
             $categories,
             array(
@@ -61,4 +60,3 @@ class Gutenberg{
         );
     }
 }
-

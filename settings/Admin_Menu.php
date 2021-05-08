@@ -59,8 +59,8 @@ class Admin_Menu {
             'manage_options',
             'xwoo',
             '',
-            'dashicons-rest-api', 
-            10 
+            'dashicons-xing', 
+            9
         );
 
         $addon_pro =  __('Add-ons', 'xwoo');

@@ -8,8 +8,8 @@ class Latest_Backers extends \WP_Widget {
     function __construct() {
         parent::__construct(
             'wpb_widget',
-            __('Latest Backers', 'wpb_widget_domain'), 
-            array( 'description' => __( 'Latest Backers of Xwoo', 'wpb_widget_domain' ), ) 
+            __('Latest Backers', 'xwoo'), 
+            array( 'description' => __( 'Latest Backers of Xwoo', 'xwoo' ), ) 
         );
     }
       
@@ -112,5 +112,4 @@ class Latest_Backers extends \WP_Widget {
         $instance['number'] = ( ! empty( $new_instance['number'] ) ) ? $new_instance['number'] : 6;
         return $instance;
     }
-     
 } 

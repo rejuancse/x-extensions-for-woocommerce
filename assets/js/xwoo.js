@@ -3,7 +3,6 @@
  *======================================================================== */
 jQuery(document).ready(function($){
 
-
 	function countRemovesBtn(btn) {
 		var rewards_count = $(btn).length;
 		if (rewards_count > 1){
@@ -108,38 +107,5 @@ jQuery(document).ready(function($){
         $(that).parent().parent().find( '.xwoo-image-container' ).html( '' );
 	});
 
-
 	$('.xwoo-color-field').wpColorPicker();
-
-	$(document).on('click', 'a.xwoo-reset-btn', function(){
-		if ( ! confirm('[WARNING!] This will be reset your full settings, Are you sure?')){
-			return false;
-		}
-		$.ajax({
-			type : 'POST',
-			url : ajaxurl,
-			data : { action : 'xwoo_settings_reset'},
-			success : function(data){
-				window.location.reload(true);
-			}
-		});
-	});
-
-
-	$(document).on('change', '.xwoo_addons_list_item', function(e) {
-        var $that = $(this);
-        var isEnable = $that.prop('checked') ? 1 : 0;
-        var addonFieldName = $that.attr('name');
-        $.ajax({
-            url : ajaxurl,
-            type : 'POST',
-            data : {isEnable:isEnable, addonFieldName:addonFieldName, action : 'xwoo_addon_enable_disable'},
-            success: function (data) {
-                if (data.success){
-                    //Success
-                }
-            }
-        });
-    });
-
 });

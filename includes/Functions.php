@@ -11,7 +11,6 @@ class Functions {
         $generator->generator( $arr );
     }
 
-
     public function post($post_item){
         if (!empty($_POST[$post_item])) {
             return $_POST[$post_item];
@@ -27,7 +26,6 @@ class Functions {
         $status = get_post_status($post_id);
         return $status=='publish' ? true : false;
     }
-
 
     public function is_free(){
         if (is_plugin_active('wp-xwoo-pro/wp-xwoo-pro.php')) {

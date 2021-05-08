@@ -56,7 +56,6 @@ class Woocommerce {
         $this->filter_product_in_shop_page();
     }
 
-
     /**
      * Filter product in shop page
      * @since v.1.4.9
