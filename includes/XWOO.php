@@ -19,18 +19,16 @@ final class XWOO_Extensions {
 		$this->include_shortcode();
 		$this->include_addons();
 		$this->initial_activation();
-		do_action('XWOO_before_load');
+		do_action('xwoo_before_load');
 		$this->run();
-		do_action('XWOO_after_load');
+		do_action('xwoo_after_load');
 	}
 
 	// Include Core
 	public function includes_core() {
 		require_once XWOO_DIR_PATH.'includes/Initial_Setup.php';
 		require_once XWOO_DIR_PATH.'settings/Admin_Menu.php';
-		require_once XWOO_DIR_PATH.'includes/Gutenberg.php';
 		new settings\Admin_Menu();
-		new \XWOO\Gutenberg();
 	}
 
 	//Checking Vendor
@@ -40,17 +38,7 @@ final class XWOO_Extensions {
 			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) {
 				if ( xwoo_function()->wc_version() ) {
 					require_once XWOO_DIR_PATH.'includes/woocommerce/Base.php';
-					require_once XWOO_DIR_PATH.'includes/woocommerce/Templating.php';
-					require_once XWOO_DIR_PATH.'includes/woocommerce/Woocommerce.php';
-					require_once XWOO_DIR_PATH.'includes/woocommerce/Actions.php';
-					require_once XWOO_DIR_PATH.'includes/woocommerce/Template_Hooks.php';
 					new \XWOO\woocommerce\Base();
-					$templating_obj = new \XWOO\woocommerce\Templating(); //variable used @compatibility actions
-					new \XWOO\woocommerce\Woocommerce();
-					new \XWOO\woocommerce\Actions();
-					$template_hook_obj = new \XWOO\woocommerce\Template_Hooks(); //variable used @compatibility actions
-					require_once XWOO_DIR_PATH.'includes/compatibility/Actions.php'; //require file for compatibility
-					add_action( 'widgets_init', array($this, 'register_backer_widget') );
 				} else {
 					add_action( 'admin_notices', array( $initial_setup , 'wc_low_version' ) );
 					deactivate_plugins( plugin_basename( __FILE__ ) );
@@ -63,23 +51,16 @@ final class XWOO_Extensions {
 					add_action( 'admin_notices', array($initial_setup, 'free_plugin_not_installed') );
 				}
 			}
-		}else{
-			// Local Code
 		}
 	}
-	
-	// Register Widgets
-	public function register_backer_widget(){
-		require_once XWOO_DIR_PATH.'includes/woocommerce/Widget.php';
-		register_widget( 'XWOO\Latest_Backers' );
-	}
+
 
 	// Include Shortcode
 	public function include_shortcode() {
 		if( class_exists( 'WooCommerce' ) ){
-			include_once XWOO_DIR_PATH.'shortcode/Search.php';
+			include_once XWOO_DIR_PATH.'shortcode/ProductListing.php';
 	
-			$xwoo_search_box = new \XWOO\shortcode\Search();
+			$xwoo_product_listing = new \XWOO\shortcode\Product_Listing();
 	
 			//require file for compatibility
 			require_once XWOO_DIR_PATH.'includes/compatibility/Shortcodes.php';

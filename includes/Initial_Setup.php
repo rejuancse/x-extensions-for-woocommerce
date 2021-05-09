@@ -149,7 +149,7 @@ if (! class_exists('Initial_Setup')) {
             );
             $listing = array(
                 'post_title'    => 'XWOOListing Page',
-                'post_content'  => '[XWOO_listing]',
+                'post_content'  => '[xwoo_listing]',
                 'post_type'     => 'page',
                 'post_status'   => 'publish',
             );

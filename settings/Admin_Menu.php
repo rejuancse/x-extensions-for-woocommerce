@@ -60,7 +60,7 @@ class Admin_Menu {
             'xwoo',
             '',
             'dashicons-xing', 
-            9
+            null
         );
 
         $addon_pro =  __('Add-ons', 'xwoo');
