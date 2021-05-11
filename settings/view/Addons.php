@@ -118,10 +118,6 @@
                     //PRO ADDONS LIST FOR DISPLAY
                     if( xwoo_function()->is_free() || (!function_exists('WC') && !xwoo_function()->is_free()) ) {
                         $proAddons = array(
-                            '2checkout' => array(
-                                'name'          => __( '2Checkout', 'xwoo' ),
-                                'description'   => __( 'Offer 2Checkout.com payment gateway option for all transactions.', 'xwoo'),
-                            ),
                             'authorizenet' => array(
                                 'name'          => __( 'Authorize.Net', 'xwoo' ),
                                 'description'   => __( 'Provide Authorize.net payment gateway option for users.', 'xwoo' ),
