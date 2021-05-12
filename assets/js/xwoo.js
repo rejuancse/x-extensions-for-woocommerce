@@ -3,52 +3,6 @@
  *======================================================================== */
 jQuery(document).ready(function($){
 
-	function countRemovesBtn(btn) {
-		var rewards_count = $(btn).length;
-		if (rewards_count > 1){
-			$(btn).show();
-		}else {
-			$(btn).hide();
-			if (btn == '.removeCampaignRewards') {
-				$('.reward_group').show();
-			}
-			if (btn == '.removecampaignupdate') {
-				$('#campaign_update_field').show();
-			}
-		}
-		$(btn).first().hide();
-	}
-
-	//Add More Campaign Update Field
-	$('#addreward').on('click', function (e) {
-		e.preventDefault();
-		$('#rewards_addon_fields').append( $('.reward_group').html() );
-		countRemovesBtn('.removeCampaignRewards');
-	});
-
-	$('body').on('click', '.removeCampaignRewards', function (e) {
-		e.preventDefault();
-		$(this).closest('.campaign_rewards_field_copy').html('');
-		countRemovesBtn('.removeCampaignRewards');
-	});
-	countRemovesBtn('.removeCampaignRewards');
-
-	//Add More Campaign Update Field
-	$('#addcampaignupdate').on('click', function (e) {
-		e.preventDefault();
-		var update = $('#campaign_update_field').html();
-		$('#campaign_update_addon_field').append(update);
-		countRemovesBtn('.removecampaignupdate');
-	});
-
-	$('body').on('click', '.removecampaignupdate', function (e) {
-		e.preventDefault();
-		$(this).closest('.campaign_update_field_copy').html('').hide();
-		countRemovesBtn('.removecampaignupdate');
-	});
-	countRemovesBtn('.removecampaignupdate');
-
-
 	/**
 	 * Show necessary Meta field and hide base on product type select
 	 * WooCommerce compatibility
