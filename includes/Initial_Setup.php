@@ -137,7 +137,7 @@ if (! class_exists('Initial_Setup')) {
             // Create page object
             $dashboard = array(
                 'post_title'    => 'XWOODashboard',
-                'post_content'  => '[XWOO_dashboard]',
+                'post_content'  => '[xwoo_dashboard]',
                 'post_type'     => 'page',
                 'post_status'   => 'publish',
             );

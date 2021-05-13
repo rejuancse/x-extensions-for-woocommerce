@@ -38,60 +38,6 @@ $arr =  array(
         'desc'      => __('Define the system you want to use to receive and manage the funds raised for your campaigns','xwoo'),
     ),
 
-    // #Default Campaign Status
-    array(
-        'id'        => 'wp_default_campaign_status',
-        'type'      => 'dropdown',
-        'option'    => array(
-            'publish'    => __('Published','xwoo'),
-            'pending'    => __('Pending Review','xwoo'),
-            'draft'      => __('Draft','xwoo'),
-        ),
-        'label'     => __('Default Campaign Status','xwoo'),
-        'desc'      => __('Default status of a campaign added by a user','xwoo'),
-    ),
-
-    //Update by campaign owner
-	array(
-		'id'        => 'wp_campaign_edit_status',
-		'type'      => 'dropdown',
-		'option'    => array(
-			'publish'    => __('Campaign remain publish','xwoo'),
-			'pending'    => __('Required Review (Pending)','xwoo'),
-			'draft'      => __('Required Review (Draft)','xwoo'),
-		),
-		'label'     => __('Campaign Edit Status','xwoo'),
-		'desc'      => __('What will be campaign status when a campaign owner edit/update his own campaign','xwoo'),
-	),
-
-    // #Select Dashboard Page
-    array(
-        'id'        => 'wp_xwoo_dashboard_page_id',
-        'type'      => 'dropdown',
-        'option'    => $pages,
-        'label'     => __('Select Dashboard Page','xwoo'),
-        'desc'      => __('Select a page for access xwoo frontend dashboard','xwoo'),
-    ),
-
-    // #Select Campaign Submit Form
-    array(
-        'id'        => 'wp_form_page_id',
-        'type'      => 'dropdown',
-        'option'    => $pages,
-        'label'     => __('Select Campaign Submit Form','xwoo'),
-        'desc'      => __('Select a WooCommerce campaign submission form page','xwoo'),
-    ),
-
-    // #User Role Selector Option
-    array(
-        'id'        => 'wp_user_role_selector',
-        'type'      => 'multiple',
-        'multiple'  => 'true',
-        'option'    => $campaign_creator,
-        'label'     => __('Campaign Creator','xwoo'),
-        'desc'      => __('Select roles that can enable frontend campaign submission form.','xwoo'),
-    ),
-
     // #Save Function
     array(
         'id'        => 'wp_xwoo_admin_tab',

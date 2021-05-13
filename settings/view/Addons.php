@@ -1,22 +1,22 @@
 <div class="wrap">
-    <div class="wp-xwoo-addons-list">
-        <h1 class="addon-list-heading"><?php _e('Addons List', 'xwoo'); ?></h1>
+    <div class="wp-xwoo-extensions-list">
+        <h1 class="addon-list-heading"><?php _e('XWOO Extensions', 'xwoo'); ?></h1>
         <br class="clear">
 		<?php
-        $addons = apply_filters('XWOO_addons_lists_config', array());
+        $extensions = apply_filters('xwoo_extensions_lists_config', array());
 
-		if (is_array($addons) && count($addons)){
+		if (is_array($extensions) && count($extensions)){
 			?>
             <div class="wp-list-table widefat plugin-install">
                 <style>
-                    .wp-xwoo-addons-list .plugin-card-top{
+                    .wp-xwoo-extensions-list .plugin-card-top{
                         min-height: 98px;
                     }
-                    .wp-xwoo-addons-list .plugin-icon{
+                    .wp-xwoo-extensions-list .plugin-icon{
                         width: 64px;
                         height: 64px;
                     }
-                    .wp-xwoo-addons-list .wp-list-table a{
+                    .wp-xwoo-extensions-list .wp-list-table a{
                         color: #fff;
                         margin-top: 100px;
                         padding: 10px 20px;
@@ -28,21 +28,21 @@
                         box-shadow: inset 0 -1px 0 #00648c;
                         text-shadow: 0 -1px 1px #005d82, 1px 0 1px #005d82, 0 1px 1px #005d82, -1px 0 1px #005d82;
                     }
-                    .wp-xwoo-addons-list .plugin-card .name,
-                    .wp-xwoo-addons-list .plugin-card .desc{
+                    .wp-xwoo-extensions-list .plugin-card .name,
+                    .wp-xwoo-extensions-list .plugin-card .desc{
                         margin-left: 84px;
                     }
 
-                    .wp-xwoo-addons-list .btn-switch {
+                    .wp-xwoo-extensions-list .btn-switch {
                         display: inline-block;
                         height: 22px;
                         position: relative;
                         width: 50px;
                     }
-                    .wp-xwoo-addons-list .btn-switch input {
+                    .wp-xwoo-extensions-list .btn-switch input {
                         display:none;
                     }
-                    .wp-xwoo-addons-list .btn-slider {
+                    .wp-xwoo-extensions-list .btn-slider {
                         background-color: #ccc;
                         bottom: 0;
                         cursor: pointer;
@@ -52,7 +52,7 @@
                         top: 0;
                         transition: .4s;
                     }
-                    .wp-xwoo-addons-list .btn-slider:before {
+                    .wp-xwoo-extensions-list .btn-slider:before {
                         background-color: #fff;
                         bottom: 3px;
                         content: "";
@@ -62,26 +62,26 @@
                         transition: .4s;
                         width: 16px;
                     }
-                    .wp-xwoo-addons-list .btn-switch input:checked + .btn-slider {
+                    .wp-xwoo-extensions-list .btn-switch input:checked + .btn-slider {
                         background-color: #66bb6a;
                     }
-                    .wp-xwoo-addons-list .btn-switch input:checked + .btn-slider:before {
+                    .wp-xwoo-extensions-list .btn-switch input:checked + .btn-slider:before {
                         transform: translateX(26px);
                     }
-                    .wp-xwoo-addons-list .btn-slider.btn-round {
+                    .wp-xwoo-extensions-list .btn-slider.btn-round {
                         border-radius: 34px;
                     }
-                    .wp-xwoo-addons-list .btn-slider.btn-round:before {
+                    .wp-xwoo-extensions-list .btn-slider.btn-round:before {
                         border-radius: 50%;
                     }
                 </style>
                 <div id="the-list">
 					<?php
-					foreach ( $addons as $basName => $addon ) {
+					foreach ( $extensions as $basName => $addon ) {
 						$addonConfig = xwoo_function()->get_addon_config($basName);
                         $isEnable = (bool)xwoo_function()->avalue_dot('is_enable', $addonConfig);
 
-						$thumbnailURL =  XWOO_DIR_URL.'assets/images/XWOO-plugin.png';
+						$thumbnailURL =  XWOO_DIR_URL.'assets/images/xwoo-plugin.png';
 						if (file_exists($addon['path'].'assets/images/thumbnail.png') ){
 							$thumbnailURL = $addon['url'].'assets/images/thumbnail.png';
                         } elseif (file_exists($addon['path'].'assets/images/thumbnail.svg')){
@@ -102,7 +102,7 @@
                                     <ul class="plugin-action-buttons">
                                         <li>
                                             <label class="btn-switch">
-                                                <input type="checkbox" class="xwoo_addons_list_item" value="1" name="<?php echo $basName; ?>" <?php checked(true, $isEnable) ?> />
+                                                <input type="checkbox" class="xwoo_extensions_list_item" value="1" name="<?php echo $basName; ?>" <?php checked(true, $isEnable) ?> />
                                                 <div class="btn-slider btn-round"></div>
                                             </label>
                                         </li>
@@ -118,28 +118,36 @@
                     //PRO ADDONS LIST FOR DISPLAY
                     if( xwoo_function()->is_free() || (!function_exists('WC') && !xwoo_function()->is_free()) ) {
                         $proAddons = array(
-                            'authorizenet' => array(
-                                'name'          => __( 'Authorize.Net', 'xwoo' ),
+                            'bookmarks' => array(
+                                'name'          => __( 'Bookmarks', 'xwoo' ),
                                 'description'   => __( 'Provide Authorize.net payment gateway option for users.', 'xwoo' ),
                             ),
-                            'email' => array(
-                                'name'          => __( 'Email', 'xwoo' ),
+                            'variable-color' => array(
+                                'name'          => __( 'Product Variable Color', 'xwoo' ),
                                 'description'   => __( 'Connect with users through customizable email templates using Email addon.', 'xwoo' ),
                             ),
-                            'recaptcha' => array(
-                                'name'          => __( 'reCAPTCHA', 'xwoo' ),
+                            'product-love' => array(
+                                'name'          => __( 'Product Love', 'xwoo' ),
                                 'description'   => __( 'Secure your site from bots and other identity threats with reCAPTCHA.', 'xwoo' ),
                             ),
                             'reports' => array(
                                 'name'          => __( 'Reports', 'xwoo' ),
                                 'description'   => __( 'Get detailed analytics & stats using advanced filters with powerful reports.', 'xwoo' ),
                             ),
-                            'stripe-connect' => array(
-                                'name'          => __( 'Stripe connect', 'xwoo' ),
-                                'description'   => __( 'Enable Stripe Connect payment gateways to boost donations of your campaigns.', 'xwoo' ),
+                            'delivery-slot' => array(
+                                'name'          => __( 'Product Delivery Slot', 'xwoo' ),
+                                'description'   => __( 'Enable Stripe Connect payment gateways to boost donations of your product.', 'xwoo' ),
                             ),
-                            'wallet' => array(
-                                'name'          => __( 'Wallet', 'xwoo' ),
+                            'wistlist' => array(
+                                'name'          => __( 'WistList', 'xwoo' ),
+                                'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
+                            ),
+                            'reword' => array(
+                                'name'          => __( 'Reword', 'xwoo' ),
+                                'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
+                            ),
+                            'donate' => array(
+                                'name'          => __( 'Donate', 'xwoo' ),
                                 'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
                             )
                         );
@@ -147,15 +155,15 @@
                         foreach ( $proAddons as $basName => $addon ) {
                             $addonConfig = xwoo_function()->get_addon_config($basName);
     
-                            $addons_path = trailingslashit(XWOO_DIR_PATH."assets/addons/{$basName}");
-                            $addons_url = trailingslashit(XWOO_DIR_URL."assets/addons/{$basName}");
+                            $extensions_path = trailingslashit(XWOO_DIR_PATH."assets/extensions/{$basName}");
+                            $extensions_url = trailingslashit(XWOO_DIR_URL."assets/extensions/{$basName}");
     
-                            $thumbnailURL =  XWOO_DIR_URL.'assets/images/XWOO-plugin.png';
+                            $thumbnailURL =  XWOO_DIR_URL.'assets/images/xwoo-plugin.png';
     
-                            if (file_exists($addons_path.'thumbnail.png') ) {
-                                $thumbnailURL = $addons_url.'thumbnail.png';
-                            } elseif (file_exists($addons_path.'thumbnail.svg')) {
-                                $thumbnailURL = $addons_url.'thumbnail.svg';
+                            if (file_exists($extensions_path.'thumbnail.png') ) {
+                                $thumbnailURL = $extensions_url.'thumbnail.png';
+                            } elseif (file_exists($extensions_path.'thumbnail.svg')) {
+                                $thumbnailURL = $extensions_url.'thumbnail.svg';
                             }
     
                             ?>

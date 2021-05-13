@@ -17,7 +17,7 @@ final class XWOO_Extensions {
 	function __construct() {
 		$this->includes_core();
 		$this->include_shortcode();
-		$this->include_addons();
+		$this->include_extensions();
 		$this->initial_activation();
 		do_action('xwoo_before_load');
 		$this->run();
@@ -68,12 +68,12 @@ final class XWOO_Extensions {
 	}
 
 	// Include Addons directory
-	public function include_addons() {
-		$addons_dir = array_filter(glob(XWOO_DIR_PATH.'addons/*'), 'is_dir');
-		if (count($addons_dir) > 0) {
-			foreach( $addons_dir as $key => $value ) {
+	public function include_extensions() {
+		$extensions_dir = array_filter(glob(XWOO_DIR_PATH.'extensions/*'), 'is_dir');
+		if (count($extensions_dir) > 0) {
+			foreach( $extensions_dir as $key => $value ) {
 				$addon_dir_name = str_replace(dirname($value).'/', '', $value);
-				$file_name = XWOO_DIR_PATH . 'addons/'.$addon_dir_name.'/'.$addon_dir_name.'.php';
+				$file_name = XWOO_DIR_PATH . 'extensions/'.$addon_dir_name.'/'.$addon_dir_name.'.php';
 				if ( file_exists($file_name) ) {
 					include_once $file_name;
 				}
