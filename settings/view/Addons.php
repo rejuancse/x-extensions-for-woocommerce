@@ -120,15 +120,15 @@
                         $proAddons = array(
                             'bookmarks' => array(
                                 'name'          => __( 'Bookmarks', 'xwoo' ),
-                                'description'   => __( 'Provide Authorize.net payment gateway option for users.', 'xwoo' ),
+                                'description'   => __( 'Products bookmarks in products list.', 'xwoo' ),
                             ),
                             'variable-color' => array(
                                 'name'          => __( 'Product Variable Color', 'xwoo' ),
-                                'description'   => __( 'Connect with users through customizable email templates using Email addon.', 'xwoo' ),
+                                'description'   => __( 'Variable products colors list.', 'xwoo' ),
                             ),
                             'product-love' => array(
                                 'name'          => __( 'Product Love', 'xwoo' ),
-                                'description'   => __( 'Secure your site from bots and other identity threats with reCAPTCHA.', 'xwoo' ),
+                                'description'   => __( 'Love your products in your products list.', 'xwoo' ),
                             ),
                             'reports' => array(
                                 'name'          => __( 'Reports', 'xwoo' ),
@@ -136,7 +136,7 @@
                             ),
                             'delivery-slot' => array(
                                 'name'          => __( 'Product Delivery Slot', 'xwoo' ),
-                                'description'   => __( 'Enable Stripe Connect payment gateways to boost donations of your product.', 'xwoo' ),
+                                'description'   => __( 'Enable product delivery date/slot your product.', 'xwoo' ),
                             ),
                             'wistlist' => array(
                                 'name'          => __( 'WistList', 'xwoo' ),

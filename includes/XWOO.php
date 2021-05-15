@@ -54,12 +54,10 @@ final class XWOO_Extensions {
 		}
 	}
 
-
 	// Include Shortcode
 	public function include_shortcode() {
 		if( class_exists( 'WooCommerce' ) ){
 			include_once XWOO_DIR_PATH.'shortcode/ProductListing.php';
-	
 			$xwoo_product_listing = new \XWOO\shortcode\Product_Listing();
 	
 			//require file for compatibility

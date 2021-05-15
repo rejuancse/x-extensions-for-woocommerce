@@ -155,7 +155,7 @@ class Base {
                 });
             ");
         }else{
-            $footer_text = sprintf( __( 'Thank you for raise funds with <strong>WP Xwoo</strong> by %s.', 'xwoo' ), '<a href="https://www.xwoo.com/?utm_source=wp_xwoo_plugin_admin" target="_blank">Xwoo</a>');
+            $footer_text = sprintf( __( 'Thank you for with <strong>WP XWOO</strong> by %s.', 'xwoo' ), '<a href="https://www.xwoo.com/?utm_source=wp_xwoo_plugin_admin" target="_blank">XWOO</a>');
         }
 
         return $footer_text;

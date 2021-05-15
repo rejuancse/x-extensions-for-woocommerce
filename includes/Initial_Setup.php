@@ -13,31 +13,12 @@ if (! class_exists('Initial_Setup')) {
             add_action('admin_action_activate_woocommerce_free',    array($this, 'activate_woocommerce_free'));
         }
 
-        public function initial_compatibility_check(){
-            if (version_compare(XWOO_VERSION, '1.0.0', '>')){
+        public function initial_compatibility_check() {
+            if (version_compare(XWOO_VERSION, '1.0.0', '>')) {
                 $option_check = get_option('xwoo_show_description');
                 if($option_check != 'true' && $option_check != 'false'){
                     $default_value = array(
                         'xwoo_show_description' => 'true',
-                        'xwoo_show_short_description' => 'true',
-                        'xwoo_show_category' => 'true',
-                        'xwoo_show_tag' => 'true',
-                        'xwoo_show_feature' => 'true',
-                        'xwoo_show_video' => 'true',
-                        'xwoo_show_end_method' => 'true',
-                        'xwoo_show_start_date' => 'true',
-                        'xwoo_show_end_date' => 'true',
-                        'xwoo_show_funding_goal' => 'true',
-                        'xwoo_show_predefined_amount' => 'true',
-                        'xwoo_show_contributor_table' => 'true',
-                        'xwoo_show_contributor_anonymity' => 'true',
-                        'xwoo_show_country' => 'true',
-                        'xwoo_show_location' => 'true',
-                        'xwoo_show_reward_image' => 'true',
-                        'xwoo_show_reward' => 'true',
-                        'xwoo_show_estimated_delivery_month' => 'true',
-                        'xwoo_show_estimated_delivery_year' => 'true',
-                        'xwoo_show_quantity' => 'true',
                         'xwoo_show_terms_and_conditions' => 'true'
                     );
                     foreach ($default_value as $key => $value ) {
@@ -47,7 +28,6 @@ if (! class_exists('Initial_Setup')) {
             }
         }
         
-
         /**
          * Do some task during plugin activation
          */
@@ -56,7 +36,6 @@ if (! class_exists('Initial_Setup')) {
                 return false;
             }
             self::update_option();
-            self::insert_page();
         }
 
         /**
@@ -70,43 +49,9 @@ if (! class_exists('Initial_Setup')) {
                 'wp_default_campaign_status' => 'draft',
                 'wp_campaign_edit_status' => 'pending',
                 'wp_enable_color_styling' => 'true',
-                'wp_show_min_price' => 'true',
-                'wp_show_max_price' => 'true',
-                'wp_show_recommended_price' => 'true',
-                'wp_show_target_goal' => 'true',
-                'wp_show_target_date' => 'true',
-                'wp_show_target_goal_and_date' => 'true',
-                'wp_show_campaign_never_end' => 'true',
                 'xwoo_show_description' => 'true',
-                'xwoo_show_short_description' => 'true',
-                'xwoo_show_category' => 'true',
-                'xwoo_show_tag' => 'true',
-                'xwoo_show_feature' => 'true',
-                'xwoo_show_video' => 'true',
-                'xwoo_show_end_method' => 'true',
-                'xwoo_show_start_date' => 'true',
-                'xwoo_show_end_date' => 'true',
-                'xwoo_show_funding_goal' => 'true',
-                'xwoo_show_predefined_amount' => 'true',
-                'xwoo_show_contributor_table' => 'true',
-                'xwoo_show_contributor_anonymity' => 'true',
-                'xwoo_show_country' => 'true',
-                'xwoo_show_location' => 'true',
-                'xwoo_show_reward_image' => 'true',
-                'xwoo_show_reward' => 'true',
-                'xwoo_show_estimated_delivery_month' => 'true',
-                'xwoo_show_estimated_delivery_year' => 'true',
-                'xwoo_show_quantity' => 'true',
-                'xwoo_show_terms_and_conditions' => 'true',
                 'wp_enable_paypal_per_campaign_email' => 'true',
-                'wp_single_page_template' => 'in_wp_xwoo',
-                'wp_single_page_reward_design' => '1',
-                'hide_xwoo_campaign_from_shop_page' => 'false',
-                'wp_xwoo_add_to_cart_redirect' => 'checkout_page',
                 'wp_single_page_id' => 'true',
-                'wp_enable_recaptcha' => 'false',
-                'wp_enable_recaptcha_in_user_registration' => 'false',
-                'wp_enable_recaptcha_campaign_submit_page' => 'false',
                 'wp_requirement_agree_title' => 'I agree with the terms and conditions.',
             );
 
@@ -131,59 +76,6 @@ if (! class_exists('Initial_Setup')) {
         }
 
         /**
-         * Insert menu page
-         */
-        public function insert_page() {
-            // Create page object
-            $dashboard = array(
-                'post_title'    => 'XWOODashboard',
-                'post_content'  => '[xwoo_dashboard]',
-                'post_type'     => 'page',
-                'post_status'   => 'publish',
-            );
-            $form = array(
-                'post_title'    => 'XWOOcampaign form',
-                'post_content'  => '[xwoo_form]',
-                'post_type'     => 'page',
-                'post_status'   => 'publish',
-            );
-            $listing = array(
-                'post_title'    => 'XWOOListing Page',
-                'post_content'  => '[xwoo_listing]',
-                'post_type'     => 'page',
-                'post_status'   => 'publish',
-            );
-            $registration = array(
-                'post_title'    => 'XWOOUser Registration',
-                'post_content'  => '[XWOO_registration]',
-                'post_type'     => 'page',
-                'post_status'   => 'publish',
-            );
-        
-            /**
-             * Insert the page into the database
-             * @Dashbord, @Form, @Listing and @Registration Pages Object
-             */
-            $dashboard_page = wp_insert_post( $dashboard );
-            if ( !is_wp_error( $dashboard_page ) ) {
-                xwoo_function()->update_text( 'wp_xwoo_dashboard_page_id', $dashboard_page );
-            }
-            $form_page = wp_insert_post( $form );
-            if( !is_wp_error( $form_page ) ){
-                xwoo_function()->update_text( 'wp_form_page_id', $form_page );
-            }
-            $listing_page = wp_insert_post( $listing );
-            if( !is_wp_error( $listing_page ) ){
-                xwoo_function()->update_text( 'wp_listing_page_id', $listing_page );
-            }
-            $registration_page = wp_insert_post( $registration );
-            if( !is_wp_error( $registration_page ) ){
-                xwoo_function()->update_text( 'wp_registration_page_id', $registration_page );
-            }
-        }
-
-
-        /**
          * Reset method, the ajax will call that method for Reset Settings
          */
         public function settings_reset() {
@@ -196,7 +88,6 @@ if (! class_exists('Initial_Setup')) {
         public function initial_plugin_deactivation(){
 
         }
-
 
         public function activation_css() {
             ?>
@@ -234,10 +125,11 @@ if (! class_exists('Initial_Setup')) {
                     padding: 0;
                 }
             </style>
+
             <script type="text/javascript">
                 jQuery(document).ready(function($){
                     'use strict';
-                    $(document).on('click', '.install-XWOO-button', function(e){
+                    $(document).on('click', '.install-xwoo-button', function(e){
                         e.preventDefault();
                         var $btn = $(this);
                         $.ajax({
@@ -248,7 +140,7 @@ if (! class_exists('Initial_Setup')) {
                                 $btn.addClass('updating-message');
                             },
                             success: function (data) {
-                                $('.install-XWOO-button').remove();
+                                $('.install-xwoo-button').remove();
                                 $('#XWOO_install_msg').html(data);
                             },
                             complete: function () {
@@ -315,7 +207,7 @@ if (! class_exists('Initial_Setup')) {
                         <a href="https://docs.xwoo.com/xwoo/" target="_blank"><?php _e('Learn more about XWOO', 'xwoo'); ?></a>
                     </div>
                     <div class="xwoo-install-notice-button">
-                        <a class="install-XWOO-button button button-primary" data-slug="woocommerce" href="<?php echo add_query_arg(array('action' => 'install_woocommerce_free'), admin_url()); ?>"><?php _e('Install WooCommerce', 'xwoo'); ?></a>
+                        <a class="install-xwoo-button button button-primary" data-slug="woocommerce" href="<?php echo add_query_arg(array('action' => 'install_woocommerce_free'), admin_url()); ?>"><?php _e('Install WooCommerce', 'xwoo'); ?></a>
                     </div>
                 </div>
                 <div id="XWOO_install_msg"></div>
@@ -372,7 +264,6 @@ if (! class_exists('Initial_Setup')) {
             $upgrader->install($api->download_link);
             die();
         }
-    
         
         public static function wc_low_version(){
             printf(
@@ -383,6 +274,5 @@ if (! class_exists('Initial_Setup')) {
                 __('version is below then 3.0, please update.','xwoo') 
             );
         }
-
     }
 }
