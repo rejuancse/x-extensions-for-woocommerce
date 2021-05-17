@@ -118,13 +118,33 @@
                     //PRO ADDONS LIST FOR DISPLAY
                     if( xwoo_function()->is_free() || (!function_exists('WC') && !xwoo_function()->is_free()) ) {
                         $proAddons = array(
+                            'delivery-slot' => array(
+                                'name'          => __( 'Product Delivery Slot', 'xwoo' ),
+                                'description'   => __( 'Enable product delivery date/slot your product.', 'xwoo' ),
+                            ),
+                            'variation_swatcher' => array(
+                                'name'          => __( 'Variation swatcher and photoes', 'xwoo' ),
+                                'description'   => __( 'Support Variation swatcher and photoes addon.', 'xwoo' ),
+                            ),
+                            'wistlist' => array(
+                                'name'          => __( 'WistList', 'xwoo' ),
+                                'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
+                            ),
+                            'productslider' => array(
+                                'name'          => __( 'Product Slider', 'xwoo' ),
+                                'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
+                            ),
+                            'productsearch' => array(
+                                'name'          => __( 'Product Search', 'xwoo' ),
+                                'description'   => __( 'Product Ajax search', 'xwoo' ),
+                            ),
+                            'social_login' => array(
+                                'name'          => __( 'Social Login', 'xwoo' ),
+                                'description'   => __( 'Support Social login addon.', 'xwoo' ),
+                            ),
                             'bookmarks' => array(
                                 'name'          => __( 'Bookmarks', 'xwoo' ),
                                 'description'   => __( 'Products bookmarks in products list.', 'xwoo' ),
-                            ),
-                            'variable-color' => array(
-                                'name'          => __( 'Product Variable Color', 'xwoo' ),
-                                'description'   => __( 'Variable products colors list.', 'xwoo' ),
                             ),
                             'product-love' => array(
                                 'name'          => __( 'Product Love', 'xwoo' ),
@@ -134,14 +154,6 @@
                                 'name'          => __( 'Reports', 'xwoo' ),
                                 'description'   => __( 'Get detailed analytics & stats using advanced filters with powerful reports.', 'xwoo' ),
                             ),
-                            'delivery-slot' => array(
-                                'name'          => __( 'Product Delivery Slot', 'xwoo' ),
-                                'description'   => __( 'Enable product delivery date/slot your product.', 'xwoo' ),
-                            ),
-                            'wistlist' => array(
-                                'name'          => __( 'WistList', 'xwoo' ),
-                                'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
-                            ),
                             'reword' => array(
                                 'name'          => __( 'Reword', 'xwoo' ),
                                 'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
@@ -149,7 +161,7 @@
                             'donate' => array(
                                 'name'          => __( 'Donate', 'xwoo' ),
                                 'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
-                            )
+                            ), 
                         );
 
                         foreach ( $proAddons as $basName => $addon ) {

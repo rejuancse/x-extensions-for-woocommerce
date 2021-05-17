@@ -196,7 +196,7 @@ class Xwoo_Extensions {
     }
 
     // Odrer Data View 
-    public function embed_product_action(){
+    public function embed_product_action() {
         $html = '';
         $title = __("Embed Code","xwoo");
         $postid = sanitize_text_field($_POST['postid']);
