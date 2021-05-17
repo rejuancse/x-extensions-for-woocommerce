@@ -23,10 +23,10 @@ class Settings_Generator {
                         $multiple = '';
                         if(isset($value['multiple'])){ $multiple = 'multiple'; }
                         $html .= '<select id="'.$value['id'].'" name="'.$value['id'].'" '.$multiple.'>';
-                        $campaign_status = get_option( $value['id'] );
+                        $product_status = get_option( $value['id'] );
                         if(!empty($value['option'])){
                             foreach ( $value['option'] as $key => $val ){
-                                $html .= '<option value="'.$key.'" '.( $key == $campaign_status ? "selected":"" ).'>'.$val.'</option>';
+                                $html .= '<option value="'.$key.'" '.( $key == $product_status ? "selected":"" ).'>'.$val.'</option>';
                             }
                         }
                         $html .= '</select>';
@@ -42,11 +42,11 @@ class Settings_Generator {
                         $multiple = '';
                         if(isset($value['multiple'])){ $multiple = 'multiple'; }
                         $html .= '<select style="height:190px;" id="'.$value['id'].'" name="'.$value['id'].'[]" '.$multiple.'>';
-                        $campaign_status = get_option( $value['id'] );
+                        $product_status = get_option( $value['id'] );
                         if(!empty($value['option'])){
                             foreach ( $value['option'] as $val ){
-                                if( !empty($campaign_status) && is_array($campaign_status) ){
-                                    if( in_array( $val , $campaign_status ) ){
+                                if( !empty($product_status) && is_array($product_status) ){
+                                    if( in_array( $val , $product_status ) ){
                                         $html .= '<option value="'.$val.'" selected>'.$val.'</option>';
                                     }else{
                                         $html .= '<option value="'.$val.'">'.$val.'</option>';

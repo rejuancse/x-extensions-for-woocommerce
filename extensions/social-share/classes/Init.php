@@ -20,16 +20,16 @@ class Xwoo_Extensions {
 
     public function __construct() {
         add_action( 'init',                                 array( $this, 'embed_data') );
-        add_action( 'wp_enqueue_scripts',                   array( $this, 'extensions_enqueue_frontend_script') ); //Add 
+        // add_action( 'wp_enqueue_scripts',                   array( $this, 'extensions_enqueue_frontend_script') ); //Add 
         add_action( 'init',                                 array( $this, 'extensions_save_settings') ); // Extensions Settings
-        add_action( 'wp_ajax_xwoo_embed_action',            array( $this, 'embed_campaign_action') );
-        add_action( 'wp_ajax_nopriv_xwoo_embed_action',     array( $this, 'embed_campaign_action') );
-        add_action( 'xwoo_after_single_campaign_summary',   array( $this, 'single_campaign_extensions') );
+        add_action( 'wp_ajax_xwoo_embed_action',            array( $this, 'embed_product_action') );
+        add_action( 'wp_ajax_nopriv_xwoo_embed_action',     array( $this, 'embed_product_action') );
+        // add_action( 'xwoo_after_single_product_summary',   array( $this, 'single_product_extensions') );
     }
 
-    public function extensions_enqueue_frontend_script() {
-        wp_enqueue_script('xwoo-social-share-front', XWOO_DIR_URL .'extensions/social-share/assets/js/SocialShare.min.js', array('jquery'), XWOO_VERSION, true);
-    }
+    // public function extensions_enqueue_frontend_script() {
+    //     wp_enqueue_script('xwoo-social-share-front', XWOO_DIR_URL .'extensions/social-share/assets/js/SocialShare.min.js', array('jquery'), XWOO_VERSION, true);
+    // }
 
     /**
      * All settings will be save in this method
@@ -127,7 +127,7 @@ class Xwoo_Extensions {
                                     </p>
     
                                     <?php
-                                        $location = xwoo_function()->campaign_location(); 
+                                        $location = xwoo_function()->product_location(); 
                                         if ($location){ ?>
                                         <div class="xwoo-location-wrapper">
                                             <span><?php echo $location; ?></span>
@@ -161,7 +161,7 @@ class Xwoo_Extensions {
                                         </div>
     
                                         <?php
-                                        $end_method = get_post_meta(get_the_ID(), 'xwoo_campaign_end_method', true);
+                                        $end_method = get_post_meta(get_the_ID(), 'xwoo_product_end_method', true);
                                         $days_remaining = apply_filters('date_expired_msg', __('0', 'xwoo'));
                                         if (xwoo_function()->get_date_remaining()){
                                             $days_remaining = apply_filters('date_remaining_msg', __(xwoo_function()->get_date_remaining(), 'xwoo'));
@@ -196,7 +196,7 @@ class Xwoo_Extensions {
     }
 
     // Odrer Data View 
-    public function embed_campaign_action(){
+    public function embed_product_action(){
         $html = '';
         $title = __("Embed Code","xwoo");
         $postid = sanitize_text_field($_POST['postid']);
@@ -209,8 +209,8 @@ class Xwoo_Extensions {
         die(json_encode(array('success'=> 1, 'message' => $html, 'title' => $title )));
     }
 
-    public function single_campaign_extensions() {
-        xwoo_function()->template('include/social-share');
-    }
+    // public function single_product_extensions() {
+    //     xwoo_function()->template('include/social-share');
+    // }
 }
 Xwoo_Extensions::instance();

@@ -46,11 +46,11 @@ if (! class_exists('Initial_Setup')) {
                 'wp_xwoo_is_used' => XWOO_VERSION,
                 'wp_xwoo_selected_theme' => 'basic',
                 'vendor_type' => 'woocommerce',
-                'wp_default_campaign_status' => 'draft',
-                'wp_campaign_edit_status' => 'pending',
+                'wp_default_product_status' => 'draft',
+                'wp_product_edit_status' => 'pending',
                 'wp_enable_color_styling' => 'true',
                 'xwoo_show_description' => 'true',
-                'wp_enable_paypal_per_campaign_email' => 'true',
+                'wp_enable_paypal_per_product_email' => 'true',
                 'wp_single_page_id' => 'true',
                 'wp_requirement_agree_title' => 'I agree with the terms and conditions.',
             );
@@ -67,7 +67,7 @@ if (! class_exists('Initial_Setup')) {
                     foreach( $role_list as $val ){
                         $role = get_role( $val );
                         if ($role){
-	                        $role->add_cap( 'campaign_form_submit' );
+	                        $role->add_cap( 'product_form_submit' );
 	                        $role->add_cap( 'upload_files' );
                         }
                     }
@@ -141,7 +141,7 @@ if (! class_exists('Initial_Setup')) {
                             },
                             success: function (data) {
                                 $('.install-xwoo-button').remove();
-                                $('#XWOO_install_msg').html(data);
+                                $('#xwoo_install_msg').html(data);
                             },
                             complete: function () {
                                 $btn.removeClass('updating-message');
@@ -164,7 +164,7 @@ if (! class_exists('Initial_Setup')) {
                         <img src="<?php echo XWOO_DIR_URL.'assets/images/woocommerce-icon.png'; ?>" alt="logo" />
                     </div>
                     <div class="xwoo-install-notice-content">
-                        <h2><?php _e('Thanks for using WP Xwoo', 'xwoo'); ?></h2>
+                        <h2><?php _e('Thanks for using XWOO Extensions', 'xwoo'); ?></h2>
                         <?php 
                             printf(
                                 '<p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p>', 
@@ -210,7 +210,7 @@ if (! class_exists('Initial_Setup')) {
                         <a class="install-xwoo-button button button-primary" data-slug="woocommerce" href="<?php echo add_query_arg(array('action' => 'install_woocommerce_free'), admin_url()); ?>"><?php _e('Install WooCommerce', 'xwoo'); ?></a>
                     </div>
                 </div>
-                <div id="XWOO_install_msg"></div>
+                <div id="xwoo_install_msg"></div>
             </div>
             <?php
         }

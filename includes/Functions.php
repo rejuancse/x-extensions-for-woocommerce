@@ -161,30 +161,30 @@ class Functions {
     // }
     
 
-    public function campaign_loved($echo = true){
+    public function product_loved($echo = true){
 		global $post;
-		$campaign_id = $post->ID;
+		$product_id = $post->ID;
 
 		$html = '';
 		if (is_user_logged_in()){
 			//Get Current user id
 			$user_id = get_current_user_id();
 			//empty array
-			$loved_campaign_ids = array();
-			$prev_campaign_ids = get_user_meta($user_id, 'loved_campaign_ids', true);
+			$loved_product_ids = array();
+			$prev_product_ids = get_user_meta($user_id, 'loved_product_ids', true);
 
-			if ($prev_campaign_ids){
-				$loved_campaign_ids = json_decode($prev_campaign_ids, true);
+			if ($prev_product_ids){
+				$loved_product_ids = json_decode($prev_product_ids, true);
 			}
 
 			//If found previous liked
-			if (in_array($campaign_id, $loved_campaign_ids)){
-				$html .= '<a href="javascript:;" id="remove_from_love_campaign" data-campaign-id="'.$campaign_id.'"><i class="xwoo-icon xwoo-icon-love-full"></i></a>';
+			if (in_array($product_id, $loved_product_ids)){
+				$html .= '<a href="javascript:;" id="remove_from_love_product" data-product-id="'.$product_id.'"><i class="xwoo-icon xwoo-icon-love-full"></i></a>';
 			} else {
-				$html .= '<a href="javascript:;" id="love_this_campaign" data-campaign-id="'.$campaign_id.'"><i class="xwoo-icon xwoo-icon-love-empty"></i></a>';
+				$html .= '<a href="javascript:;" id="love_this_product" data-product-id="'.$product_id.'"><i class="xwoo-icon xwoo-icon-love-empty"></i></a>';
 			}
 		} else {
-			$html .= '<a href="javascript:;" id="love_this_campaign" data-campaign-id="'.$campaign_id.'"><i class="xwoo-icon xwoo-icon-love-empty"></i></a>';
+			$html .= '<a href="javascript:;" id="love_this_product" data-product-id="'.$product_id.'"><i class="xwoo-icon xwoo-icon-love-empty"></i></a>';
 		}
 
 		if ($echo){
@@ -196,15 +196,15 @@ class Functions {
     
     public function loved_count($user_id = 0){
 		global $post;
-		$campaign_id = $post->ID;
+		$product_id = $post->ID;
 		if ($user_id == 0) {
 			if (is_user_logged_in()) {
 				$user_id = get_current_user_id();
-				$loved_campaign_ids = array();
-				$prev_campaign_ids = get_user_meta($user_id, 'loved_campaign_ids', true);
-				if ($prev_campaign_ids) {
-					$loved_campaign_ids = json_decode($prev_campaign_ids, true);
-					return count($loved_campaign_ids);
+				$loved_product_ids = array();
+				$prev_product_ids = get_user_meta($user_id, 'loved_product_ids', true);
+				if ($prev_product_ids) {
+					$loved_product_ids = json_decode($prev_product_ids, true);
+					return count($loved_product_ids);
 				}
 			}
 		}
@@ -236,13 +236,13 @@ class Functions {
 		return $html;
     }
     
-    public function campaign_single_love_this() {
+    public function product_single_love_this() {
 		global $post;
 		if (is_product()){
 			if( function_exists('get_product') ){
 				$product = wc_get_product( $post->ID );
 				if( $product->is_type( 'xwoo' ) ){
-					xwoo_function()->template('include/love_campaign');
+					xwoo_function()->template('include/love_product');
 				}
 			}
 		}

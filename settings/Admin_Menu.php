@@ -186,14 +186,14 @@ class Admin_Menu {
                     $vendor_type = sanitize_text_field(xwoo_function()->post('vendor_type'));
                     xwoo_function()->update_text('vendor_type', $vendor_type);
 
-                    $campaign_status = sanitize_text_field(xwoo_function()->post('wp_default_campaign_status'));
-                    xwoo_function()->update_text('wp_default_campaign_status', $campaign_status);
+                    $product_status = sanitize_text_field(xwoo_function()->post('wp_default_product_status'));
+                    xwoo_function()->update_text('wp_default_product_status', $product_status);
                     
-                    $edit_status = sanitize_text_field(xwoo_function()->post('wp_campaign_edit_status'));
-                    xwoo_function()->update_text('wp_campaign_edit_status', $edit_status);
+                    $edit_status = sanitize_text_field(xwoo_function()->post('wp_product_edit_status'));
+                    xwoo_function()->update_text('wp_product_edit_status', $edit_status);
 
-                    $paypal_per_campaign_email = sanitize_text_field(xwoo_function()->post('wp_enable_paypal_per_campaign_email'));
-                    xwoo_function()->update_checkbox('wp_enable_paypal_per_campaign_email', $paypal_per_campaign_email);
+                    $paypal_per_product_email = sanitize_text_field(xwoo_function()->post('wp_enable_paypal_per_product_email'));
+                    xwoo_function()->update_checkbox('wp_enable_paypal_per_product_email', $paypal_per_product_email);
 
                     $role_selector = xwoo_function()->post('wp_user_role_selector');
                     update_option( 'wp_user_role_selector', $role_selector );
@@ -201,9 +201,9 @@ class Admin_Menu {
                     $role_list = maybe_unserialize(get_option( 'wp_user_role_selector' ));
                     $roles  = get_editable_roles();
                     foreach( $roles as $key=>$role ){
-                        if( isset( $role['capabilities']['campaign_form_submit'] ) ){
+                        if( isset( $role['capabilities']['product_form_submit'] ) ){
                             $role = get_role( $key );
-                            $role->remove_cap( 'campaign_form_submit' );
+                            $role->remove_cap( 'product_form_submit' );
                         }
                     }
 
@@ -211,7 +211,7 @@ class Admin_Menu {
                         if( !empty( $role_list ) ){
                             foreach( $role_list as $val ){
                                 $role = get_role( $val );
-                                $role->add_cap( 'campaign_form_submit' );
+                                $role->add_cap( 'product_form_submit' );
                                 $role->add_cap( 'upload_files' );
                             }
                         }

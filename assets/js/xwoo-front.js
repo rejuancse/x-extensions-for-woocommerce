@@ -33,17 +33,17 @@ jQuery(document).ready(function($){
         }
     });
 
-    // Add Love Campaign
-    $(document).on('click', '#love_this_campaign', function () {
-        var campaign_id = $(this).data('campaign-id');
+    // Add Love product
+    $(document).on('click', '#love_this_product', function () {
+        var product_id = $(this).data('product-id');
         $.ajax({
             type:"POST",
             url: xwoo_ajax_object.ajax_url,
-            data: {'action': 'love_campaign_action', 'campaign_id': campaign_id},
+            data: {'action': 'love_product_action', 'product_id': product_id},
             success:function(data){
                 data = JSON.parse(data);
                 if (data.success == 1){
-                    $('#campaign_loved_html').html(data.return_html);
+                    $('#product_loved_html').html(data.return_html);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown){
@@ -52,16 +52,16 @@ jQuery(document).ready(function($){
         });
     });
 
-    // Remove Love Campaign
-    $(document).on('click', '#remove_from_love_campaign', function () {
-        var campaign_id = $(this).data('campaign-id');
+    // Remove Love product
+    $(document).on('click', '#remove_from_love_product', function () {
+        var product_id = $(this).data('product-id');
         $.ajax({
             type:"POST",
             url: xwoo_ajax_object.ajax_url,
-            data: {'action': 'remove_love_campaign_action', 'campaign_id': campaign_id},
+            data: {'action': 'remove_love_product_action', 'product_id': product_id},
             success:function(data){
                 data = JSON.parse(data);
-                $('#campaign_loved_html').html(data.return_html);
+                $('#product_loved_html').html(data.return_html);
             },
             error: function(jqXHR, textStatus, errorThrown){
                 xwoo_modal({'success':0, 'message':'Error'})

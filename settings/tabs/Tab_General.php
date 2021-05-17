@@ -10,12 +10,12 @@ if (count($pages)>0) {
 }
 $pages = $page_array;
 
-$campaign_creator    = array();
+$product_creator    = array();
 $roles  = get_editable_roles();
 
 if (count($roles)){
     foreach( $roles as $key=>$role ){
-        $campaign_creator[] = $key;
+        $product_creator[] = $key;
     }
 }
 
@@ -35,7 +35,7 @@ $arr =  array(
             'woocommerce' => __('Woocommerce','xwoo'),
         ),
         'label'     => __('Funds Manager','xwoo'),
-        'desc'      => __('Define the system you want to use to receive and manage the funds raised for your campaigns','xwoo'),
+        'desc'      => __('Define the system you want to use to receive and manage the funds raised for your products','xwoo'),
     ),
 
     // #Save Function
@@ -45,7 +45,7 @@ $arr =  array(
         'value'     => 'tab_general',
     ),
 
-	// #Show Campaign Never End
+	// #Show product Never End
 	array(
 		'id'        => 'xwoo_user_reg_success_redirect_uri',
 		'type'      => 'text',

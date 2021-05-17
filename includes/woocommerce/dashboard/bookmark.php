@@ -2,15 +2,15 @@
 defined('ABSPATH') || exit;
 
 $page_numb = max(1, get_query_var('paged'));
-$campaign_ids = get_user_meta( get_current_user_id(), 'loved_campaign_ids', true );
-$campaign_ids = json_decode( $campaign_ids, true );
-if (empty($campaign_ids)) {
-    $campaign_ids = array(9999999);
+$product_ids = get_user_meta( get_current_user_id(), 'loved_product_ids', true );
+$product_ids = json_decode( $product_ids, true );
+if (empty($product_ids)) {
+    $product_ids = array(9999999);
 }
 $posts_per_page = get_option('posts_per_page', 10);
 $args = array(
     'post_type'         => 'product',
-    'post__in'          => $campaign_ids,
+    'post__in'          => $product_ids,
     'posts_per_page'    => $posts_per_page,
     'paged'             => $page_numb
 );
@@ -19,7 +19,7 @@ $the_query = new WP_Query($args);
 ob_start(); ?>
 
 <div class="xwoo-content">
-    <div class="xwoo-form campaign-listing-page">
+    <div class="xwoo-form product-listing-page">
         <div class="xwoo-shadow xwoo-padding25 xwoo-clearfix">
             <?php if ($the_query->have_posts()) : global $post; ?>
                 <div class="xwoo-responsive-table">

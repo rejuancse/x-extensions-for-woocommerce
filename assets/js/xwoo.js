@@ -8,7 +8,7 @@ jQuery(document).ready(function($){
 	 * WooCommerce compatibility
 	 */
 	$('.show_if_neo_xwoo_options').hide();
-	$('#campaign-update-status-meta').hide();
+	$('#product-update-status-meta').hide();
 	$('body').on('change','select#product-type',function() {
 		if (this.value == "xwoo"){
 			$('ul.product_data_tabs li').removeClass('active');
@@ -16,16 +16,16 @@ jQuery(document).ready(function($){
 			$('.show_if_neo_xwoo_options').show();
 			$('.general_tab').addClass('active').show();
 			$('#general_product_data').show();
-			$('#campaign-update-status-meta').show();
+			$('#product-update-status-meta').show();
 		} else {
 			$('.show_if_neo_xwoo_options').hide();
-			$('#campaign-update-status-meta').hide();
+			$('#product-update-status-meta').hide();
 		}
 	});
 
 	if ($('select#product-type').val() == "xwoo"){
 		$('.show_if_neo_xwoo_options').show();
-		$('#campaign-update-status-meta').show();
+		$('#product-update-status-meta').show();
 	}
 
     //Select2

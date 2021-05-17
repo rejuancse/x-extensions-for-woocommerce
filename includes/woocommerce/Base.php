@@ -44,7 +44,7 @@ class Base {
     public function media_pluggable(){
         if (is_user_logged_in()){
             if(is_admin()){
-                if (current_user_can('campaign_form_submit')){
+                if (current_user_can('product_form_submit')){
                     add_action( 'pre_get_posts', array($this, 'set_user_own_media') );
                 }
             }
@@ -122,7 +122,7 @@ class Base {
          
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
-        wp_enqueue_script( 'jquery.easypiechart', XWOO_DIR_URL .'assets/js/jquery.easypiechart.min.js', array('jquery'), XWOO_VERSION, true);
+        // wp_enqueue_script( 'jquery.easypiechart', XWOO_DIR_URL .'assets/js/jquery.easypiechart.min.js', array('jquery'), XWOO_VERSION, true);
         wp_enqueue_script( 'wp-neo-jquery-scripts-front', XWOO_DIR_URL .'assets/js/xwoo-front.min.js', array('jquery'), XWOO_VERSION, true);
         wp_localize_script( 'wp-neo-jquery-scripts-front', 'xwoo_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_media();
@@ -167,8 +167,6 @@ class Base {
     function admin_footer_text_rated(){
         update_option('xwoo_admin_footer_text_rated', 'true');
     }
-
-
 
     /**
      * Reset method

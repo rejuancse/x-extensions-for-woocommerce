@@ -2,7 +2,7 @@
  * Xwoo CSS
  * File Description: The main stylesheet of this plugins for main design part.
  */
-#addreward, #addcampaignupdate {
+#addreward, #addproductupdate {
   float: right;
   position: relative;
   margin: 25px 25px 25px 0px; }
@@ -10,7 +10,7 @@
 .reward_group {
   border-bottom: 1px solid #F3EDED; }
 
-.removeCampaignRewards, .removecampaignupdate {
+.removeproductRewards, .removeproductupdate {
   position: relative;
   float: right;
   top: -38px;
@@ -85,7 +85,7 @@
   position: absolute;
   cursor: pointer; }
 
-.button.removeCampaignRewards {
+.button.removeproductRewards {
   color: #ff0000; }
 
 /* ***** Buy Now ***** */
@@ -183,15 +183,15 @@
 h1.top-reports {
   margin-top: 40px; }
 
-.campaign-warp .page-title-action {
+.product-warp .page-title-action {
   margin: 10px 10px 10px 0px;
   padding: 7px 13px;
   display: inline-block; }
 
-.campaign-warp form {
+.product-warp form {
   margin: 12px 0px 24px; }
 
-.campaign-warp input {
+.product-warp input {
   margin: 0px 8px 0px 0px !important;
   padding: 5px 5px; }
 
@@ -234,16 +234,16 @@ h1.top-reports {
 @Since 10.30.1
 @date: May 18, 2018
  */
-.campaign_update_field_copy {
+.product_update_field_copy {
   margin: 10px 0;
   background: #F0F0F0;
   padding: 30px 20px; }
 
-.xwoo-campaign-update-btn-wrap {
+.xwoo-product-update-btn-wrap {
   clear: both;
   margin-top: 50px; }
 
-table.wp-list-table .column-campaign_owner {
+table.wp-list-table .column-product_owner {
   width: 80px; }
 
 /* Search Block CSS */
@@ -436,18 +436,18 @@ table.wp-list-table .column-campaign_owner {
 .xwoo-listings .xwoo-listing-content .woocommerce:empty {
   display: none; }
 
-.xwoo-campaign-summary-inner .woocommerce {
+.xwoo-product-summary-inner .woocommerce {
   float: left;
   color: #ffcc00;
   padding: 12px 0px 15px;
   width: 100%;
   letter-spacing: 4px; }
 
-.xwoo-campaign-summary-inner .woocommerce .star-rating {
+.xwoo-product-summary-inner .woocommerce .star-rating {
   float: left;
   width: 100px; }
 
-.xwoo-campaign-summary-inner .woocommerce .star-rating:before {
+.xwoo-product-summary-inner .woocommerce .star-rating:before {
   color: #ffcc00;
   letter-spacing: 4px; }
 
@@ -539,7 +539,7 @@ table.wp-list-table .column-campaign_owner {
   border-top: 1px solid #e9e9e9;
   padding: 20px 0 5px; }
 
-.xwoo-campaign-summary .xwoo-raised-percent {
+.xwoo-product-summary .xwoo-raised-percent {
   border-top: none;
   padding: 0; }
 
@@ -739,13 +739,13 @@ table.wp-list-table .column-campaign_owner {
   height: 120px;
   width: 100%; }
 
-input[type="submit"].xwoo-submit-campaign:hover {
+input[type="submit"].xwoo-submit-product:hover {
   background-color: #80b538; }
 
 .xwoo-register {
   margin-top: 30px; }
 
-.xwoo-single.xwoo-register a.xwoo-cancel-campaign {
+.xwoo-single.xwoo-register a.xwoo-cancel-product {
   text-decoration: none;
   text-transform: capitalize;
   padding: 10px 20px;
@@ -759,7 +759,7 @@ input[type="submit"].xwoo-submit-campaign:hover {
   min-height: 37px;
   text-decoration: none; }
 
-input[type="submit"].xwoo-submit-campaign {
+input[type="submit"].xwoo-submit-product {
   text-transform: capitalize;
   padding: 15px 20px;
   font-weight: 400;
@@ -767,7 +767,7 @@ input[type="submit"].xwoo-submit-campaign {
   border: none;
   background: #1adc68; }
 
-.xwoo-register .xwoo-submit-campaign {
+.xwoo-register .xwoo-submit-product {
   float: right; }
 
 /* Dashboard */
@@ -1310,11 +1310,11 @@ input#cc-image-upload-file-button, input.profile_image_url {
   font-weight: 400;
   box-shadow: none; }
 
-.wp-crowd-new-campaign {
+.wp-crowd-new-product {
   float: right;
   margin-top: 7px; }
 
-.xwoo_donate_button, #xwoo-tab-reviews .submit, .xwoo-edit-btn, .xwoo-image-upload.float-right, .xwoo-image-upload-btn, .xwoo-save-btn, #xwoo_active_edit_form, .removeCampaignRewards, #addreward, .btn-style1, #addcampaignupdate, .xwoo-profile-button, .dashboard-btn-link, .xwoo_login_form_div #wp-submit, .xwoo-submit-campaign, input[type="button"].xwoo-image-upload, input[type="button"]#search-submit, #addreward, input[type="submit"].xwoo-submit-campaign, .dashboard-btn-link, .label-primary, #xwoofrontenddata .xwoo-form-action input[type="submit"].xwoo-submit-campaign, .btn-style1, #xwoo-tab-reviews .submit, .dashboard-head-date input[type="submit"], .wp-crowd-btn-primary, .xwoo_withdraw_button, .xwoo-dashboard-head-left ul li.active, .xwoo-pagination ul li a:hover, .xwoo-pagination ul li span.current {
+.xwoo_donate_button, #xwoo-tab-reviews .submit, .xwoo-edit-btn, .xwoo-image-upload.float-right, .xwoo-image-upload-btn, .xwoo-save-btn, #xwoo_active_edit_form, .removeproductRewards, #addreward, .btn-style1, #addproductupdate, .xwoo-profile-button, .dashboard-btn-link, .xwoo_login_form_div #wp-submit, .xwoo-submit-product, input[type="button"].xwoo-image-upload, input[type="button"]#search-submit, #addreward, input[type="submit"].xwoo-submit-product, .dashboard-btn-link, .label-primary, #xwoofrontenddata .xwoo-form-action input[type="submit"].xwoo-submit-product, .btn-style1, #xwoo-tab-reviews .submit, .dashboard-head-date input[type="submit"], .wp-crowd-btn-primary, .xwoo_withdraw_button, .xwoo-dashboard-head-left ul li.active, .xwoo-pagination ul li a:hover, .xwoo-pagination ul li span.current {
   background-color: #94c94a;
   color: #ffffff; }
 
@@ -1346,7 +1346,7 @@ div#qt_xwoo-form-description_toolbar {
   background: #fff;
   padding: 0 20px; }
 
-.xwoo-link-style1, ul.xwoo-update li .xwoo-update-title, .xwoo-fields-action span a:hover, .xwoo-name > p, .xwoo-listings-dashboard .xwoo-listing-content h4 a, .xwoo-listings-dashboard .xwoo-listing-content .xwoo-author a, .xwoo-order-view, #xwoo_modal_message td a, .dashboard-price-number, .wpcrowd-listing-content .wpcrowd-admin-title h3 a, .campaign-listing-page .stripe-table a, .stripe-table a.label-default:hover, a.xwoo-fund-modal-btn.xwoo-link-style1, .xwoo-tabs-menu li.xwoo-current a, .xwoo-links div a:hover, .xwoo-links div.active a {
+.xwoo-link-style1, ul.xwoo-update li .xwoo-update-title, .xwoo-fields-action span a:hover, .xwoo-name > p, .xwoo-listings-dashboard .xwoo-listing-content h4 a, .xwoo-listings-dashboard .xwoo-listing-content .xwoo-author a, .xwoo-order-view, #xwoo_modal_message td a, .dashboard-price-number, .wpcrowd-listing-content .wpcrowd-admin-title h3 a, .product-listing-page .stripe-table a, .stripe-table a.label-default:hover, a.xwoo-fund-modal-btn.xwoo-link-style1, .xwoo-tabs-menu li.xwoo-current a, .xwoo-links div a:hover, .xwoo-links div.active a {
   color: #94c94a; }
 
 .entry .entry-content a.button, .entry .entry-content a:hover {
@@ -1390,7 +1390,7 @@ div#qt_xwoo-form-description_toolbar {
   line-height: initial;
   font-weight: 400; }
 
-.xwoo-edit-btn, .xwoo-image-upload.float-right, .xwoo-save-btn, .removecampaignupdate, #addcampaignupdate, #xwoo_active_edit_form {
+.xwoo-edit-btn, .xwoo-image-upload.float-right, .xwoo-save-btn, .removeproductupdate, #addproductupdate, #xwoo_active_edit_form {
   background: #1adc68;
   color: #fff;
   font-size: 14px;
@@ -1406,14 +1406,14 @@ div#qt_xwoo-form-description_toolbar {
 .xwoo-dashboard .xwoo-save-btn.xwoo-hidden {
   display: none; }
 
-/* Single Campaign */
-.xwoo-campaign-single-left-info {
+/* Single product */
+.xwoo-product-single-left-info {
   margin-bottom: 35px;
   float: left;
   width: 48%;
   position: relative; }
 
-.xwoo-campaign-single-left-info h2 {
+.xwoo-product-single-left-info h2 {
   font-size: 16px;
   margin-bottom: 10px;
   margin-top: 30px; }
@@ -1437,14 +1437,14 @@ div#qt_xwoo-form-description_toolbar {
   width: 100%;
   height: 100%; }
 
-.xwoo-campaign-summary {
+.xwoo-product-summary {
   width: 48%;
   float: right; }
 
-.xwoo-campaign-summary-inner h2.xwoo-campaign-title {
+.xwoo-product-summary-inner h2.xwoo-product-title {
   margin-top: 0; }
 
-h2.xwoo-campaign-title {
+h2.xwoo-product-title {
   font-size: 30px;
   line-height: 40px;
   margin-bottom: 5px; }
@@ -1456,32 +1456,32 @@ h2.xwoo-campaign-title {
   color: #737373;
   font-size: 18px; }
 
-.xwoo-campaign-summary-inner .woocommerce {
+.xwoo-product-summary-inner .woocommerce {
   float: left;
   color: #ffcc00;
   padding: 12px 0px 15px;
   width: 100%;
   letter-spacing: 4px; }
 
-.campaign-funding-info {
+.product-funding-info {
   margin: 20px 0; }
 
-.campaign-funding-info ul {
+.product-funding-info ul {
   padding: 0;
   margin: 0; }
 
-.campaign-funding-info ul li {
+.product-funding-info ul li {
   display: inline-block;
   margin-right: 14px; }
 
-.campaign-funding-info ul li .funding-amount {
+.product-funding-info ul li .funding-amount {
   font-weight: bold;
   margin: 0; }
 
-.campaign-funding-info ul li span.info-text {
+.product-funding-info ul li span.info-text {
   font-size: 12px; }
 
-.xwoo-campaign-summary .xwoo-raised-percent {
+.xwoo-product-summary .xwoo-raised-percent {
   border-top: none;
   padding: 0; }
 
@@ -1496,7 +1496,7 @@ h2.xwoo-campaign-title {
   display: inline-block;
   padding-left: 20px; }
 
-.xwoo-campaign-summary-inner .xwoo-raised-bar {
+.xwoo-product-summary-inner .xwoo-raised-bar {
   padding: 1px 0px 20px; }
 
 .xwoo-raised-bar {
@@ -1605,34 +1605,34 @@ input[type="number"].xwoo_donate_amount_field {
   top: 2px;
   margin-right: 5px; }
 
-.xwoo-campaign-creator-info-wrapper {
+.xwoo-product-creator-info-wrapper {
   margin-top: 20px;
   margin-bottom: 20px; }
 
 .editor-styles-wrapper .xwoo-single-short-description h2:before,
-.editor-styles-wrapper .xwoo-campaign-title:before,
+.editor-styles-wrapper .xwoo-product-title:before,
 .editor-styles-wrapper .xwoo-tab-content h2:before {
   display: none; }
 
 .social-container {
   display: inline-flex; }
 
-.xwoo-campaign-summary-inner h2.xwoo-campaign-title {
+.xwoo-product-summary-inner h2.xwoo-product-title {
   font-size: 30px;
   line-height: 40px;
   margin-bottom: 5px; }
 
-.xwoo-campaign-single-left-info .xwoo-single-short-description h2 {
+.xwoo-product-single-left-info .xwoo-single-short-description h2 {
   font-size: 16px;
   margin-bottom: 10px;
   margin-top: 30px; }
 
-.xwoo-campaign-creator-avatar {
+.xwoo-product-creator-avatar {
   float: left;
   margin-right: 15px;
   margin-bottom: 20px; }
 
-.xwoo-campaign-creator-info-wrapper {
+.xwoo-product-creator-info-wrapper {
   margin-top: 20px;
   margin-bottom: 20px; }
 
@@ -1744,7 +1744,7 @@ div#xwoo-tab-update {
   text-align: right;
   margin-top: 30px; }
 
-#xwoofrontenddata .xwoo-form-action input[type="submit"].xwoo-submit-campaign {
+#xwoofrontenddata .xwoo-form-action input[type="submit"].xwoo-submit-product {
   text-transform: capitalize;
   padding: 15px 20px;
   font-weight: 400;
@@ -1754,7 +1754,7 @@ div#xwoo-tab-update {
   min-height: 37px;
   font-size: 15px; }
 
-a.xwoo-cancel-campaign {
+a.xwoo-cancel-product {
   text-decoration: none;
   text-transform: capitalize;
   padding: 10px 20px;
@@ -1811,7 +1811,7 @@ div#qt_xwoo-form-short-description_toolbar {
   border: none;
   background: none; }
 
-#addreward, #addcampaignupdate {
+#addreward, #addproductupdate {
   margin: 25px 0 25px 0px; }
 
 .xwoo-form-field.left {
