@@ -5,6 +5,11 @@
 		<?php
         $extensions = apply_filters('xwoo_extensions_lists_config', array());
 
+        // echo '<pre>';
+        // print_r($extensions);
+        // echo '</pre>';
+        // die();
+
 		if (is_array($extensions) && count($extensions)){
 			?>
             <div class="wp-list-table widefat plugin-install">
@@ -78,7 +83,8 @@
                 <div id="the-list">
 					<?php
 					foreach ( $extensions as $basName => $addon ) {
-						$addonConfig = xwoo_function()->get_addon_config($basName);
+
+                        $addonConfig = xwoo_function()->get_addon_config($basName);
                         $isEnable = (bool)xwoo_function()->avalue_dot('is_enable', $addonConfig);
 
 						$thumbnailURL =  XWOO_DIR_URL.'assets/images/xwoo-plugin.png';
@@ -122,7 +128,7 @@
                                 'name'          => __( 'Product Delivery Slot', 'xwoo' ),
                                 'description'   => __( 'Enable product delivery date/slot your product.', 'xwoo' ),
                             ),
-                            'variation_swatcher' => array(
+                            'variation-swatcher' => array(
                                 'name'          => __( 'Variation swatcher and photoes', 'xwoo' ),
                                 'description'   => __( 'Support Variation swatcher and photoes addon.', 'xwoo' ),
                             ),
@@ -130,15 +136,15 @@
                                 'name'          => __( 'WistList', 'xwoo' ),
                                 'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
                             ),
-                            'productslider' => array(
-                                'name'          => __( 'Product Slider', 'xwoo' ),
-                                'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
-                            ),
-                            'productsearch' => array(
-                                'name'          => __( 'Product Search', 'xwoo' ),
-                                'description'   => __( 'Product Ajax search', 'xwoo' ),
-                            ),
-                            'social_login' => array(
+                            // 'productslider' => array(
+                            //     'name'          => __( 'Product Slider', 'xwoo' ),
+                            //     'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
+                            // ),
+                            // 'productsearch' => array(
+                            //     'name'          => __( 'Product Search', 'xwoo' ),
+                            //     'description'   => __( 'Product Ajax search', 'xwoo' ),
+                            // ),
+                            'social-login' => array(
                                 'name'          => __( 'Social Login', 'xwoo' ),
                                 'description'   => __( 'Support Social login addon.', 'xwoo' ),
                             ),
@@ -166,10 +172,8 @@
 
                         foreach ( $proAddons as $basName => $addon ) {
                             $addonConfig = xwoo_function()->get_addon_config($basName);
-    
                             $extensions_path = trailingslashit(XWOO_DIR_PATH."assets/extensions/{$basName}");
                             $extensions_url = trailingslashit(XWOO_DIR_URL."assets/extensions/{$basName}");
-    
                             $thumbnailURL =  XWOO_DIR_URL.'assets/images/xwoo-plugin.png';
     
                             if (file_exists($extensions_path.'thumbnail.png') ) {

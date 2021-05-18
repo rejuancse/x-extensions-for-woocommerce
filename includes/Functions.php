@@ -28,7 +28,7 @@ class Functions {
     }
 
     public function is_free(){
-        if (is_plugin_active('wp-xwoo-pro/wp-xwoo-pro.php')) {
+        if (is_plugin_active('xwoo-pro/xwoo-pro.php')) {
             return false;
         } else {
             return true;
