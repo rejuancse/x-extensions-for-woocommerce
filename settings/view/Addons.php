@@ -5,11 +5,6 @@
 		<?php
         $extensions = apply_filters('xwoo_extensions_lists_config', array());
 
-        // echo '<pre>';
-        // print_r($extensions);
-        // echo '</pre>';
-        // die();
-
 		if (is_array($extensions) && count($extensions)){
 			?>
             <div class="wp-list-table widefat plugin-install">

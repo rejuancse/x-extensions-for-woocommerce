@@ -23,7 +23,7 @@ $arr =  array(
     // #General Seperator
     array(
         'type'      => 'seperator',
-        'label'     => __('General Settings','xwoo'),
+        'label'     => __('General Settings', 'xwoo'),
         'top_line'  => 'true',
     ),
 
