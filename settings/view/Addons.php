@@ -143,6 +143,10 @@
                                 'name'          => __( 'Social Login', 'xwoo' ),
                                 'description'   => __( 'Support Social login addon.', 'xwoo' ),
                             ),
+                            'social-share' => array(
+                                'name'          => __( 'Social Share', 'xwoo' ),
+                                'description'   => __( 'WooCommerce single product social share.', 'xwoo' ),
+                            ),
                             'bookmarks' => array(
                                 'name'          => __( 'Bookmarks', 'xwoo' ),
                                 'description'   => __( 'Products bookmarks in products list.', 'xwoo' ),
@@ -151,9 +155,13 @@
                                 'name'          => __( 'Product Love', 'xwoo' ),
                                 'description'   => __( 'Love your products in your products list.', 'xwoo' ),
                             ),
-                            'reports' => array(
-                                'name'          => __( 'Reports', 'xwoo' ),
-                                'description'   => __( 'Get detailed analytics & stats using advanced filters with powerful reports.', 'xwoo' ),
+                            'product-gallery' => array(
+                                'name'          => __( 'Product Gallery Variations', 'xwoo' ),
+                                'description'   => __( 'WooCommerce single page product gallery slider variations.', 'xwoo' ),
+                            ),
+                            'woo-category' => array(
+                                'name'          => __( 'WooCommerce category list', 'xwoo' ),
+                                'description'   => __( 'WooCommerce product category list multi variations', 'xwoo' ),
                             ),
                             'reword' => array(
                                 'name'          => __( 'Reword', 'xwoo' ),
