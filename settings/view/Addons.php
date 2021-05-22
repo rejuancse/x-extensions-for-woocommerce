@@ -127,18 +127,10 @@
                                 'name'          => __( 'Variation swatcher and photoes', 'xwoo' ),
                                 'description'   => __( 'Support Variation swatcher and photoes addon.', 'xwoo' ),
                             ),
-                            'wistlist' => array(
-                                'name'          => __( 'WistList', 'xwoo' ),
+                            'wishlist' => array(
+                                'name'          => __( 'WishList', 'xwoo' ),
                                 'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
                             ),
-                            // 'productslider' => array(
-                            //     'name'          => __( 'Product Slider', 'xwoo' ),
-                            //     'description'   => __( 'Support native payment system for all donations using the native wallet addon.', 'xwoo' ),
-                            // ),
-                            // 'productsearch' => array(
-                            //     'name'          => __( 'Product Search', 'xwoo' ),
-                            //     'description'   => __( 'Product Ajax search', 'xwoo' ),
-                            // ),
                             'social-login' => array(
                                 'name'          => __( 'Social Login', 'xwoo' ),
                                 'description'   => __( 'Support Social login addon.', 'xwoo' ),
@@ -156,7 +148,7 @@
                                 'description'   => __( 'Love your products in your products list.', 'xwoo' ),
                             ),
                             'product-gallery' => array(
-                                'name'          => __( 'Product Gallery Variations', 'xwoo' ),
+                                'name'          => __( 'Single Product Gallery Variations', 'xwoo' ),
                                 'description'   => __( 'WooCommerce single page product gallery slider variations.', 'xwoo' ),
                             ),
                             'woo-category' => array(
@@ -177,7 +169,7 @@
                             $addonConfig = xwoo_function()->get_addon_config($basName);
                             $extensions_path = trailingslashit(XWOO_DIR_PATH."assets/extensions/{$basName}");
                             $extensions_url = trailingslashit(XWOO_DIR_URL."assets/extensions/{$basName}");
-                            $thumbnailURL =  XWOO_DIR_URL.'assets/images/xwoo-plugin.png';
+                            $thumbnailURL =  XWOO_DIR_URL.'assets/images/thumbnail.png';
     
                             if (file_exists($extensions_path.'thumbnail.png') ) {
                                 $thumbnailURL = $extensions_url.'thumbnail.png';
