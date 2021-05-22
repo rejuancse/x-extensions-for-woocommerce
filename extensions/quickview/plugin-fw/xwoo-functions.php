@@ -1055,7 +1055,7 @@ if ( ! function_exists( 'xwoo_plugin_fw_get_field' ) ) {
 		if ( ! isset( $field['id'] ) ) {
 			static $field_number = 1;
 
-			$field['id'] = "xwoo-plugin-fw-field__{$field_number}";
+			$field['id'] = "xwoo-xwoo-plugin-field__{$field_number}";
 			$field_number ++;
 		}
 
@@ -1065,7 +1065,7 @@ if ( ! function_exists( 'xwoo_plugin_fw_get_field' ) ) {
 			}
 
 			if ( $show_container ) {
-				echo '<div class="xwoo-plugin-fw-field-wrapper xwoo-plugin-fw-' . esc_attr( $field['type'] ) . '-field-wrapper">';
+				echo '<div class="xwoo-xwoo-plugin-field-wrapper xwoo-xwoo-plugin-' . esc_attr( $field['type'] ) . '-field-wrapper">';
 			}
 
 			do_action( 'xwoo_plugin_fw_get_field_before', $field );
@@ -1471,7 +1471,7 @@ if ( ! function_exists( 'xwoo_plugin_fw_load_update_and_licence_files' ) ) {
 		global $plugin_upgrade_fw_data;
 
 		/**
-		 * If the init.php was load by old plugin-fw version
+		 * If the init.php was load by old xwoo-plugin version
 		 * load the upgrade and license key from local folder
 		 */
 		if ( empty( $plugin_upgrade_fw_data ) ) {
@@ -1652,8 +1652,8 @@ if ( ! function_exists( 'xwoo_plugin_fw_copy_to_clipboard' ) ) {
 		$field['type'] = 'copy-to-clipboard';
 
 		// Enqueue style and script if not enqueued.
-		wp_enqueue_style( 'xwoo-plugin-fw-fields' );
-		wp_enqueue_script( 'xwoo-plugin-fw-fields' );
+		wp_enqueue_style( 'xwoo-xwoo-plugin-fields' );
+		wp_enqueue_script( 'xwoo-xwoo-plugin-fields' );
 
 		xwoo_plugin_fw_get_field( $field, true, false );
 	}
