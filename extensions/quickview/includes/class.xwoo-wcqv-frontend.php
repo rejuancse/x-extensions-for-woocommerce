@@ -117,24 +117,24 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 * @return void
 		 */
 		public function enqueue_gift_card_script() {
-			if ( ! wp_script_is( 'ywgc-frontend' ) && apply_filters( 'xwoo_load_gift_card_script_pages_for_quick_view', is_shop() ) && version_compare( XWOO_YWGC_VERSION, '3.0.0', '<' ) ) {
-				wp_register_script( 'ywgc-frontend', XWOO_YWGC_URL . 'assets/js/' . xwoo_load_js_file( 'ywgc-frontend.js' ), array( 'jquery', 'woocommerce' ), XWOO_YWGC_VERSION, true );
-				wp_enqueue_script( 'ywgc-frontend' );
-			} elseif ( ! wp_script_is( 'ywgc-frontend' ) && apply_filters( 'xwoo_load_gift_card_script_pages_for_quick_view', is_shop() ) ) {
-				wp_register_script( 'ywgc-frontend', XWOO_YWGC_URL . 'assets/js/' . xwoo_load_js_file( 'ywgc-frontend.js' ), array( 'jquery', 'woocommerce', 'jquery-ui-datepicker', 'accounting' ), XWOO_YWGC_VERSION, true );
+			if ( ! wp_script_is( 'xwoo-frontend' ) && apply_filters( 'xwoo_load_gift_card_script_pages_for_quick_view', is_shop() ) && version_compare( XWOO_YWGC_VERSION, '3.0.0', '<' ) ) {
+				wp_register_script( 'xwoo-frontend', XWOO_YWGC_URL . 'assets/js/' . xwoo_load_js_file( 'xwoo-frontend.js' ), array( 'jquery', 'woocommerce' ), XWOO_YWGC_VERSION, true );
+				wp_enqueue_script( 'xwoo-frontend' );
+			} elseif ( ! wp_script_is( 'xwoo-frontend' ) && apply_filters( 'xwoo_load_gift_card_script_pages_for_quick_view', is_shop() ) ) {
+				wp_register_script( 'xwoo-frontend', XWOO_YWGC_URL . 'assets/js/' . xwoo_load_js_file( 'xwoo-frontend.js' ), array( 'jquery', 'woocommerce', 'jquery-ui-datepicker', 'accounting' ), XWOO_YWGC_VERSION, true );
 
 				wp_localize_script(
-					'ywgc-frontend',
-					'ywgc_data',
+					'xwoo-frontend',
+					'xwoo_data',
 					array(
 						'loader'        => apply_filters( 'xwoo_gift_cards_loader', XWOO_YWGC_ASSETS_URL . '/images/loading.gif' ),
 						'ajax_url'      => admin_url( 'admin-ajax.php' ),
 						'wc_ajax_url'   => WC_AJAX::get_endpoint( '%%endpoint%%' ),
-						'notice_target' => apply_filters( 'xwoo_ywgc_gift_card_notice_target', 'div.woocommerce' ),
+						'notice_target' => apply_filters( 'xwoo_xwoo_gift_card_notice_target', 'div.woocommerce' ),
 					)
 				);
 
-				wp_enqueue_script( 'ywgc-frontend' );
+				wp_enqueue_script( 'xwoo-frontend' );
 			}
 		}
 

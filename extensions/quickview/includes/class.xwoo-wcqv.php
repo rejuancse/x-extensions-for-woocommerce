@@ -62,10 +62,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW' ) ) {
 		 * @return void
 		 */
 		public function __construct() {
-
-			// Load Plugin Framework.
-			// add_action( 'after_setup_theme', array( $this, 'plugin_fw_loader' ), 1 );
-
 			if ( $this->can_load() ) {
 				if ( $this->load_frontend() ) {
 					require_once 'class.xwoo-wcqv-frontend.php';
@@ -121,31 +117,18 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW' ) ) {
 		 * @return boolean
 		 */
 		public function load_frontend() {
-			$enable           = get_option( 'wp_quick_view', 'true' ) === 'true';
-			$enable_on_mobile = get_option( 'mobile_quick_view', 'true' ) === 'true';
-			$is_mobile        = wp_is_mobile();
 
-			return apply_filters( 'xwoo_quickview_load_frontend', ( ! $is_mobile && $enable ) || ( $is_mobile && $enable_on_mobile ) );
+			$addonConfig = xwoo_function()->get_addon_config( XWOO_QUICK_VIEW_BASE_NAME );
+			$isEnable = (bool) xwoo_function()->avalue_dot( 'is_enable', $addonConfig );
+			if ( $isEnable ) {
+				$enable           = get_option( 'wp_quick_view', 'true' ) === 'true';
+				$enable_on_mobile = get_option( 'mobile_quick_view', 'true' ) === 'true';
+				$is_mobile        = wp_is_mobile();
+				return apply_filters( 'xwoo_quickview_load_frontend', ( ! $is_mobile && $enable ) || ( $is_mobile && $enable_on_mobile ) );
+			}
+			
 		}
 
-
-		/**
-		 * Load Plugin Framework
-		 *
-		 * @since  1.0
-		 * @access public
-		 * @author Andrea Grillo <andrea.grillo@xwooemes.com>
-		 * @return void
-		 */
-		// public function plugin_fw_loader() {
-		// 	if ( ! defined( 'YIT_CORE_PLUGIN' ) ) {
-		// 		global $plugin_fw_data;
-		// 		if ( ! empty( $plugin_fw_data ) ) {
-		// 			$plugin_fw_file = array_shift( $plugin_fw_data );
-		// 			require_once $plugin_fw_file;
-		// 		}
-		// 	}
-		// }
 	}
 }
 
