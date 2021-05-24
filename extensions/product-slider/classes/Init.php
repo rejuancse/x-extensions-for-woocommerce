@@ -48,7 +48,9 @@ class Xwoo_Product_Slider_Extensions {
             echo '</div>';
         }
 
-        $default_file = XWOO_DIR_PATH.'extensions/product-slider/classes/quick-view-tab.php';
+        $default_file = XWOO_DIR_PATH.'extensions/product-slider/pages/general-settings.php';
+        $style_file = XWOO_DIR_PATH.'extensions/product-slider/pages/style.php';
+        $shortcode_file = XWOO_DIR_PATH.'extensions/product-slider/pages/shortcode.php';
 
         // Settings Tab With slug and Display name
         $tabs = apply_filters('xwoo_slider_page_panel_tabs', array(
@@ -60,12 +62,12 @@ class Xwoo_Product_Slider_Extensions {
                 'slider_style' 	=>
                     array(
                         'tab_name' => __('Style','xwoo'),
-                        // 'load_form_file' => $top_products_page
+                        'load_form_file' => $style_file
                     ),
                 'slider_shortcode' 	=>
                     array(
                         'tab_name' => __('Shortcodes','xwoo'),
-                        // 'load_form_file' => $top_products_page
+                        'load_form_file' => $shortcode_file
                     )
             )
         );
