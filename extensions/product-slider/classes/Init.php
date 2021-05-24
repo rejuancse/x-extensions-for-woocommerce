@@ -46,12 +46,66 @@ class Xwoo_Product_Slider_Extensions {
             echo '<div class="notice notice-success is-dismissible">';
                 echo '<p>'.__( "Quick view data have been Saved.", "xwoo" ).'</p>';
             echo '</div>';
-        } ?>
+        }
+
+        $default_file = XWOO_DIR_PATH.'extensions/product-slider/classes/quick-view-tab.php';
+
+        // Settings Tab With slug and Display name
+        $tabs = apply_filters('xwoo_slider_page_panel_tabs', array(
+                'general_settings' 	=>
+                    array(
+                        'tab_name' => __('General Settings','xwoo'),
+                        'load_form_file' => $default_file
+                    ),
+                'slider_style' 	=>
+                    array(
+                        'tab_name' => __('Style','xwoo'),
+                        // 'load_form_file' => $top_products_page
+                    ),
+                'slider_shortcode' 	=>
+                    array(
+                        'tab_name' => __('Shortcodes','xwoo'),
+                        // 'load_form_file' => $top_products_page
+                    )
+            )
+        );
+
+        $current_page = 'general_settings';
+        if( ! empty($_GET['tab']) ){
+            $current_page = sanitize_text_field($_GET['tab']);
+        }
+
+        // Print the Tab Title
+        echo '<h2 class="top-reports">'.__( "Xwoo Product Slider" , "xwoo" ).'</h2>';
+        echo '<h2 class="nav-tab-wrapper">';
+        foreach( $tabs as $tab => $name ){
+            $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';
+            echo "<a class='nav-tab$class' href='?page=xwoo-slider&tab=$tab'>{$name['tab_name']}</a>";
+        }
+        echo '</h2>';
+
+
+        //Load tab file
+        $request_file = $tabs[$current_page]['load_form_file'];
+
+        if (array_key_exists(trim(esc_attr($current_page)), $tabs)){
+            if (file_exists($default_file)){
+                include_once $request_file;
+            }else{
+                include_once $default_file;
+            }
+        } else {
+            include_once $default_file;
+        }
+        ?>
+
+
+
 
         <form id="xwoo" role="form" method="post" action="">
             <?php
             //Load tab file
-            include_once XWOO_DIR_PATH.'extensions/quickview/classes/quick-view-tab.php';
+            // include_once XWOO_DIR_PATH.'extensions/quickview/classes/quick-view-tab.php';
             
             wp_nonce_field( 'wp_settings_page_action', 'wp_settings_page_nonce_field' );
             submit_button( null, 'primary', 'wp_admin_settings_submit_btn' );
