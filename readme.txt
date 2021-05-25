@@ -19,8 +19,8 @@ If you want to build event XWOO in your wordpress theme, this plugin for you.
 To use these shortcodes, just place the required shortcode(s) on your desired location.
 
   * xwoo product list [xwoo_products]
-  * xwoo product slider [xwoo_slider]
-  * xwoo product search [xwoo_search]
+  * xwoo product slider [xwoo_product_slider]
+  * xwoo product search [xwoo_product_search]
 
 
 = Features =

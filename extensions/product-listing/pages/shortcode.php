@@ -4,15 +4,15 @@
             <table class="form-table xwoo-option-table xwoo-main-setting-table">
                 <tr class="xwoo-field xwoo-field-group">
                     <th>
-                        <?php _e('Slider Shortcodes', 'xwoo'); ?>
+                        <?php _e('Products Listing Shortcodes', 'xwoo'); ?>
                     </th>
 
                     <td>
                         <h3><?php _e('Integration code by theme location', 'xwoo'); ?></h3>
                         <?php
                             echo '<div class="wp-megamenu-integration-code">';
-                                echo "<p class='integration-code-row'> <span>PHP</span>  <code> &lt;?php echo do_shortcode('[xwoo_slider]') ?&gt;</code></p>";
-                                echo "<p class='integration-code-row'> <span>SHORTCODE</span> <code> [xwoo_slider] </code> </p>";
+                                echo "<p class='integration-code-row'> <span>PHP</span>  <code> &lt;?php echo do_shortcode('[product_listing]') ?&gt;</code></p>";
+                                echo "<p class='integration-code-row'> <span>SHORTCODE</span> <code> [product_listing] </code> </p>";
                             echo '</div>';
                         ?>
                     </td>

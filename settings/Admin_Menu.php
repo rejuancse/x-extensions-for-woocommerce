@@ -6,9 +6,10 @@ defined( 'ABSPATH' ) || exit;
 class Admin_Menu {
 
     public function __construct() {
-        add_action('wp_head',      array($this, 'style_custom_css' ));
-        add_action('admin_menu',   array($this, 'register_menu_page' ));
-        add_action('admin_init',   array($this, 'save_menu_settings' ));
+        add_action('wp_head',    array($this, 'style_custom_css' ));
+        add_action('admin_menu', array($this, 'register_menu_page' ));
+        add_action('admin_init', array($this, 'save_menu_settings' ));
+        add_action('admin_init', array($this, 'xwoo_go_premium_page'));
     }
 
     /**
@@ -83,8 +84,30 @@ class Admin_Menu {
             'xwoo-settings',
             array( $this, 'xwoo_menu_page' )
         );
+
+        $is_pro_activated = is_plugin_active('xwoo-pro/xwoo-pro.php');
+        if ( ! $is_pro_activated ){
+            add_submenu_page( 
+                'xwoo', 
+                __( 'Go Premium', 'wp-megamenu' ), 
+                __( '<span class="dashicons dashicons-awards wppb-go-premium-star"></span> Go Premium', 'wp-megamenu' ), 
+                'manage_options', 
+                'xwoo-go-premium', 
+                array( $this, 'xwoo_go_premium_page' ),
+            );
+        }
     }
 
+    public function xwoo_go_premium_page(){
+        if ( empty( $_GET['page'] ) ) {
+            return;
+        }
+        if ( 'xwoo-go-premium' === $_GET['page'] ) {
+            wp_redirect( 'https://www.xwoo.club/' );
+            die();
+        }
+    }
+    
     // Addon Listing
     public function xwoo_manage_extensions() {
         include XWOO_DIR_PATH.'settings/view/Addons.php';
