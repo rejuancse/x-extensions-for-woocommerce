@@ -64,7 +64,7 @@ class Xwoo_Product_Slider_Extensions {
                         'tab_name' => __('Style','xwoo'),
                         'load_form_file' => $style_file
                     ),
-                'slider_shortcode' 	=>
+                'slider_shortcode' 	=> 
                     array(
                         'tab_name' => __('Shortcodes','xwoo'),
                         'load_form_file' => $shortcode_file
@@ -78,7 +78,7 @@ class Xwoo_Product_Slider_Extensions {
         }
 
         // Print the Tab Title
-        echo '<h2 class="top-reports">'.__( "Xwoo Product Slider" , "xwoo" ).'</h2>';
+        echo '<h2 class="xwoo-setting-title">'.__( "XWOO Product Slider" , "xwoo" ).'</h2>';
         echo '<h2 class="nav-tab-wrapper">';
         foreach( $tabs as $tab => $name ){
             $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';
@@ -86,31 +86,22 @@ class Xwoo_Product_Slider_Extensions {
         }
         echo '</h2>';
 
-
-        //Load tab file
-        $request_file = $tabs[$current_page]['load_form_file'];
-
-        if (array_key_exists(trim(esc_attr($current_page)), $tabs)){
-            if (file_exists($default_file)){
-                include_once $request_file;
-            }else{
-                include_once $default_file;
-            }
-        } else {
-            include_once $default_file;
-        }
-        ?>
-
-
-
+        $request_file = $tabs[$current_page]['load_form_file']; ?>
 
         <form id="xwoo" role="form" method="post" action="">
             <?php
-            //Load tab file
-            // include_once XWOO_DIR_PATH.'extensions/quickview/classes/quick-view-tab.php';
-            
-            wp_nonce_field( 'wp_settings_page_action', 'wp_settings_page_nonce_field' );
-            submit_button( null, 'primary', 'wp_admin_settings_submit_btn' );
+                if (array_key_exists(trim(esc_attr($current_page)), $tabs)){
+                    if (file_exists($default_file)){
+                        include_once $request_file;
+                    }else{
+                        include_once $default_file;
+                    }
+                } else {
+                    include_once $default_file;
+                }
+                
+                wp_nonce_field( 'wp_settings_page_action', 'wp_settings_page_nonce_field' );
+                submit_button( null, 'primary', 'wp_admin_settings_submit_btn' );
             ?>
         </form>
         <?php
@@ -129,16 +120,20 @@ class Xwoo_Product_Slider_Extensions {
                 /**
                  * General Settings
                  */
-                $styling = sanitize_text_field(xwoo_function()->post('wp_quick_view'));
-                xwoo_function()->update_checkbox( 'wp_quick_view', $styling);
+                $slider_number = sanitize_text_field(xwoo_function()->post('wp_number_of_slider'));
+                xwoo_function()->update_text('wp_number_of_slider', $slider_number);
 
-                $mobile_view = sanitize_text_field(xwoo_function()->post('mobile_quick_view'));
-                xwoo_function()->update_text('mobile_quick_view', $mobile_view);
+                $slider_dot = sanitize_text_field(xwoo_function()->post('wp_slider_arrow'));
+                xwoo_function()->update_checkbox( 'wp_slider_arrow', $slider_dot);
 
+                $slider_dot = sanitize_text_field(xwoo_function()->post('wp_slider_dots'));
+                xwoo_function()->update_checkbox( 'wp_slider_dots', $slider_dot);
+
+
+                # Style.
                 $product_status = sanitize_text_field(xwoo_function()->post('btn_quick_view'));
                 xwoo_function()->update_text('btn_quick_view', $product_status);
 
-                # Style.
                 $button_bg_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_color'));
                 xwoo_function()->update_text('wp_button_bg_color', $button_bg_color);
 

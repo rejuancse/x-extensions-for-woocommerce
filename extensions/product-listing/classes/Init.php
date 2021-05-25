@@ -78,7 +78,7 @@ class Xwoo_Product_Listing_Extensions {
         }
 
         // Print the Tab Title
-        echo '<h2 class="top-reports">'.__( "Xwoo Product listing" , "xwoo" ).'</h2>';
+        echo '<h2 class="xwoo-title">'.__( "Xwoo Product listing" , "xwoo" ).'</h2>';
         echo '<h2 class="nav-tab-wrapper">';
         foreach( $tabs as $tab => $name ){
             $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';
