@@ -27,6 +27,6 @@ function xwoo_product_search_config( $config ) {
 
 $addonConfig = xwoo_function()->get_addon_config( XWOO_SEARCH_BASE_NAME );
 $isEnable = (bool) xwoo_function()->avalue_dot( 'is_enable', $addonConfig );
-// if ( $isEnable ) {
-// 	include_once 'classes/Init.php';
-// }
+if ( $isEnable ) {
+	include_once 'classes/Init.php';
+}

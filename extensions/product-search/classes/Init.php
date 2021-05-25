@@ -4,7 +4,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-class Xwoo_Product_Listing_Extensions {
+class Xwoo_Product_Search_Extensions {
     /**
      * @var null
      *
@@ -23,34 +23,34 @@ class Xwoo_Product_Listing_Extensions {
     }
 
     public function __construct() {
-        add_action('admin_menu', array($this, 'xwoo_add_product_listing_page'));
-        add_action('admin_init', array($this, 'save_listing_menu_settings' ));
+        add_action('admin_menu', array($this, 'xwoo_add_product_search_page'));
+        add_action('admin_init', array($this, 'save_product_search_menu_settings' ));
     }
 
-    public function xwoo_add_product_listing_page(){
+    public function xwoo_add_product_search_page(){
         add_submenu_page(
             'xwoo', 
-            __('Product Listing', 'xwoo'), 
-            __('Product Listing', 'xwoo'), 
+            __('Product Search', 'xwoo'), 
+            __('Product Search', 'xwoo'), 
             'manage_options', 
-            'xwoo-listing', 
-            array($this, 'xwoo_listing_products_func')
+            'xwoo-search', 
+            array($this, 'xwoo_product_search_func')
         );
     }
 
     /**
      * Display a custom menu page
      */
-    public function xwoo_listing_products_func(){
+    public function xwoo_product_search_func(){
         if (xwoo_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
                 echo '<p>'.__( "Quick view data have been Saved.", "xwoo" ).'</p>';
             echo '</div>';
         }
 
-        $default_file = XWOO_DIR_PATH.'extensions/product-listing/pages/general-settings.php';
-        $style_file = XWOO_DIR_PATH.'extensions/product-listing/pages/style.php';
-        $shortcode_file = XWOO_DIR_PATH.'extensions/product-listing/pages/shortcode.php';
+        $default_file = XWOO_DIR_PATH.'extensions/product-search/pages/general-settings.php';
+        $style_file = XWOO_DIR_PATH.'extensions/product-search/pages/style.php';
+        $shortcode_file = XWOO_DIR_PATH.'extensions/product-search/pages/shortcode.php';
 
         // Settings Tab With slug and Display name
         $tabs = apply_filters('xwoo_listing_page_panel_tabs', array(
@@ -78,11 +78,11 @@ class Xwoo_Product_Listing_Extensions {
         }
 
         // Print the Tab Title
-        echo '<h2 class="xwoo-setting-title">'.__( "XWOO Product Listing" , "xwoo" ).'</h2>';
+        echo '<h2 class="xwoo-setting-title">'.__( "XWOO Product Search" , "xwoo" ).'</h2>';
         echo '<h2 class="nav-tab-wrapper">';
         foreach( $tabs as $tab => $name ){
             $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';
-            echo "<a class='nav-tab$class' href='?page=xwoo-listing&tab=$tab'>{$name['tab_name']}</a>";
+            echo "<a class='nav-tab$class' href='?page=xwoo-search&tab=$tab'>{$name['tab_name']}</a>";
         }
         echo '</h2>'; ?>
 
@@ -110,7 +110,7 @@ class Xwoo_Product_Listing_Extensions {
     /**
      * Add menu settings action
      */
-    public function save_listing_menu_settings() {
+    public function save_product_search_menu_settings() {
         
         if (xwoo_function()->post('wp_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(xwoo_function()->post('wp_settings_page_nonce_field')), 'wp_settings_page_action' ) ){
 
@@ -143,4 +143,4 @@ class Xwoo_Product_Listing_Extensions {
     }
 
 }
-Xwoo_Product_Listing_Extensions::instance();
+Xwoo_Product_Search_Extensions::instance();

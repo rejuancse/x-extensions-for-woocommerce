@@ -149,18 +149,6 @@ class Functions {
         return esc_url(add_query_arg(array('author' => $user_login)));
     }
 
-    // public function template($template = '404'){
-	// 	$template_class = new \XWOO\woocommerce\Templating;
-	// 	$locate_file = $template_class->_theme_in_themes_path.$template.'.php';
-	// 	if (file_exists($locate_file)){
-	// 		include $locate_file;
-	// 	} 
-    //     // else { 
-    //     //     include $template_class->_theme_in_plugin_path.$template.'.php';
-    //     // }
-    // }
-    
-
     public function product_loved($echo = true){
 		global $post;
 		$product_id = $post->ID;

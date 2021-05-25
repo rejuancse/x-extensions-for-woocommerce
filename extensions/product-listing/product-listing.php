@@ -16,7 +16,7 @@ add_filter('xwoo_extensions_lists_config', 'xwoo_product_listing_config');
 function xwoo_product_listing_config( $config ) {
 	$basicConfig = array(
 		'name'          => __( 'Product Listing', 'xwoo' ),
-		'description'   => __( 'WooCommerce product PRODUCT using ajax request', 'xwoo' ),
+		'description'   => __( 'WooCommerce product listing', 'xwoo' ),
 		'path'			=> XWOO_PRODUCT_DIR_PATHE,
 		'url'			=> plugin_dir_url( XWOO_PRODUCT_LISTING_FILE ),
 		'basename'		=> XWOO_PRODUCT_BASE_NAME,
