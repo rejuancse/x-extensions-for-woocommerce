@@ -181,23 +181,6 @@ class Functions {
 			return $html;
 		}
     }
-    
-    public function loved_count($user_id = 0){
-		global $post;
-		$product_id = $post->ID;
-		if ($user_id == 0) {
-			if (is_user_logged_in()) {
-				$user_id = get_current_user_id();
-				$loved_product_ids = array();
-				$prev_product_ids = get_user_meta($user_id, 'loved_product_ids', true);
-				if ($prev_product_ids) {
-					$loved_product_ids = json_decode($prev_product_ids, true);
-					return count($loved_product_ids);
-				}
-			}
-		}
-		return 0;
-    }
 
 	public function url($url){
 		if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
