@@ -44,15 +44,8 @@ if (! class_exists('Initial_Setup')) {
         public function update_option() {
             $init_setup_data = array(
                 'wp_xwoo_is_used' => XWOO_VERSION,
-                'wp_xwoo_selected_theme' => 'basic',
                 'vendor_type' => 'woocommerce',
-                'wp_default_product_status' => 'draft',
-                'wp_product_edit_status' => 'pending',
-                'wp_enable_color_styling' => 'true',
                 'xwoo_show_description' => 'true',
-                'wp_enable_paypal_per_product_email' => 'true',
-                'wp_single_page_id' => 'true',
-                'wp_requirement_agree_title' => 'I agree with the terms and conditions.',
             );
 
             foreach ($init_setup_data as $key => $value ) {
