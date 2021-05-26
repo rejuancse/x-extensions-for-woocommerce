@@ -82,13 +82,6 @@ if (! class_exists('Initial_Setup')) {
             self::update_option();
         }
 
-        /**
-         * Deactivation Hook For Xwoo
-         */
-        public function initial_plugin_deactivation(){
-
-        }
-
         public function activation_css() {
             ?>
             <style type="text/css">
