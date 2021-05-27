@@ -22,6 +22,8 @@ class Product_Listing {
             'post_type'      => 'product',
             'posts_per_page' => $atts['number'],
         );
+		ob_start();
+
         $query = new \WP_Query($args); ?>
 
         <div class="woocommerce-page">
@@ -30,8 +32,6 @@ class Product_Listing {
 					<?php while ( $query->have_posts() ) : $query->the_post(); 
 						$product = new \WC_Product(get_the_ID());
 						$price_html = $product->get_price_html();
-						$price = get_post_meta( get_the_ID(), '_regular_price', true);
-						$sale = get_post_meta( get_the_ID(), '_sale_price', true);
 						$cats = get_the_term_list( get_the_ID(), 'product_cat' );
 						?>
 
@@ -59,5 +59,8 @@ class Product_Listing {
 			</ul>
         </div>
         <?php
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
     }
 }

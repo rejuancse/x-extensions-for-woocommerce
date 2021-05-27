@@ -81,16 +81,16 @@ class Base {
 
     /**
      * Registering necessary js and css
-     * @frontend
+     * @ Frontend
      */
     public function frontend_script(){
-        wp_enqueue_style( 'neo-xwoo-css-front', XWOO_DIR_URL .'assets/css/xwoo-front.css', false, XWOO_VERSION );
+        wp_enqueue_style( 'xwoo-css-front', XWOO_DIR_URL .'assets/css/xwoo-front.css', false, XWOO_VERSION );
         wp_enqueue_style( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' );
          
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
-        wp_enqueue_script( 'wp-neo-jquery-scripts-front', XWOO_DIR_URL .'assets/js/xwoo-front.min.js', array('jquery'), XWOO_VERSION, true);
-        wp_localize_script( 'wp-neo-jquery-scripts-front', 'xwoo_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+        wp_enqueue_script( 'wp-xwoo-front', XWOO_DIR_URL .'assets/js/xwoo-front.js', array('jquery'), XWOO_VERSION, true);
+        wp_localize_script( 'wp-xwoo-front', 'xwoo_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_media();
     }
 
