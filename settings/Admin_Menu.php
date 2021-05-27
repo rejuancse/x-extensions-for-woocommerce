@@ -6,47 +6,9 @@ defined( 'ABSPATH' ) || exit;
 class Admin_Menu {
 
     public function __construct() {
-        add_action('wp_head',      array($this, 'style_custom_css' ));
-        add_action('admin_menu',   array($this, 'register_menu_page' ));
-        add_action('admin_init',   array($this, 'save_menu_settings' ));
-    }
-
-    /**
-     * Xwoo Custom Styling Option
-     */
-    public function style_custom_css(){
-
-        if( 'true' == get_option('wp_enable_color_styling') ){
-            $color_scheme       = get_option( 'wp_color_scheme' );
-            $button_bg          = get_option( 'wp_button_bg_color' );
-            $button_bg_hover    = get_option( 'wp_button_bg_hover_color' );
-            $button_text_color  = get_option( 'wp_button_text_color' );
-            $text_hover_color   = get_option( 'wp_button_text_hover_color' );
-            $custom_css         = get_option( 'wp_custom_css' );
-    
-            $style = '';
-    
-            if( $button_bg ){
-                $style .= '.xwoo-save-btn{ background-color:'.$button_bg.'; color:'.$button_text_color.'; }';
-                $style .= '.xwoo-save-btn:hover{ background-color:'.$button_bg_hover.'; color:'.$text_hover_color.'; }';
-            }
-    
-            if( $color_scheme ){
-                $style .=  '#neo-progressbar > div,
-                            ul.xwoo-update li:hover span.round-circle,
-                            .xwoo-links li a:hover, .xwoo-links li.active a,#neo-progressbar > div {
-                                background-color: '.$color_scheme.';
-                            }';
-    
-                list($r, $g, $b) = sscanf( $color_scheme, "#%02x%02x%02x" );
-                $style .=  '.tab-rewards-wrapper .overlay { background: rgba('.$r.','.$g.','.$b.',.95); }';
-            }
-    
-            if( $custom_css ){ $style .= $custom_css; }
-    
-            $output = '<style type="text/css"> '.$style.' </style>';
-            echo $output;
-        }
+        add_action('admin_menu', array($this, 'register_menu_page' ));
+        add_action('admin_init', array($this, 'save_menu_settings' ));
+        add_action('admin_init', array($this, 'xwoo_go_premium_page'));
     }
     
     /**
@@ -83,8 +45,30 @@ class Admin_Menu {
             'xwoo-settings',
             array( $this, 'xwoo_menu_page' )
         );
+
+        $is_pro_activated = is_plugin_active('xwoo-pro/xwoo-pro.php');
+        if ( ! $is_pro_activated ){
+            add_submenu_page( 
+                'xwoo', 
+                __( 'Go Premium', 'wp-megamenu' ), 
+                __( '<span class="dashicons dashicons-awards wppb-go-premium-star"></span> Go Premium', 'wp-megamenu' ), 
+                'manage_options', 
+                'xwoo-go-premium', 
+                array( $this, 'xwoo_go_premium_page' ),
+            );
+        }
     }
 
+    public function xwoo_go_premium_page(){
+        if ( empty( $_GET['page'] ) ) {
+            return;
+        }
+        if ( 'xwoo-go-premium' === $_GET['page'] ) {
+            wp_redirect( 'https://www.xwoo.club/' );
+            die();
+        }
+    }
+    
     // Addon Listing
     public function xwoo_manage_extensions() {
         include XWOO_DIR_PATH.'settings/view/Addons.php';

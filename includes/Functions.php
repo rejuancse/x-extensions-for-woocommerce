@@ -149,18 +149,6 @@ class Functions {
         return esc_url(add_query_arg(array('author' => $user_login)));
     }
 
-    // public function template($template = '404'){
-	// 	$template_class = new \XWOO\woocommerce\Templating;
-	// 	$locate_file = $template_class->_theme_in_themes_path.$template.'.php';
-	// 	if (file_exists($locate_file)){
-	// 		include $locate_file;
-	// 	} 
-    //     // else { 
-    //     //     include $template_class->_theme_in_plugin_path.$template.'.php';
-    //     // }
-    // }
-    
-
     public function product_loved($echo = true){
 		global $post;
 		$product_id = $post->ID;
@@ -192,23 +180,6 @@ class Functions {
 		}else{
 			return $html;
 		}
-    }
-    
-    public function loved_count($user_id = 0){
-		global $post;
-		$product_id = $post->ID;
-		if ($user_id == 0) {
-			if (is_user_logged_in()) {
-				$user_id = get_current_user_id();
-				$loved_product_ids = array();
-				$prev_product_ids = get_user_meta($user_id, 'loved_product_ids', true);
-				if ($prev_product_ids) {
-					$loved_product_ids = json_decode($prev_product_ids, true);
-					return count($loved_product_ids);
-				}
-			}
-		}
-		return 0;
     }
 
 	public function url($url){
