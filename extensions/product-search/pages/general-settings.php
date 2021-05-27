@@ -3,25 +3,20 @@ defined( 'ABSPATH' ) || exit;
 
 $arr =  array(
 
-    # Slider Number
+    # Product Search
     array(
-        'id'        => 'wp_number_of_product',
-        'type'      => 'text',
-        'value'     => '9',
-        'label'     => __('Number of Product','xwoo'),
-    ),
-    array(
-        'id'        => 'wp_number_of_coulmn',
-        'type'      => 'text',
-        'value'     => '4',
-        'label'     => __('Number of Coulmn','xwoo'),
-    ),
-    array(
-        'id'        => 'wp_product_category',
+        'id'        => 'wp_product_search_image',
         'type'      => 'checkbox',
         'value'     => 'true',
-        'label'     => __('Enable Product Category','xwoo'),
-        'desc'      => __('Enable category for product view.','xwoo'),
+        'label'     => __('Enable Search Image','xwoo'),
+        'desc'      => __('Enable WooCommerce product search image on load.','xwoo'),
+    ),
+    array(
+        'id'        => 'wp_product_search_btn_off',
+        'type'      => 'checkbox',
+        'value'     => 'true',
+        'label'     => __('Enable Search Button','xwoo'),
+        'desc'      => __('Enable WooCommerce product search button.','xwoo'),
     ),
 
     // #Save Function

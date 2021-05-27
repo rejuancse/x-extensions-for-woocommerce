@@ -1,7 +1,5 @@
 <?php
 
-// namespace XWOO\extensions\quickview;
-
 defined( 'ABSPATH' ) || exit;
 
 class Xwoo_Product_Search_Extensions {
@@ -25,6 +23,7 @@ class Xwoo_Product_Search_Extensions {
     public function __construct() {
         add_action('admin_menu', array($this, 'xwoo_add_product_search_page'));
         add_action('admin_init', array($this, 'save_product_search_menu_settings' ));
+        add_action( 'wp_enqueue_scripts', array( $this, 'xwoo_search_enqueue_frontend_script') );
     }
 
     public function xwoo_add_product_search_page(){
@@ -36,6 +35,10 @@ class Xwoo_Product_Search_Extensions {
             'xwoo-search', 
             array($this, 'xwoo_product_search_func')
         );
+    }
+
+    public function xwoo_search_enqueue_frontend_script() {
+        wp_enqueue_script('xwoo-search-front', XWOO_DIR_URL .'extensions/product-search/assets/js/productSearch.js', array('jquery'), XWOO_VERSION, true);
     }
 
     /**

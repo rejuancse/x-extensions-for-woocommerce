@@ -3,113 +3,80 @@ defined( 'ABSPATH' ) || exit;
 
 $arr =  array(
     // #Style Seperator
+    // array(
+    //     'type'      => 'seperator',
+    //     'label'     => __('Search Style Settings','xwoo'),
+    //     'top_line'  => 'true',
+    // ),
+    # Search input field size
     array(
-        'type'      => 'seperator',
-        'label'     => __('Title Style Settings','xwoo'),
-        'top_line'  => 'true',
-    ),
-    // #Button Background Color
-    array(
-        'id'        => 'wp_slider_title_font_size',
+        'id'        => 'wp_search_input_size',
         'type'      => 'text',
-        'label'     => __('Slider Title Font Size','xwoo'),
-        'desc'      => __('Customize your slider title font size','xwoo'),
-        'value'     => '28px',
-    ),
-    array(
-        'id'        => 'wp_slider_title_font_line_height',
-        'type'      => 'text',
-        'label'     => __('Slider Title Font Line Height','xwoo'),
-        'desc'      => __('Customize your slider title font line height','xwoo'),
-        'value'     => '30px',
+        'label'     => __('Search input field size','xwoo'),
+        'desc'      => __('Customize your search input field size.','xwoo'),
+        'value'     => '100%',
     ),
     array(
-        'id'        => 'wp_slider_title_font_weight',
+        'id'        => 'wp_search_input_focus_color',
+        'type'      => 'color',
+        'label'     => __('Input Focus Color','xwoo'),
+        'desc'      => __('Select Search input focus color.','xwoo'),
+        'value'     => '#ffffff',
+    ),
+    # Button Background Color
+    array(
+        'id'        => 'wp_search_btn_font_size',
         'type'      => 'text',
-        'label'     => __('Slider title Font Weight','xwoo'),
-        'desc'      => __('Customize your slider title font line height','xwoo'),
+        'label'     => __('Search Button Font Size','xwoo'),
+        'desc'      => __('Customize your Search Button font size','xwoo'),
+        'value'     => '16px',
+    ),
+    array(
+        'id'        => 'wp_search_btn_font_line_height',
+        'type'      => 'text',
+        'label'     => __('Search Button Font Line Height','xwoo'),
+        'desc'      => __('Customize your Search Button font line height','xwoo'),
+        'value'     => '23px',
+    ),
+    array(
+        'id'        => 'wp_search_btn_font_weight',
+        'type'      => 'text',
+        'label'     => __('Search Button Font Weight','xwoo'),
+        'desc'      => __('Customize your Search Button font line height','xwoo'),
         'value'     => '700',
     ),
     array(
-        'id'        => 'wp_slider_title_color',
+        'id'        => 'wp_search_bg_color',
         'type'      => 'color',
-        'label'     => __('Button BG Color','xwoo'),
-        'desc'      => __('Select Slider Title color.','xwoo'),
-        'value'     => '#000000',
-    ),
-
-
-    // Sub title Seperator
-    array(
-        'type'      => 'seperator',
-        'label'     => __('SubTitle Style Settings','xwoo'),
-        'top_line'  => 'true',
-    ),
-    // #Button Background Color
-    array(
-        'id'        => 'wp_slider_subtitle_font_size',
-        'type'      => 'text',
-        'label'     => __('Slider subTitle Font Size','xwoo'),
-        'desc'      => __('Customize your slider subtitle font size','xwoo'),
-        'value'     => '22px',
-    ),
-    array(
-        'id'        => 'wp_slider_subtitle_font_line_height',
-        'type'      => 'text',
-        'label'     => __('Slider subTitle Font Line Height','xwoo'),
-        'desc'      => __('Customize your slider subtitle font line height','xwoo'),
-        'value'     => '30px',
-    ),
-    array(
-        'id'        => 'wp_slider_subtitle_font_weight',
-        'type'      => 'text',
-        'label'     => __('Slider subtitle Font Weight','xwoo'),
-        'desc'      => __('Customize your slider subtitle font line height','xwoo'),
-        'value'     => '700',
-    ),
-    array(
-        'id'        => 'wp_slider_subtitle_color',
-        'type'      => 'color',
-        'label'     => __('Button BG Color','xwoo'),
-        'desc'      => __('Select Slider subtitle color.','xwoo'),
-        'value'     => '#000000',
-    ),
-
-
-    // Sub title Seperator
-    array(
-        'type'      => 'seperator',
-        'label'     => __('Slider Button Style Settings','xwoo'),
-        'top_line'  => 'true',
-    ),
-    // #Button Background Color
-    array(
-        'id'        => 'wp_slider_button_bg_color',
-        'type'      => 'color',
-        'label'     => __('Button BG Color','xwoo'),
+        'label'     => __('Button Text Color','xwoo'),
         'desc'      => __('Select button background color.','xwoo'),
         'value'     => '#1adc68',
     ),
-
-    // #Button Background Hover Color
     array(
-        'id'        => 'wp_slider_button_bg_hover_color',
+        'id'        => 'wp_search_btn_color',
+        'type'      => 'color',
+        'label'     => __('Button BG Color','xwoo'),
+        'desc'      => __('Select Search Button color.','xwoo'),
+        'value'     => '#ffffff',
+    ),
+    # Button Text hover Color
+    array(
+        'id'        => 'wp_search_text_hover_color',
+        'type'      => 'color',
+        'label'     => __('Button Text Hover Color','xwoo'),
+        'desc'      => __('Select button text hover color.','xwoo'),
+        'value'     => '#fff',
+    ),
+    # Button Background Hover Color
+    array(
+        'id'        => 'wp_search_bg_hover_color',
         'type'      => 'color',
         'label'     => __('Button BG Hover Color','xwoo'),
         'desc'      => __('Select button background hover color.','xwoo'),
         'value'     => '#2554ec',
     ),
     
-    // #Button Text Color
-    array(
-        'id'        => 'wp_slider_button_text_color',
-        'type'      => 'color',
-        'label'     => __('Button Text Color','xwoo'),
-        'desc'      => __('Select button text color.','xwoo'),
-        'value'     => '#fff',
-    ),
-   
-    // #Save Function
+    # Save Function
     array(
         'id'        => 'wp_xwoo_admin_tab',
         'type'      => 'hidden',
