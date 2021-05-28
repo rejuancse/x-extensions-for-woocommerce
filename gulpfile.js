@@ -1,28 +1,50 @@
-const gulp = require('gulp');
+const { src, dest, watch, series } = require('gulp');
 const sass = require('gulp-sass');
-const browserSync = require('browser-sync').create();
-// const concat = require('gulp-concat');
-// const cssnano = require('gulp-cssnano');
-// const uglify = require('gulp-uglify');
-// const pipeline = require('readable-stream').pipeline;
+const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
+const terser = require('gulp-terser');
+const browsersync = require('browser-sync').create();
 
-function style() {
-    return gulp.src('./assets/scss/**/*.scss')
-     .pipe(sass().on('error', sass.logError))
-     .pipe(gulp.dest('./assets/css'))
-     pipe(browserSync.stream());
+// Sass Task
+function scssTask(){
+  return src(['assets/scss/xwoo-front.scss', 'assets/scss/xwoo-admin.scss'], { sourcemaps: true })
+    .pipe(sass())
+    .pipe(postcss([cssnano()]))
+    .pipe(dest('assets/css', { sourcemaps: '.' }));
 }
 
-function watch() {
-    browserSync.init({
+// JavaScript Task
+function jsTask(){
+  return src(['assets/js/xwoo.js', 'assets/js/xwoo-front.js'], { sourcemaps: true })
+    .pipe(terser())
+    .pipe(dest('assets/dist/js', { sourcemaps: '.' }));
+}
+
+// Browsersync Tasks
+function browsersyncServe(cb){
+    browsersync.init({
         server: {
-            baseDir: './'
+            baseDir: '.'
         }
     });
-    gulp.watch('./assets/scss/**/*.scss', style);
-    gulp.watch('./*.php').on('change', browserSync.reload);
-    gulp.watch('./assets/js/**/*.js').on('change', browserSync.reload);
+    cb();
 }
 
-exports.style = style;
-exports.watch = watch;
+function browsersyncReload(cb){
+    browsersync.reload();
+    cb();
+}
+
+// Watch Task
+function watchTask(){
+    // watch('*.html', browsersyncReload);
+    watch(['assets/scss/**/*.scss', 'assets/js/**/*.js'], series(scssTask, jsTask, browsersyncReload));
+}
+
+// Default Gulp task
+exports.default = series(
+    scssTask,
+    jsTask,
+    browsersyncServe,
+    watchTask
+);
