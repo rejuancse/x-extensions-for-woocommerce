@@ -15,7 +15,7 @@ function scssTask(){
 
 // JavaScript Task
 function jsTask(){
-  return src(['assets/js/xwoo.js', 'assets/js/xwoo-front.js'], { sourcemaps: true })
+  return src(['assets/js/xwoo-admin.js', 'assets/js/xwoo-front.js'], { sourcemaps: true })
     .pipe(terser())
     .pipe(dest('assets/dist/js', { sourcemaps: '.' }));
 }

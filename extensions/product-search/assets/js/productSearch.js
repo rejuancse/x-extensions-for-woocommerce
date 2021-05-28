@@ -18,7 +18,7 @@
             beforeSend: function () {
                 if (!$that.parent().find('.fa-spinner').length) {
                     $('<i class="fa fa-spinner fa-spin"></i>').appendTo($that.parent()).fadeIn(100);
-                }
+                } 
             },
             complete: function () {
                 $that.parent().find('.fa-spinner ').remove();

@@ -1,7 +1,7 @@
 /**
  * frontend.js
  *
- * @author Your Inspiration Themes
+ * @author XWOO Extensions
  * @package XWOO WooCommerce Quick View
  * @version 1.0.0
  */

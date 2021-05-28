@@ -75,8 +75,10 @@ class Base {
 
     public function admin_script(){
         wp_enqueue_style( 'wp-color-picker' );
-        wp_enqueue_style( 'wp-xwoo-css', XWOO_DIR_URL .'assets/css/xwoo-admin.css', false, XWOO_VERSION );
-        wp_enqueue_script( 'xwoo-jquery-scripts', XWOO_DIR_URL .'assets/js/xwoo.min.js', array('jquery','wp-color-picker'), XWOO_VERSION, true );
+        wp_enqueue_style( 'xwoo-admin', XWOO_DIR_URL .'assets/css/xwoo-admin.css', false, XWOO_VERSION );
+        
+        #js
+        wp_enqueue_script( 'xwoo-jquery-scripts', XWOO_DIR_URL .'assets/dist/js/xwoo-admin.js', array('jquery','wp-color-picker'), XWOO_VERSION, true );
     }
 
     /**
@@ -85,11 +87,11 @@ class Base {
      */
     public function frontend_script(){
         wp_enqueue_style( 'xwoo-css-front', XWOO_DIR_URL .'assets/css/xwoo-front.css', false, XWOO_VERSION );
-        wp_enqueue_style( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' );
-         
+        
+        #JS
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
-        wp_enqueue_script( 'wp-xwoo-front', XWOO_DIR_URL .'assets/js/xwoo-front.js', array('jquery'), XWOO_VERSION, true);
+        wp_enqueue_script( 'wp-xwoo-front', XWOO_DIR_URL .'assets/dist/js/xwoo-front.js', array('jquery'), XWOO_VERSION, true);
         wp_localize_script( 'wp-xwoo-front', 'xwoo_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_media();
     }
