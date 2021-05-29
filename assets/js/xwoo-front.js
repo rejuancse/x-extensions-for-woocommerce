@@ -1,8 +1,8 @@
 // XWOO Scripts
 jQuery(document).ready(function($){
-    /* --------------------------------------------
+    /* ----------------------------------------------
     ---------- xwoo product search on change --------
-    ----------------------------------------------- */
+    ------------------------------------------------- */
     $('.xwoo-ajax-search').on('keyup', function (e) {
         var $that = $(this);
         $that.addClass('search-active');

@@ -10,7 +10,7 @@
                     <td>
                         <h3><?php _e('Integration code by theme location', 'xwoo'); ?></h3>
                         <?php
-                            echo '<div class="wp-megamenu-integration-code">';
+                            echo '<div class="xwoo-integration-code">';
                                 echo "<p class='integration-code-row'> <span>PHP</span>  <code> &lt;?php echo do_shortcode('[product_listing]') ?&gt;</code></p>";
                                 echo "<p class='integration-code-row'> <span>SHORTCODE</span> <code> [product_listing] </code> </p>";
                             echo '</div>';

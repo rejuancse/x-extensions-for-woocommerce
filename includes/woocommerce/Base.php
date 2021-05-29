@@ -33,7 +33,7 @@ class Base {
         add_action('init',                             array($this, 'media_pluggable'));
         add_action('admin_head',                       array($this, 'add_mce_button'));
         add_action('wp_ajax_xwoo_settings_reset',      array($this, 'settings_reset'));
-        add_action('wp_ajax_xwoo_addon_enable_disable',array($this, 'addon_enable_disable'));
+        add_action('wp_ajax_xwoo_addon_enable_disable',array($this, 'addon_enable_disable')); 
         add_filter('admin_footer_text',                 array($this, 'admin_footer_text'), 2); 
     }
     
@@ -87,7 +87,8 @@ class Base {
      */
     public function frontend_script(){
         wp_enqueue_style( 'xwoo-css-front', XWOO_DIR_URL .'assets/css/xwoo-front.css', false, XWOO_VERSION );
-        
+        wp_enqueue_style( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' );
+         
         #JS
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );

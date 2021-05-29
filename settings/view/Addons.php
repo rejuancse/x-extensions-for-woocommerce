@@ -7,73 +7,6 @@
             if (is_array($extensions) && count($extensions)){
                 ?>
                 <div class="wp-list-table widefat plugin-install">
-                    <style>
-                        .wp-xwoo-extensions-list .plugin-card-top{
-                            min-height: 98px;
-                        }
-                        .wp-xwoo-extensions-list .plugin-icon{
-                            width: 64px;
-                            height: 64px;
-                        }
-                        .wp-xwoo-extensions-list .wp-list-table a{
-                            color: #fff;
-                            margin-top: 100px;
-                            padding: 10px 20px;
-                            border-radius: 4px;
-                            text-decoration: none;
-                            background: #0085ba;
-                            background-color: #0073aa;
-                            border-color: #006a95 #00648c #00648c;
-                            box-shadow: inset 0 -1px 0 #00648c;
-                            text-shadow: 0 -1px 1px #005d82, 1px 0 1px #005d82, 0 1px 1px #005d82, -1px 0 1px #005d82;
-                        }
-                        .wp-xwoo-extensions-list .plugin-card .name,
-                        .wp-xwoo-extensions-list .plugin-card .desc{
-                            margin-left: 84px;
-                        }
-
-                        .wp-xwoo-extensions-list .btn-switch {
-                            display: inline-block;
-                            height: 22px;
-                            position: relative;
-                            width: 50px;
-                        }
-                        .wp-xwoo-extensions-list .btn-switch input {
-                            display:none;
-                        }
-                        .wp-xwoo-extensions-list .btn-slider {
-                            background-color: #ccc;
-                            bottom: 0;
-                            cursor: pointer;
-                            left: 0;
-                            position: absolute;
-                            right: 0;
-                            top: 0;
-                            transition: .4s;
-                        }
-                        .wp-xwoo-extensions-list .btn-slider:before {
-                            background-color: #fff;
-                            bottom: 3px;
-                            content: "";
-                            height: 16px;
-                            left: 4px;
-                            position: absolute;
-                            transition: .4s;
-                            width: 16px;
-                        }
-                        .wp-xwoo-extensions-list .btn-switch input:checked + .btn-slider {
-                            background-color: #66bb6a;
-                        }
-                        .wp-xwoo-extensions-list .btn-switch input:checked + .btn-slider:before {
-                            transform: translateX(26px);
-                        }
-                        .wp-xwoo-extensions-list .btn-slider.btn-round {
-                            border-radius: 34px;
-                        }
-                        .wp-xwoo-extensions-list .btn-slider.btn-round:before {
-                            border-radius: 50%;
-                        }
-                    </style>
                     <div id="the-list">
                         <?php
                         foreach ( $extensions as $basName => $addon ) {
@@ -116,7 +49,6 @@
                         <?php } ?>
                     </div>
                 </div>
-
                 <br class="clear">
                 <?php
             }
