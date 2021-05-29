@@ -108,7 +108,7 @@ class Xwoo_Product_Listing_Extensions {
         
         if (xwoo_function()->post('wp_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(xwoo_function()->post('wp_settings_page_nonce_field')), 'wp_settings_page_action' ) ){
 
-            $current_tab = sanitize_text_field(xwoo_function()->post('wp_xwoo_admin_tab'));
+            $current_tab = sanitize_text_field(xwoo_function()->post('wp_xwoo_product_listing_admin_tab'));
 
             if( ! empty($current_tab) ){
                 /**

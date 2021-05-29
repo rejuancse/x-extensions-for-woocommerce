@@ -1,6 +1,6 @@
 <?php
 /**
- * Quick view bone.
+ * Quick view.
  *
  * @author  XWOO
  * @package XWOO WooCommerce Quick View

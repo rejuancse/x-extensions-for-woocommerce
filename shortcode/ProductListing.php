@@ -41,7 +41,7 @@ class Product_Listing {
 						$price_html = $product->get_price_html();
 						$cats = get_the_term_list( get_the_ID(), 'product_cat' );
 						?>
-						<li class="entry product type-product status-publish instock product_cat-woocommerce has-post-thumbnail shipping-taxable purchasable product-type-simple"> 
+						<li class="product"> 
 							<div class="inner">
 								<div class="product-img">
 									<a href="<?php the_permalink(); ?>">

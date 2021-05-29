@@ -21,7 +21,7 @@ $arr =  array(
 
     // #Save Function
     array(
-        'id'        => 'wp_xwoo_admin_tab',
+        'id'        => 'wp_xwoo_search_admin_tab',
         'type'      => 'hidden',
         'value'     => 'tab_style',
     ),

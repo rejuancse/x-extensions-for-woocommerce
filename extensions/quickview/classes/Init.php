@@ -30,8 +30,8 @@ class Xwoo_Extensions {
     public function xwoo_add_quick_view_page(){
         add_submenu_page(
             'xwoo', 
-            __('Quick View', 'xwoo'), 
-            __('Quick View', 'xwoo'), 
+            __('Product Quick View', 'xwoo'), 
+            __('Product Quick View', 'xwoo'), 
             'manage_options', 
             'xwoo-quick-view', 
             array($this, 'xwoo_quick_view_func')
@@ -67,7 +67,7 @@ class Xwoo_Extensions {
         
         if (xwoo_function()->post('wp_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(xwoo_function()->post('wp_settings_page_nonce_field')), 'wp_settings_page_action' ) ){
 
-            $current_tab = sanitize_text_field(xwoo_function()->post('wp_xwoo_admin_tab'));
+            $current_tab = sanitize_text_field(xwoo_function()->post('wp_xwoo_quick_view_admin_tab'));
 
             if( ! empty($current_tab) ){
                 /**
@@ -86,11 +86,11 @@ class Xwoo_Extensions {
                 $button_bg_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_color'));
                 xwoo_function()->update_text('wp_button_bg_color', $button_bg_color);
 
-                $button_bg_hover_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_hover_color'));
-                xwoo_function()->update_text('wp_button_bg_hover_color', $button_bg_hover_color);
+                $button_bg_hover_color = sanitize_text_field(xwoo_function()->post('wp_close_button_hover_color'));
+                xwoo_function()->update_text('wp_close_button_hover_color', $button_bg_hover_color);
 
-                $button_text_color = sanitize_text_field(xwoo_function()->post('wp_button_text_color'));
-                xwoo_function()->update_text('wp_button_text_color', $button_text_color);
+                $button_text_color = sanitize_text_field(xwoo_function()->post('wp_close_button_color'));
+                xwoo_function()->update_text('wp_close_button_color', $button_text_color);
             }
         }
     }

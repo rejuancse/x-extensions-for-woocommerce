@@ -4,6 +4,8 @@ $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 $wp_load = $parse_uri[0].'wp-load.php';
 require_once($wp_load);
 
+$search_image = get_option( 'wp_product_search_image', true);
+
 if(isset($_POST['raw_data'])){
 	$row_data = $_POST['raw_data'];
 	$args = array(
@@ -22,9 +24,9 @@ if(isset($_POST['raw_data'])){
             while ($search_data->have_posts()): $search_data->the_post();
                 $output .= '<li>';
                     $output .= '<div class="pack-thumb">';
-
-                        $output .= get_the_post_thumbnail($search_data->post->ID, 'thumbnail');
-;
+                        if($search_image == 'true') { 
+                            $output .= get_the_post_thumbnail($search_data->post->ID, 'thumbnail');
+                        }
                         $output .= '<span><a href="'.get_permalink().'">'.get_the_title().'</a></span>';
                     $output .= '</div>';
                 $output .= '</li>';

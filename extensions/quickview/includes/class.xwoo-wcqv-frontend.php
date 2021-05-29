@@ -84,7 +84,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 *
 		 * @access public
 		 * @since  1.0.0
-		 * @author Francesco Licandro <francesco.licandro@xwooemes.com>
 		 * @return void
 		 */
 		public function enqueue_styles_scripts() {
@@ -96,8 +95,8 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 			wp_enqueue_style( 'xwoo-quick-view', XWOO_QUICK_VIEW_ASSETS_URL . '/css/xwoo-quick-view.css', array(), $this->version );
 
 			$background_modal  = get_option( 'wp_button_bg_color', '#ffffff' );
-			$close_color       = get_option( 'wp_button_text_color', '#cdcdcd' );
-			$close_color_hover = get_option( 'wp_button_bg_hover_color', '#ff0000' );
+			$close_color       = get_option( 'wp_close_button_color', '#cdcdcd' );
+			$close_color_hover = get_option( 'wp_close_button_hover_color', '#ff0000' );
 
 			$inline_style = "
 				#xwoo-quick-view-modal .xwoo-wcqv-main{background:{$background_modal};}
@@ -113,7 +112,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 *
 		 * @access public
 		 * @since  1.0.0
-		 * @author Francesco Licandro <francesco.licandro@xwooemes.com>
 		 * @return void
 		 */
 		public function enqueue_gift_card_script() {
@@ -141,8 +139,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		/**
 		 * Add quick view button hooks
 		 *
-		 * @since 1.5.0
-		 * @author Francesco Licandro
+		 * @since 1.0.0
 		 * @return void
 		 */
 		public function add_button() {
@@ -159,8 +156,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		/**
 		 * Check if current theme is XWOO Proteo and if the add to cart button is visible on image hover
 		 *
-		 * @since 1.6.7
-		 * @author Francesco Licandro
+		 * @since 1.0.0
 		 * @return boolean
 		 */
 		public function is_proteo_add_to_cart_hover() {
@@ -172,7 +168,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 *
 		 * @access public
 		 * @since  1.0.0
-		 * @author Francesco Licandro <francesco.licandro@xwooemes.com>
 		 * @param integer|string $product_id The product id.
 		 * @param string         $label      The button label.
 		 * @param boolean        $return     True to return, false to echo.
@@ -210,8 +205,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		/**
 		 * Add quick view button in wishlist
 		 *
-		 * @since 1.5.1
-		 * @author Francesco Licandro
+		 * @since 1.0.0
 		 * @param XWOO_WCWL_Wishlist_Item $item THe wishlist item.
 		 * @return string|void
 		 */
@@ -226,7 +220,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 *
 		 * @access public
 		 * @since  1.0.0
-		 * @author Francesco Licandro <francesco.licandro@xwooemes.com>
 		 * @return bool
 		 */
 		public function xwoo_woocommerce_quick_view() {
@@ -271,7 +264,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 *
 		 * @access public
 		 * @since  1.0.0
-		 * @author Francesco Licandro <francesco.licandro@xwooemes.com>
 		 * @return void
 		 */
 		public function xwoo_load_product_quick_view_ajax() {
@@ -305,7 +297,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 			}elseif( defined( 'XWOO_WCCL_PREMIUM' ) && XWOO_WCCL_PREMIUM && class_exists( 'XWOO_WCCL_Frontend' ) ) {
 				$attributes = XWOO_WCCL_Frontend()->create_attributes_json( $product_id, true );
 			}
-						ob_start();
+			ob_start();
 			wc_get_template( 'xwoo-quick-view-content.php', array(), '', XWOO_QUICK_VIEW_DIR_PATH . 'templates/' );
 			$html = ob_get_contents();  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			ob_end_clean();
@@ -326,7 +318,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 *
 		 * @access public
 		 * @since  1.0.0
-		 * @author Francesco Licandro <francesco.licandro@xwooemes.com>
 		 * @return void
 		 */
 		public function xwoo_quick_view() {
@@ -339,7 +330,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 *
 		 * @access public
 		 * @since  1.0.0
-		 * @author Francesco Licandro <francesco.licandro@xwooemes.com>
 		 * @return void
 		 */
 		public function xwoo_quick_view_action_template() {
@@ -360,8 +350,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		/**
 		 * Get Quick View button label
 		 *
-		 * @since  1.2.0
-		 * @author Francesco Licandro
+		 * @since  1.0.0
 		 * @return string
 		 */
 		public function get_button_label() {
@@ -375,8 +364,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 * Quick View shortcode button
 		 *
 		 * @access public
-		 * @since  1.0.7
-		 * @author Francesco Licandro
+		 * @since  1.0.0
 		 * @param array $atts An array of shortcode attributes.
 		 * @return string
 		 */
@@ -399,20 +387,17 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 		 * Check if is quick view
 		 *
 		 * @access public
-		 * @since  1.3.1
-		 * @author Francesco Licandro <francesco.licandro@xwooemes.com>
+		 * @since  1.0.0
 		 * @return bool
 		 */
 		public function xwoo_is_quick_view() {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && 'xwoo_load_product_quick_view' === $_REQUEST['action'] );
 		}
 
 		/**
 		 * Avoid redirect to single product page on add to cart action in quick view
 		 *
-		 * @since  1.3.1
-		 * @author Francesco Licandro
+		 * @since  1.0.0
 		 * @param string $value The redirect url value.
 		 * @return string
 		 */

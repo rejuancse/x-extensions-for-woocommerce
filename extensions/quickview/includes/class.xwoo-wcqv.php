@@ -51,7 +51,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW' ) ) {
 			if ( is_null( self::$instance ) ) {
 				self::$instance = new self();
 			}
-
 			return self::$instance;
 		}
 
@@ -73,8 +72,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW' ) ) {
 		/**
 		 * Check if the plugin can load. Exit if is WooCommerce AJAX.
 		 *
-		 * @since  1.5
-		 * @author Francesco Licandro
+		 * @since  1.0.0
 		 * @return boolean
 		 */
 		public function can_load() {
@@ -88,7 +86,6 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW' ) ) {
 				'woocommerce_checkout',
 			);
 
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && in_array( $_REQUEST['action'], $action, true ) ) {
 				return false;
 			}
@@ -99,12 +96,10 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW' ) ) {
 		/**
 		 * Check if context is admin
 		 *
-		 * @since  1.2.0
-		 * @author Francesco Licandro
+		 * @since  1.0.0
 		 * @return boolean
 		 */
 		public function is_admin() {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$is_ajax = ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['context'] ) && 'frontend' === $_REQUEST['context'] );
 			return apply_filters( 'xwoo_quickview_is_admin', is_admin() && ! $is_ajax );
 		}
@@ -112,12 +107,10 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW' ) ) {
 		/**
 		 * Check if load or not frontend
 		 *
-		 * @since  1.2.0
-		 * @author Francesco Licandro
+		 * @since  1.0.0
 		 * @return boolean
 		 */
 		public function load_frontend() {
-
 			$addonConfig = xwoo_function()->get_addon_config( XWOO_QUICK_VIEW_BASE_NAME );
 			$isEnable = (bool) xwoo_function()->avalue_dot( 'is_enable', $addonConfig );
 			if ( $isEnable ) {
@@ -126,9 +119,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW' ) ) {
 				$is_mobile        = wp_is_mobile();
 				return apply_filters( 'xwoo_quickview_load_frontend', ( ! $is_mobile && $enable ) || ( $is_mobile && $enable_on_mobile ) );
 			}
-			
 		}
-
 	}
 }
 

@@ -5,16 +5,19 @@
 .search_form_shortcode {
     button {
         width: 188px;
-        font-size: 16px;
-        line-height: 23px;
+        font-size: 14px;
+        line-height: 22px;
+        min-height: 43px;
     }
     .xwoo-ajax-search, 
     .xwoo-products-search-results {
         width: calc(100% - 198px);
         margin-right: 10px;
+        display: inline-block;
         img {
             width: 40px;
             height: 40px;
+            float: left;
         }
         .xwoo-productss-search.results-list {
             display: inline-block;
@@ -27,14 +30,17 @@
             transition: .3s;
             margin: 0;
             padding: 20px 20px 10px;
+            width: 100%;
             li {
                 display: inline-block;
+                width: 100%;
+                margin: 0 0 10px;
                 a {
                     text-decoration: none;
                     font-size: 18px;
                 }
                 .pack-thumb {
-                    display: inline-flex;
+                    // display: inline-flex;
                     img {
                         margin-right: 10px;
                     }
@@ -48,6 +54,9 @@
         .add_to_cart_button {
             margin-right: 6px;
         }
+        a.added_to_cart.wc-forward {
+            background: inherit;
+        }
     }
     .products {
         .inner{
@@ -57,9 +66,6 @@
             .content {
                 a {
                     margin-right: 6px;
-                }
-                a.added_to_cart.wc-forward {
-                    background: inherit;
                 }
             }
         } 

@@ -61,8 +61,8 @@ html.xwoo-quick-view-is-open body {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
-    -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: 0 1px 1px -1px rgb(0 0 0 / 10%);
+    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 10%);
 }
 
 #xwoo-quick-view-modal.open,

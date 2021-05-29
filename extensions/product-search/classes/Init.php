@@ -52,7 +52,6 @@ class Xwoo_Product_Search_Extensions {
         }
 
         $default_file = XWOO_DIR_PATH.'extensions/product-search/pages/general-settings.php';
-        $style_file = XWOO_DIR_PATH.'extensions/product-search/pages/style.php';
         $shortcode_file = XWOO_DIR_PATH.'extensions/product-search/pages/shortcode.php';
 
         // Settings Tab With slug and Display name
@@ -61,11 +60,6 @@ class Xwoo_Product_Search_Extensions {
                     array(
                         'tab_name' => __('General Settings','xwoo'),
                         'load_form_file' => $default_file
-                    ),
-                'listing_style' 	=>
-                    array(
-                        'tab_name' => __('Style','xwoo'),
-                        'load_form_file' => $style_file
                     ),
                 'listing_shortcode' 	=>
                     array(
@@ -117,33 +111,19 @@ class Xwoo_Product_Search_Extensions {
         
         if (xwoo_function()->post('wp_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(xwoo_function()->post('wp_settings_page_nonce_field')), 'wp_settings_page_action' ) ){
 
-            $current_tab = sanitize_text_field(xwoo_function()->post('wp_xwoo_admin_tab'));
+            $current_tab = sanitize_text_field(xwoo_function()->post('wp_xwoo_search_admin_tab'));
 
             if( ! empty($current_tab) ){
                 /**
                  * General Settings
                  */
-                $styling = sanitize_text_field(xwoo_function()->post('wp_quick_view'));
-                xwoo_function()->update_checkbox( 'wp_quick_view', $styling);
+                $search_image = sanitize_text_field(xwoo_function()->post('wp_product_search_image'));
+                xwoo_function()->update_checkbox( 'wp_product_search_image', $search_image);
 
-                $mobile_view = sanitize_text_field(xwoo_function()->post('mobile_quick_view'));
-                xwoo_function()->update_text('mobile_quick_view', $mobile_view);
-
-                $product_status = sanitize_text_field(xwoo_function()->post('btn_quick_view'));
-                xwoo_function()->update_text('btn_quick_view', $product_status);
-
-                # Style.
-                $button_bg_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_color'));
-                xwoo_function()->update_text('wp_button_bg_color', $button_bg_color);
-
-                $button_bg_hover_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_hover_color'));
-                xwoo_function()->update_text('wp_button_bg_hover_color', $button_bg_hover_color);
-
-                $button_text_color = sanitize_text_field(xwoo_function()->post('wp_button_text_color'));
-                xwoo_function()->update_text('wp_button_text_color', $button_text_color);
+                $btn_off = sanitize_text_field(xwoo_function()->post('wp_product_search_btn_off'));
+                xwoo_function()->update_checkbox('wp_product_search_btn_off', $btn_off);
             }
         }
     }
-
 }
 Xwoo_Product_Search_Extensions::instance();
