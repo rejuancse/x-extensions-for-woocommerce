@@ -196,7 +196,7 @@ if ( ! class_exists( 'XWOO_QUICK_VIEW_Frontend' ) ) {
 					$label = $this->get_button_label();
 				}
 
-				$button = '<a href="#" class="A button xwoo-wcqv-button" data-product_id="' . esc_attr( $product_id ) . '">' . $label . '</a>';
+				$button = '<a href="#" class="button xwoo-wcqv-button" data-product_id="' . esc_attr( $product_id ) . '">' . $label . '</a>';
 				$button = apply_filters( 'xwoo_add_quick_view_button_html', $button, $label, $product );
 			}
 

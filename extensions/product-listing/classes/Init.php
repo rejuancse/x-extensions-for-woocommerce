@@ -49,7 +49,6 @@ class Xwoo_Product_Listing_Extensions {
         }
 
         $default_file = XWOO_DIR_PATH.'extensions/product-listing/pages/general-settings.php';
-        $style_file = XWOO_DIR_PATH.'extensions/product-listing/pages/style.php';
         $shortcode_file = XWOO_DIR_PATH.'extensions/product-listing/pages/shortcode.php';
 
         // Settings Tab With slug and Display name
@@ -58,11 +57,6 @@ class Xwoo_Product_Listing_Extensions {
                     array(
                         'tab_name' => __('General Settings','xwoo'),
                         'load_form_file' => $default_file
-                    ),
-                'listing_style' 	=>
-                    array(
-                        'tab_name' => __('Style','xwoo'),
-                        'load_form_file' => $style_file
                     ),
                 'listing_shortcode' 	=>
                     array(
@@ -120,24 +114,17 @@ class Xwoo_Product_Listing_Extensions {
                 /**
                  * General Settings
                  */
-                $styling = sanitize_text_field(xwoo_function()->post('wp_quick_view'));
-                xwoo_function()->update_checkbox( 'wp_quick_view', $styling);
+                $product_order = sanitize_text_field(xwoo_function()->post('wp_product_list_order'));
+                xwoo_function()->update_text( 'wp_product_list_order', $product_order);
 
-                $mobile_view = sanitize_text_field(xwoo_function()->post('mobile_quick_view'));
-                xwoo_function()->update_text('mobile_quick_view', $mobile_view);
+                $product_number = sanitize_text_field(xwoo_function()->post('wp_number_of_product'));
+                xwoo_function()->update_text( 'wp_number_of_product', $product_number);
 
-                $product_status = sanitize_text_field(xwoo_function()->post('btn_quick_view'));
-                xwoo_function()->update_text('btn_quick_view', $product_status);
+                $column_number = sanitize_text_field(xwoo_function()->post('wp_number_of_coulmn'));
+                xwoo_function()->update_text('wp_number_of_coulmn', $column_number);
 
-                # Style.
-                $button_bg_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_color'));
-                xwoo_function()->update_text('wp_button_bg_color', $button_bg_color);
-
-                $button_bg_hover_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_hover_color'));
-                xwoo_function()->update_text('wp_button_bg_hover_color', $button_bg_hover_color);
-
-                $button_text_color = sanitize_text_field(xwoo_function()->post('wp_button_text_color'));
-                xwoo_function()->update_text('wp_button_text_color', $button_text_color);
+                $wp_product_category = sanitize_text_field(xwoo_function()->post('wp_xwoo_product_category'));
+                xwoo_function()->update_checkbox('wp_xwoo_product_category', $wp_product_category);
             }
         }
     }

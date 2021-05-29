@@ -11,22 +11,29 @@ class Product_Listing {
 
     function products_callback_function( $atts, $shortcode ) {
 
-        $post_limit = get_option( 'product_listing_post_number', 10 );
+		$order = get_option( 'wp_product_list_order', 'desc' );
+        $post_limit = get_option( 'wp_number_of_product', 9 );
+		$column_number = get_option( 'wp_number_of_coulmn', 4 );
+		$category = get_option( 'wp_xwoo_product_category', false );
+		$page_numb = max(1, get_query_var('paged'));
 		
         $atts = shortcode_atts( array(
-            'number' => '9',
-            'column' => '4',
+            'number' => $post_limit,
+            'column' => $column_number,
         ), $atts );
 
         $args = array(
             'post_type'      => 'product',
+			'order' 		 => $order,
             'posts_per_page' => $atts['number'],
+			'paged'             => $page_numb
         );
 		ob_start();
 
-        $query = new \WP_Query($args); ?>
+        $query = new \WP_Query($args); 
+		global $post, $product; ?>
 
-        <div class="woocommerce-page">
+        <div class="woocommerce">
 			<ul class="products columns-<?php echo $atts['column']; ?>">
 				<?php if ( $query->have_posts() ) : ?>
 					<?php while ( $query->have_posts() ) : $query->the_post(); 
@@ -34,17 +41,20 @@ class Product_Listing {
 						$price_html = $product->get_price_html();
 						$cats = get_the_term_list( get_the_ID(), 'product_cat' );
 						?>
-
-						<li class="entry product"> 
+						<li class="entry product type-product status-publish instock product_cat-woocommerce has-post-thumbnail shipping-taxable purchasable product-type-simple"> 
 							<div class="inner">
 								<div class="product-img">
 									<a href="<?php the_permalink(); ?>">
-										<!-- <span class="onsale">Sale!</span> -->
-										<?php the_post_thumbnail('full', array('class' => 'img-fluid')); ?>
+										<?php if ( $product->is_on_sale() ) : ?>
+											<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
+										<?php endif; ?>
+										<?php the_post_thumbnail('woocommerce_thumbnail', array('class' => 'img-fluid')); ?>
 									</a>
 								</div>
 								<h4><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h4>
-								<span class="category"><?php echo $cats; ?></span>
+								<?php if($category == 'true') { ?>
+									<span class="category"><?php echo $cats; ?></span>
+								<?php } ?>
 								<div class="price-box">
 									<span class="product-price"><?php echo $price_html; ?></span>
 								</div>
@@ -57,6 +67,7 @@ class Product_Listing {
 					<?php wp_reset_query(); ?>
 				<?php endif; ?>
 			</ul>
+			<?php echo xwoo_function()->get_pagination($page_numb, $query->max_num_pages); ?>
         </div>
         <?php
 		$output = ob_get_contents();
