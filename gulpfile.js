@@ -1,10 +1,6 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const browserSync = require('browser-sync').create();
-// const concat = require('gulp-concat');
-// const cssnano = require('gulp-cssnano');
-// const uglify = require('gulp-uglify');
-// const pipeline = require('readable-stream').pipeline;
 
 function style() {
     return gulp.src('./assets/scss/**/*.scss')

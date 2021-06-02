@@ -47,12 +47,17 @@ This will open up a page showing all the available plugins in WordPress. In the 
 
 = Manual installation =
 
-Go to Dashboard > Plugins > Add New, then upload xwoo-extensions.zip file and click Install Now.
+Go to Dashboard > Plugins > Add New, then upload xwoo.zip file and click Install Now.
 
 
 == Screenshots ==
 
-1. XWOO Extensions Settings
+1. XWOO Extensions List
+2. XWOO Extensions product settings
+3. Product listing view
+4. XWOO Extensions Search settings
+5. XWOO Extensions Quick view settings
+6. Quick view popup view
 
 
 == Frequently Asked Questions ==
@@ -69,7 +74,7 @@ A. Found a bug? Please let us know by posting on the support section of this plu
 
 == Changelog ==
 
-= 1.0.0 [30/05/2021] =
+= 1.0.0 [02/06/2021] =
 * Initial version released
 
 == Upgrade Notice ==
