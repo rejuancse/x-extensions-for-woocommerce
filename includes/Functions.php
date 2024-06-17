@@ -1,13 +1,13 @@
 <?php
-namespace XWOO;
+namespace XEWC;
 
 defined( 'ABSPATH' ) || exit;
 
 class Functions {
 
     public function generator( $arr ){
-        require_once XWOO_DIR_PATH . 'settings/Generator.php';
-        $generator = new \XWOO\settings\Settings_Generator();
+        require_once XEWC_DIR_PATH . 'settings/Generator.php';
+        $generator = new \XEWC\settings\Settings_Generator();
         $generator->generator( $arr );
     }
 
@@ -28,7 +28,7 @@ class Functions {
     }
 
     public function is_free(){
-        if (is_plugin_active('xwoo-pro/xwoo-pro.php')) {
+        if (is_plugin_active('xewc-pro/xewc-pro.php')) {
             return false;
         } else {
             return true;
@@ -92,18 +92,16 @@ class Functions {
     
     public function get_screen_id(){
         $screen_ids = array(
-            'toplevel_page_xwoo',
-            'xwoo_page_xwoo-reports',
-            'xwoo_page_xwoo-withdraw',
+            'toplevel_page_xewc',
         );
-        return apply_filters('xwoo_screen_id', $screen_ids);
+        return apply_filters('xewc_screen_id', $screen_ids);
     }
     
     public function get_addon_config($addon_field = null){
         if ( ! $addon_field){
             return false;
         }
-        $extensionsConfig = maybe_unserialize(get_option('xwoo_extensions_config'));
+        $extensionsConfig = maybe_unserialize(get_option('xewc_extensions_config'));
         if (isset($extensionsConfig[$addon_field])){
             return $extensionsConfig[$addon_field];
         }
@@ -128,58 +126,8 @@ class Functions {
         return $value;
     }
 
-
-	public function get_order_ids_by_product_ids( $product_ids , $order_status = array( 'wc-completed' ) ){
-		global $wpdb;
-		$results = $wpdb->get_col("
-            SELECT order_items.order_id
-            FROM {$wpdb->prefix}woocommerce_order_items as order_items
-            LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id
-            LEFT JOIN {$wpdb->posts} AS posts ON order_items.order_id = posts.ID
-            WHERE posts.post_type = 'shop_order'
-            AND posts.post_status IN ( '" . implode( "','", $order_status ) . "' )
-            AND order_items.order_item_type = 'line_item'
-            AND order_item_meta.meta_key = '_product_id'
-            AND order_item_meta.meta_value IN ( '" . implode( "','", $product_ids ) . "' )
-        ");
-		return $results;
-    }
-
     function get_author_url($user_login) {
         return esc_url(add_query_arg(array('author' => $user_login)));
-    }
-
-    public function product_loved($echo = true){
-		global $post;
-		$product_id = $post->ID;
-
-		$html = '';
-		if (is_user_logged_in()){
-			//Get Current user id
-			$user_id = get_current_user_id();
-			//empty array
-			$loved_product_ids = array();
-			$prev_product_ids = get_user_meta($user_id, 'loved_product_ids', true);
-
-			if ($prev_product_ids){
-				$loved_product_ids = json_decode($prev_product_ids, true);
-			}
-
-			//If found previous liked
-			if (in_array($product_id, $loved_product_ids)){
-				$html .= '<a href="javascript:;" id="remove_from_love_product" data-product-id="'.$product_id.'"><i class="xwoo-icon xwoo-icon-love-full"></i></a>';
-			} else {
-				$html .= '<a href="javascript:;" id="love_this_product" data-product-id="'.$product_id.'"><i class="xwoo-icon xwoo-icon-love-empty"></i></a>';
-			}
-		} else {
-			$html .= '<a href="javascript:;" id="love_this_product" data-product-id="'.$product_id.'"><i class="xwoo-icon xwoo-icon-love-empty"></i></a>';
-		}
-
-		if ($echo){
-			echo $html;
-		}else{
-			return $html;
-		}
     }
 
 	public function url($url){
@@ -189,12 +137,11 @@ class Functions {
 		return $url;
 	}
 
-
     // Pagination
 	function get_pagination($page_numb, $max_page) {
 		$html = '';
 		$big = 999999999; // need an unlikely integer
-		$html .= '<div class="xwoo-pagination">';
+		$html .= '<div class="xewc-pagination">';
 		$html .= paginate_links(array(
 			'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
 			'format' => '?paged=%#%',
@@ -206,18 +153,6 @@ class Functions {
 		$html .= '</div>';
 		return $html;
     }
-    
-    public function product_single_love_this() {
-		global $post;
-		if (is_product()){
-			if( function_exists('get_product') ){
-				$product = wc_get_product( $post->ID );
-				if( $product->is_type( 'xwoo' ) ){
-					xwoo_function()->template('include/love_product');
-				}
-			}
-		}
-	}
 
     function limit_word_text($text, $limit) {
         if ( $this->mb_str_word_count($text, 0) > $limit ) {

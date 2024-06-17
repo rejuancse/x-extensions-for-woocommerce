@@ -1,6 +1,6 @@
 <?php
 
-// namespace XWOO\extensions\quickview;
+// namespace XEWC\extensions\quickview;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -13,7 +13,7 @@ class Xwoo_Product_Listing_Extensions {
     protected static $_instance = null;
 
     /**
-     * @return null|XWOO
+     * @return null|XEWC
      */
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
@@ -23,50 +23,44 @@ class Xwoo_Product_Listing_Extensions {
     }
 
     public function __construct() {
-        add_action('admin_menu', array($this, 'xwoo_add_product_listing_page'));
+        add_action('admin_menu', array($this, 'xewc_add_product_listing_page'));
         add_action('admin_init', array($this, 'save_listing_menu_settings' ));
     }
 
-    public function xwoo_add_product_listing_page(){
+    public function xewc_add_product_listing_page(){
         add_submenu_page(
-            'xwoo', 
-            __('Product Listing', 'xwoo'), 
-            __('Product Listing', 'xwoo'), 
+            'xewc', 
+            __('Product Listing', 'xewc'), 
+            __('Product Listing', 'xewc'), 
             'manage_options', 
-            'xwoo-listing', 
-            array($this, 'xwoo_listing_products_func')
+            'xewc-listing', 
+            array($this, 'xewc_listing_products_func')
         );
     }
 
     /**
      * Display a custom menu page
      */
-    public function xwoo_listing_products_func(){
-        if (xwoo_function()->post('wp_settings_page_nonce_field')){
+    public function xewc_listing_products_func(){
+        if (xewc_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
-                echo '<p>'.__( "Quick view data have been Saved.", "xwoo" ).'</p>';
+                echo '<p>'.__( "Quick view data have been Saved.", "xewc" ).'</p>';
             echo '</div>';
         }
 
-        $default_file = XWOO_DIR_PATH.'extensions/product-listing/pages/general-settings.php';
-        $style_file = XWOO_DIR_PATH.'extensions/product-listing/pages/style.php';
-        $shortcode_file = XWOO_DIR_PATH.'extensions/product-listing/pages/shortcode.php';
+        $default_file = XEWC_DIR_PATH.'extensions/product-listing/pages/general-settings.php';
+        $shortcode_file = XEWC_DIR_PATH.'extensions/product-listing/pages/shortcode.php';
 
         // Settings Tab With slug and Display name
-        $tabs = apply_filters('xwoo_listing_page_panel_tabs', array(
+        $tabs = apply_filters('xewc_listing_page_panel_tabs', array(
                 'general_settings' 	=>
                     array(
-                        'tab_name' => __('General Settings','xwoo'),
+                        'tab_name' => __('General Settings','xewc'),
                         'load_form_file' => $default_file
-                    ),
-                'listing_style' 	=>
-                    array(
-                        'tab_name' => __('Style','xwoo'),
-                        'load_form_file' => $style_file
                     ),
                 'listing_shortcode' 	=>
                     array(
-                        'tab_name' => __('Shortcodes','xwoo'),
+                        'tab_name' => __('Shortcodes','xewc'),
                         'load_form_file' => $shortcode_file
                     )
             )
@@ -78,15 +72,15 @@ class Xwoo_Product_Listing_Extensions {
         }
 
         // Print the Tab Title
-        echo '<h2 class="xwoo-setting-title">'.__( "XWOO Product Listing" , "xwoo" ).'</h2>';
+        echo '<h2 class="xewc-setting-title">'.__( "XEWC Product Listing" , "xewc" ).'</h2>';
         echo '<h2 class="nav-tab-wrapper">';
         foreach( $tabs as $tab => $name ){
             $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';
-            echo "<a class='nav-tab$class' href='?page=xwoo-listing&tab=$tab'>{$name['tab_name']}</a>";
+            echo "<a class='nav-tab$class' href='?page=xewc-listing&tab=$tab'>{$name['tab_name']}</a>";
         }
         echo '</h2>'; ?>
 
-        <form id="xwoo" role="form" method="post" action="">
+        <form id="xewc" role="form" method="post" action="">
             <?php
             //Load tab file
             $request_file = $tabs[$current_page]['load_form_file'];
@@ -112,32 +106,25 @@ class Xwoo_Product_Listing_Extensions {
      */
     public function save_listing_menu_settings() {
         
-        if (xwoo_function()->post('wp_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(xwoo_function()->post('wp_settings_page_nonce_field')), 'wp_settings_page_action' ) ){
+        if (xewc_function()->post('wp_settings_page_nonce_field') && wp_verify_nonce( sanitize_text_field(xewc_function()->post('wp_settings_page_nonce_field')), 'wp_settings_page_action' ) ){
 
-            $current_tab = sanitize_text_field(xwoo_function()->post('wp_xwoo_admin_tab'));
+            $current_tab = sanitize_text_field(xewc_function()->post('wp_xewc_product_listing_admin_tab'));
 
             if( ! empty($current_tab) ){
                 /**
                  * General Settings
                  */
-                $styling = sanitize_text_field(xwoo_function()->post('wp_quick_view'));
-                xwoo_function()->update_checkbox( 'wp_quick_view', $styling);
+                $product_order = sanitize_text_field(xewc_function()->post('wp_product_list_order'));
+                xewc_function()->update_text( 'wp_product_list_order', $product_order);
 
-                $mobile_view = sanitize_text_field(xwoo_function()->post('mobile_quick_view'));
-                xwoo_function()->update_text('mobile_quick_view', $mobile_view);
+                $product_number = sanitize_text_field(xewc_function()->post('wp_number_of_product'));
+                xewc_function()->update_text( 'wp_number_of_product', $product_number);
 
-                $product_status = sanitize_text_field(xwoo_function()->post('btn_quick_view'));
-                xwoo_function()->update_text('btn_quick_view', $product_status);
+                $column_number = sanitize_text_field(xewc_function()->post('wp_number_of_coulmn'));
+                xewc_function()->update_text('wp_number_of_coulmn', $column_number);
 
-                # Style.
-                $button_bg_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_color'));
-                xwoo_function()->update_text('wp_button_bg_color', $button_bg_color);
-
-                $button_bg_hover_color = sanitize_text_field(xwoo_function()->post('wp_button_bg_hover_color'));
-                xwoo_function()->update_text('wp_button_bg_hover_color', $button_bg_hover_color);
-
-                $button_text_color = sanitize_text_field(xwoo_function()->post('wp_button_text_color'));
-                xwoo_function()->update_text('wp_button_text_color', $button_text_color);
+                $wp_product_category = sanitize_text_field(xewc_function()->post('wp_xewc_product_category'));
+                xewc_function()->update_checkbox('wp_xewc_product_category', $wp_product_category);
             }
         }
     }

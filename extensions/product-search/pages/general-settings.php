@@ -3,32 +3,27 @@ defined( 'ABSPATH' ) || exit;
 
 $arr =  array(
 
-    # Slider Number
+    # Product Search
     array(
-        'id'        => 'wp_number_of_product',
-        'type'      => 'text',
-        'value'     => '9',
-        'label'     => __('Number of Product','xwoo'),
-    ),
-    array(
-        'id'        => 'wp_number_of_coulmn',
-        'type'      => 'text',
-        'value'     => '4',
-        'label'     => __('Number of Coulmn','xwoo'),
-    ),
-    array(
-        'id'        => 'wp_product_category',
+        'id'        => 'wp_product_search_image',
         'type'      => 'checkbox',
         'value'     => 'true',
-        'label'     => __('Enable Product Category','xwoo'),
-        'desc'      => __('Enable category for product view.','xwoo'),
+        'label'     => __('Enable Search Image','xewc'),
+        'desc'      => __('Enable WooCommerce product search image on load.','xewc'),
+    ),
+    array(
+        'id'        => 'wp_product_search_btn_off',
+        'type'      => 'checkbox',
+        'value'     => 'true',
+        'label'     => __('Enable Search Button','xewc'),
+        'desc'      => __('Enable WooCommerce product search button.','xewc'),
     ),
 
     // #Save Function
     array(
-        'id'        => 'wp_xwoo_admin_tab',
+        'id'        => 'wp_xewc_search_admin_tab',
         'type'      => 'hidden',
         'value'     => 'tab_style',
     ),
 );
-xwoo_function()->generator( $arr );
+xewc_function()->generator( $arr );

@@ -1,5 +1,5 @@
 <?php
-namespace XWOO\settings;
+namespace XEWC\settings;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -166,7 +166,7 @@ class Settings_Generator {
                         $html .= '<td>';
                         $var = get_option( $value['id'] );
                         if(!$var){ $var = $value['value']; }
-                        $html .= '<input type="text" name="'.$value['id'].'" value="'.$var.'" id="'.$value['id'].'" class="xwoo-color-field" >';
+                        $html .= '<input type="text" name="'.$value['id'].'" value="'.$var.'" id="'.$value['id'].'" class="xewc-color-field" >';
                         if(isset($value['desc'])){ $html .= '<p>'.$value['desc'].'</p>'; }
                         $html .= '</td>';
                         $html .= '</tr>';

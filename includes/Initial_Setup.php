@@ -1,5 +1,5 @@
 <?php
-namespace XWOO;
+namespace XEWC;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -14,12 +14,12 @@ if (! class_exists('Initial_Setup')) {
         }
 
         public function initial_compatibility_check() {
-            if (version_compare(XWOO_VERSION, '1.0.0', '>')) {
-                $option_check = get_option('xwoo_show_description');
+            if (version_compare(XEWC_VERSION, '1.0.0', '>')) {
+                $option_check = get_option('xewc_show_description');
                 if($option_check != 'true' && $option_check != 'false'){
                     $default_value = array(
-                        'xwoo_show_description' => 'true',
-                        'xwoo_show_terms_and_conditions' => 'true'
+                        'xewc_show_description' => 'true',
+                        'xewc_show_terms_and_conditions' => 'true'
                     );
                     foreach ($default_value as $key => $value ) {
                         update_option( $key , $value );
@@ -32,7 +32,7 @@ if (! class_exists('Initial_Setup')) {
          * Do some task during plugin activation
          */
         public function initial_plugin_activation() {
-            if (get_option('wp_xwoo_is_used')) { // Check is plugin used before or not
+            if (get_option('wp_xewc_is_used')) { // Check is plugin used before or not
                 return false;
             }
             self::update_option();
@@ -43,16 +43,9 @@ if (! class_exists('Initial_Setup')) {
          */
         public function update_option() {
             $init_setup_data = array(
-                'wp_xwoo_is_used' => XWOO_VERSION,
-                'wp_xwoo_selected_theme' => 'basic',
+                'wp_xewc_is_used' => XEWC_VERSION,
                 'vendor_type' => 'woocommerce',
-                'wp_default_product_status' => 'draft',
-                'wp_product_edit_status' => 'pending',
-                'wp_enable_color_styling' => 'true',
-                'xwoo_show_description' => 'true',
-                'wp_enable_paypal_per_product_email' => 'true',
-                'wp_single_page_id' => 'true',
-                'wp_requirement_agree_title' => 'I agree with the terms and conditions.',
+                'xewc_show_description' => 'true',
             );
 
             foreach ($init_setup_data as $key => $value ) {
@@ -82,37 +75,44 @@ if (! class_exists('Initial_Setup')) {
             self::update_option();
         }
 
+        /**
+         * Deactivation Hook For Xwoo
+         */
+        public function initial_plugin_deactivation(){
+
+        }
+
         public function activation_css() {
             ?>
             <style type="text/css">
-                .xwoo-install-notice{
+                .xewc-install-notice{
                     padding: 20px;
                 }
-                .xwoo-install-notice-inner{
+                .xewc-install-notice-inner{
                     display: flex;
                     align-items: center;
                 }
-                .xwoo-install-notice-inner .button{
+                .xewc-install-notice-inner .button{
                     padding: 5px 30px;
                     height: auto;
                     line-height: 20px;
                     text-transform: capitalize;
                 }
-                .xwoo-install-notice-content{
+                .xewc-install-notice-content{
                     flex-grow: 1;
                     padding-left: 20px;
                     padding-right: 20px;
                 }
-                .xwoo-install-notice-icon img{
+                .xewc-install-notice-icon img{
                     width: 64px;
                     border-radius: 4px;
                     display: block;
                 }
-                .xwoo-install-notice-content h2{
+                .xewc-install-notice-content h2{
                     margin-top: 0;
                     margin-bottom: 5px;
                 }
-                .xwoo-install-notice-content p{
+                .xewc-install-notice-content p{
                     margin-top: 0;
                     margin-bottom: 0px;
                     padding: 0;
@@ -122,7 +122,7 @@ if (! class_exists('Initial_Setup')) {
             <script type="text/javascript">
                 jQuery(document).ready(function($){
                     'use strict';
-                    $(document).on('click', '.install-xwoo-button', function(e){
+                    $(document).on('click', '.install-xewc-button', function(e){
                         e.preventDefault();
                         var $btn = $(this);
                         $.ajax({
@@ -133,8 +133,8 @@ if (! class_exists('Initial_Setup')) {
                                 $btn.addClass('updating-message');
                             },
                             success: function (data) {
-                                $('.install-xwoo-button').remove();
-                                $('#xwoo_install_msg').html(data);
+                                $('.install-xewc-button').remove();
+                                $('#xewc_install_msg').html(data);
                             },
                             complete: function () {
                                 $btn.removeClass('updating-message');
@@ -151,26 +151,25 @@ if (! class_exists('Initial_Setup')) {
         public function free_plugin_installed_but_inactive_notice(){
             $this->activation_css();
             ?>
-            <div class="notice notice-error xwoo-install-notice">
-                <div class="xwoo-install-notice-inner">
-                    <div class="xwoo-install-notice-icon">
-                        <img src="<?php echo XWOO_DIR_URL.'assets/images/woocommerce-icon.png'; ?>" alt="logo" />
+            <div class="notice notice-error xewc-install-notice">
+                <div class="xewc-install-notice-inner">
+                    <div class="xewc-install-notice-icon">
+                        <img src="<?php echo XEWC_DIR_URL.'assets/images/woocommerce-icon.png'; ?>" alt="logo" />
                     </div>
-                    <div class="xwoo-install-notice-content">
-                        <h2><?php _e('Thanks for using XWOO Extensions', 'xwoo'); ?></h2>
+                    <div class="xewc-install-notice-content">
+                        <h2><?php _e('Thanks for using X-Extensions for WooCommerce', 'xewc'); ?></h2>
                         <?php 
                             printf(
                                 '<p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p>', 
-                                __('You must have','xwoo'), 
+                                __('You must have','xewc'), 
                                 'https://wordpress.org/plugins/woocommerce/', 
-                                __('WooCommerce','xwoo'), 
-                                __('installed and activated on this website in order to use WP Xwoo.','xwoo')
+                                __('WooCommerce','xewc'), 
+                                __('installed and activated on this website in order to use WP Xwoo.','xewc')
                             );
                         ?>
-                        <a href="https://docs.xwoo.com/wp-xwoo/" target="_blank"><?php _e('Learn more about WP Xwoo', 'xwoo'); ?></a>
                     </div>
-                    <div class="xwoo-install-notice-button">
-                        <a  class="button button-primary" href="<?php echo add_query_arg(array('action' => 'activate_woocommerce_free'), admin_url()); ?>"><?php _e('Activate WooCommerce', 'xwoo'); ?></a>
+                    <div class="xewc-install-notice-button">
+                        <a  class="button button-primary" href="<?php echo add_query_arg(array('action' => 'activate_woocommerce_free'), admin_url()); ?>"><?php _e('Activate WooCommerce', 'xewc'); ?></a>
                     </div>
                 </div>
             </div>
@@ -181,36 +180,35 @@ if (! class_exists('Initial_Setup')) {
             include( ABSPATH . 'wp-admin/includes/plugin-install.php' );
             $this->activation_css();
             ?>
-            <div class="notice notice-error xwoo-install-notice">
-                <div class="xwoo-install-notice-inner">
-                    <div class="xwoo-install-notice-icon">
-                        <img src="<?php echo XWOO_DIR_URL.'assets/images/woocommerce-icon.png'; ?>" alt="logo" />
+            <div class="notice notice-error xewc-install-notice">
+                <div class="xewc-install-notice-inner">
+                    <div class="xewc-install-notice-icon">
+                        <img src="<?php echo XEWC_DIR_URL.'assets/images/woocommerce-icon.png'; ?>" alt="logo" />
                     </div>
-                    <div class="xwoo-install-notice-content">
-                        <h2><?php _e('Thanks for using XWOO Extensions Plugins', 'xwoo'); ?></h2>
+                    <div class="xewc-install-notice-content">
+                        <h2><?php _e('Thanks for using X-Extensions for WooCommerce Plugins', 'xewc'); ?></h2>
                         <?php 
                             printf(
                                 '<p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p>', 
-                                __('You must have','xwoo'), 
+                                __('You must have','xewc'), 
                                 'https://wordpress.org/plugins/woocommerce/', 
-                                __('WooCommerce','xwoo'), 
-                                __('installed and activated on this website in order to use XWOO.','xwoo')
+                                __('WooCommerce','xewc'), 
+                                __('installed and activated on this website in order to use XEWC.','xewc')
                             );
                         ?>
-                        <a href="https://docs.xwoo.com/xwoo/" target="_blank"><?php _e('Learn more about XWOO', 'xwoo'); ?></a>
                     </div>
-                    <div class="xwoo-install-notice-button">
-                        <a class="install-xwoo-button button button-primary" data-slug="woocommerce" href="<?php echo add_query_arg(array('action' => 'install_woocommerce_free'), admin_url()); ?>"><?php _e('Install WooCommerce', 'xwoo'); ?></a>
+                    <div class="xewc-install-notice-button">
+                        <a class="install-xewc-button button button-primary" data-slug="woocommerce" href="<?php echo add_query_arg(array('action' => 'install_woocommerce_free'), admin_url()); ?>"><?php _e('Install WooCommerce', 'xewc'); ?></a>
                     </div>
                 </div>
-                <div id="xwoo_install_msg"></div>
+                <div id="xewc_install_msg"></div>
             </div>
             <?php
         }
 
         public function activate_woocommerce_free() {
             activate_plugin('woocommerce/woocommerce.php' );
-            wp_redirect(admin_url('admin.php?page=xwoo'));
+            wp_redirect(admin_url('admin.php?page=xewc'));
 		    exit();
         }
 
@@ -261,10 +259,10 @@ if (! class_exists('Initial_Setup')) {
         public static function wc_low_version(){
             printf(
                 '<div class="notice notice-error is-dismissible"><p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p></div>', 
-                __('Your','xwoo'), 
+                __('Your','xewc'), 
                 'https://wordpress.org/plugins/woocommerce/', 
-                __('WooCommerce','xwoo'), 
-                __('version is below then 3.0, please update.','xwoo') 
+                __('WooCommerce','xewc'), 
+                __('version is below then 3.0, please update.','xewc') 
             );
         }
     }
