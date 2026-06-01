@@ -30,8 +30,8 @@ class Xwoo_Product_Listing_Extensions {
     public function xewc_add_product_listing_page(){
         add_submenu_page(
             'xewc', 
-            __('Product Listing', 'xewc'), 
-            __('Product Listing', 'xewc'), 
+            __('Product Listing', 'x-extensions-for-woocommerce'),
+            __('Product Listing', 'x-extensions-for-woocommerce'), 
             'manage_options', 
             'xewc-listing', 
             array($this, 'xewc_listing_products_func')
@@ -44,7 +44,7 @@ class Xwoo_Product_Listing_Extensions {
     public function xewc_listing_products_func(){
         if (xewc_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
-                echo '<p>'.__( "Quick view data have been Saved.", "xewc" ).'</p>';
+                echo '<p>'.__( "Quick view data have been Saved.", "x-extensions-for-woocommerce" ).'</p>';
             echo '</div>';
         }
 
@@ -55,12 +55,12 @@ class Xwoo_Product_Listing_Extensions {
         $tabs = apply_filters('xewc_listing_page_panel_tabs', array(
                 'general_settings' 	=>
                     array(
-                        'tab_name' => __('General Settings','xewc'),
+                        'tab_name' => __('General Settings','x-extensions-for-woocommerce'),
                         'load_form_file' => $default_file
                     ),
                 'listing_shortcode' 	=>
                     array(
-                        'tab_name' => __('Shortcodes','xewc'),
+                        'tab_name' => __('Shortcodes','x-extensions-for-woocommerce'),
                         'load_form_file' => $shortcode_file
                     )
             )
@@ -72,7 +72,7 @@ class Xwoo_Product_Listing_Extensions {
         }
 
         // Print the Tab Title
-        echo '<h2 class="xewc-setting-title">'.__( "XEWC Product Listing" , "xewc" ).'</h2>';
+        echo '<h2 class="xewc-setting-title">'.__( "XEWC Product Listing" , "x-extensions-for-woocommerce" ).'</h2>';
         echo '<h2 class="nav-tab-wrapper">';
         foreach( $tabs as $tab => $name ){
             $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';

@@ -355,7 +355,7 @@ if ( ! class_exists( 'XEWC_QUICK_VIEW_Frontend' ) ) {
 		 */
 		public function get_button_label() {
 			$label = get_option( 'btn_quick_view' );
-			$label = call_user_func( '__', $label, 'xewc' );
+			$label = call_user_func( '__', $label, 'x-extensions-for-woocommerce' );
 
 			return apply_filters( 'xewc_quickview_button_label', esc_html( $label ) );
 		}

@@ -8,15 +8,15 @@ $arr =  array(
         'id'        => 'wp_product_search_image',
         'type'      => 'checkbox',
         'value'     => 'true',
-        'label'     => __('Enable Search Image','xewc'),
-        'desc'      => __('Enable WooCommerce product search image on load.','xewc'),
+        'label'     => __('Enable Search Image','x-extensions-for-woocommerce'),
+        'desc'      => __('Enable WooCommerce product search image on load.','x-extensions-for-woocommerce'),
     ),
     array(
         'id'        => 'wp_product_search_btn_off',
         'type'      => 'checkbox',
         'value'     => 'true',
-        'label'     => __('Enable Search Button','xewc'),
-        'desc'      => __('Enable WooCommerce product search button.','xewc'),
+        'label'     => __('Enable Search Button','x-extensions-for-woocommerce'),
+        'desc'      => __('Enable WooCommerce product search button.','x-extensions-for-woocommerce'),
     ),
 
     // #Save Function

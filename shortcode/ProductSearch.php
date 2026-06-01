@@ -16,7 +16,7 @@ class Product_Search {
         $output = '';
         
         $output .= '<form class="search_form_shortcode" role="search" action="'.esc_url( home_url( '/' ) ).'" method="get">';
-            $output .= '<input class="xewc-ajax-search" data-url="'.plugin_dir_url('', __FILE__).'x-extensions-for-woocommerce/extensions/product-search/classes/search-data.php'.'" type="text" name="s" value="'.get_search_query().'" placeholder="'.esc_attr__( 'Search products...', 'xewc' ).'"/>';
+            $output .= '<input class="xewc-ajax-search" data-url="'.plugin_dir_url('', __FILE__).'x-extensions-for-woocommerce/extensions/product-search/classes/search-data.php'.'" type="text" name="s" value="'.get_search_query().'" placeholder="'.esc_attr__( 'Search products...', 'x-extensions-for-woocommerce' ).'"/>';
             if($btn_off == 'true') { 
                 $output .= '<button type="submit">Product Search</button>';
             }

@@ -16,7 +16,7 @@ class Product_Listing {
 		$column_number = get_option( 'wp_number_of_coulmn', 4 );
 		$category = get_option( 'wp_xewc_product_category', false );
 		$page_numb = max(1, get_query_var('paged'));
-		
+
         $atts = shortcode_atts( array(
             'number' => $post_limit,
             'column' => $column_number,
@@ -30,23 +30,23 @@ class Product_Listing {
         );
 		ob_start();
 
-        $query = new \WP_Query($args); 
+        $query = new \WP_Query($args);
 		global $post, $product; ?>
 
         <div class="woocommerce">
 			<ul class="products columns-<?php echo $atts['column']; ?>">
 				<?php if ( $query->have_posts() ) : ?>
-					<?php while ( $query->have_posts() ) : $query->the_post(); 
+					<?php while ( $query->have_posts() ) : $query->the_post();
 						$product = new \WC_Product(get_the_ID());
 						$price_html = $product->get_price_html();
 						$cats = get_the_term_list( get_the_ID(), 'product_cat' );
 						?>
-						<li class="product"> 
+						<li class="product">
 							<div class="inner">
 								<div class="product-img">
 									<a href="<?php the_permalink(); ?>">
 										<?php if ( $product->is_on_sale() ) : ?>
-											<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
+											<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'x-extensions-for-woocommerce' ) . '</span>', $post, $product ); ?>
 										<?php endif; ?>
 										<?php the_post_thumbnail('woocommerce_thumbnail', array('class' => 'img-fluid')); ?>
 									</a>

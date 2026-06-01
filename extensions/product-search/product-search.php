@@ -15,8 +15,8 @@ define('XEWC_SEARCH_BASE_NAME', plugin_basename( XEWC_PRODUCT_SEARCH_FILE ) );
 add_filter('xewc_extensions_lists_config', 'xewc_product_search_config');
 function xewc_product_search_config( $config ) {
 	$basicConfig = array(
-		'name'          => __( 'Product Search', 'xewc' ),
-		'description'   => __( 'WooCommerce product search using ajax request', 'xewc' ),
+		'name'          => __( 'Product Search', 'x-extensions-for-woocommerce' ),
+		'description'   => __( 'WooCommerce product search using ajax request', 'x-extensions-for-woocommerce' ),
 		'path'			=> XEWC_SEARCH_DIR_PATHE,
 		'url'			=> plugin_dir_url( XEWC_PRODUCT_SEARCH_FILE ),
 		'basename'		=> XEWC_SEARCH_BASE_NAME,

@@ -33,29 +33,36 @@ final class XEWC_Extensions {
 
 	//Checking Vendor
 	public function run() {
+		// Ensure that is_plugin_active() and is_plugin_active_for_network() functions are available
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
 		if( xewc_function()->is_woocommerce() ) {
 			$initial_setup = new \XEWC\Initial_Setup();
-			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) {
+
+			// Check if WooCommerce is active
+			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ||
+				 is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) {
+
 				if ( xewc_function()->wc_version() ) {
-					require_once XEWC_DIR_PATH.'includes/woocommerce/Base.php';
+					require_once XEWC_DIR_PATH . 'includes/woocommerce/Base.php';
 					new \XEWC\woocommerce\Base();
 				} else {
 					add_action( 'admin_notices', array( $initial_setup , 'wc_low_version' ) );
 					deactivate_plugins( plugin_basename( __FILE__ ) );
 				}
 			} else {
-				$cf_file = WP_PLUGIN_DIR.'/woocommerce/woocommerce.php';
-				if (file_exists($cf_file) && ! is_plugin_active('woocommerce/woocommerce.php')) {
-					add_action( 'admin_notices', array($initial_setup, 'free_plugin_installed_but_inactive_notice') );
-				} elseif ( ! file_exists($cf_file) ) {
-					add_action( 'admin_notices', array($initial_setup, 'free_plugin_not_installed') );
+				$cf_file = WP_PLUGIN_DIR . '/woocommerce/woocommerce.php';
+				if ( file_exists( $cf_file ) && ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+					add_action( 'admin_notices', array( $initial_setup, 'free_plugin_installed_but_inactive_notice' ) );
+				} elseif ( ! file_exists( $cf_file ) ) {
+					add_action( 'admin_notices', array( $initial_setup, 'free_plugin_not_installed' ) );
 				}
 			}
-		}else{
-			// Local Code
 		}
 	}
-	
+
 	// Include Shortcode
 	public function include_shortcode() {
 		if( class_exists( 'WooCommerce' ) ){
@@ -63,7 +70,7 @@ final class XEWC_Extensions {
 			include_once XEWC_DIR_PATH.'shortcode/ProductSearch.php';
 			$xewc_product_listing = new \XEWC\shortcode\Product_Listing();
 			$xewc_product_search = new \XEWC\shortcode\Product_Search();
-	
+
 			//require file for compatibility
 			require_once XEWC_DIR_PATH.'includes/compatibility/Shortcodes.php';
 		}

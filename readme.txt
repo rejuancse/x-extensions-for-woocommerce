@@ -1,24 +1,24 @@
 === X-Extensions for WooCommerce ===
 
 Contributors: rejuancse
-Tags: woocommerce, quick view, woocommerce quick view, products quick view, search, product search, search product, products listing, variable products, woocommerce wishlist, wishlist, delivery slots, product delivery slots, woocommerce delivery slots, social share, social login, variation swatches, woocommerce variation, product gallery, donate, reword, extensions
+Tags: quick view, product search, product listing
 Requires at least: 5.9
-Tested up to: 6.1
+Tested up to: 7.0
 Requires PHP: 7.2
-Stable tag:  1.0.2
+Stable tag:  1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-X-Extensions for WooCommerce plugin is an extensible plugin that lets you easily manage woocommerce extensions by the xwoo.club. Quick view, WooCommerce product search and Product listing extension easy to use in your woocommerce platform..
+Boost your WooCommerce store with X-Extensions: advanced product listings, AJAX search, and quick view to improve UX and drive sales.
 
 == Description ==
-X-Extensions for WooCommerce is a multiple addons with one solution. In this plugin you can easily handle your everyday needed addons. quick view, product search, and listing your awesome produsts.
+Boost your WooCommerce store's performance with X-Extensions for WooCommerce. This powerful plugin enhances your online shop with advanced product listing features, lightning-fast AJAX search, and a convenient quick view option. Perfect for improving user experience and driving sales. X-Extensions for WooCommerce is your go-to solution for a more dynamic, efficient, and user-friendly eCommerce platform.
 
 = Shortcode List =
 To use these shortcodes, just place the required shortcode(s) on your desired location.
 
-  * Product list [product_listing]
-  * Product search [xewc_product_search]
+* Product list [product_listing]
+* Product search [xewc_product_search]
 
 = Features =
 
@@ -73,6 +73,12 @@ A. Found a bug? Please let us know by posting on the support section of this plu
 
 
 == Changelog ==
+
+= 1.0.4 [27/08/2024] =
+* Bug fixed
+
+= 1.0.3 [11/07/2024] =
+* Tags name updated
 
 = 1.0.2 [17/06/2024] =
 * CSS issue fixed

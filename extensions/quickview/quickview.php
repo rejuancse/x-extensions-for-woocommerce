@@ -19,8 +19,8 @@ define('XEWC_QUICK_VIEW_BASE_NAME', plugin_basename( XEWC_QUICK_VIEW_FILE ) );
 add_filter('xewc_extensions_lists_config', 'xewc_quick_view_config');
 function xewc_quick_view_config( $config ) {
 	$basicConfig = array(
-		'name'          => __( 'Product Quick View', 'xewc' ),
-		'description'   => __( 'WooCommerce product quick view extension', 'xewc' ),
+		'name'          => __( 'Product Quick View', 'x-extensions-for-woocommerce' ),
+		'description'   => __( 'WooCommerce product quick view extension', 'x-extensions-for-woocommerce' ),
 		'path'			=> XEWC_QUICK_VIEW_DIR_PATH,
 		'url'			=> plugin_dir_url( XEWC_QUICK_VIEW_FILE ),
 		'basename'		=> XEWC_QUICK_VIEW_BASE_NAME,

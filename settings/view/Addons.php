@@ -1,6 +1,6 @@
 <div class="wrap">
     <div class="wp-xewc-extensions-list">
-        <h1 class="addon-list-heading"><?php _e('X-Extensions for WooCommerce', 'xewc'); ?></h1>
+        <h1 class="addon-list-heading"><?php _e('X-Extensions for WooCommerce', 'x-extensions-for-woocommerce'); ?></h1>
         <br class="clear">
 		<?php
             $extensions = apply_filters('xewc_extensions_lists_config', array());

@@ -22,13 +22,13 @@ class Admin_Menu {
             null
         );
 
-        $addon_pro =  __('Extensions', 'xewc');
+        $addon_pro =  __('Extensions', 'x-extensions-for-woocommerce');
         if( !defined('XEWC_PRO_FILE') ){
-            $addon_pro = __('Extensions <span class="dashicons dashicons-star-filled" style="color:#ef450b"/>', 'xewc');
+            $addon_pro = __('Extensions <span class="dashicons dashicons-star-filled" style="color:#ef450b"/>', 'x-extensions-for-woocommerce');
         }
         add_submenu_page(
             'xewc',
-            __('Extensions', 'xewc'),
+            __('Extensions', 'x-extensions-for-woocommerce'),
             $addon_pro,
             'manage_options',
             'xewc',

@@ -15,8 +15,8 @@ define('XEWC_PRODUCT_BASE_NAME', plugin_basename( XEWC_PRODUCT_LISTING_FILE ) );
 add_filter('xewc_extensions_lists_config', 'xewc_product_listing_config');
 function xewc_product_listing_config( $config ) {
 	$basicConfig = array(
-		'name'          => __( 'Product Listing', 'xewc' ),
-		'description'   => __( 'WooCommerce product listing', 'xewc' ),
+		'name'          => __( 'Product Listing', 'x-extensions-for-woocommerce' ),
+		'description'   => __( 'WooCommerce product listing', 'x-extensions-for-woocommerce' ),
 		'path'			=> XEWC_PRODUCT_DIR_PATHE,
 		'url'			=> plugin_dir_url( XEWC_PRODUCT_LISTING_FILE ),
 		'basename'		=> XEWC_PRODUCT_BASE_NAME,

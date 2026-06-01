@@ -104,7 +104,7 @@ class Base {
     }
 
     public function admin_footer_text($footer_text){
-        $footer_text = sprintf( __( 'Thanks so much for using <strong>X-Extensions</strong>', 'xewc' ));
+        $footer_text = sprintf( __( 'Thanks so much for using <strong>X-Extensions</strong>', 'x-extensions-for-woocommerce' ));
         return $footer_text;
     }
 

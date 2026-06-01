@@ -30,8 +30,8 @@ class Xwoo_Extensions {
     public function xewc_add_quick_view_page(){
         add_submenu_page(
             'xewc', 
-            __('Product Quick View', 'xewc'), 
-            __('Product Quick View', 'xewc'), 
+            __('Product Quick View', 'x-extensions-for-woocommerce'),
+            __('Product Quick View', 'x-extensions-for-woocommerce'),
             'manage_options', 
             'xewc-quick-view', 
             array($this, 'xewc_quick_view_func')
@@ -44,7 +44,7 @@ class Xwoo_Extensions {
     public function xewc_quick_view_func(){
         if (xewc_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
-                echo '<p>'.__( "Quick view data have been Saved.", "xewc" ).'</p>';
+                echo '<p>'.__( "Quick view data have been Saved.", "x-extensions-for-woocommerce" ).'</p>';
             echo '</div>';
         } ?>
 
