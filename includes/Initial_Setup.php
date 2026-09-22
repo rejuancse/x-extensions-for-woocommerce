@@ -154,22 +154,22 @@ if (! class_exists('Initial_Setup')) {
             <div class="notice notice-error xewc-install-notice">
                 <div class="xewc-install-notice-inner">
                     <div class="xewc-install-notice-icon">
-                        <img src="<?php echo XEWC_DIR_URL.'assets/images/woocommerce-icon.png'; ?>" alt="logo" />
+                        <img src="<?php echo esc_url( XEWC_DIR_URL.'assets/images/woocommerce-icon.png' ); ?>" alt="logo" />
                     </div>
                     <div class="xewc-install-notice-content">
-                        <h2><?php _e('Thanks for using X-Extensions for WooCommerce', 'x-extensions-for-woocommerce'); ?></h2>
-                        <?php 
+                        <h2><?php esc_html_e('Thanks for using X-Extensions for WooCommerce', 'x-extensions-for-woocommerce'); ?></h2>
+                        <?php
                             printf(
-                                '<p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p>', 
-                                __('You must have','x-extensions-for-woocommerce'),
-                                'https://wordpress.org/plugins/woocommerce/',
-                                __('WooCommerce','x-extensions-for-woocommerce'),
-                                __('installed and activated on this website in order to use WP Xwoo.','x-extensions-for-woocommerce')
+                                '<p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p>',
+                                esc_html__('You must have','x-extensions-for-woocommerce'),
+                                esc_url('https://wordpress.org/plugins/woocommerce/'),
+                                esc_html__('WooCommerce','x-extensions-for-woocommerce'),
+                                esc_html__('installed and activated on this website in order to use WP Xwoo.','x-extensions-for-woocommerce')
                             );
                         ?>
                     </div>
                     <div class="xewc-install-notice-button">
-                        <a  class="button button-primary" href="<?php echo add_query_arg(array('action' => 'activate_woocommerce_free'), admin_url()); ?>"><?php _e('Activate WooCommerce', 'x-extensions-for-woocommerce'); ?></a>
+                        <a  class="button button-primary" href="<?php echo esc_url( add_query_arg(array('action' => 'activate_woocommerce_free'), admin_url()) ); ?>"><?php esc_html_e('Activate WooCommerce', 'x-extensions-for-woocommerce'); ?></a>
                     </div>
                 </div>
             </div>
@@ -183,22 +183,22 @@ if (! class_exists('Initial_Setup')) {
             <div class="notice notice-error xewc-install-notice">
                 <div class="xewc-install-notice-inner">
                     <div class="xewc-install-notice-icon">
-                        <img src="<?php echo XEWC_DIR_URL.'assets/images/woocommerce-icon.png'; ?>" alt="logo" />
+                        <img src="<?php echo esc_url( XEWC_DIR_URL.'assets/images/woocommerce-icon.png' ); ?>" alt="logo" />
                     </div>
                     <div class="xewc-install-notice-content">
-                        <h2><?php _e('Thanks for using X-Extensions for WooCommerce Plugins', 'x-extensions-for-woocommerce'); ?></h2>
-                        <?php 
+                        <h2><?php esc_html_e('Thanks for using X-Extensions for WooCommerce Plugins', 'x-extensions-for-woocommerce'); ?></h2>
+                        <?php
                             printf(
-                                '<p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p>', 
-                                __('You must have','x-extensions-for-woocommerce'),
-                                'https://wordpress.org/plugins/woocommerce/',
-                                __('WooCommerce','x-extensions-for-woocommerce'),
-                                __('installed and activated on this website in order to use XEWC.','x-extensions-for-woocommerce')
+                                '<p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p>',
+                                esc_html__('You must have','x-extensions-for-woocommerce'),
+                                esc_url('https://wordpress.org/plugins/woocommerce/'),
+                                esc_html__('WooCommerce','x-extensions-for-woocommerce'),
+                                esc_html__('installed and activated on this website in order to use XEWC.','x-extensions-for-woocommerce')
                             );
                         ?>
                     </div>
                     <div class="xewc-install-notice-button">
-                        <a class="install-xewc-button button button-primary" data-slug="woocommerce" href="<?php echo add_query_arg(array('action' => 'install_woocommerce_free'), admin_url()); ?>"><?php _e('Install WooCommerce', 'x-extensions-for-woocommerce'); ?></a>
+                        <a class="install-xewc-button button button-primary" data-slug="woocommerce" href="<?php echo esc_url( add_query_arg(array('action' => 'install_woocommerce_free'), admin_url()) ); ?>"><?php esc_html_e('Install WooCommerce', 'x-extensions-for-woocommerce'); ?></a>
                     </div>
                 </div>
                 <div id="xewc_install_msg"></div>
@@ -244,10 +244,11 @@ if (! class_exists('Initial_Setup')) {
             ) );
     
             if ( is_wp_error( $api ) ) {
-                wp_die( $api );
+                wp_die( esc_html( $api->get_error_message() ) );
             }
     
-            $title = sprintf( __('Installing Plugin: %s'), $api->name . ' ' . $api->version );
+            /* translators: %s: plugin name and version */
+            $title = sprintf( esc_html__( 'Installing Plugin: %s', 'x-extensions-for-woocommerce' ), esc_html( $api->name . ' ' . $api->version ) );
             $nonce = 'install-plugin_' . $plugin;
             $url = 'update.php?action=install-plugin&plugin=' . urlencode( $plugin );
     
@@ -258,11 +259,11 @@ if (! class_exists('Initial_Setup')) {
         
         public static function wc_low_version(){
             printf(
-                '<div class="notice notice-error is-dismissible"><p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p></div>', 
-                __('Your','x-extensions-for-woocommerce'),
-                'https://wordpress.org/plugins/woocommerce/',
-                __('WooCommerce','x-extensions-for-woocommerce'),
-                __('version is below then 3.0, please update.','x-extensions-for-woocommerce') 
+                '<div class="notice notice-error is-dismissible"><p>%1$s <a target="_blank" href="%2$s">%3$s</a> %4$s</p></div>',
+                esc_html__('Your','x-extensions-for-woocommerce'),
+                esc_url('https://wordpress.org/plugins/woocommerce/'),
+                esc_html__('WooCommerce','x-extensions-for-woocommerce'),
+                esc_html__('version is below then 3.0, please update.','x-extensions-for-woocommerce')
             );
         }
     }

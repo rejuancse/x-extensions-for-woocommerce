@@ -79,6 +79,9 @@ class Base {
 
         #js
         wp_enqueue_script( 'xewc-jquery-scripts', XEWC_DIR_URL .'assets/dist/js/xewc-admin.js', array('jquery','wp-color-picker'), XEWC_VERSION, true );
+        wp_localize_script( 'xewc-jquery-scripts', 'xewc_admin_object', array(
+            'nonce' => wp_create_nonce( 'xewc_addon_toggle' ),
+        ) );
     }
 
     /**
@@ -87,11 +90,11 @@ class Base {
      */
     public function frontend_script(){
         wp_enqueue_style( 'xewc-css-front', XEWC_DIR_URL .'assets/dist/css/xewc-front.css', false, XEWC_VERSION );
-        wp_enqueue_style( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' );
+        wp_enqueue_style( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css', array(), '1.8' );
 
         #JS
         wp_enqueue_script( 'jquery' );
-        wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
+        wp_enqueue_script( 'jquery-ui-datepicker', '', array( 'jquery' ), XEWC_VERSION, true );
         wp_enqueue_script( 'wp-xewc-front', XEWC_DIR_URL .'assets/dist/js/xewc-front.js', array('jquery'), XEWC_VERSION, true);
         wp_localize_script( 'wp-xewc-front', 'xewc_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_media();
@@ -121,6 +124,7 @@ class Base {
      * Method for enable / disable extensions
      */
     public function addon_enable_disable(){
+        check_ajax_referer( 'xewc_addon_toggle', 'nonce' );
         $extensionsConfig = maybe_unserialize(get_option('xewc_extensions_config'));
         $isEnable = (bool) sanitize_text_field( xewc_function()->avalue_dot('isEnable', $_POST) );
         $addonFieldName = sanitize_text_field( xewc_function()->avalue_dot('addonFieldName', $_POST) );

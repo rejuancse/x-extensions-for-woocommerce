@@ -1,0 +1,30 @@
+# Copyright (C) 2026 Rejuan Ahamed
+# This file is distributed under the same license as the X-Extensions for WooCommerce plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: X-Extensions for WooCommerce 1.0.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/x-extensions-for-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-22T08:05:18+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: xewc\n"
+
+#. Plugin Name of the plugin
+#: x-extensions.php
+msgid "X-Extensions for WooCommerce"
+msgstr ""
+
+#. Description of the plugin
+#: x-extensions.php
+msgid "Boost your WooCommerce store with X-Extensions: advanced product listings, AJAX search, and quick view to improve UX and drive sales."
+msgstr ""
+
+#. Author of the plugin
+#: x-extensions.php
+msgid "Rejuan Ahamed"
+msgstr ""

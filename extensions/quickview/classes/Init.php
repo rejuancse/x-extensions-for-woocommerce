@@ -44,7 +44,7 @@ class Xwoo_Extensions {
     public function xewc_quick_view_func(){
         if (xewc_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
-                echo '<p>'.__( "Quick view data have been Saved.", "x-extensions-for-woocommerce" ).'</p>';
+                echo '<p>'.esc_html__( "Quick view data have been Saved.", "x-extensions-for-woocommerce" ).'</p>';
             echo '</div>';
         } ?>
 

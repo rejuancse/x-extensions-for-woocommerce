@@ -7,7 +7,7 @@
  * @version 1.0.0
  */
 
-defined( 'XEWC_QUICK_VIEW' ) || exit; // Exit if accessed directly.
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 if ( ! class_exists( 'XEWC_QUICK_VIEW' ) ) {
 	/**
@@ -86,7 +86,7 @@ if ( ! class_exists( 'XEWC_QUICK_VIEW' ) ) {
 				'woocommerce_checkout',
 			);
 
-			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && in_array( $_REQUEST['action'], $action, true ) ) {
+			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && in_array( $_REQUEST['action'], $action, true ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only environment detection, no form data is processed.
 				return false;
 			}
 
@@ -100,7 +100,7 @@ if ( ! class_exists( 'XEWC_QUICK_VIEW' ) ) {
 		 * @return boolean
 		 */
 		public function is_admin() {
-			$is_ajax = ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['context'] ) && 'frontend' === $_REQUEST['context'] );
+			$is_ajax = ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['context'] ) && 'frontend' === $_REQUEST['context'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only environment detection, no form data is processed.
 			return apply_filters( 'xewc_quickview_is_admin', is_admin() && ! $is_ajax );
 		}
 

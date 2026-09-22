@@ -1,16 +1,19 @@
 <?php
 /**
  * Plugin Name: X-Extensions for WooCommerce
- * Description: Boost your WooCommerce store with X-Extensions: advanced product listings, AJAX search, and quick view to improve UX and drive sales.
+ * Description: Enhance WooCommerce with AJAX product search, quick view popup & product listing grid. Free WooCommerce extensions to boost UX, speed & sales.
  * Author: Rejuan Ahamed
- * Version: 1.0.5
- * Requires at least: 5.9
- * Requires PHP: 7.2
- * Tested up to: 7.0
- * Text Domain: xewc
+ * Version: 2.0.0
+ * Requires at least: 6.2
+ * Requires Plugins: woocommerce
+ * Requires PHP: 7.4
+ * Tested up to: 7.1
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: x-extensions-for-woocommerce
  * Domain Path: /languages/
  *
- * @package UserRegistration
+ * @package x-extensions-for-woocommerce
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -23,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 * @Plugin Base Name
 */
 define('XEWC_FILE', __FILE__);
-define('XEWC_VERSION', '1.0.5');
+define('XEWC_VERSION', '2.0.0');
 define('XEWC_DIR_URL', plugin_dir_url( XEWC_FILE ));
 define('XEWC_DIR_PATH', plugin_dir_path( XEWC_FILE ));
 define('XEWC_BASENAME', plugin_basename( XEWC_FILE ));

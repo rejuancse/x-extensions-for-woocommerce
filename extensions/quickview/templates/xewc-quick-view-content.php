@@ -7,7 +7,7 @@
  * @version 1.0.0
  */
 
-defined( 'XEWC_QUICK_VIEW' ) || exit; // Exit if accessed directly.
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 while ( have_posts() ) :
 	the_post();

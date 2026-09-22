@@ -34,10 +34,10 @@ class Product_Listing {
 		global $post, $product; ?>
 
         <div class="woocommerce">
-			<ul class="products columns-<?php echo $atts['column']; ?>">
+			<ul class="products columns-<?php echo absint( $atts['column'] ); ?>">
 				<?php if ( $query->have_posts() ) : ?>
 					<?php while ( $query->have_posts() ) : $query->the_post();
-						$product = new \WC_Product(get_the_ID());
+						$product = new \WC_Product(get_the_ID()); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WooCommerce core global required by template functions.
 						$price_html = $product->get_price_html();
 						$cats = get_the_term_list( get_the_ID(), 'product_cat' );
 						?>
@@ -46,17 +46,17 @@ class Product_Listing {
 								<div class="product-img">
 									<a href="<?php the_permalink(); ?>">
 										<?php if ( $product->is_on_sale() ) : ?>
-											<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'x-extensions-for-woocommerce' ) . '</span>', $post, $product ); ?>
+											<?php echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'x-extensions-for-woocommerce' ) . '</span>', $post, $product ) ); ?>
 										<?php endif; ?>
 										<?php the_post_thumbnail('woocommerce_thumbnail', array('class' => 'img-fluid')); ?>
 									</a>
 								</div>
-								<h4><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h4>
+								<h4><a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_title() ); ?></a></h4>
 								<?php if($category == 'true') { ?>
-									<span class="category"><?php echo $cats; ?></span>
+									<span class="category"><?php echo wp_kses_post( $cats ); ?></span>
 								<?php } ?>
 								<div class="price-box">
-									<span class="product-price"><?php echo $price_html; ?></span>
+									<span class="product-price"><?php echo wp_kses_post( $price_html ); ?></span>
 								</div>
 								<div class="content">
 									<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
@@ -67,7 +67,7 @@ class Product_Listing {
 					<?php wp_reset_query(); ?>
 				<?php endif; ?>
 			</ul>
-			<?php echo xewc_function()->get_pagination($page_numb, $query->max_num_pages); ?>
+			<?php echo wp_kses_post( xewc_function()->get_pagination($page_numb, $query->max_num_pages) ); ?>
         </div>
         <?php
 		$output = ob_get_contents();

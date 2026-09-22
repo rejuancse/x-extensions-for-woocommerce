@@ -12,8 +12,8 @@ class Functions {
     }
 
     public function post($post_item){
-        if (!empty($_POST[$post_item])) {
-            return $_POST[$post_item];
+        if (!empty($_POST[$post_item])) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified by the calling functions where required.
+            return sanitize_text_field( wp_unslash( $_POST[$post_item] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified by the calling functions where required.
         }
         return null;
     }

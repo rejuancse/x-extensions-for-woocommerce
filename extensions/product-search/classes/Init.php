@@ -24,6 +24,8 @@ class Xwoo_Product_Search_Extensions {
         add_action('admin_menu', array($this, 'xewc_add_product_search_page'));
         add_action('admin_init', array($this, 'save_product_search_menu_settings' ));
         add_action( 'wp_enqueue_scripts', array( $this, 'xewc_search_enqueue_frontend_script') );
+        add_action( 'wp_ajax_xewc_product_search', array( $this, 'ajax_product_search' ) );
+        add_action( 'wp_ajax_nopriv_xewc_product_search', array( $this, 'ajax_product_search' ) );
     }
 
     public function xewc_add_product_search_page(){
@@ -42,12 +44,52 @@ class Xwoo_Product_Search_Extensions {
     }
 
     /**
+     * AJAX handler that returns the product search results markup.
+     */
+    public function ajax_product_search() {
+        $search_image = get_option( 'wp_product_search_image', true );
+        $raw_data     = isset( $_POST['raw_data'] ) ? sanitize_text_field( wp_unslash( $_POST['raw_data'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Public read-only search endpoint for logged-out visitors; no state is modified.
+
+        $output = '';
+
+        if ( ! empty( $raw_data ) ) {
+            $search_data = new \WP_Query(
+                array(
+                    'post_type'      => 'product',
+                    's'              => $raw_data,
+                    'posts_per_page' => 10,
+                )
+            );
+
+            if ( $search_data->have_posts() ) {
+                $output .= '<ul class="xewc-productss-search results-list">';
+                while ( $search_data->have_posts() ) :
+                    $search_data->the_post();
+                    $output .= '<li>';
+                    $output .= '<div class="pack-thumb">';
+                    if ( $search_image == 'true' ) {
+                        $output .= get_the_post_thumbnail( $search_data->post->ID, 'thumbnail' );
+                    }
+                    $output .= '<span><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a></span>';
+                    $output .= '</div>';
+                    $output .= '</li>';
+                endwhile;
+                $output .= '</ul>';
+                wp_reset_postdata();
+            }
+        }
+
+        echo wp_kses_post( $output );
+        wp_die();
+    }
+
+    /**
      * Display a custom menu page
      */
     public function xewc_product_search_func(){
         if (xewc_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
-                echo '<p>'.__( "Quick view data have been Saved.", "x-extensions-for-woocommerce" ).'</p>';
+                echo '<p>'.esc_html__( "Quick view data have been Saved.", "x-extensions-for-woocommerce" ).'</p>';
             echo '</div>';
         }
 
@@ -70,16 +112,16 @@ class Xwoo_Product_Search_Extensions {
         );
 
         $current_page = 'general_settings';
-        if( ! empty($_GET['tab']) ){
-            $current_page = sanitize_text_field($_GET['tab']);
+        if( ! empty($_GET['tab']) ){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only navigation parameter used for tab selection.
+            $current_page = sanitize_text_field(wp_unslash($_GET['tab'])); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only navigation parameter used for tab selection.
         }
 
         // Print the Tab Title
-        echo '<h2 class="xewc-setting-title">'.__( "XEWC Product Search" , "x-extensions-for-woocommerce" ).'</h2>';
+        echo '<h2 class="xewc-setting-title">'.esc_html__( "XEWC Product Search" , "x-extensions-for-woocommerce" ).'</h2>';
         echo '<h2 class="nav-tab-wrapper">';
         foreach( $tabs as $tab => $name ){
             $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';
-            echo "<a class='nav-tab$class' href='?page=xewc-search&tab=$tab'>{$name['tab_name']}</a>";
+            echo "<a class='nav-tab" . esc_attr( $class ) . "' href='?page=xewc-search&tab=" . esc_attr( $tab ) . "'>" . esc_html( $name['tab_name'] ) . "</a>";
         }
         echo '</h2>'; ?>
 

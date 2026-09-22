@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-$arr =  array(
+$xewc_fields =  array(
 
     # Product Number
     array(
@@ -46,4 +46,4 @@ $arr =  array(
         'value'     => 'tab_style',
     ),
 );
-xewc_function()->generator( $arr );
+xewc_function()->generator( $xewc_fields );

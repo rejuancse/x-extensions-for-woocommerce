@@ -18,10 +18,11 @@ jQuery(document).ready(function($){
         $.ajax({
             url : ajaxurl,
             type : 'POST',
-            data : { 
-				isEnable:isEnable, 
-				addonFieldName:addonFieldName, 
-				action : 'xewc_addon_enable_disable'
+            data : {
+				isEnable:isEnable,
+				addonFieldName:addonFieldName,
+				action : 'xewc_addon_enable_disable',
+				nonce : xewc_admin_object.nonce
 			},
             success: function (data) {
                 if (data.success){

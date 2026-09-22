@@ -44,7 +44,7 @@ class Xwoo_Product_Listing_Extensions {
     public function xewc_listing_products_func(){
         if (xewc_function()->post('wp_settings_page_nonce_field')){
             echo '<div class="notice notice-success is-dismissible">';
-                echo '<p>'.__( "Quick view data have been Saved.", "x-extensions-for-woocommerce" ).'</p>';
+                echo '<p>'.esc_html__( "Quick view data have been Saved.", "x-extensions-for-woocommerce" ).'</p>';
             echo '</div>';
         }
 
@@ -67,16 +67,16 @@ class Xwoo_Product_Listing_Extensions {
         );
 
         $current_page = 'general_settings';
-        if( ! empty($_GET['tab']) ){
-            $current_page = sanitize_text_field($_GET['tab']);
+        if( ! empty($_GET['tab']) ){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only navigation parameter used for tab selection.
+            $current_page = sanitize_text_field(wp_unslash($_GET['tab'])); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only navigation parameter used for tab selection.
         }
 
         // Print the Tab Title
-        echo '<h2 class="xewc-setting-title">'.__( "XEWC Product Listing" , "x-extensions-for-woocommerce" ).'</h2>';
+        echo '<h2 class="xewc-setting-title">'.esc_html__( "XEWC Product Listing" , "x-extensions-for-woocommerce" ).'</h2>';
         echo '<h2 class="nav-tab-wrapper">';
         foreach( $tabs as $tab => $name ){
             $class = ( $tab == $current_page ) ? ' nav-tab-active' : '';
-            echo "<a class='nav-tab$class' href='?page=xewc-listing&tab=$tab'>{$name['tab_name']}</a>";
+            echo "<a class='nav-tab" . esc_attr( $class ) . "' href='?page=xewc-listing&tab=" . esc_attr( $tab ) . "'>" . esc_html( $name['tab_name'] ) . "</a>";
         }
         echo '</h2>'; ?>
 

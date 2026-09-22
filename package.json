@@ -1,8 +1,8 @@
 {
-  "name": "ct-theme",
-  "description": "Wordpress Theme",
+  "name": "x-extensions",
+  "description": "Enhance WooCommerce with AJAX product search, quick view popup & product listing grid. Free WooCommerce extensions to boost UX, speed & sales.",
   "version": "1.0.0",
-  "author": "Coalition Technologies",
+  "author": "Rejuan Ahamed",
   "license": "MIT",
   "scripts": {
     "start": "gulp",

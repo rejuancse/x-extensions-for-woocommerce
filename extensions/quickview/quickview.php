@@ -29,9 +29,9 @@ function xewc_quick_view_config( $config ) {
 	return $config;
 }
 
-$addonConfig = xewc_function()->get_addon_config( XEWC_QUICK_VIEW_BASE_NAME );
-$isEnable = (bool) xewc_function()->avalue_dot( 'is_enable', $addonConfig );
-if ( $isEnable ) {
+$xewc_addon_config = xewc_function()->get_addon_config( XEWC_QUICK_VIEW_BASE_NAME );
+$xewc_is_enable = (bool) xewc_function()->avalue_dot( 'is_enable', $xewc_addon_config );
+if ( $xewc_is_enable ) {
 	include_once 'classes/Init.php';
 }
 

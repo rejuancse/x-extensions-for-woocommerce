@@ -7,7 +7,7 @@
  * @version 1.0.0
  */
 
-defined( 'XEWC_QUICK_VIEW' ) || exit; // Exit if accessed directly.
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 if ( ! class_exists( 'XEWC_QUICK_VIEW_Frontend' ) ) {
 	/**
@@ -391,7 +391,7 @@ if ( ! class_exists( 'XEWC_QUICK_VIEW_Frontend' ) ) {
 		 * @return bool
 		 */
 		public function xewc_is_quick_view() {
-			return ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && 'xewc_load_product_quick_view' === $_REQUEST['action'] );
+			return ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && 'xewc_load_product_quick_view' === $_REQUEST['action'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only environment detection, no form data is processed.
 		}
 
 		/**

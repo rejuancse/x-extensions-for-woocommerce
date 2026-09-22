@@ -1,15 +1,15 @@
 === X-Extensions for WooCommerce ===
 
 Contributors: rejuancse
-Tags: quick view, product search, product listing
-Requires at least: 5.9
-Tested up to: 7.0
-Requires PHP: 7.2
-Stable tag:  1.0.5
+Tags: woocommerce, product search, quick view, product listing, ajax search
+Requires at least: 6.2
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag:  2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Boost your WooCommerce store with X-Extensions: advanced product listings, AJAX search, and quick view to improve UX and drive sales.
+Enhance WooCommerce with AJAX product search, quick view popup & product listing grid. Free WooCommerce extensions to boost UX, speed & sales.
 
 == Description ==
 Boost your WooCommerce store's performance with X-Extensions for WooCommerce. This powerful plugin enhances your online shop with advanced product listing features, lightning-fast AJAX search, and a convenient quick view option. Perfect for improving user experience and driving sales. X-Extensions for WooCommerce is your go-to solution for a more dynamic, efficient, and user-friendly eCommerce platform.
