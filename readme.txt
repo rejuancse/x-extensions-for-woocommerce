@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Enhance WooCommerce with AJAX product search, quick view popup & product listing grid. Free WooCommerce extensions to boost UX, speed & sales.
 
 == Description ==
-Boost your WooCommerce store's performance with X-Extensions for WooCommerce. This powerful plugin enhances your online shop with advanced product listing features, lightning-fast AJAX search, and a convenient quick view option. Perfect for improving user experience and driving sales. X-Extensions for WooCommerce is your go-to solution for a more dynamic, efficient, and user-friendly eCommerce platform.
+Boost your WooCommerce store's performance with X-Extensions for WooCommerce. This plugin bundles three powerful extensions: a product listing grid, lightning-fast AJAX product search, and a quick view popup. Each extension comes with its own settings panel, so you can customize everything easily. Perfect for improving user experience and driving sales, X-Extensions for WooCommerce is your go-to solution for a more dynamic, efficient, and user-friendly eCommerce platform.
 
 = Shortcode List =
 To use these shortcodes, just place the required shortcode(s) on your desired location.
@@ -22,10 +22,13 @@ To use these shortcodes, just place the required shortcode(s) on your desired lo
 
 = Features =
 
-1. Demo
-2. Every extensions has own Settings
-3. Initially three extensions are totally free.
-4. Easy to customize and easy to use.
+1. Three powerful extensions: Product Listing, AJAX Product Search and Quick View
+2. Every extension has its own settings panel
+3. All extensions are totally free
+4. AJAX powered product search with live results
+5. Quick view popup to preview products without leaving the shop page
+6. Product listing grid with pagination and category support
+7. Easy to customize and easy to use
 
 
 Please let us know your feedback, if you think something can be more awesome in this plugin, we will love to add.
@@ -34,8 +37,10 @@ Please let us know your feedback, if you think something can be more awesome in 
 
 = Minimum Requirements =
 
-* PHP version 5.6.0 or greater (PHP 7.1 or greater is recommended)
-* MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
+* WordPress 6.2 or greater
+* WooCommerce installed and activated
+* PHP version 7.4 or greater
+* MySQL version 5.6 or greater (MySQL 8.0 or greater is recommended)
 
 
 = Automatic installation =
@@ -47,7 +52,7 @@ This will open up a page showing all the available plugins in WordPress. In the 
 
 = Manual installation =
 
-Go to Dashboard > Plugins > Add New, then upload xextensions-for-wooCommerce.zip file and click Install Now.
+Go to Dashboard > Plugins > Add New, then upload x-extensions-for-woocommerce.zip file and click Install Now.
 
 
 == Screenshots ==
@@ -65,6 +70,9 @@ Go to Dashboard > Plugins > Add New, then upload xextensions-for-wooCommerce.zip
 = Q. Where can I get support? =
 A. You can get support by posting on the support section of this plugin on WordPress plugin directory, or on the support mail: rejuan.17bd@gmail.com
 
+= Q. Does this plugin require WooCommerce? =
+A. Yes. X-Extensions for WooCommerce is a WooCommerce extension plugin, so WooCommerce must be installed and activated on your site.
+
 = Q. Can I use my existing WordPress theme? =
 A. Sure, you can use your existing WordPress theme with X-Extensions for WooCommerce.
 
@@ -73,6 +81,15 @@ A. Found a bug? Please let us know by posting on the support section of this plu
 
 
 == Changelog ==
+= 2.0.0 [22/09/2026] =
+* Security: output escaping, input sanitization and AJAX nonce verification added
+* Direct file access protection (ABSPATH check) added to plugin files
+* Product search endpoint moved to admin-ajax instead of a direct PHP file
+* Plugin header license added and text domain issues fixed
+* Scripts/styles enqueue fixed (proper version, footer loading, datepicker dependency)
+* Internal global variables prefixed to avoid conflicts with other plugins
+* Quick view popup redesigned with new SCSS source and professional UI
+* SEO optimized readme tags and description
 
 = 1.0.4 [27/08/2024] =
 * Bug fixed

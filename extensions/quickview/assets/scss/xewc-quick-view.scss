@@ -1,0 +1,609 @@
+/**
+ * XEWC Quick View — Frontend modal styles.
+ *
+ * @author  XEWC
+ * @package XEWC WooCommerce Quick View
+ * @version 1.0.0
+ */
+
+// ==========================================================================
+// 1. Design tokens
+// ==========================================================================
+
+$xewc-qv-text:        #17181a;
+$xewc-qv-text-muted:  #6d7175;
+$xewc-qv-border:      #e6e6e9;
+$xewc-qv-surface:     #ffffff;
+$xewc-qv-surface-alt: #f5f5f7;
+$xewc-qv-dark:        #181818;
+$xewc-qv-dark-hover:  #000000;
+$xewc-qv-sale:        #d63638;
+$xewc-qv-star:        #eab308;
+$xewc-qv-stock:       #1a7f37;
+
+$xewc-qv-radius:      14px;
+$xewc-qv-radius-sm:   8px;
+
+$xewc-qv-shadow-card: 0 30px 90px -20px rgba(0, 0, 0, 0.45), 0 4px 24px rgba(0, 0, 0, 0.08);
+$xewc-qv-ease:        cubic-bezier(0.4, 0, 0.2, 1);
+$xewc-qv-ease-pop:    cubic-bezier(0.175, 0.885, 0.32, 1.2);
+$xewc-qv-speed:       0.25s;
+
+// ==========================================================================
+// 2. Scroll lock + modal shell
+// ==========================================================================
+
+html.xewc-quick-view-is-open,
+html.xewc-quick-view-is-open body {
+	overflow: hidden;
+}
+
+#xewc-quick-view-modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1400;
+	visibility: hidden;
+	opacity: 0;
+	text-align: center;
+	transition: opacity 0.3s $xewc-qv-ease, visibility 0.3s $xewc-qv-ease;
+
+	// Keeps the wrapper vertically centred (inline-block alignment trick).
+	&::before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		width: 0;
+		height: 100%;
+	}
+
+	// AJAX loading state: dim the page + spinner.
+	&.loading {
+		visibility: visible;
+		opacity: 1;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			z-index: 3;
+			width: 44px;
+			height: 44px;
+			margin: -22px 0 0 -22px;
+			border: 3px solid rgba(255, 255, 255, 0.25);
+			border-top-color: #fff;
+			border-radius: 50%;
+			animation: xewc-qv-spin 0.7s linear infinite;
+		}
+	}
+
+	&.open,
+	&.open .xewc-wcqv-wrapper {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+@keyframes xewc-qv-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+// Dimmed, blurred page backdrop. Clicking it closes the modal (frontend.js).
+#xewc-quick-view-modal .xewc-quick-view-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(10, 10, 12, 0.82);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+}
+
+// ==========================================================================
+// 3. Wrapper + product card
+// ==========================================================================
+
+// Base dimensions are read by frontend.js and clamped to the viewport —
+// do not remove them.
+#xewc-quick-view-modal .xewc-wcqv-wrapper {
+	display: inline-block;
+	vertical-align: middle;
+	visibility: hidden;
+	width: 1000px;
+	height: 600px;
+	max-width: 100%;
+	text-align: left;
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	transition: opacity 0.3s $xewc-qv-ease, visibility 0.3s $xewc-qv-ease;
+}
+
+#xewc-quick-view-modal .xewc-wcqv-main {
+	height: 100%;
+	overflow: hidden;
+	opacity: 0;
+	background: $xewc-qv-surface;
+	border-radius: $xewc-qv-radius;
+	box-shadow: $xewc-qv-shadow-card;
+	transform: scale(0.94) translateY(14px);
+	transform-origin: 50% 50%;
+	transition: opacity 0.35s $xewc-qv-ease, transform 0.35s $xewc-qv-ease-pop;
+}
+
+#xewc-quick-view-modal.open .xewc-wcqv-main {
+	position: relative;
+	opacity: 1;
+	transform: none;
+}
+
+// Head overlay + circular close button.
+#xewc-quick-view-modal .xewc-wcqv-head {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 20;
+	pointer-events: none;
+}
+
+#xewc-quick-view-modal #xewc-quick-view-close {
+	pointer-events: auto;
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.94);
+	color: $xewc-qv-text;
+	font-size: 0;
+	line-height: 1;
+	text-decoration: none;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
+	opacity: 1;
+	transition: background $xewc-qv-speed $xewc-qv-ease, color $xewc-qv-speed $xewc-qv-ease,
+		transform $xewc-qv-speed $xewc-qv-ease;
+
+	&::before {
+		content: "\00d7";
+		font-size: 24px;
+		font-weight: 400;
+	}
+
+	&:hover,
+	&:focus {
+		background: $xewc-qv-dark;
+		color: #fff;
+		opacity: 1;
+		transform: rotate(90deg);
+	}
+
+	&:focus-visible {
+		outline: 2px solid $xewc-qv-dark;
+		outline-offset: 2px;
+	}
+}
+
+// ==========================================================================
+// 4. Content layout: gallery + summary
+// ==========================================================================
+
+#xewc-quick-view-content {
+	height: 100%;
+	overflow-y: auto;
+
+	> .product {
+		height: 100%;
+
+		> .product {
+			position: relative;
+			display: flex;
+			align-items: stretch;
+			height: 100%;
+			margin: 0;
+		}
+	}
+
+	// ---- Gallery --------------------------------------------------------
+
+	div.images {
+		position: relative;
+		float: none;
+		flex: 0 0 46%;
+		width: 50%;
+		height: 100%;
+		min-height: 0;
+		margin: 0;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 1 !important; // WooCommerce gallery fades in via JS — keep it visible.
+		background: $xewc-qv-surface-alt;
+
+		figure.woocommerce-product-gallery__wrapper {
+			width: 100%;
+			margin: 0;
+		}
+
+		// Show the first image only (legacy quick view behaviour).
+		figure.woocommerce-product-gallery__wrapper > div:not(:first-child) {
+			display: none;
+		}
+
+		.flex-control-thumbs {
+			display: none;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.onsale {
+		position: absolute;
+		top: 16px;
+		left: 16px;
+		right: auto;
+		z-index: 10;
+		min-height: 0;
+		min-width: 0;
+		margin: 0;
+		padding: 6px 14px;
+		border-radius: 999px;
+		background: $xewc-qv-sale;
+		color: #fff;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.6px;
+		line-height: 1.4;
+		text-transform: uppercase;
+		box-shadow: 0 6px 16px -6px rgba(214, 54, 56, 0.6);
+	}
+
+	// ---- Summary --------------------------------------------------------
+
+	div.summary {
+		float: none;
+		flex: 1 1 0;
+		width: auto;
+		min-width: 0;
+		min-height: 0;
+		margin: 0;
+		padding: 34px 38px;
+		overflow-y: auto;
+		font-size: inherit;
+		-webkit-overflow-scrolling: touch;
+		overscroll-behavior: contain;
+		scrollbar-width: thin;
+		scrollbar-color: #cfcfd6 transparent;
+
+		&::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: #cfcfd6;
+			border-radius: 999px;
+		}
+	}
+
+	.summary-content {
+		margin: 0 !important;
+		padding: 0 !important;
+
+		> *:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.product_title {
+		margin: 0 0 10px;
+		padding: 0;
+		clear: none;
+		font-size: 30px;
+		line-height: 1.2;
+		font-weight: 600;
+		color: $xewc-qv-text;
+	}
+
+	div.woocommerce-product-rating {
+		margin-bottom: 14px;
+
+		&::before,
+		&::after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+	}
+
+	.star-rating,
+	.star-rating::before,
+	.star-rating span::before {
+		color: $xewc-qv-star;
+	}
+
+	a.woocommerce-review-link {
+		display: none;
+	}
+
+	.price {
+		display: block;
+		margin: 0 0 18px;
+		color: $xewc-qv-text;
+		font-size: 24px;
+		font-weight: 600;
+
+		del {
+			color: $xewc-qv-text-muted;
+			font-size: 0.82em;
+			font-weight: 400;
+			opacity: 1;
+		}
+
+		ins {
+			text-decoration: none;
+		}
+	}
+
+	.woocommerce-product-details__short-description {
+		margin: 0 0 22px;
+		color: $xewc-qv-text-muted;
+		font-size: 15px;
+		line-height: 1.7;
+
+		p {
+			margin: 0 0 12px;
+			font-size: 15px;
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.stock {
+		margin: 0 0 14px;
+		font-size: 13px;
+		font-weight: 600;
+
+		&.in-stock {
+			color: $xewc-qv-stock;
+		}
+
+		&.out-of-stock {
+			color: $xewc-qv-sale;
+		}
+	}
+
+	// ---- Variation form --------------------------------------------------
+
+	.variations_form {
+		.variations {
+			margin: 0 0 16px;
+			border: 0;
+
+			th,
+			td {
+				padding: 0 0 12px;
+				border: 0;
+				vertical-align: middle;
+			}
+
+			label {
+				color: $xewc-qv-text;
+				font-size: 13px;
+				font-weight: 600;
+				letter-spacing: 0.4px;
+				text-transform: uppercase;
+			}
+
+			select {
+				width: 100%;
+				height: 44px;
+				padding: 0 12px;
+				border: 1px solid $xewc-qv-border;
+				border-radius: $xewc-qv-radius-sm;
+				background-color: $xewc-qv-surface;
+				color: $xewc-qv-text;
+			}
+		}
+
+		.reset_variations {
+			font-size: 13px;
+		}
+
+		.single_variation {
+			display: block;
+			margin-bottom: 14px;
+
+			.price {
+				margin-bottom: 8px;
+			}
+		}
+	}
+
+	// ---- Add to cart ------------------------------------------------------
+
+	form.cart {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+		gap: 10px;
+		margin: 0 0 22px;
+
+		.quantity {
+			margin: 0;
+		}
+
+		.qty {
+			width: 64px;
+			height: 48px;
+			padding: 0;
+			border: 1px solid $xewc-qv-border;
+			border-radius: $xewc-qv-radius-sm;
+			background: $xewc-qv-surface;
+			color: $xewc-qv-text;
+			font-size: 15px;
+			text-align: center;
+		}
+
+		.single_add_to_cart_button {
+			flex: 1 1 170px;
+			min-height: 48px;
+			padding: 12px 28px;
+			border: 0;
+			border-radius: $xewc-qv-radius-sm;
+			background: $xewc-qv-dark;
+			color: #fff;
+			font-size: 15px;
+			font-weight: 600;
+			letter-spacing: 0.3px;
+			line-height: 24px;
+			text-align: center;
+			cursor: pointer;
+			transition: background $xewc-qv-speed $xewc-qv-ease, box-shadow $xewc-qv-speed $xewc-qv-ease,
+				transform $xewc-qv-speed $xewc-qv-ease;
+
+			&:hover,
+			&:focus {
+				background: $xewc-qv-dark-hover;
+				color: #fff;
+				box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.55);
+				transform: translateY(-1px);
+			}
+
+			&:disabled {
+				cursor: not-allowed;
+				opacity: 0.55;
+				transform: none;
+				box-shadow: none;
+			}
+		}
+	}
+
+	// ---- Meta -------------------------------------------------------------
+
+	.product_meta {
+		margin: 0;
+		padding: 18px 0 0;
+		border-top: 1px solid $xewc-qv-border;
+		color: $xewc-qv-text-muted;
+		font-size: 13px;
+
+		> span {
+			display: block;
+			margin: 0 0 6px;
+		}
+
+		a {
+			color: $xewc-qv-text;
+			text-decoration: none;
+
+			&:hover {
+				color: $xewc-qv-dark;
+				text-decoration: underline;
+			}
+		}
+
+		.sku {
+			color: $xewc-qv-text;
+			font-weight: 600;
+		}
+	}
+}
+
+// Quick view button spinner reset inside product loops.
+li.product .xewc-wcqv-button .blockUI.blockOverlay::before {
+	background: none;
+}
+
+// ==========================================================================
+// 5. Responsive
+// ==========================================================================
+
+@media (max-width: 767px) {
+	#xewc-quick-view-content {
+		> .product > .product {
+			flex-direction: column;
+		}
+
+		div.images {
+			flex: 0 0 46%;
+		}
+
+		div.summary {
+			padding: 22px 18px;
+		}
+
+		.product_title {
+			font-size: 22px;
+		}
+
+		.price {
+			font-size: 20px;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	#xewc-quick-view-content {
+		div.images {
+			flex: 0 0 42%;
+		}
+
+		div.summary {
+			padding: 18px 14px;
+		}
+
+		.product_title {
+			font-size: 20px;
+		}
+	}
+
+	#xewc-quick-view-modal {
+		.xewc-wcqv-main {
+			border-radius: 10px;
+		}
+
+		#xewc-quick-view-close {
+			top: 10px;
+			right: 10px;
+			width: 34px;
+			height: 34px;
+		}
+	}
+}
+
+// ==========================================================================
+// 6. Accessibility
+// ==========================================================================
+
+@media (prefers-reduced-motion: reduce) {
+	#xewc-quick-view-modal,
+	#xewc-quick-view-modal .xewc-wcqv-wrapper,
+	#xewc-quick-view-modal .xewc-wcqv-main,
+	#xewc-quick-view-modal #xewc-quick-view-close {
+		transition: none;
+		animation: none;
+	}
+}
